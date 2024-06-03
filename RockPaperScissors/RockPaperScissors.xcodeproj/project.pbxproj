@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1E9CFA2C0DB6D100B92465 /* RockPaperScissors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */; };
+		CE1E9CFC2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CFB2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift */; };
+		CE1E9CFE2C0DB71800B92465 /* RockPaperScissorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */; };
 		CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */; };
 		CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */; };
 		CE5C16A32C0DA1E200316F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A22C0DA1E200316F08 /* ViewController.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissors.swift; sourceTree = "<group>"; };
+		CE1E9CFB2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsViewModel.swift; sourceTree = "<group>"; };
+		CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsViewController.swift; sourceTree = "<group>"; };
 		CE5C169B2C0DA1E200316F08 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +41,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE1E9CF62C0DB6A000B92465 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE1E9CF72C0DB6A700B92465 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CE1E9CFB2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE1E9CF82C0DB6B200B92465 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		CE5C16922C0DA1E200316F08 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +84,9 @@
 		CE5C169D2C0DA1E200316F08 /* RockPaperScissors */ = {
 			isa = PBXGroup;
 			children = (
+				CE1E9CF82C0DB6B200B92465 /* Models */,
+				CE1E9CF72C0DB6A700B92465 /* ViewModels */,
+				CE1E9CF62C0DB6A000B92465 /* Views */,
 				CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */,
 				CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */,
 				CE5C16A22C0DA1E200316F08 /* ViewController.swift */,
@@ -135,7 +168,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5C16A32C0DA1E200316F08 /* ViewController.swift in Sources */,
+				CE1E9CFE2C0DB71800B92465 /* RockPaperScissorsViewController.swift in Sources */,
 				CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */,
+				CE1E9CFA2C0DB6D100B92465 /* RockPaperScissors.swift in Sources */,
+				CE1E9CFC2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift in Sources */,
 				CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +323,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +351,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
