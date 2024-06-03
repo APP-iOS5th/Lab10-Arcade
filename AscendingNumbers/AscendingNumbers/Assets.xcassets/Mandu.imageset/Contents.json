@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "PePe.png",
+      "filename" : "Mandu.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Mandu.png",
+      "filename" : "Mandu 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "background.jpg",
+      "filename" : "Mandu 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
