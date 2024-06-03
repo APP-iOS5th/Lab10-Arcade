@@ -69,3 +69,7 @@
 
 
 <image src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/c84802e3-f50d-4d0e-b0be-02e686a0fe21" width="200">
+
+<게임 종료 화면>
+다시하기 버튼
+- 크기 : 180 x 60
