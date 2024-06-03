@@ -1,5 +1,6 @@
 # 프로젝트 사전 회의
 
+### 24.05.31 금요일
 
 1. 주제
   	- 제목 : 만튜야 놀자  (후보 : 만튜오락실, 만튜야 놀자, 만두 vs 튜나, ...)
@@ -42,7 +43,29 @@
 	- 일단 피그마로 각자의 게임을 구성 해보기
 	- 각자의 게임에 따라 전체적인 디자인의 통일성 구성 상의
 
-
 	- 피그마 : https://www.figma.com
-	- 제플린 : https://app.zeplin.io
-	- 카카오 오븐 : https://ovenapp.io
+---
+
+### 24.06.03 월요일
+
+< 게임 첫 화면 >
+게임설명창
+- 테두리 : 000000, 굵기3
+- 배경색 : FFFFFF, 투명도 95%
+- 크기 : 298X208
+
+게임제목
+- 폰트 : 던파 비트비트 v2(https://df.nexon.com/data/font/dnfbitbitv2), size 24
+
+설명
+- 폰트 :  네오 둥근모 pro(https://neodgm.dalgona.dev/), size 17
+
+게임버튼
+- 배경색 : FF7C1D
+- 테두리 : 000000, 굵기 3
+- 폰트 : 던파 비트비트 v2(https://df.nexon.com/data/font/dnfbitbitv2), size 24
+- 크기 : 144X60
+- 위치 : 페페와 만두 사이
+
+
+<image src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/c84802e3-f50d-4d0e-b0be-02e686a0fe21" width="200">
