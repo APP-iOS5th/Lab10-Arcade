@@ -5,6 +5,9 @@ import UIKit
 class RockPaperScissorsViewController: UIViewController {
 	let backgroundImage = UIImageView()
 	let startButton = UIButton()
+	let optionWindow = UIView()
+	let descriptionWindow = UIView()
+	
 }
 
 // MARK: - LifeCycle
@@ -16,10 +19,12 @@ extension RockPaperScissorsViewController {
 		setupNavigationBar()
 		setupBackgroundImage()
 		setupStartButton()
+		setupOptionWindow()
+		setupDescriptionWindow()
 	}
 }
 
-// MARK: - setup
+// MARK: - setup01_gameSetting
 extension RockPaperScissorsViewController {
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
@@ -62,9 +67,66 @@ extension RockPaperScissorsViewController {
 				constant: -100),
 		])
 	}
+	
+	func setupOptionWindow() {
+		optionWindow.backgroundColor = .white
+		optionWindow.layer.borderWidth = 2
+		optionWindow.layer.borderColor = UIColor.black.cgColor
+		optionWindow.layer.cornerRadius = 10
+		optionWindow.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(optionWindow)
+		
+		NSLayoutConstraint.activate([
+			optionWindow.leadingAnchor.constraint(
+				equalTo: view.leadingAnchor,
+				constant: 20),
+			optionWindow.trailingAnchor.constraint(
+				equalTo: view.trailingAnchor,
+				constant: -20),
+			optionWindow.heightAnchor.constraint(
+				equalToConstant: 100),
+			optionWindow.bottomAnchor.constraint(
+				equalTo: startButton.topAnchor,
+				constant: -50),
+		])
+	}
+	
+	func setupDescriptionWindow() {
+		descriptionWindow.backgroundColor = .white
+		descriptionWindow.layer.borderWidth = 2
+		descriptionWindow.layer.borderColor = UIColor.black.cgColor
+		descriptionWindow.layer.cornerRadius = 10
+		descriptionWindow.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(descriptionWindow)
+		
+		print(view.bounds.height)
+		
+		NSLayoutConstraint.activate([
+			descriptionWindow.leadingAnchor.constraint(
+				equalTo: view.leadingAnchor,
+				constant: 20),
+			descriptionWindow.trailingAnchor.constraint(
+				equalTo: view.trailingAnchor,
+				constant: -20),
+			descriptionWindow.heightAnchor.constraint(
+				equalToConstant: 200),
+			descriptionWindow.bottomAnchor.constraint(
+				equalTo: optionWindow.topAnchor,
+				constant: -50),
+		])
+		
+		
+	}
 }
 
-// MARK: - Configuration
+// MARK: - setup02_gameReady
+extension RockPaperScissorsViewController {
+	
+}
+
+
+
+// MARK: - Configuration Style
 extension RockPaperScissorsViewController {
 	func configGameStyledButton(_ title:String) -> UIButton.Configuration {
 		var config = UIButton.Configuration.filled()
