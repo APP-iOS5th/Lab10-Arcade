@@ -1,1 +1,1 @@
-import Foundation
+enum Player { case tuna, mandu }

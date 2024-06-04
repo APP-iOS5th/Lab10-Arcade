@@ -229,9 +229,9 @@ extension RockPaperScissorsViewController {
 	@objc func segmentChanged(_ sender: UISegmentedControl) {
 		switch sender.selectedSegmentIndex {
 			case 0:
-				print("첫 번째 세그먼트 선택됨")
+				RockPaperScissorsViewModel.sharedData.player = .tuna
 			case 1:
-				print("두 번째 세그먼트 선택됨")
+				RockPaperScissorsViewModel.sharedData.player = .mandu
 			default:
 				break
 		}
