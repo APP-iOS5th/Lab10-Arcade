@@ -62,20 +62,40 @@ class AscendingNumViewController: UIViewController {
     // 게임 설명 설정
     func setDescription() {
         let cornerView = UIView()
+        let titleLabel = UILabel()
+        let bodyLabel = UILabel()
+        
         cornerView.backgroundColor = .white.withAlphaComponent(0.95)
         cornerView.layer.cornerRadius = 40
         cornerView.layer.borderColor = UIColor.black.cgColor
         cornerView.layer.borderWidth = 3
-        
         cornerView.translatesAutoresizingMaskIntoConstraints = false
         
+        titleLabel.text = "순서대로 얍얍"
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: "DNFBitBitv2", size: 24) ?? UIFont.systemFont(ofSize: 24)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        bodyLabel.text = "N x N개의 숫자를\n순서대로 선택해보세요!"
+        bodyLabel.numberOfLines = 0
+        bodyLabel.textAlignment = .center
+        bodyLabel.font = UIFont(name: "neodgm_code", size: 20) ?? UIFont.systemFont(ofSize: 17)
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(cornerView)
+        cornerView.addSubview(titleLabel)
+        cornerView.addSubview(bodyLabel)
         
         NSLayoutConstraint.activate([
             cornerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cornerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70),
             cornerView.widthAnchor.constraint(equalToConstant: 298),
-            cornerView.heightAnchor.constraint(equalToConstant: 208)
+            cornerView.heightAnchor.constraint(equalToConstant: 208),
+            titleLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: cornerView.topAnchor, constant: 50),
+            bodyLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
+            bodyLabel.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -50)
+
         ])
     }
     
