@@ -9,26 +9,9 @@ import UIKit
 
 class AscendingNumViewController: UIViewController {
     private let viewModel = AscendingNumViewModel()
-    private let startButton: UIButton = {
-        let startButton = UIButton()
-        startButton.frame = CGRect(x: 100, y: 300, width: 144, height: 60)
-        
-        var configuration = UIButton.Configuration.filled()
-        
-        configuration.baseBackgroundColor = UIColor(named: "buttonColor")
-        configuration.background.strokeColor = .black
-        configuration.background.strokeWidth = 3
-        
-        startButton.configuration = configuration
-        
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        return startButton
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -36,26 +19,25 @@ class AscendingNumViewController: UIViewController {
     private func setupUI() {
         setBackground()
         let startButton = customButton(title: "START")
-        view.addSubview(startButton)
         NSLayoutConstraint.activate([
-            startButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -110),
+            startButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -130),
             startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             startButton.widthAnchor.constraint(equalToConstant: 144),
             startButton.heightAnchor.constraint(equalToConstant: 60)
         ])
-        
+        setDescription()
     }
     
     // 배경 이미지 설정
     private func setBackground() {
-        
         let backgroundImage = UIImage(named: "background")
         let backgroundImageView = UIImageView(frame: self.view.bounds)
         backgroundImageView.image = backgroundImage
-        backgroundImageView.contentMode = .scaleToFill
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
         
-        self.view.addSubview(backgroundImageView)
-        self.view.sendSubviewToBack(backgroundImageView)
+        view.addSubview(backgroundImageView)
+        view.sendSubviewToBack(backgroundImageView)
     }
     
     // 버튼 설정
@@ -72,9 +54,47 @@ class AscendingNumViewController: UIViewController {
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(button)
+        
         return button
     }
     
+    // 게임 설명 설정
+    func setDescription() {
+        let cornerView = UIView()
+        cornerView.backgroundColor = .white.withAlphaComponent(0.95)
+        cornerView.layer.cornerRadius = 40
+        cornerView.layer.borderColor = UIColor.black.cgColor
+        cornerView.layer.borderWidth = 3
+        
+        cornerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(cornerView)
+        
+        NSLayoutConstraint.activate([
+            cornerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cornerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -70),
+            cornerView.widthAnchor.constraint(equalToConstant: 298),
+            cornerView.heightAnchor.constraint(equalToConstant: 208)
+        ])
+    }
     
+    
+}
+
+extension UINavigationController {
+    func setupBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = .white
+        
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+
+        navigationBar.standardAppearance = appearance
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.isTranslucent = false
+        navigationBar.tintColor = .black
+    }
 }
 

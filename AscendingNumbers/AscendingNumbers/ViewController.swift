@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Main View"
-        self.view.backgroundColor = .white
+        self.title = "게임선택"
+        self.view.backgroundColor = .yellow
         
         tableView.delegate = self
         tableView.dataSource = self

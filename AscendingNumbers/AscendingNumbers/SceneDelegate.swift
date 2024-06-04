@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
+        
+        navigationVC.setupBarAppearance()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
