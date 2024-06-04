@@ -3,14 +3,31 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
-	
+	let backgroundImage = UIImageView()
+}
+
+// MARK: - LifeCycle
+extension RockPaperScissorsViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		
 		setupNavigationBar()
-		
-		let backgroundImage = UIImageView()
+		setupBackground()
+	}
+}
+
+// MARK: - setup
+extension RockPaperScissorsViewController {
+	func setupNavigationBar() {
+		self.title = "RockPaperScissors"
+		let appearence = UINavigationBarAppearance()
+		appearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+		appearence.backgroundColor = .systemBrown
+		self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
+	}
+	
+	func setupBackground() {
 		backgroundImage.image = UIImage(
 			named: "background_multiplier_2.5")
 		backgroundImage.contentMode = .scaleAspectFit
@@ -28,18 +45,4 @@ class RockPaperScissorsViewController: UIViewController {
 				equalTo: view.bottomAnchor),
 		])
 	}
-}
-
-// MARK: - setup
-extension RockPaperScissorsViewController {
-	func setupNavigationBar() {
-		self.title = "RockPaperScissors"
-		let appearence = UINavigationBarAppearance()
-		appearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-		appearence.backgroundColor = .systemBrown
-		self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
-	}
-	
-	
-	
 }
