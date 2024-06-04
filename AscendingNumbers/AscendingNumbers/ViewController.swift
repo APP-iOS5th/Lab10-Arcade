@@ -33,18 +33,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // 셀 한 개
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "순서대로 얍얍"
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "순서대로 얍얍"
+        } else if indexPath.row == 1 {
+            cell.textLabel?.text = "게임 다시하기 페이지"
+        }
         return cell
     }
     
     // UITableViewDelegate Method
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let addViewController = AscendingNumViewController()
+        let addViewController: UIViewController
+        if indexPath.row == 0 {
+            addViewController = AscendingNumStartViewController()
+        } else {
+            addViewController = AscendingNumRestartViewController()
+        }
         self.navigationController?.pushViewController(addViewController, animated: true)
     }
     

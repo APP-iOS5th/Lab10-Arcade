@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AscendingNumViewController: UIViewController {
+class AscendingNumStartViewController: UIViewController {
     private let viewModel = AscendingNumViewModel()
     
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ class AscendingNumViewController: UIViewController {
         bodyLabel.text = "N x N개의 숫자를\n순서대로 선택해보세요!"
         bodyLabel.numberOfLines = 0
         bodyLabel.textAlignment = .center
-        bodyLabel.font = UIFont(name: "neodgm_code", size: 20) ?? UIFont.systemFont(ofSize: 17)
+        bodyLabel.font = UIFont(name: "neodgm", size: 17) ?? UIFont.systemFont(ofSize: 17)
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(cornerView)
