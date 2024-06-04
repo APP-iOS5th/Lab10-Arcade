@@ -93,7 +93,7 @@ extension RockPaperScissorsViewController {
 				equalToConstant: 100),
 			optionWindow.bottomAnchor.constraint(
 				equalTo: startButton.topAnchor,
-				constant: -50),
+				constant: -(view.bounds.height/12)),
 		])
 		
 		// MARK: optionWindowSegmentedControl
@@ -152,7 +152,7 @@ extension RockPaperScissorsViewController {
 				equalToConstant: 200),
 			descriptionWindow.bottomAnchor.constraint(
 				equalTo: optionWindow.topAnchor,
-				constant: -50),
+				constant: -(view.bounds.height/12)),
 		])
 		
 		// MARK: descriptionWindowTitle
