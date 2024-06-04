@@ -13,7 +13,7 @@ extension RockPaperScissorsViewController {
 		view.backgroundColor = .systemBackground
 		
 		setupNavigationBar()
-		setupBackground()
+		setupBackgroundImage()
 	}
 }
 
@@ -27,7 +27,7 @@ extension RockPaperScissorsViewController {
 		self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
 	}
 	
-	func setupBackground() {
+	func setupBackgroundImage() {
 		backgroundImage.image = UIImage(
 			named: "background_multiplier_2.5")
 		backgroundImage.contentMode = .scaleAspectFit
