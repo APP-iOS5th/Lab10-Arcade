@@ -12,6 +12,7 @@
 		CE1E9CFE2C0DB71800B92465 /* RockPaperScissorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */; };
 		CE1E9D022C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1E9D012C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf */; };
 		CE1E9D042C0ED3DC00B92465 /* DNFBitBitv2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1E9D032C0ED3DC00B92465 /* DNFBitBitv2.ttf */; };
+		CE1E9D082C0F083600B92465 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9D072C0F083600B92465 /* RadioButton.swift */; };
 		CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */; };
 		CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */; };
 		CE5C16A32C0DA1E200316F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A22C0DA1E200316F08 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsViewController.swift; sourceTree = "<group>"; };
 		CE1E9D012C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
 		CE1E9D032C0ED3DC00B92465 /* DNFBitBitv2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DNFBitBitv2.ttf; sourceTree = "<group>"; };
+		CE1E9D072C0F083600B92465 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		CE5C169B2C0DA1E200316F08 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */,
+				CE1E9D072C0F083600B92465 /* RadioButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				CE1E9CFA2C0DB6D100B92465 /* RockPaperScissors.swift in Sources */,
 				CE1E9CFC2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift in Sources */,
 				CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */,
+				CE1E9D082C0F083600B92465 /* RadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
