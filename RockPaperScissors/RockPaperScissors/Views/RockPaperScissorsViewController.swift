@@ -50,7 +50,11 @@ extension RockPaperScissorsViewController {
 		// setup1 GameSetting
 		setupStartButton()
 		setupOptionWindow()
+		setupOptionWindowSegmentedControl()
+		setupOptionWindowImages()
 		setupDescriptionWindow()
+		setupDescriptionWindowTitle()
+		setupDescriptionWindowContent()
 		
 		// setup2 GameReady
 		setupPlayButton()
