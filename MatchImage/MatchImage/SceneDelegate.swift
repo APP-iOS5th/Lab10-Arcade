@@ -16,7 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = MatchImageStartViewController()
+        
+        let matchImageStartViewController = MatchImageStartViewController()
+        let navigationController = UINavigationController(rootViewController: matchImageStartViewController)
+        
+        navigationController.setupNavigationBar()
+        
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
 
@@ -51,3 +57,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension UINavigationController {
+    func setupNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        
+        navigationBar.standardAppearance = appearance
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+    }
+}
