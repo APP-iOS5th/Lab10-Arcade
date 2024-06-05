@@ -25,11 +25,11 @@ extension RockPaperScissorsViewModel {
 			case 0:
 				yourPlayer = .tuna
 				comPlayer = .mandu
-				print(yourPlayer)
+				print("Log ViewModel - index 0 \(yourPlayer)") // LOG
 			case 1:
 				yourPlayer = .mandu
 				comPlayer = .tuna
-				print(yourPlayer)
+				print("Log ViewModel - index 1 \(yourPlayer)") // LOG
 			default:
 				break
 		}

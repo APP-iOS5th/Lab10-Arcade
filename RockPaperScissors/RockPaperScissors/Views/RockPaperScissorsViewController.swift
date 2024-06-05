@@ -2,12 +2,12 @@ import UIKit
 
 #Preview { RockPaperScissorsViewController() }
 
-let FONT_DNF = "DNFBitBitv2"
-let FONT_NEO = "NeoDunggeunmoPro-Regular"
+
 
 class RockPaperScissorsViewController: UIViewController {
 	let backgroundImage = UIImageView()
 	
+	// setup01 - gameStart
 	let startButton = UIButton()
 	let optionWindow = UIView()
 	let optionWindowSegmentedControl = UISegmentedControl()
@@ -17,7 +17,22 @@ class RockPaperScissorsViewController: UIViewController {
 	let descriptionWindowTitle = UITextView()
 	let descriptionWindowContent = UITextView()
 	
+	// setup02 - gameReady
 	let gameBoardWindow = UIView()
+	let rockImage = UIButton()
+	let paperImage = UIButton()
+	let scissorsImage = UIButton()
+	let arrowYour = UILabel()
+	
+	// setup03 - gamePlay
+	let count321 = UILabel()
+	
+	// setup04 - gameResult
+	let restartButton = UIButton()
+	let yourSelectedRPS = UIImageView()
+	let comSelectedRPS = UIImageView()
+	let yourResult = UILabel()
+	let comResult = UILabel()
 }
 
 // MARK: - LifeCycle
@@ -97,7 +112,7 @@ extension RockPaperScissorsViewController {
 				equalToConstant: 100),
 			optionWindow.bottomAnchor.constraint(
 				equalTo: startButton.topAnchor,
-				constant: -(view.bounds.height/12)),
+				constant: -((view.bounds.height - 450) / 5)),
 		])
 		
 		// MARK: optionWindowSegmentedControl
@@ -117,8 +132,8 @@ extension RockPaperScissorsViewController {
 		// MARK: optionWindowImage
 		view.addSubview(optionWindowImage0)
 		view.addSubview(optionWindowImage1)
-		optionWindowImage0.image = UIImage(named: "PePe")
-		optionWindowImage1.image = UIImage(named: "Mandu")
+		optionWindowImage0.image = UIImage(named: IMAGE_TUNA)
+		optionWindowImage1.image = UIImage(named: IMAGE_MANDU)
 		optionWindowImage0.contentMode = .scaleAspectFit
 		optionWindowImage1.contentMode = .scaleAspectFit
 		optionWindowImage0.translatesAutoresizingMaskIntoConstraints = false
@@ -156,7 +171,7 @@ extension RockPaperScissorsViewController {
 				equalToConstant: 200),
 			descriptionWindow.bottomAnchor.constraint(
 				equalTo: optionWindow.topAnchor,
-				constant: -(view.bounds.height/12)),
+				constant: -((view.bounds.height - 450) / 5)),
 		])
 		
 		// MARK: descriptionWindowTitle
@@ -240,6 +255,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.alphaSetup01(0)
+			print(((self?.view.bounds.height ?? 0) - 450) / 4)
 		}, completion: {
 			[weak self] _ in
 			self?.hiddenSetup01(false)
