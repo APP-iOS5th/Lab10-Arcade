@@ -2,8 +2,6 @@ import UIKit
 
 #Preview { RockPaperScissorsViewController() }
 
-
-
 class RockPaperScissorsViewController: UIViewController {
 	let backgroundImage = UIImageView()
 	
@@ -246,6 +244,7 @@ extension RockPaperScissorsViewController {
 
 // MARK: - Action Selector
 extension RockPaperScissorsViewController {
+	
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		RockPaperScissorsViewModel.sharedData
 			.selectedPlayer(sender.selectedSegmentIndex)
@@ -255,7 +254,6 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.alphaSetup01(0)
-			print(((self?.view.bounds.height ?? 0) - 450) / 4)
 		}, completion: {
 			[weak self] _ in
 			self?.hiddenSetup01(false)
