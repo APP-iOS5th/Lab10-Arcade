@@ -3,6 +3,9 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
+	typealias rpsVM = RockPaperScissorsViewModel
+	
+	// setup00
 	let backgroundImage = UIImageView()
 	
 	// setup01 - gameStart
@@ -16,6 +19,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let descriptionWindowContent = UITextView()
 	
 	// setup02 - gameReady
+	let playButton = UIButton()
 	let gameBoardWindow = UIView()
 	let rockImage = UIButton()
 	let paperImage = UIButton()
@@ -41,13 +45,19 @@ extension RockPaperScissorsViewController {
 		
 		setupNavigationBar()
 		setupBackgroundImage()
+		
 		setupStartButton()
 		setupOptionWindow()
 		setupDescriptionWindow()
+		
+		setupPlayButton()
+		
+		alphaSetup02(0)
+		hiddenSetup02(true)
 	}
 }
 
-// MARK: - Setup01 GameSetting
+// // MARK: - setup00 GameSetting
 extension RockPaperScissorsViewController {
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
@@ -75,7 +85,11 @@ extension RockPaperScissorsViewController {
 				equalTo: view.bottomAnchor),
 		])
 	}
-	
+}
+
+
+// MARK: - Setup01 GameSetting
+extension RockPaperScissorsViewController {
 	func setupStartButton() {
 		view.addSubview(startButton)
 		let config = configGameStyledButton("START")
@@ -215,7 +229,20 @@ extension RockPaperScissorsViewController {
 
 // MARK: - Setup02 GameReady
 extension RockPaperScissorsViewController {
-	
+	func setupPlayButton() {
+		view.addSubview(playButton)
+		let config = configGameStyledButton("PLAY")
+		playButton.configuration = config
+		playButton.addTarget(self, action: #selector(gamePlay), for: .touchUpInside)
+		playButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			playButton.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
+			playButton.bottomAnchor.constraint(
+				equalTo: view.bottomAnchor,
+				constant: -100),
+		])
+	}
 }
 
 // MARK: - Configuration Style
@@ -246,18 +273,35 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	
 	@objc func playerSelect(_ sender: UISegmentedControl) {
-		RockPaperScissorsViewModel.sharedData
-			.selectedPlayer(sender.selectedSegmentIndex)
+		let index = sender.selectedSegmentIndex
+		rpsVM.shared.selectedPlayer(index)
 	}
 	
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
+			self?.hiddenSetup01(true)
 			self?.alphaSetup01(0)
 		}, completion: {
 			[weak self] _ in
-			self?.hiddenSetup01(false)
+			UIView.animate(withDuration: 0.5, animations: {
+				[weak self] in
+				self?.hiddenSetup02(false)
+				self?.alphaSetup02(1)
+			})
 		})
+	}
+	
+	@objc func gamePlay() {
+//		UIView.animate(withDuration: 0.5, animations: {
+//			[weak self] in
+//			self?.alphaSetup01(0)
+//			self?.alphaSetup02(1)
+//		}, completion: {
+//			[weak self] _ in
+//			self?.hiddenSetup01(true)
+//			self?.hiddenSetup02(false)
+//		})
 	}
 }
 
@@ -283,5 +327,13 @@ extension RockPaperScissorsViewController {
 		descriptionWindow.isHidden = value
 		descriptionWindowTitle.isHidden = value
 		descriptionWindowContent.isHidden = value
+	}
+	
+	func alphaSetup02(_ value: CGFloat) {
+		playButton.alpha = value
+	}
+	
+	func hiddenSetup02(_ value: Bool) {
+		playButton.isHidden = value
 	}
 }

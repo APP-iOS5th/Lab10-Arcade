@@ -1,7 +1,7 @@
 // MARK: - Enum
 enum RPSGamePlayerCase { case tuna, mandu }
 enum RPSGameRockPaperScissorsCase { case rock, paper, scissors }
-enum RPSGameResultCase { case draw, win, lose }
+enum RPSGameResultCase { case win, lose, draw }
 
 // MARK: - Class
 class RPSGameState {

@@ -3,7 +3,7 @@ class RockPaperScissorsViewModel {
 	typealias RPSCase = RPSGameRockPaperScissorsCase
 	typealias ResultCase = RPSGameResultCase
 	
-	static let sharedData = RockPaperScissorsViewModel()
+	static let shared = RockPaperScissorsViewModel()
 	private init () {}
 	
 	let you = RPSGameState(
