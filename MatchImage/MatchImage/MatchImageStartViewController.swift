@@ -8,6 +8,16 @@
 import UIKit
 
 class MatchImageStartViewController: UIViewController {
+    
+    private var dNFBitBitv2: UIFont {
+        guard let font = UIFont(name: "DNFBitBitv2", size: 24) else { return UIFont.systemFont(ofSize: 24) }
+        return font
+    }
+    private var neoDunggeunmoPro: UIFont {
+        guard let font = UIFont(name: "NeoDunggeunmoPro-Regular", size: 17) else { return UIFont.systemFont(ofSize: 17) }
+        return font
+    }
+    
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "background")
@@ -27,7 +37,7 @@ class MatchImageStartViewController: UIViewController {
     private lazy var gameTitle: UILabel = {
         let label = UILabel()
         label.text = "같은 그림 찾기"
-        label.backgroundColor = .yellow
+        label.font = dNFBitBitv2
         return label
     }()
     
@@ -36,7 +46,7 @@ class MatchImageStartViewController: UIViewController {
         label.text = "도전!\n 최단 시간에 그림 쌍을 맞춰 보세요."
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.backgroundColor = .yellow
+        label.font = neoDunggeunmoPro
         return label
     }()
     
@@ -48,6 +58,7 @@ class MatchImageStartViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 3
         button.layer.borderColor = UIColor.black.cgColor
+        button.titleLabel?.font = dNFBitBitv2
         return button
     }()
     
@@ -83,7 +94,7 @@ class MatchImageStartViewController: UIViewController {
             gameInfoContainer.heightAnchor.constraint(equalToConstant: 208),
             gameTitle.topAnchor.constraint(equalTo: gameInfoContainer.topAnchor, constant: 30),
             gameTitle.centerXAnchor.constraint(equalTo: gameInfoContainer.centerXAnchor),
-            gameDescription.topAnchor.constraint(equalTo: gameTitle.topAnchor, constant: 30),
+            gameDescription.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 30),
             gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
             gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
