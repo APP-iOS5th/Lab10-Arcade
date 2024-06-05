@@ -278,39 +278,37 @@ extension RockPaperScissorsViewController {
 }
 
 
-// MARK: - View Hidden
-extension RockPaperScissorsViewController {
-	func hiddenSetup01(_ value: Bool) {
-		startButton.isHidden = value
-		optionWindow.isHidden = value
-		optionWindowSegmentedControl.isHidden = value
-		optionWindowImage0.isHidden = value
-		optionWindowImage1.isHidden = value
-		descriptionWindow.isHidden = value
-		descriptionWindowTitle.isHidden = value
-		descriptionWindowContent.isHidden = value
-	}
-	
-	func alphaSetup02(_ value: CGFloat) {
-		playButton.alpha = value
-	}
-	
-	func hiddenSetup02(_ value: Bool) {
-		playButton.isHidden = value
-	}
-}
+//// MARK: - View Hidden
+//extension RockPaperScissorsViewController {
+//	func hiddenSetup01(_ value: Bool) {
+//		startButton.isHidden = value
+//		optionWindow.isHidden = value
+//		optionWindowSegmentedControl.isHidden = value
+//		optionWindowImage0.isHidden = value
+//		optionWindowImage1.isHidden = value
+//		descriptionWindow.isHidden = value
+//		descriptionWindowTitle.isHidden = value
+//		descriptionWindowContent.isHidden = value
+//	}
+//	
+//	func alphaSetup02(_ value: CGFloat) {
+//		playButton.alpha = value
+//	}
+//	
+//	func hiddenSetup02(_ value: Bool) {
+//		playButton.isHidden = value
+//	}
+//}
 
 // MARK: - View Location
 extension RockPaperScissorsViewController {
 	func locationLeft(_ target: UIView?) {
 		target?.center.x -= view.bounds.width
-		target?.isHidden = false
 	}
 	
-	func locationInitRight(_ target: UIView?) {
-		target?.center.x = view.bounds.width * 1.5
-		target?.isHidden = true
-	}
+//	func locationInitRight(_ target: UIView?) {
+//		target?.center.x = view.bounds.width * 1.5
+//	}
 }
 
 // MARK: - Action Selector
@@ -321,22 +319,27 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func gameStart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeft(self?.startButton)
-			self?.locationLeft(self?.playButton)
-		}, completion: {_ in
-			self.locationInitRight(self.startButton)
-		})
+		print("전 : \(self.startButton.center.x)")
+		self.locationLeft(self.startButton)
+		print("후 : \(self.startButton.center.x)")
+		
+//		UIView.animate(withDuration: 0.5, animations: {
+//			print("전 : \(self.startButton.center.x)")
+//			self.locationLeft(self.startButton)
+////			self.locationLeft(self.playButton)
+//		}, completion: {_ in
+//			print("후 : \(self.startButton.center.x)")
+////			self.locationInitRight(self.startButton)
+//		})
 	}
 	
 	@objc func gamePlay() {
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeft(self?.startButton)
-			self?.locationLeft(self?.playButton)
-		}, completion: {_ in
-			self.locationInitRight(self.playButton)
-		})
+//		UIView.animate(withDuration: 0.5, animations: {
+//			self.locationLeft(self.playButton)
+//			self.locationLeft(self.startButton)
+//		}, completion: {_ in
+//			self.locationInitRight(self.playButton)
+//			print(self.playButton.center.x)
+//		})
 	}
 }
