@@ -7,6 +7,7 @@ let FONT_NEO = "NeoDunggeunmoPro-Regular"
 
 class RockPaperScissorsViewController: UIViewController {
 	let backgroundImage = UIImageView()
+	
 	let startButton = UIButton()
 	let optionWindow = UIView()
 	let optionWindowSegmentedControl = UISegmentedControl()
@@ -15,6 +16,8 @@ class RockPaperScissorsViewController: UIViewController {
 	let descriptionWindow = UIView()
 	let descriptionWindowTitle = UITextView()
 	let descriptionWindowContent = UITextView()
+	
+	let gameBoardWindow = UIView()
 }
 
 // MARK: - LifeCycle
@@ -64,6 +67,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(startButton)
 		let config = configGameStyledButton("START")
 		startButton.configuration = config
+		startButton.addTarget(self, action: #selector(gameStart), for: .touchUpInside)
 		startButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			startButton.centerXAnchor.constraint(
@@ -101,7 +105,7 @@ extension RockPaperScissorsViewController {
 		optionWindowSegmentedControl.insertSegment(withTitle: "튜나", at: 0, animated: false)
 		optionWindowSegmentedControl.insertSegment(withTitle: "만두", at: 1, animated: false)
 		optionWindowSegmentedControl.selectedSegmentIndex = 0
-		optionWindowSegmentedControl.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
+		optionWindowSegmentedControl.addTarget(self, action: #selector(playerSelect(_:)), for: .valueChanged)
 		
 		optionWindowSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -225,15 +229,45 @@ extension RockPaperScissorsViewController {
 	}
 }
 
+// MARK: - Action Selector
 extension RockPaperScissorsViewController {
-	@objc func segmentChanged(_ sender: UISegmentedControl) {
-		switch sender.selectedSegmentIndex {
-			case 0:
-				RockPaperScissorsViewModel.sharedData.player = .tuna
-			case 1:
-				RockPaperScissorsViewModel.sharedData.player = .mandu
-			default:
-				break
-		}
+	@objc func playerSelect(_ sender: UISegmentedControl) {
+		RockPaperScissorsViewModel.sharedData
+			.selectedPlayer(sender.selectedSegmentIndex)
+	}
+	
+	@objc func gameStart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			[weak self] in
+			self?.alphaSetup01(0)
+		}, completion: {
+			[weak self] _ in
+			self?.hiddenSetup01(false)
+		})
+	}
+}
+
+// MARK: - View Hidden
+extension RockPaperScissorsViewController {
+	func alphaSetup01(_ value: CGFloat) {
+		startButton.alpha = value
+		optionWindow.alpha = value
+		optionWindowSegmentedControl.alpha = value
+		optionWindowImage0.alpha = value
+		optionWindowImage1.alpha = value
+		descriptionWindow.alpha = value
+		descriptionWindowTitle.alpha = value
+		descriptionWindowContent.alpha = value
+	}
+	
+	func hiddenSetup01(_ value: Bool) {
+		startButton.isHidden = value
+		optionWindow.isHidden = value
+		optionWindowSegmentedControl.isHidden = value
+		optionWindowImage0.isHidden = value
+		optionWindowImage1.isHidden = value
+		descriptionWindow.isHidden = value
+		descriptionWindowTitle.isHidden = value
+		descriptionWindowContent.isHidden = value
 	}
 }
