@@ -4,9 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>neodgm_code.ttf</string>
 		<string>DNFBitBitv2.ttf</string>
-		<string>neodgm.ttf</string>
+		<string>NeoDunggeunmoPro-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
