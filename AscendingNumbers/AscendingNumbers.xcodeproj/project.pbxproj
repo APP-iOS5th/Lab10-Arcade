@@ -19,6 +19,7 @@
 		AF7B06E82C0ED96F00264FD3 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF7B06E72C0ED96E00264FD3 /* NeoDunggeunmoPro-Regular.ttf */; };
 		AF7B06EA2C0EDA0E00264FD3 /* AscendingNumGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B06E92C0EDA0E00264FD3 /* AscendingNumGameViewController.swift */; };
 		AF7B06EE2C0EDAAA00264FD3 /* AscendingNumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B06ED2C0EDAAA00264FD3 /* AscendingNumModel.swift */; };
+		AF9E88FD2C102903007F3A83 /* GameAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E88FC2C102903007F3A83 /* GameAssets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AF7B06E72C0ED96E00264FD3 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
 		AF7B06E92C0EDA0E00264FD3 /* AscendingNumGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendingNumGameViewController.swift; sourceTree = "<group>"; };
 		AF7B06ED2C0EDAAA00264FD3 /* AscendingNumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendingNumModel.swift; sourceTree = "<group>"; };
+		AF9E88FC2C102903007F3A83 /* GameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +70,7 @@
 		AF7B06B32C0D982600264FD3 /* AscendingNumbers */ = {
 			isa = PBXGroup;
 			children = (
-				AF7B06D92C0ECE2800264FD3 /* Fonts */,
+				AF9E88FA2C1028D1007F3A83 /* Resources */,
 				AF7B06CA2C0D9A1A00264FD3 /* ViewModels */,
 				AF7B06C92C0D9A1400264FD3 /* Models */,
 				AF7B06C82C0D9A0D00264FD3 /* Views */,
@@ -86,8 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				AF7B06B82C0D982600264FD3 /* AscendingNumStartViewController.swift */,
-				AF7B06E52C0ED4B500264FD3 /* AscendingNumRestartViewController.swift */,
 				AF7B06E92C0EDA0E00264FD3 /* AscendingNumGameViewController.swift */,
+				AF7B06E52C0ED4B500264FD3 /* AscendingNumRestartViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +117,23 @@
 				AF7B06DB2C0ECF1100264FD3 /* DNFBitBitv2.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AF9E88FA2C1028D1007F3A83 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF9E88FB2C1028DB007F3A83 /* Assets */,
+				AF7B06D92C0ECE2800264FD3 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF9E88FB2C1028DB007F3A83 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AF9E88FC2C102903007F3A83 /* GameAssets.swift */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +215,7 @@
 				AF7B06B52C0D982600264FD3 /* AppDelegate.swift in Sources */,
 				AF7B06CC2C0D9C1C00264FD3 /* AscendingNumViewModel.swift in Sources */,
 				AF7B06B72C0D982600264FD3 /* SceneDelegate.swift in Sources */,
+				AF9E88FD2C102903007F3A83 /* GameAssets.swift in Sources */,
 				AF7B06EE2C0EDAAA00264FD3 /* AscendingNumModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

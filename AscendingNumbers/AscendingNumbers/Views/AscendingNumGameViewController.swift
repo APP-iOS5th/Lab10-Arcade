@@ -21,17 +21,5 @@ class AscendingNumGameViewController: UIViewController {
         setBackground()
 
     }
-    
-    // 배경 이미지 설정
-    private func setBackground() {
-        let backgroundImage = UIImage(named: "background")
-        let backgroundImageView = UIImageView(frame: self.view.bounds)
-        backgroundImageView.image = backgroundImage
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.clipsToBounds = true
-        
-        view.addSubview(backgroundImageView)
-        view.sendSubviewToBack(backgroundImageView)
-    }
 
 }
