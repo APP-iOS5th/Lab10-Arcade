@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3C277EAC2C0FF1CF000F917B /* DNFBitBitv2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C277EAB2C0FF1CF000F917B /* DNFBitBitv2.ttf */; };
 		3C277EAE2C0FF43D000F917B /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C277EAD2C0FF43D000F917B /* NeoDunggeunmoPro-Regular.ttf */; };
+		3C277EB02C0FFF5F000F917B /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EAF2C0FFF5F000F917B /* CustomFonts.swift */; };
+		3C277EB22C100034000F917B /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EB12C100034000F917B /* BackgroundImage.swift */; };
+		3C277EB42C100186000F917B /* MatchImageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EB32C100186000F917B /* MatchImageInformation.swift */; };
+		3C277EB62C100284000F917B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EB52C100284000F917B /* CustomButton.swift */; };
 		3CDE96772C0D98630037E24E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE96762C0D98630037E24E /* AppDelegate.swift */; };
 		3CDE96792C0D98630037E24E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE96782C0D98630037E24E /* SceneDelegate.swift */; };
 		3CDE967B2C0D98630037E24E /* MatchImageStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE967A2C0D98630037E24E /* MatchImageStartViewController.swift */; };
@@ -20,6 +24,10 @@
 /* Begin PBXFileReference section */
 		3C277EAB2C0FF1CF000F917B /* DNFBitBitv2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DNFBitBitv2.ttf; sourceTree = "<group>"; };
 		3C277EAD2C0FF43D000F917B /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
+		3C277EAF2C0FFF5F000F917B /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		3C277EB12C100034000F917B /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		3C277EB32C100186000F917B /* MatchImageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchImageInformation.swift; sourceTree = "<group>"; };
+		3C277EB52C100284000F917B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3CDE96732C0D98630037E24E /* MatchImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDE96762C0D98630037E24E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CDE96782C0D98630037E24E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +103,10 @@
 		3CDE968A2C0D9A5C0037E24E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3C277EAF2C0FFF5F000F917B /* CustomFonts.swift */,
+				3C277EB12C100034000F917B /* BackgroundImage.swift */,
+				3C277EB32C100186000F917B /* MatchImageInformation.swift */,
+				3C277EB52C100284000F917B /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,8 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C277EB02C0FFF5F000F917B /* CustomFonts.swift in Sources */,
 				3CDE967B2C0D98630037E24E /* MatchImageStartViewController.swift in Sources */,
+				3C277EB42C100186000F917B /* MatchImageInformation.swift in Sources */,
 				3CDE96772C0D98630037E24E /* AppDelegate.swift in Sources */,
+				3C277EB62C100284000F917B /* CustomButton.swift in Sources */,
+				3C277EB22C100034000F917B /* BackgroundImage.swift in Sources */,
 				3CDE96792C0D98630037E24E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
