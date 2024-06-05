@@ -20,7 +20,7 @@ class MatchImageStartViewController: UIViewController {
         uiView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         uiView.layer.borderWidth = 3
         uiView.layer.borderColor = UIColor.black.cgColor
-        uiView.layer.cornerRadius = 10
+        uiView.layer.cornerRadius = 25
         return uiView
     }()
     
@@ -42,8 +42,12 @@ class MatchImageStartViewController: UIViewController {
     
     private lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Start", for: .normal)
-        button.backgroundColor = .brown
+        button.setTitle("STRAT", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor(red: 1, green: 0.48, blue: 0.11, alpha: 1)
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 3
+        button.layer.borderColor = UIColor.black.cgColor
         return button
     }()
     
@@ -73,7 +77,7 @@ class MatchImageStartViewController: UIViewController {
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 30),
+            gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
             gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),
             gameInfoContainer.heightAnchor.constraint(equalToConstant: 208),
