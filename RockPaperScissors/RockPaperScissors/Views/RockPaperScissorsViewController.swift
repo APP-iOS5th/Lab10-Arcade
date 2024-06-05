@@ -8,7 +8,7 @@ class RockPaperScissorsViewController: UIViewController {
 	// setup00
 	let backgroundImage = UIImageView()
 	
-	// setup01 - gameStart
+	// setup01 - gameSetting
 	let startButton = UIButton()
 	let optionWindow = UIView()
 	let optionWindowSegmentedControl = UISegmentedControl()
@@ -18,7 +18,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let descriptionWindowTitle = UITextView()
 	let descriptionWindowContent = UITextView()
 	
-	// setup02 - gameReady
+	// setup02 - gameStart
 	let playButton = UIButton()
 	let gameBoardWindow = UIView()
 	let rockImage = UIButton()
@@ -43,18 +43,21 @@ extension RockPaperScissorsViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		
+		// setup0 GameBackground
 		setupNavigationBar()
 		setupBackgroundImage()
 		
+		// setup1 GameSetting
 		setupStartButton()
 		setupOptionWindow()
 		setupDescriptionWindow()
 		
+		// setup2 GameReady
 		setupPlayButton()
 	}
 }
 
-// // MARK: - setup00 GameSetting
+// // MARK: - setup00 GameBackground
 extension RockPaperScissorsViewController {
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
@@ -84,9 +87,12 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-
 // MARK: - Setup01 GameSetting
 extension RockPaperScissorsViewController {
+	func setup01() {
+		
+	}
+	
 	func setupStartButton() {
 		view.addSubview(startButton)
 		let config = configGameStyledButton("START")
@@ -103,7 +109,6 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func setupOptionWindow() {
-		// MARK: optionWindow
 		view.addSubview(optionWindow)
 		optionWindow.backgroundColor = .white
 		optionWindow.layer.borderWidth = 2
@@ -123,8 +128,9 @@ extension RockPaperScissorsViewController {
 				equalTo: startButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
 		])
-		
-		// MARK: optionWindowSegmentedControl
+	}
+	
+	func setupOptionWindowSegmentedControl(){
 		view.addSubview(optionWindowSegmentedControl)
 		optionWindowSegmentedControl.insertSegment(withTitle: "튜나", at: 0, animated: false)
 		optionWindowSegmentedControl.insertSegment(withTitle: "만두", at: 1, animated: false)
@@ -137,8 +143,9 @@ extension RockPaperScissorsViewController {
 			optionWindowSegmentedControl.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor),
 			optionWindowSegmentedControl.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: 20),
 		])
-		
-		// MARK: optionWindowImage
+	}
+	
+	func setupOptionWindowImages() {
 		view.addSubview(optionWindowImage0)
 		view.addSubview(optionWindowImage1)
 		optionWindowImage0.image = UIImage(named: IMAGE_TUNA)
@@ -157,11 +164,9 @@ extension RockPaperScissorsViewController {
 			optionWindowImage1.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor, constant: 70),
 			optionWindowImage1.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: -20),
 		])
-		
 	}
 	
 	func setupDescriptionWindow() {
-		// MARK: descriptionWindow
 		view.addSubview(descriptionWindow)
 		descriptionWindow.backgroundColor = .white
 		descriptionWindow.layer.borderWidth = 2
@@ -182,8 +187,9 @@ extension RockPaperScissorsViewController {
 				equalTo: optionWindow.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
 		])
-		
-		// MARK: descriptionWindowTitle
+	}
+	
+	func setupDescriptionWindowTitle() {
 		view.addSubview(descriptionWindowTitle)
 		descriptionWindowTitle.text = "가위바위보 대결"
 		descriptionWindowTitle.font = UIFont(
@@ -200,8 +206,9 @@ extension RockPaperScissorsViewController {
 				equalTo: descriptionWindow.centerYAnchor,
 				constant: -30),
 		])
-		
-		// MARK: descriptionWindowContent
+	}
+	
+	func setupDescriptionWindowContent() {
 		view.addSubview(descriptionWindowContent)
 		descriptionWindowContent.text = "플레이어를 선택 후\n대결을 시작해보세요!"
 		descriptionWindowContent.isScrollEnabled = false
@@ -220,7 +227,6 @@ extension RockPaperScissorsViewController {
 				equalTo: descriptionWindow.centerYAnchor,
 				constant: 30),
 		])
-		
 	}
 }
 
@@ -267,34 +273,6 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - Action Selector
-extension RockPaperScissorsViewController {
-	
-	@objc func playerSelect(_ sender: UISegmentedControl) {
-		let index = sender.selectedSegmentIndex
-		rpsVM.shared.selectedPlayer(index)
-	}
-	
-	@objc func gameStart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeft(self?.startButton)
-			self?.locationLeft(self?.playButton)
-		}, completion: {_ in
-			self.locationInitRight(self.startButton)
-		})
-	}
-	
-	@objc func gamePlay() {
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeft(self?.startButton)
-			self?.locationLeft(self?.playButton)
-		}, completion: {_ in
-			self.locationInitRight(self.playButton)
-		})
-	}
-}
 
 // MARK: - View Hidden
 extension RockPaperScissorsViewController {
@@ -328,5 +306,33 @@ extension RockPaperScissorsViewController {
 	func locationInitRight(_ target: UIView?) {
 		target?.center.x = view.bounds.width * 1.5
 		target?.isHidden = true
+	}
+}
+
+// MARK: - Action Selector
+extension RockPaperScissorsViewController {
+	@objc func playerSelect(_ sender: UISegmentedControl) {
+		let index = sender.selectedSegmentIndex
+		rpsVM.shared.selectedPlayer(index)
+	}
+	
+	@objc func gameStart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			[weak self] in
+			self?.locationLeft(self?.startButton)
+			self?.locationLeft(self?.playButton)
+		}, completion: {_ in
+			self.locationInitRight(self.startButton)
+		})
+	}
+	
+	@objc func gamePlay() {
+		UIView.animate(withDuration: 0.5, animations: {
+			[weak self] in
+			self?.locationLeft(self?.startButton)
+			self?.locationLeft(self?.playButton)
+		}, completion: {_ in
+			self.locationInitRight(self.playButton)
+		})
 	}
 }
