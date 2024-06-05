@@ -85,6 +85,8 @@ extension RockPaperScissorsViewController {
 			backgroundImage.heightAnchor.constraint(
 				equalTo: backgroundImage.widthAnchor,
 				multiplier: 2.5),
+			backgroundImage.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
 			backgroundImage.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor),
 		])
