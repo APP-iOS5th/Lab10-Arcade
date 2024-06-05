@@ -1,5 +1,3 @@
-// gameState 클래스로 com, your 하나씩 객체 생성하는게 나을지도?
-
 // MARK: - Enum
 enum RPSGamePlayerCase { case tuna, mandu }
 enum RPSGameRockPaperScissorsCase { case rock, paper, scissors }

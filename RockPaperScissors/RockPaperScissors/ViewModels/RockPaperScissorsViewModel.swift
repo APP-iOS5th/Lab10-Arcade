@@ -6,7 +6,7 @@ class RockPaperScissorsViewModel {
 	static let sharedData = RockPaperScissorsViewModel()
 	private init () {}
 	
-	let your = RPSGameState(
+	let you = RPSGameState(
 		player: PlayerCase.tuna,
 		rps: RPSCase.rock,
 		result: ResultCase.draw
@@ -23,13 +23,13 @@ extension RockPaperScissorsViewModel {
 	func selectedPlayer(_ index: Int) {
 		switch index {
 			case 0:
-				your.player = PlayerCase.tuna
+				you.player = PlayerCase.tuna
 				com.player = PlayerCase.mandu
-				print("Log ViewModel - index 0 - your : \(your.player )") // LOG
+				print("Log ViewModel - index 0 - you : \(you.player )") // LOG
 			case 1:
-				your.player = PlayerCase.mandu
+				you.player = PlayerCase.mandu
 				com.player = PlayerCase.tuna
-				print("Log ViewModel - index 1 - your : \(your.player)") // LOG
+				print("Log ViewModel - index 1 - you : \(you.player)") // LOG
 			default:
 				break
 		}
