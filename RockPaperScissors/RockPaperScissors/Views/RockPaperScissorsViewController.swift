@@ -51,9 +51,6 @@ extension RockPaperScissorsViewController {
 		setupDescriptionWindow()
 		
 		setupPlayButton()
-		
-		alphaSetup02(0)
-		hiddenSetup02(true)
 	}
 }
 
@@ -63,7 +60,7 @@ extension RockPaperScissorsViewController {
 		self.title = "RockPaperScissors"
 		let appearance = UINavigationBarAppearance()
 		appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-		appearance.backgroundColor = .systemBrown
+		appearance.backgroundColor = .systemGreen
 		self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
 	}
 	
@@ -237,7 +234,8 @@ extension RockPaperScissorsViewController {
 		playButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			playButton.centerXAnchor.constraint(
-				equalTo: view.centerXAnchor),
+				equalTo: view.centerXAnchor,
+				constant: view.bounds.width),
 			playButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
 				constant: -100),
@@ -280,44 +278,26 @@ extension RockPaperScissorsViewController {
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
-			self?.hiddenSetup01(true)
-			self?.alphaSetup01(0)
-		}, completion: {
-			[weak self] _ in
-			UIView.animate(withDuration: 0.5, animations: {
-				[weak self] in
-				self?.hiddenSetup02(false)
-				self?.alphaSetup02(1)
-			})
+			self?.locationLeft(self?.startButton)
+			self?.locationLeft(self?.playButton)
+		}, completion: {_ in
+			self.locationInitRight(self.startButton)
 		})
 	}
 	
 	@objc func gamePlay() {
-//		UIView.animate(withDuration: 0.5, animations: {
-//			[weak self] in
-//			self?.alphaSetup01(0)
-//			self?.alphaSetup02(1)
-//		}, completion: {
-//			[weak self] _ in
-//			self?.hiddenSetup01(true)
-//			self?.hiddenSetup02(false)
-//		})
+		UIView.animate(withDuration: 0.5, animations: {
+			[weak self] in
+			self?.locationLeft(self?.startButton)
+			self?.locationLeft(self?.playButton)
+		}, completion: {_ in
+			self.locationInitRight(self.playButton)
+		})
 	}
 }
 
 // MARK: - View Hidden
 extension RockPaperScissorsViewController {
-	func alphaSetup01(_ value: CGFloat) {
-		startButton.alpha = value
-		optionWindow.alpha = value
-		optionWindowSegmentedControl.alpha = value
-		optionWindowImage0.alpha = value
-		optionWindowImage1.alpha = value
-		descriptionWindow.alpha = value
-		descriptionWindowTitle.alpha = value
-		descriptionWindowContent.alpha = value
-	}
-	
 	func hiddenSetup01(_ value: Bool) {
 		startButton.isHidden = value
 		optionWindow.isHidden = value
@@ -335,5 +315,18 @@ extension RockPaperScissorsViewController {
 	
 	func hiddenSetup02(_ value: Bool) {
 		playButton.isHidden = value
+	}
+}
+
+// MARK: - View Location
+extension RockPaperScissorsViewController {
+	func locationLeft(_ target: UIView?) {
+		target?.center.x -= view.bounds.width
+		target?.isHidden = false
+	}
+	
+	func locationInitRight(_ target: UIView?) {
+		target?.center.x = view.bounds.width * 1.5
+		target?.isHidden = true
 	}
 }

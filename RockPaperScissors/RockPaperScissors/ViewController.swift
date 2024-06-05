@@ -20,7 +20,7 @@ extension ViewController {
 		self.title = "Main"
 		let appearence = UINavigationBarAppearance()
 		appearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-		appearence.backgroundColor = .systemBrown
+		appearence.backgroundColor = .systemGreen
 		self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
 	}
 	
