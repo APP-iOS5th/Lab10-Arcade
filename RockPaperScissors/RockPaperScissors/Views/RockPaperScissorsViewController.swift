@@ -503,11 +503,39 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func setupYouResult() {
+		view.addSubview(youResult)
+		youResult.text = rpsVM.shared.you.resultText()
+		youResult.font = UIFont(name: FONT_DNF, size: 20)
+		youResult.textColor = .systemTeal
+		youResult.shadowColor = .gray
+		youResult.shadowOffset = CGSize(width: 1, height: 1)
 		
+		youResult.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youResult.centerXAnchor.constraint(
+				equalTo: restartButton.centerXAnchor,
+				constant: 100),
+			youResult.centerYAnchor.constraint(
+				equalTo: youCharacterImage.centerYAnchor),
+		])
 	}
 	
 	func setupComResult() {
+		view.addSubview(comResult)
+		comResult.text = rpsVM.shared.com.resultText()
+		comResult.font = UIFont(name: FONT_DNF, size: 20)
+		comResult.textColor = .systemTeal
+		comResult.shadowColor = .gray
+		comResult.shadowOffset = CGSize(width: 1, height: 1)
 		
+		comResult.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comResult.centerXAnchor.constraint(
+				equalTo: restartButton.centerXAnchor,
+				constant: 100),
+			comResult.centerYAnchor.constraint(
+				equalTo: comCharacterImage.centerYAnchor),
+		])
 	}
 }
 
