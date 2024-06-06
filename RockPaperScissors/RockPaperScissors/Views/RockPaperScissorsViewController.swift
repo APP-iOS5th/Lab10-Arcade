@@ -274,7 +274,6 @@ extension RockPaperScissorsViewController {
 				name: FONT_DNF, size: 25)
 			return attribute
 		}
-		
 		return config
 	}
 }
@@ -305,19 +304,17 @@ extension RockPaperScissorsViewController {
 // MARK: - View Location
 extension RockPaperScissorsViewController {
 	func locationLeft(_ target: UIView?) {
-		let xMove = CGAffineTransform(
-			translationX: -(view.bounds.width), y: 0)
-		if let con = target?.transform.concatenating(xMove) {
-			target?.transform = con
-		}
+		target?.transform = (target?.transform
+			.concatenating(CGAffineTransform(
+				translationX: -(view.bounds.width), 
+				y: 0)))!
 	}
 	
 	func locationInitRight(_ target: UIView?) {
-		let xMove = CGAffineTransform(
-			translationX: (view.bounds.width) * 2, y: 0)
-		if let con = target?.transform.concatenating(xMove) {
-			target?.transform = con
-		}
+		target?.transform = (target?.transform
+			.concatenating(CGAffineTransform(
+				translationX: (view.bounds.width) * 2,
+				y: 0)))!
 	}
 }
 
