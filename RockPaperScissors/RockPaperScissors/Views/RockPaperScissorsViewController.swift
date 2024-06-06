@@ -8,21 +8,21 @@ class RockPaperScissorsViewController: UIViewController {
 	typealias ResultCase = RPSGameResultCase
 	typealias rpsVM = RockPaperScissorsViewModel
 	
-	// setup00
+	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
 	
-	// setup01 - gameSetting
+	// viewGroup1 - gameSetting
 	let startButton = UIButton()
 	let optionWindow = UIView()
-	let optionWindowSegmentedControl = UISegmentedControl()
+	let optionWindowSegControl = UISegmentedControl()
 	let optionWindowImage0 = UIImageView()
 	let optionWindowImage1 = UIImageView()
 	let descriptionWindow = UIView()
 	let descriptionWindowTitle = UITextView()
 	let descriptionWindowContent = UITextView()
 	
-	// setup02 - gameStart
-	let playButton = UIButton()
+	// viewGroup2 - gameStart
+	let selectButton = UIButton()
 	let gameBoardWindow = UIView()
 	let comCharacterImage = UIImageView()
 	let comRockImage = UIImageView()
@@ -34,14 +34,11 @@ class RockPaperScissorsViewController: UIViewController {
 	let youScissorsImage = UIImageView()
 	let youArrow = UILabel()
 	
-	// setup03 - gamePlay
-	let count321 = UILabel()
-	
-	// setup04 - gameResult
+	// viewGroup3 - gameResult
 	let restartButton = UIButton()
-	let yourSelectedRPS = UIImageView()
-	let comSelectedRPS = UIImageView()
-	let yourResult = UILabel()
+	let youSelectedRPSImage = UIImageView()
+	let comSelectedRPSImage = UIImageView()
+	let youResult = UILabel()
 	let comResult = UILabel()
 }
 
@@ -50,30 +47,21 @@ extension RockPaperScissorsViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-		
-		// setup0 GameBackground
-		setupNavigationBar()
-		setupBackgroundImage()
-		
-		// setup1 GameSetting
-		setupStartButton()
-		setupOptionWindow()
-		setupOptionWindowSegmentedControl()
-		setupOptionWindowImages()
-		setupDescriptionWindow()
-		setupDescriptionWindowTitle()
-		setupDescriptionWindowContent()
-		
-		// setup2 GameReady
-		setupPlayButton()
-		setupGameBoardWindow()
-		setupComImages()
-		setupYouImages()
+
+		setupViewGroup0()
+		setupViewGroup1()
+		setupViewGroup2()
+		setupViewGroup3()
 	}
 }
 
-// MARK: - setup00 GameBackground
+// MARK: - setup - viewGroup0 - GameBackground
 extension RockPaperScissorsViewController {
+	func setupViewGroup0() {
+		setupNavigationBar()
+		setupBackgroundImage()
+	}
+	
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
 		let appearance = UINavigationBarAppearance()
@@ -104,10 +92,16 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - Setup01 GameSetting
+// MARK: - setup - viewGroup1 - GameSetting
 extension RockPaperScissorsViewController {
-	func setup01() {
-		
+	func setupViewGroup1() {
+		setupStartButton()
+		setupOptionWindow()
+		setupOptionWindowSegmentedControl()
+		setupOptionWindowImages()
+		setupDescriptionWindow()
+		setupDescriptionWindowTitle()
+		setupDescriptionWindowContent()
 	}
 	
 	func setupStartButton() {
@@ -148,17 +142,17 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func setupOptionWindowSegmentedControl(){
-		view.addSubview(optionWindowSegmentedControl)
-		optionWindowSegmentedControl.insertSegment(withTitle: "튜나", at: 0, animated: false)
-		optionWindowSegmentedControl.insertSegment(withTitle: "만두", at: 1, animated: false)
-		optionWindowSegmentedControl.selectedSegmentIndex = 0
-		optionWindowSegmentedControl.addTarget(self, action: #selector(playerSelect(_:)), for: .valueChanged)
+		view.addSubview(optionWindowSegControl)
+		optionWindowSegControl.insertSegment(withTitle: "튜나", at: 0, animated: false)
+		optionWindowSegControl.insertSegment(withTitle: "만두", at: 1, animated: false)
+		optionWindowSegControl.selectedSegmentIndex = 0
+		optionWindowSegControl.addTarget(self, action: #selector(playerSelect(_:)), for: .valueChanged)
 		
-		optionWindowSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+		optionWindowSegControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			optionWindowSegmentedControl.widthAnchor.constraint(equalToConstant: 280),
-			optionWindowSegmentedControl.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor),
-			optionWindowSegmentedControl.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: 20),
+			optionWindowSegControl.widthAnchor.constraint(equalToConstant: 280),
+			optionWindowSegControl.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor),
+			optionWindowSegControl.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: 20),
 		])
 	}
 	
@@ -247,19 +241,26 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - Setup02 GameReady
+// MARK: - setup - viewGroup2 - GameReady
 extension RockPaperScissorsViewController {
-	func setupPlayButton() {
-		view.addSubview(playButton)
-		let config = configGameStyledButton("PLAY")
-		playButton.configuration = config
-		playButton.addTarget(self, action: #selector(gamePlay), for: .touchUpInside)
-		playButton.translatesAutoresizingMaskIntoConstraints = false
+	func setupViewGroup2() {
+		setupSelectButton()
+		setupGameBoardWindow()
+		setupComImages()
+		setupYouImages()
+	}
+	
+	func setupSelectButton() {
+		view.addSubview(selectButton)
+		let config = configGameStyledButton("SELECT")
+		selectButton.configuration = config
+		selectButton.addTarget(self, action: #selector(gameRpsSelect), for: .touchUpInside)
+		selectButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			playButton.centerXAnchor.constraint(
+			selectButton.centerXAnchor.constraint(
 				equalTo: view.centerXAnchor,
 				constant: view.bounds.width),
-			playButton.bottomAnchor.constraint(
+			selectButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
 				constant: -100),
 		])
@@ -278,9 +279,9 @@ extension RockPaperScissorsViewController {
 			gameBoardWindow.heightAnchor.constraint(
 				equalToConstant: 380),
 			gameBoardWindow.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor),
+				equalTo: selectButton.centerXAnchor),
 			gameBoardWindow.bottomAnchor.constraint(
-				equalTo: playButton.topAnchor,
+				equalTo: selectButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
 		])
 	}
@@ -292,13 +293,15 @@ extension RockPaperScissorsViewController {
 		comCharacterImage.contentMode = .scaleAspectFit
 		comCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			comCharacterImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			comCharacterImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			comCharacterImage.topAnchor.constraint(
 				equalTo: gameBoardWindow.topAnchor, 
 				constant: 20),
 			comCharacterImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor),
+				equalTo: selectButton.centerXAnchor),
 		])
 		
 		view.addSubview(comRockImage)
@@ -307,13 +310,15 @@ extension RockPaperScissorsViewController {
 		comRockImage.contentMode = .scaleAspectFit
 		comRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			comRockImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			comRockImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			comRockImage.topAnchor.constraint(
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comRockImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: -80),
 		])
 		
@@ -323,13 +328,15 @@ extension RockPaperScissorsViewController {
 		comPaperImage.contentMode = .scaleAspectFit
 		comPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			comPaperImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			comPaperImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			comPaperImage.topAnchor.constraint(
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comPaperImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: 0),
 		])
 		
@@ -339,13 +346,15 @@ extension RockPaperScissorsViewController {
 		comScissorsImage.contentMode = .scaleAspectFit
 		comScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			comScissorsImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			comScissorsImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			comScissorsImage.topAnchor.constraint(
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comScissorsImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: 80),
 		])
 	}
@@ -357,13 +366,15 @@ extension RockPaperScissorsViewController {
 		youCharacterImage.contentMode = .scaleAspectFit
 		youCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			youCharacterImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			youCharacterImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			youCharacterImage.bottomAnchor.constraint(
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -20),
 			youCharacterImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor),
+				equalTo: selectButton.centerXAnchor),
 		])
 		
 		view.addSubview(youRockImage)
@@ -372,13 +383,15 @@ extension RockPaperScissorsViewController {
 		youRockImage.contentMode = .scaleAspectFit
 		youRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			youRockImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			youRockImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			youRockImage.bottomAnchor.constraint(
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youRockImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: -80),
 		])
 		
@@ -388,13 +401,15 @@ extension RockPaperScissorsViewController {
 		youPaperImage.contentMode = .scaleAspectFit
 		youPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			youPaperImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			youPaperImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			youPaperImage.bottomAnchor.constraint(
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youPaperImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: 0),
 		])
 		
@@ -404,13 +419,15 @@ extension RockPaperScissorsViewController {
 		youScissorsImage.contentMode = .scaleAspectFit
 		youScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
+			youScissorsImage.widthAnchor.constraint(
+				equalToConstant: 50),
 			youScissorsImage.heightAnchor.constraint(
 				equalToConstant: 50),
 			youScissorsImage.bottomAnchor.constraint(
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youScissorsImage.centerXAnchor.constraint(
-				equalTo: playButton.centerXAnchor,
+				equalTo: selectButton.centerXAnchor,
 				constant: 80),
 		])
 		
@@ -418,6 +435,92 @@ extension RockPaperScissorsViewController {
 		view.addSubview(youArrow)
 	}
 }
+
+// MARK: - setup - viewGroup3 - GameCount
+extension RockPaperScissorsViewController {
+	func setupViewGroup3() {
+		setupRestartButton()
+		setupYouSelectedRPS()
+		setupComSelectedRPS()
+		setupYouResult()
+		setupComResult()
+	}
+	
+	func setupRestartButton() {
+		view.addSubview(restartButton)
+		let config = configGameStyledButton("RESTART")
+		restartButton.configuration = config
+		restartButton.addTarget(self, action: #selector(gameRpsSelect), for: .touchUpInside)
+		restartButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			restartButton.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor,
+				constant: view.bounds.width * 2),
+			restartButton.bottomAnchor.constraint(
+				equalTo: view.bottomAnchor,
+				constant: -100),
+		])
+	}
+
+	/*
+	 let youSelectedRPS = UIImageView()
+	 let comSelectedRPS = UIImageView()
+	 let youResult = UILabel()
+	 let comResult = UILabel()
+	 */
+	
+	func setupYouSelectedRPS() {
+		view.addSubview(youSelectedRPSImage)
+		youSelectedRPSImage.image = UIImage(
+			named: IMAGE_RPS_UP_PAPER)
+		youSelectedRPSImage.contentMode = .scaleAspectFit
+		youSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youSelectedRPSImage.widthAnchor.constraint(
+				equalToConstant: 50),
+			youSelectedRPSImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			youSelectedRPSImage.bottomAnchor.constraint(
+				equalTo: gameBoardWindow.bottomAnchor,
+				constant: -90),
+			youSelectedRPSImage.centerXAnchor.constraint(
+				equalTo: selectButton.centerXAnchor,
+				constant: view.bounds.width),
+		])
+	}
+	func setupComSelectedRPS() {
+		view.addSubview(comSelectedRPSImage)
+		comSelectedRPSImage.image = UIImage(
+			named: IMAGE_RPS_DOWN_PAPER)
+		comSelectedRPSImage.contentMode = .scaleAspectFit
+		comSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comSelectedRPSImage.widthAnchor.constraint(
+				equalToConstant: 50),
+			comSelectedRPSImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			comSelectedRPSImage.topAnchor.constraint(
+				equalTo: gameBoardWindow.topAnchor,
+				constant: 90),
+			comSelectedRPSImage.centerXAnchor.constraint(
+				equalTo: selectButton.centerXAnchor,
+				constant: view.bounds.width),
+		])
+	}
+	func setupYouResult() {
+		
+	}
+	func setupComResult() {
+		
+	}
+}
+
+
+
+
+
+
+
 
 // MARK: - Configuration Style
 extension RockPaperScissorsViewController {
@@ -443,7 +546,7 @@ extension RockPaperScissorsViewController {
 }
 
 
-// MARK: - View Location
+// MARK: - func - view location
 extension RockPaperScissorsViewController {
 	func locationLeft(_ target: UIView?) {
 		let move = -(view.bounds.width)
@@ -453,8 +556,8 @@ extension RockPaperScissorsViewController {
 		target?.transform = tConcat!
 	}
 	
-	func locationInitRight(_ target: UIView?) {
-		let move = (view.bounds.width) * 2
+	func locationRightMulti3(_ target: UIView?) {
+		let move = (view.bounds.width) * 3
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
@@ -462,7 +565,7 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - Action Selector
+// MARK: - action selector
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
@@ -475,110 +578,133 @@ extension RockPaperScissorsViewController {
 	
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.setup01LocationLeft()
-			self.setup02LocationLeft()
-			self.setup03LocationLeft()
-			self.setup04LocationLeft()
+			self.locationLeftGroup1()
 		}, completion: {_ in
-			self.setup01LocationInitRight()
+			self.locationRightMulti3Group1()
 		})
 	}
 	
-	@objc func gamePlay() {
+	@objc func gameRpsSelect() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.setup01LocationLeft()
-			self.setup02LocationLeft()
-			self.setup03LocationLeft()
-			self.setup04LocationLeft()
+			self.locationLeftGroup2()
 		}, completion: {_ in
-			self.setup02LocationInitRight()
+			self.locationRightMulti3Group2()
 		})
 	}
 	
-	
+	@objc func gameRestart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup3()
+		}, completion: {_ in
+			self.locationRightMulti3Group3()
+		})
+	}
 }
 
+// MARK: - SetupLocation Function
 extension RockPaperScissorsViewController {
-	func setup01LocationLeft() {
+	func locationLeftGroup1() {
+		// viewGroup1
 		self.locationLeft(self.startButton)
-
 		self.locationLeft(self.optionWindow)
-		self.locationLeft(self.optionWindowSegmentedControl)
+		self.locationLeft(self.optionWindowSegControl)
 		self.locationLeft(self.optionWindowImage0)
 		self.locationLeft(self.optionWindowImage1)
-		
 		self.locationLeft(self.descriptionWindow)
 		self.locationLeft(self.descriptionWindowTitle)
 		self.locationLeft(self.descriptionWindowContent)
-	}
-	func setup01LocationInitRight() {
-		self.locationInitRight(self.startButton)
 		
-		self.locationInitRight(self.optionWindow)
-		self.locationInitRight(self.optionWindowSegmentedControl)
-		self.locationInitRight(self.optionWindowImage0)
-		self.locationInitRight(self.optionWindowImage1)
-		
-		self.locationInitRight(self.descriptionWindow)
-		self.locationInitRight(self.descriptionWindowTitle)
-		self.locationInitRight(self.descriptionWindowContent)
-	}
-	
-	func setup02LocationLeft() {
-		self.locationLeft(self.playButton)
+		// viewGroup2
+		self.locationLeft(self.selectButton)
 		self.locationLeft(self.gameBoardWindow)
-		
 		self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
 		self.locationLeft(self.comScissorsImage)
-		
 		self.locationLeft(self.youCharacterImage)
 		self.locationLeft(self.youRockImage)
 		self.locationLeft(self.youPaperImage)
 		self.locationLeft(self.youScissorsImage)
+		
+		// viewGroup3
+		self.locationLeft(self.restartButton)
+		self.locationLeft(self.youSelectedRPSImage)
+		self.locationLeft(self.comSelectedRPSImage)
+		self.locationLeft(self.youResult)
+		self.locationLeft(self.comResult)
 	}
-	func setup02LocationInitRight() {
-		self.locationInitRight(self.playButton)
-		self.locationInitRight(self.gameBoardWindow)
-		
-		self.locationInitRight(self.comCharacterImage)
-		self.locationInitRight(self.comRockImage)
-		self.locationInitRight(self.comPaperImage)
-		self.locationInitRight(self.comScissorsImage)
-		
-		self.locationInitRight(self.youCharacterImage)
-		self.locationInitRight(self.youRockImage)
-		self.locationInitRight(self.youPaperImage)
-		self.locationInitRight(self.youScissorsImage)
+	func locationRightMulti3Group1() {
+		// viewGroup1
+		self.locationRightMulti3(self.startButton)
+		self.locationRightMulti3(self.optionWindow)
+		self.locationRightMulti3(self.optionWindowSegControl)
+		self.locationRightMulti3(self.optionWindowImage0)
+		self.locationRightMulti3(self.optionWindowImage1)
+		self.locationRightMulti3(self.descriptionWindow)
+		self.locationRightMulti3(self.descriptionWindowTitle)
+		self.locationRightMulti3(self.descriptionWindowContent)
 	}
 	
-	func setup03LocationLeft() {
+	func locationLeftGroup2() {
+		// viewGroup1
+		self.locationLeft(self.startButton)
+		self.locationLeft(self.optionWindow)
+		self.locationLeft(self.optionWindowSegControl)
+		self.locationLeft(self.optionWindowImage0)
+		self.locationLeft(self.optionWindowImage1)
+		self.locationLeft(self.descriptionWindow)
+		self.locationLeft(self.descriptionWindowTitle)
+		self.locationLeft(self.descriptionWindowContent)
+		
+		// viewGroup2
+		self.locationLeft(self.selectButton)
+		self.locationLeft(self.gameBoardWindow)
+		self.locationLeft(self.comCharacterImage)
+		self.locationLeft(self.comRockImage)
+		self.locationLeft(self.comPaperImage)
+		self.locationLeft(self.comScissorsImage)
+		self.locationLeft(self.youCharacterImage)
+		self.locationLeft(self.youRockImage)
+		self.locationLeft(self.youPaperImage)
+		self.locationLeft(self.youScissorsImage)
+		
+		// viewGroup3
+		self.locationLeft(self.restartButton)
+		self.locationLeft(self.youSelectedRPSImage)
+		self.locationLeft(self.comSelectedRPSImage)
+		self.locationLeft(self.youResult)
+		self.locationLeft(self.comResult)
 	}
-	func setup03LocationInitRight() {
+	func locationRightMulti3Group2() {
+		// viewGroup2
+		self.locationRightMulti3(self.selectButton)
+		self.locationRightMulti3(self.gameBoardWindow)
+		self.locationRightMulti3(self.comCharacterImage)
+		self.locationRightMulti3(self.comRockImage)
+		self.locationRightMulti3(self.comPaperImage)
+		self.locationRightMulti3(self.comScissorsImage)
+		self.locationRightMulti3(self.youCharacterImage)
+		self.locationRightMulti3(self.youRockImage)
+		self.locationRightMulti3(self.youPaperImage)
+		self.locationRightMulti3(self.youScissorsImage)
 	}
 	
-	func setup04LocationLeft() {
+	func locationLeftGroup3() {
+		
 	}
-	func setup04LocationInitRight() {
+	func locationRightMulti3Group3() {
+		
 	}
 }
 
-
-
-
-
-
-
-
-// ---------- //
+/* -------------------------------   */
 
 // MARK: - View Hidden (now not use)
 extension RockPaperScissorsViewController {
 	func hiddenSetup01(_ value: Bool) {
 		startButton.isHidden = value
 		optionWindow.isHidden = value
-		optionWindowSegmentedControl.isHidden = value
+		optionWindowSegControl.isHidden = value
 		optionWindowImage0.isHidden = value
 		optionWindowImage1.isHidden = value
 		descriptionWindow.isHidden = value
@@ -587,10 +713,10 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func alphaSetup02(_ value: CGFloat) {
-		playButton.alpha = value
+		selectButton.alpha = value
 	}
 	
 	func hiddenSetup02(_ value: Bool) {
-		playButton.isHidden = value
+		selectButton.isHidden = value
 	}
 }

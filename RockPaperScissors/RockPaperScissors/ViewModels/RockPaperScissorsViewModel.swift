@@ -8,14 +8,14 @@ class RockPaperScissorsViewModel {
 	
 	let you = RPSGameState(
 		player: PlayerCase.tuna,
-		rps: RPSCase.rock,
-		result: ResultCase.draw
+		rps: RPSCase.none,
+		result: ResultCase.none
 	)
 	
 	let com = RPSGameState(
 		player: PlayerCase.mandu,
-		rps: RPSCase.rock,
-		result: ResultCase.draw
+		rps: RPSCase.none,
+		result: ResultCase.none
 	)
 }
 

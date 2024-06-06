@@ -1,7 +1,7 @@
 // MARK: - Enum
 enum RPSGamePlayerCase { case tuna, mandu }
-enum RPSGameRockPaperScissorsCase { case rock, paper, scissors }
-enum RPSGameResultCase { case win, lose, draw }
+enum RPSGameRockPaperScissorsCase { case rock, paper, scissors, none }
+enum RPSGameResultCase { case win, lose, draw, none }
 
 // MARK: - Class
 class RPSGameState {
@@ -31,6 +31,7 @@ class RPSGameState {
 			case RPSCase.rock: IMAGE_RPS_UP_ROCK
 			case RPSCase.paper: IMAGE_RPS_UP_PAPER
 			case RPSCase.scissors: IMAGE_RPS_UP_SCISSORS
+			case RPSCase.none: ""
 		}
 	}
 	
@@ -39,8 +40,8 @@ class RPSGameState {
 			case RPSCase.rock: IMAGE_RPS_DOWN_ROCK
 			case RPSCase.paper: IMAGE_RPS_DOWN_PAPER
 			case RPSCase.scissors: IMAGE_RPS_DOWN_SCISSORS
+			case RPSCase.none: ""
 		}
 	}
-	
-	
+
 }
