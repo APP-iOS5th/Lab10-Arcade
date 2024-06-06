@@ -58,6 +58,7 @@ extension RockPaperScissorsViewController {
 		
 		// setup2 GameReady
 		setupPlayButton()
+		setupGameBoardWindow()
 	}
 }
 
@@ -262,14 +263,12 @@ extension RockPaperScissorsViewController {
 		gameBoardWindow.layer.cornerRadius = 30
 		gameBoardWindow.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			gameBoardWindow.leadingAnchor.constraint(
-				equalTo: view.leadingAnchor,
-				constant: 20),
-			gameBoardWindow.trailingAnchor.constraint(
-				equalTo: view.trailingAnchor,
-				constant: -20),
+			gameBoardWindow.widthAnchor.constraint(
+				equalTo: view.widthAnchor, constant: -40),
 			gameBoardWindow.heightAnchor.constraint(
-				equalToConstant: 100),
+				equalToConstant: 350),
+			gameBoardWindow.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor),
 			gameBoardWindow.bottomAnchor.constraint(
 				equalTo: playButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
@@ -300,27 +299,6 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - View Hidden (now not use)
-extension RockPaperScissorsViewController {
-	func hiddenSetup01(_ value: Bool) {
-		startButton.isHidden = value
-		optionWindow.isHidden = value
-		optionWindowSegmentedControl.isHidden = value
-		optionWindowImage0.isHidden = value
-		optionWindowImage1.isHidden = value
-		descriptionWindow.isHidden = value
-		descriptionWindowTitle.isHidden = value
-		descriptionWindowContent.isHidden = value
-	}
-	
-	func alphaSetup02(_ value: CGFloat) {
-		playButton.alpha = value
-	}
-	
-	func hiddenSetup02(_ value: Bool) {
-		playButton.isHidden = value
-	}
-}
 
 // MARK: - View Location
 extension RockPaperScissorsViewController {
@@ -352,6 +330,8 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.setup01LocationLeft()
 			self.setup02LocationLeft()
+			self.setup03LocationLeft()
+			self.setup04LocationLeft()
 		}, completion: {_ in
 			self.setup01LocationInitRight()
 		})
@@ -365,12 +345,14 @@ extension RockPaperScissorsViewController {
 			self.setup02LocationInitRight()
 		})
 	}
+	
+	
 }
 
 extension RockPaperScissorsViewController {
 	func setup01LocationLeft() {
 		self.locationLeft(self.startButton)
-		
+
 		self.locationLeft(self.optionWindow)
 		self.locationLeft(self.optionWindowSegmentedControl)
 		self.locationLeft(self.optionWindowImage0)
@@ -393,7 +375,6 @@ extension RockPaperScissorsViewController {
 		self.locationInitRight(self.descriptionWindowContent)
 	}
 	
-	
 	func setup02LocationLeft() {
 		self.locationLeft(self.playButton)
 		self.locationLeft(self.gameBoardWindow)
@@ -402,8 +383,45 @@ extension RockPaperScissorsViewController {
 		self.locationInitRight(self.playButton)
 		self.locationInitRight(self.gameBoardWindow)
 	}
+	
+	func setup03LocationLeft() {
+	}
+	func setup03LocationInitRight() {
+	}
+	
+	func setup04LocationLeft() {
+	}
+	func setup04LocationInitRight() {
+	}
 }
 
 
 
 
+
+
+
+
+// ---------- //
+
+// MARK: - View Hidden (now not use)
+extension RockPaperScissorsViewController {
+	func hiddenSetup01(_ value: Bool) {
+		startButton.isHidden = value
+		optionWindow.isHidden = value
+		optionWindowSegmentedControl.isHidden = value
+		optionWindowImage0.isHidden = value
+		optionWindowImage1.isHidden = value
+		descriptionWindow.isHidden = value
+		descriptionWindowTitle.isHidden = value
+		descriptionWindowContent.isHidden = value
+	}
+	
+	func alphaSetup02(_ value: CGFloat) {
+		playButton.alpha = value
+	}
+	
+	func hiddenSetup02(_ value: Bool) {
+		playButton.isHidden = value
+	}
+}
