@@ -253,6 +253,28 @@ extension RockPaperScissorsViewController {
 				constant: -100),
 		])
 	}
+	
+	func setupGameBoardWindow() {
+		view.addSubview(gameBoardWindow)
+		gameBoardWindow.backgroundColor = .white
+		gameBoardWindow.layer.borderWidth = 2
+		gameBoardWindow.layer.borderColor = UIColor.black.cgColor
+		gameBoardWindow.layer.cornerRadius = 30
+		gameBoardWindow.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			gameBoardWindow.leadingAnchor.constraint(
+				equalTo: view.leadingAnchor,
+				constant: 20),
+			gameBoardWindow.trailingAnchor.constraint(
+				equalTo: view.trailingAnchor,
+				constant: -20),
+			gameBoardWindow.heightAnchor.constraint(
+				equalToConstant: 100),
+			gameBoardWindow.bottomAnchor.constraint(
+				equalTo: playButton.topAnchor,
+				constant: -((view.bounds.height - 450) / 5)),
+		])
+	}
 }
 
 // MARK: - Configuration Style
@@ -328,19 +350,60 @@ extension RockPaperScissorsViewController {
 	
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeft(self.startButton)
-			self.locationLeft(self.playButton)
+			self.setup01LocationLeft()
+			self.setup02LocationLeft()
 		}, completion: {_ in
-			self.locationInitRight(self.startButton)
+			self.setup01LocationInitRight()
 		})
 	}
 	
 	@objc func gamePlay() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeft(self.playButton)
-			self.locationLeft(self.startButton)
+			self.setup01LocationLeft()
+			self.setup02LocationLeft()
 		}, completion: {_ in
-			self.locationInitRight(self.playButton)
+			self.setup02LocationInitRight()
 		})
 	}
 }
+
+extension RockPaperScissorsViewController {
+	func setup01LocationLeft() {
+		self.locationLeft(self.startButton)
+		
+		self.locationLeft(self.optionWindow)
+		self.locationLeft(self.optionWindowSegmentedControl)
+		self.locationLeft(self.optionWindowImage0)
+		self.locationLeft(self.optionWindowImage1)
+		
+		self.locationLeft(self.descriptionWindow)
+		self.locationLeft(self.descriptionWindowTitle)
+		self.locationLeft(self.descriptionWindowContent)
+	}
+	func setup01LocationInitRight() {
+		self.locationInitRight(self.startButton)
+		
+		self.locationInitRight(self.optionWindow)
+		self.locationInitRight(self.optionWindowSegmentedControl)
+		self.locationInitRight(self.optionWindowImage0)
+		self.locationInitRight(self.optionWindowImage1)
+		
+		self.locationInitRight(self.descriptionWindow)
+		self.locationInitRight(self.descriptionWindowTitle)
+		self.locationInitRight(self.descriptionWindowContent)
+	}
+	
+	
+	func setup02LocationLeft() {
+		self.locationLeft(self.playButton)
+		self.locationLeft(self.gameBoardWindow)
+	}
+	func setup02LocationInitRight() {
+		self.locationInitRight(self.playButton)
+		self.locationInitRight(self.gameBoardWindow)
+	}
+}
+
+
+
+
