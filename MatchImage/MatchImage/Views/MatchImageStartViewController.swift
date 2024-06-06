@@ -22,7 +22,10 @@ class MatchImageStartViewController: UIViewController {
         
         gameDescription.text = "도전!\n 최단 시간에 그림 쌍을 맞춰 보세요."
         startButton.setTitle("STRAT", for: .normal)
-        
+        startButton.addAction(UIAction { [weak self] _ in
+            let matchImageGameViewController = MatchImageGameViewController()
+            self?.navigationController?.pushViewController(matchImageGameViewController, animated: true)
+        }, for: .touchUpInside)
         setupLayout()
     }
     
