@@ -43,5 +43,25 @@ class RPSGameState {
 			case RPSCase.none: ""
 		}
 	}
-
+	
+	func resultText() -> String {
+		var text = ""
+		switch result {
+			case .win:
+				text = "WIN"
+				print("Log ViewModel - \(result)!") // LOG
+			case .lose:
+				text = "LOSE"
+				print("Log ViewModel - \(result)!") // LOG
+			case .draw:
+				text = "DRAW"
+				print("Log ViewModel - \(result)!") // LOG
+			case .none:
+				text = "NONE"
+				print("Log ViewModel - \(result)!") // LOG
+		}
+		
+		return text
+	}
+	
 }

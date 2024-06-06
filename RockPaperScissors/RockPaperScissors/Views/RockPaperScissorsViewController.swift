@@ -450,7 +450,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(restartButton)
 		let config = configGameStyledButton("RESTART")
 		restartButton.configuration = config
-		restartButton.addTarget(self, action: #selector(gameRpsSelect), for: .touchUpInside)
+		restartButton.addTarget(self, action: #selector(gameRestart), for: .touchUpInside)
 		restartButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			restartButton.centerXAnchor.constraint(
@@ -461,13 +461,6 @@ extension RockPaperScissorsViewController {
 				constant: -100),
 		])
 	}
-
-	/*
-	 let youSelectedRPS = UIImageView()
-	 let comSelectedRPS = UIImageView()
-	 let youResult = UILabel()
-	 let comResult = UILabel()
-	 */
 	
 	func setupYouSelectedRPS() {
 		view.addSubview(youSelectedRPSImage)
@@ -488,6 +481,7 @@ extension RockPaperScissorsViewController {
 				constant: view.bounds.width),
 		])
 	}
+	
 	func setupComSelectedRPS() {
 		view.addSubview(comSelectedRPSImage)
 		comSelectedRPSImage.image = UIImage(
@@ -507,18 +501,15 @@ extension RockPaperScissorsViewController {
 				constant: view.bounds.width),
 		])
 	}
+	
 	func setupYouResult() {
 		
 	}
+	
 	func setupComResult() {
 		
 	}
 }
-
-
-
-
-
 
 
 
@@ -556,7 +547,7 @@ extension RockPaperScissorsViewController {
 		target?.transform = tConcat!
 	}
 	
-	func locationRightMulti3(_ target: UIView?) {
+	func locationRightEnd(_ target: UIView?) {
 		let move = (view.bounds.width) * 3
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
@@ -580,7 +571,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.locationLeftGroup1()
 		}, completion: {_ in
-			self.locationRightMulti3Group1()
+			self.locationRightEndGroup1()
 		})
 	}
 	
@@ -588,7 +579,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.locationLeftGroup2()
 		}, completion: {_ in
-			self.locationRightMulti3Group2()
+			self.locationRightEndGroup2()
 		})
 	}
 	
@@ -596,7 +587,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.locationLeftGroup3()
 		}, completion: {_ in
-			self.locationRightMulti3Group3()
+			self.locationRightEndGroup3()
 		})
 	}
 }
@@ -633,19 +624,63 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.youResult)
 		self.locationLeft(self.comResult)
 	}
-	func locationRightMulti3Group1() {
+	func locationRightEndGroup1() {
 		// viewGroup1
-		self.locationRightMulti3(self.startButton)
-		self.locationRightMulti3(self.optionWindow)
-		self.locationRightMulti3(self.optionWindowSegControl)
-		self.locationRightMulti3(self.optionWindowImage0)
-		self.locationRightMulti3(self.optionWindowImage1)
-		self.locationRightMulti3(self.descriptionWindow)
-		self.locationRightMulti3(self.descriptionWindowTitle)
-		self.locationRightMulti3(self.descriptionWindowContent)
+		self.locationRightEnd(self.startButton)
+		self.locationRightEnd(self.optionWindow)
+		self.locationRightEnd(self.optionWindowSegControl)
+		self.locationRightEnd(self.optionWindowImage0)
+		self.locationRightEnd(self.optionWindowImage1)
+		self.locationRightEnd(self.descriptionWindow)
+		self.locationRightEnd(self.descriptionWindowTitle)
+		self.locationRightEnd(self.descriptionWindowContent)
 	}
 	
 	func locationLeftGroup2() {
+		// viewGroup1
+		self.locationLeft(self.startButton)
+		self.locationLeft(self.optionWindow)
+		self.locationLeft(self.optionWindowSegControl)
+		self.locationLeft(self.optionWindowImage0)
+		self.locationLeft(self.optionWindowImage1)
+		self.locationLeft(self.descriptionWindow)
+		self.locationLeft(self.descriptionWindowTitle)
+		self.locationLeft(self.descriptionWindowContent)
+		
+		// viewGroup2
+		self.locationLeft(self.selectButton)
+		// self.locationLeft(self.gameBoardWindow)
+		// self.locationLeft(self.comCharacterImage)
+		self.locationLeft(self.comRockImage)
+		self.locationLeft(self.comPaperImage)
+		self.locationLeft(self.comScissorsImage)
+		// self.locationLeft(self.youCharacterImage)
+		self.locationLeft(self.youRockImage)
+		self.locationLeft(self.youPaperImage)
+		self.locationLeft(self.youScissorsImage)
+		
+		// viewGroup3
+		self.locationLeft(self.restartButton)
+		self.locationLeft(self.youSelectedRPSImage)
+		self.locationLeft(self.comSelectedRPSImage)
+		self.locationLeft(self.youResult)
+		self.locationLeft(self.comResult)
+	}
+	func locationRightEndGroup2() {
+		// viewGroup2
+		self.locationRightEnd(self.selectButton)
+		// self.locationRightEnd(self.gameBoardWindow)
+		// self.locationRightEnd(self.comCharacterImage)
+		self.locationRightEnd(self.comRockImage)
+		self.locationRightEnd(self.comPaperImage)
+		self.locationRightEnd(self.comScissorsImage)
+		// self.locationRightEnd(self.youCharacterImage)
+		self.locationRightEnd(self.youRockImage)
+		self.locationRightEnd(self.youPaperImage)
+		self.locationRightEnd(self.youScissorsImage)
+	}
+	
+	func locationLeftGroup3() {
 		// viewGroup1
 		self.locationLeft(self.startButton)
 		self.locationLeft(self.optionWindow)
@@ -675,29 +710,27 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.youResult)
 		self.locationLeft(self.comResult)
 	}
-	func locationRightMulti3Group2() {
-		// viewGroup2
-		self.locationRightMulti3(self.selectButton)
-		self.locationRightMulti3(self.gameBoardWindow)
-		self.locationRightMulti3(self.comCharacterImage)
-		self.locationRightMulti3(self.comRockImage)
-		self.locationRightMulti3(self.comPaperImage)
-		self.locationRightMulti3(self.comScissorsImage)
-		self.locationRightMulti3(self.youCharacterImage)
-		self.locationRightMulti3(self.youRockImage)
-		self.locationRightMulti3(self.youPaperImage)
-		self.locationRightMulti3(self.youScissorsImage)
-	}
-	
-	func locationLeftGroup3() {
+	func locationRightEndGroup3() {
+		// viewGorup2 RightEnd
+		self.locationRightEnd(self.gameBoardWindow)
+		self.locationRightEnd(self.comCharacterImage)
+		self.locationRightEnd(self.youCharacterImage)
 		
-	}
-	func locationRightMulti3Group3() {
+		// viewGorup2 Left
+		self.locationLeft(self.gameBoardWindow)
+		self.locationLeft(self.comCharacterImage)
+		self.locationLeft(self.youCharacterImage)
 		
+		// viewGroup3
+		self.locationRightEnd(self.restartButton)
+		self.locationRightEnd(self.youSelectedRPSImage)
+		self.locationRightEnd(self.comSelectedRPSImage)
+		self.locationRightEnd(self.youResult)
+		self.locationRightEnd(self.comResult)
 	}
 }
 
-/* -------------------------------   */
+/* ------------------------------- */
 
 // MARK: - View Hidden (now not use)
 extension RockPaperScissorsViewController {

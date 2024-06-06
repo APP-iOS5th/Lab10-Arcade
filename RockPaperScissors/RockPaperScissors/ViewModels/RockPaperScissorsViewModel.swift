@@ -6,16 +6,19 @@ class RockPaperScissorsViewModel {
 	static let shared = RockPaperScissorsViewModel()
 	private init () {}
 	
+	
 	let you = RPSGameState(
+		//TODO: 초기값 고민중
 		player: PlayerCase.tuna,
-		rps: RPSCase.none,
-		result: ResultCase.none
+		rps: RPSCase.paper,
+		result: ResultCase.draw
 	)
 	
 	let com = RPSGameState(
+		//TODO: 초기값 고민중
 		player: PlayerCase.mandu,
-		rps: RPSCase.none,
-		result: ResultCase.none
+		rps: RPSCase.paper,
+		result: ResultCase.draw
 	)
 }
 
@@ -34,4 +37,6 @@ extension RockPaperScissorsViewModel {
 				break
 		}
 	}
+	
+	
 }
