@@ -12,7 +12,8 @@ class MatchImageGameViewController: UIViewController {
     var cards = [UIImageView]()
     var cardImages = [UIImage]()
     var flippedCards = [UIImageView]()
-    
+    var matrix = [3,6]
+    var imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,28 +25,34 @@ class MatchImageGameViewController: UIViewController {
     }
     
     func setupCardImages() {
-        let image1 = UIImage(systemName: "star.fill")!
-        let image2 = UIImage(systemName: "circle")!
-        cardImages = [image1, image1, image2, image2].shuffled()
+        let numberOfImages = matrix.reduce(1, *) / 2
+        print(numberOfImages)
+        for i in 0..<numberOfImages {
+            print("\(imageNames[i])")
+            cardImages.append(UIImage(systemName: imageNames[i])!)
+        }
+        cardImages = cardImages.shuffled()
     }
     
     func setupCards() {
         let cardWidth: CGFloat = 100
         let cardHeight: CGFloat = 100
-        let margin: CGFloat = 20
-        let startX = (view.bounds.width - (cardWidth * 2 + margin)) / 2
-        let startY = (view.bounds.height - (cardHeight * 2 + margin)) / 2
+        let margin: CGFloat = 10
+        let startX = (view.bounds.width - (cardWidth * CGFloat(matrix[0]) + margin * (CGFloat(matrix[0]) - 1.0 ))) / 2
+        let startY = (view.bounds.height - (cardHeight * CGFloat(matrix[1]) + margin * (CGFloat(matrix[1]) - 1.0 ))) / 2
         
-        for i in 0..<4 {
-            let row = i / 2
-            let col = i % 2
-            let x = startX + (cardWidth + margin) * CGFloat(col)
-            let y = startY + (cardHeight + margin) * CGFloat(row)
-            
-            let card = createCard(frame: CGRect(x: x, y: y, width: cardWidth, height: cardHeight))
-            card.tag = i
-            view.addSubview(card)
-            cards.append(card)
+        for i in 0..<matrix[1] {
+            for j in 0..<matrix[0] {
+                let row = i % matrix[1]
+                let col = j % matrix[0]
+                let x = startX + (cardWidth + margin) * CGFloat(col)
+                let y = startY + (cardHeight + margin) * CGFloat(row)
+                
+                let card = createCard(frame: CGRect(x: x, y: y, width: cardWidth, height: cardHeight))
+                card.tag = i + j
+                view.addSubview(card)
+                cards.append(card)
+            }
         }
     }
     
