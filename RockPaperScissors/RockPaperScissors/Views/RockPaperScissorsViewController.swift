@@ -303,17 +303,17 @@ extension RockPaperScissorsViewController {
 // MARK: - View Location
 extension RockPaperScissorsViewController {
 	func locationLeft(_ target: UIView?) {
-		let x = -(view.bounds.width)
+		let move = -(view.bounds.width)
 		
-		let t2 = CGAffineTransform(translationX: x, y: 0)
+		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
 	
 	func locationInitRight(_ target: UIView?) {
-		let x = (view.bounds.width) * 2
+		let move = (view.bounds.width) * 2
 		
-		let t2 = CGAffineTransform(translationX: x, y: 0)
+		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
