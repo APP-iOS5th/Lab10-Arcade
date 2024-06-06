@@ -3,6 +3,9 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
+	typealias PlayerCase = RPSGamePlayerCase
+	typealias RPSCase = RPSGameRockPaperScissorsCase
+	typealias ResultCase = RPSGameResultCase
 	typealias rpsVM = RockPaperScissorsViewModel
 	
 	// setup00
@@ -21,10 +24,15 @@ class RockPaperScissorsViewController: UIViewController {
 	// setup02 - gameStart
 	let playButton = UIButton()
 	let gameBoardWindow = UIView()
-	let rockImage = UIButton()
-	let paperImage = UIButton()
-	let scissorsImage = UIButton()
-	let arrowYour = UILabel()
+	let comCharacterImage = UIImageView()
+	let comRockImage = UIImageView()
+	let comPaperImage = UIImageView()
+	let comScissorsImage = UIImageView()
+	let youCharacterImage = UIImageView()
+	let youRockImage = UIImageView()
+	let youPaperImage = UIImageView()
+	let youScissorsImage = UIImageView()
+	let youArrow = UILabel()
 	
 	// setup03 - gamePlay
 	let count321 = UILabel()
@@ -59,6 +67,8 @@ extension RockPaperScissorsViewController {
 		// setup2 GameReady
 		setupPlayButton()
 		setupGameBoardWindow()
+		setupComImages()
+		setupYouImages()
 	}
 }
 
@@ -266,13 +276,146 @@ extension RockPaperScissorsViewController {
 			gameBoardWindow.widthAnchor.constraint(
 				equalTo: view.widthAnchor, constant: -40),
 			gameBoardWindow.heightAnchor.constraint(
-				equalToConstant: 350),
+				equalToConstant: 380),
 			gameBoardWindow.centerXAnchor.constraint(
 				equalTo: playButton.centerXAnchor),
 			gameBoardWindow.bottomAnchor.constraint(
 				equalTo: playButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
 		])
+	}
+
+	func setupComImages() {
+		view.addSubview(comCharacterImage)
+		comCharacterImage.image = UIImage(
+			named: rpsVM.shared.com.playerImageName())
+		comCharacterImage.contentMode = .scaleAspectFit
+		comCharacterImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comCharacterImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			comCharacterImage.topAnchor.constraint(
+				equalTo: gameBoardWindow.topAnchor, 
+				constant: 20),
+			comCharacterImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor),
+		])
+		
+		view.addSubview(comRockImage)
+		comRockImage.image = UIImage(
+			named: IMAGE_RPS_DOWN_ROCK)
+		comRockImage.contentMode = .scaleAspectFit
+		comRockImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comRockImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			comRockImage.topAnchor.constraint(
+				equalTo: gameBoardWindow.topAnchor,
+				constant: 90),
+			comRockImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: -80),
+		])
+		
+		view.addSubview(comPaperImage)
+		comPaperImage.image = UIImage(
+			named: IMAGE_RPS_DOWN_PAPER)
+		comPaperImage.contentMode = .scaleAspectFit
+		comPaperImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comPaperImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			comPaperImage.topAnchor.constraint(
+				equalTo: gameBoardWindow.topAnchor,
+				constant: 90),
+			comPaperImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: 0),
+		])
+		
+		view.addSubview(comScissorsImage)
+		comScissorsImage.image = UIImage(
+			named: IMAGE_RPS_DOWN_SCISSORS)
+		comScissorsImage.contentMode = .scaleAspectFit
+		comScissorsImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comScissorsImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			comScissorsImage.topAnchor.constraint(
+				equalTo: gameBoardWindow.topAnchor,
+				constant: 90),
+			comScissorsImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: 80),
+		])
+	}
+	
+	func setupYouImages() {
+		view.addSubview(youCharacterImage)
+		youCharacterImage.image = UIImage(
+			named: rpsVM.shared.you.playerImageName())
+		youCharacterImage.contentMode = .scaleAspectFit
+		youCharacterImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youCharacterImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			youCharacterImage.bottomAnchor.constraint(
+				equalTo: gameBoardWindow.bottomAnchor,
+				constant: -20),
+			youCharacterImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor),
+		])
+		
+		view.addSubview(youRockImage)
+		youRockImage.image = UIImage(
+			named: IMAGE_RPS_UP_ROCK)
+		youRockImage.contentMode = .scaleAspectFit
+		youRockImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youRockImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			youRockImage.bottomAnchor.constraint(
+				equalTo: gameBoardWindow.bottomAnchor,
+				constant: -90),
+			youRockImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: -80),
+		])
+		
+		view.addSubview(youPaperImage)
+		youPaperImage.image = UIImage(
+			named: IMAGE_RPS_UP_PAPER)
+		youPaperImage.contentMode = .scaleAspectFit
+		youPaperImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youPaperImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			youPaperImage.bottomAnchor.constraint(
+				equalTo: gameBoardWindow.bottomAnchor,
+				constant: -90),
+			youPaperImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: 0),
+		])
+		
+		view.addSubview(youScissorsImage)
+		youScissorsImage.image = UIImage(
+			named: IMAGE_RPS_UP_SCISSORS)
+		youScissorsImage.contentMode = .scaleAspectFit
+		youScissorsImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youScissorsImage.heightAnchor.constraint(
+				equalToConstant: 50),
+			youScissorsImage.bottomAnchor.constraint(
+				equalTo: gameBoardWindow.bottomAnchor,
+				constant: -90),
+			youScissorsImage.centerXAnchor.constraint(
+				equalTo: playButton.centerXAnchor,
+				constant: 80),
+		])
+		
+		
+		view.addSubview(youArrow)
 	}
 }
 
@@ -324,6 +467,10 @@ extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
 		rpsVM.shared.selectedPlayer(index)
+		comCharacterImage.image = UIImage(
+			named: rpsVM.shared.com.playerImageName())
+		youCharacterImage.image = UIImage(
+			named: rpsVM.shared.you.playerImageName())
 	}
 	
 	@objc func gameStart() {
@@ -341,6 +488,8 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.setup01LocationLeft()
 			self.setup02LocationLeft()
+			self.setup03LocationLeft()
+			self.setup04LocationLeft()
 		}, completion: {_ in
 			self.setup02LocationInitRight()
 		})
@@ -378,10 +527,30 @@ extension RockPaperScissorsViewController {
 	func setup02LocationLeft() {
 		self.locationLeft(self.playButton)
 		self.locationLeft(self.gameBoardWindow)
+		
+		self.locationLeft(self.comCharacterImage)
+		self.locationLeft(self.comRockImage)
+		self.locationLeft(self.comPaperImage)
+		self.locationLeft(self.comScissorsImage)
+		
+		self.locationLeft(self.youCharacterImage)
+		self.locationLeft(self.youRockImage)
+		self.locationLeft(self.youPaperImage)
+		self.locationLeft(self.youScissorsImage)
 	}
 	func setup02LocationInitRight() {
 		self.locationInitRight(self.playButton)
 		self.locationInitRight(self.gameBoardWindow)
+		
+		self.locationInitRight(self.comCharacterImage)
+		self.locationInitRight(self.comRockImage)
+		self.locationInitRight(self.comPaperImage)
+		self.locationInitRight(self.comScissorsImage)
+		
+		self.locationInitRight(self.youCharacterImage)
+		self.locationInitRight(self.youRockImage)
+		self.locationInitRight(self.youPaperImage)
+		self.locationInitRight(self.youScissorsImage)
 	}
 	
 	func setup03LocationLeft() {
