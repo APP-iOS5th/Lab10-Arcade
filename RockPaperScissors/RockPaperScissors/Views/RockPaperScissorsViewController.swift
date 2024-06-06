@@ -61,7 +61,7 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// // MARK: - setup00 GameBackground
+// MARK: - setup00 GameBackground
 extension RockPaperScissorsViewController {
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
@@ -277,7 +277,6 @@ extension RockPaperScissorsViewController {
 		return config
 	}
 }
-
 
 // MARK: - View Hidden (now not use)
 extension RockPaperScissorsViewController {
