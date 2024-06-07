@@ -8,13 +8,14 @@
 import UIKit
 
 class MatchImageGameViewController: UIViewController {
+    let matrix = [3,6]
+    let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
     var cards = [UIImageView]()
     var cardImages = [UIImage]()
     var flippedCards = [UIImageView]()
-    var matrix = [3,6]
-    var imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
     var tags = [Int]()
+    var numberOfImages = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class MatchImageGameViewController: UIViewController {
     }
     
     func setupCardImages() {
-        let numberOfImages = matrix.reduce(1, *) / 2
+        numberOfImages = matrix.reduce(1, *) / 2
         for i in 0..<numberOfImages {
             cardImages.append(UIImage(systemName: imageNames[i])!)
             tags.append(i)
@@ -93,6 +94,10 @@ class MatchImageGameViewController: UIViewController {
         
         if cardImages[card1.tag] == cardImages[card2.tag] {
             flippedCards.removeAll()
+            numberOfImages -= 1
+            if numberOfImages == 0 {
+                self.navigationController?.pushViewController(MatchImageEndViewController(), animated: true)
+            }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.flipCardBack(card1)
