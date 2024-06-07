@@ -18,6 +18,15 @@ class MatchImageGameViewController: UIViewController {
     var numberOfImages = 0
     
     var playSeconds = 0
+    var playTime: UILabel = {
+        let label = UILabel()
+        label.text = "00:00"
+        label.font = CustomFonts().neoDunggeunmoPro
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +36,17 @@ class MatchImageGameViewController: UIViewController {
         
         setupCardImages()
         setupCards()
+        view.addSubview(playTime)
+        
+        playTime.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        playTime.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("Start: \(playSeconds)")
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             self?.playSeconds += 1
+            self?.playTime.text = self?.playTimeFormat()
         }
     }
     func setupCardImages() {
@@ -105,7 +119,7 @@ class MatchImageGameViewController: UIViewController {
             numberOfImages -= 1
             if numberOfImages == 0 {
                 let matchImageEndViewController = MatchImageEndViewController()
-                matchImageEndViewController.playSeconds = playSeconds
+                matchImageEndViewController.playTime = playTimeFormat()
                 self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
             }
         } else {
@@ -122,5 +136,13 @@ class MatchImageGameViewController: UIViewController {
             card.image = nil
             card.backgroundColor = .gray
         }, completion: nil)
+    }
+    
+    func playTimeFormat() -> String {
+        let minutes = playSeconds / 60
+        let seconds = playSeconds % 60
+        let timeFormat = String(format: "%02d:%02d", minutes, seconds)
+        
+        return timeFormat
     }
 }

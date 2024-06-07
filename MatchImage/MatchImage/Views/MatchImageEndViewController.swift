@@ -15,14 +15,14 @@ class MatchImageEndViewController: UIViewController {
     let gamePlayTime = MatchImageInformation().gamePlayTime
     let restartButton = CustomButton().button
     
-    var playSeconds = 0
+    var playTime = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "End Page"
         
         gameDescription.text = "플레이 시간"
-        gamePlayTime.text = playTimeFormat()
+        gamePlayTime.text = playTime
         
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addAction(UIAction { [weak self] _ in
@@ -30,14 +30,6 @@ class MatchImageEndViewController: UIViewController {
             self?.navigationController?.pushViewController(matchImageGameViewController, animated: true)
         }, for: .touchUpInside)
         setupLayout()
-    }
-    
-    private func playTimeFormat() -> String {
-        let minutes = playSeconds / 60
-        let seconds = playSeconds % 60
-        let timeFormat = String(format: "%02d:%02d", minutes, seconds)
-        
-        return timeFormat
     }
     
     private func setupLayout() {
