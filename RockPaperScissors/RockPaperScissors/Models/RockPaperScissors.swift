@@ -1,7 +1,17 @@
 // MARK: - Enum
 enum RPSGamePlayerCase { case tuna, mandu }
-enum RPSGameRockPaperScissorsCase { case rock, paper, scissors, none }
-enum RPSGameResultCase { case win, lose, draw, none }
+enum RPSGameRockPaperScissorsCase: String {
+	case rock
+	case paper
+	case scissors
+	case none
+}
+enum RPSGameResultCase: String {
+	case win = "WIN"
+	case lose = "LOSE"
+	case draw = "DRAW"
+	case none = "NONE"
+}
 
 // MARK: - Class
 class RPSGameState {
@@ -28,18 +38,18 @@ class RPSGameState {
 	
 	func rpsUpImageName() -> String {
 		switch rps {
-			case RPSCase.rock: IMAGE_RPS_UP_ROCK
-			case RPSCase.paper: IMAGE_RPS_UP_PAPER
-			case RPSCase.scissors: IMAGE_RPS_UP_SCISSORS
+			case RPSCase.rock: IMAGE_RPS_ROCK_UP
+			case RPSCase.paper: IMAGE_RPS_PAPER_UP
+			case RPSCase.scissors: IMAGE_RPS_SCISSORS_UP
 			case RPSCase.none: ""
 		}
 	}
 	
 	func rpsDownImageName() -> String {
 		switch rps {
-			case RPSCase.rock: IMAGE_RPS_DOWN_ROCK
-			case RPSCase.paper: IMAGE_RPS_DOWN_PAPER
-			case RPSCase.scissors: IMAGE_RPS_DOWN_SCISSORS
+			case RPSCase.rock: IMAGE_RPS_ROCK_DOWN
+			case RPSCase.paper: IMAGE_RPS_PAPER_DOWN
+			case RPSCase.scissors: IMAGE_RPS_SCISSORS_DOWN
 			case RPSCase.none: ""
 		}
 	}

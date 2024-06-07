@@ -306,7 +306,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comRockImage)
 		comRockImage.image = UIImage(
-			named: IMAGE_RPS_DOWN_ROCK)
+			named: IMAGE_RPS_ROCK_DOWN)
 		comRockImage.contentMode = .scaleAspectFit
 		comRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -324,7 +324,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comPaperImage)
 		comPaperImage.image = UIImage(
-			named: IMAGE_RPS_DOWN_PAPER)
+			named: IMAGE_RPS_PAPER_DOWN)
 		comPaperImage.contentMode = .scaleAspectFit
 		comPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -342,7 +342,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comScissorsImage)
 		comScissorsImage.image = UIImage(
-			named: IMAGE_RPS_DOWN_SCISSORS)
+			named: IMAGE_RPS_SCISSORS_DOWN)
 		comScissorsImage.contentMode = .scaleAspectFit
 		comScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -379,7 +379,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youRockImage)
 		youRockImage.image = UIImage(
-			named: IMAGE_RPS_UP_ROCK)
+			named: IMAGE_RPS_ROCK_UP)
 		youRockImage.contentMode = .scaleAspectFit
 		youRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -397,7 +397,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youPaperImage)
 		youPaperImage.image = UIImage(
-			named: IMAGE_RPS_UP_PAPER)
+			named: IMAGE_RPS_PAPER_UP)
 		youPaperImage.contentMode = .scaleAspectFit
 		youPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -415,7 +415,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youScissorsImage)
 		youScissorsImage.image = UIImage(
-			named: IMAGE_RPS_UP_SCISSORS)
+			named: IMAGE_RPS_SCISSORS_UP)
 		youScissorsImage.contentMode = .scaleAspectFit
 		youScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -465,7 +465,7 @@ extension RockPaperScissorsViewController {
 	func setupYouSelectedRPS() {
 		view.addSubview(youSelectedRPSImage)
 		youSelectedRPSImage.image = UIImage(
-			named: IMAGE_RPS_UP_PAPER)
+			named: IMAGE_RPS_PAPER_UP)
 		youSelectedRPSImage.contentMode = .scaleAspectFit
 		youSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -485,7 +485,7 @@ extension RockPaperScissorsViewController {
 	func setupComSelectedRPS() {
 		view.addSubview(comSelectedRPSImage)
 		comSelectedRPSImage.image = UIImage(
-			named: IMAGE_RPS_DOWN_PAPER)
+			named: IMAGE_RPS_PAPER_DOWN)
 		comSelectedRPSImage.contentMode = .scaleAspectFit
 		comSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
