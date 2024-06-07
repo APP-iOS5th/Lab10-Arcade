@@ -157,33 +157,6 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-extension RockPaperScissorsViewController {
-	@objc func playerSelect(_ sender: UISegmentedControl) {
-		let index = sender.selectedSegmentIndex
-		rpsVM.shared.selectedPlayer(index)
-		comCharacterImage.image = UIImage(
-			named: rpsVM.shared.com.playerImageName())
-		youCharacterImage.image = UIImage(
-			named: rpsVM.shared.you.playerImageName())
-	}
-	
-	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-		let tag = (sender.view as? UIImageView)?.tag // LOG
-		switch tag {
-			case RPSCase.rock.rawValue:
-				rpsVM.shared.you.rps = RPSCase.rock
-				print(tag!)
-			case RPSCase.paper.rawValue:
-				rpsVM.shared.you.rps = RPSCase.paper
-				print(tag!)
-			case RPSCase.scissors.rawValue:
-				rpsVM.shared.you.rps = RPSCase.scissors
-				print(tag!)
-			default: print("nil")
-		}
-	}
-}
-
 // MARK: - action selector
 extension RockPaperScissorsViewController {
 	
