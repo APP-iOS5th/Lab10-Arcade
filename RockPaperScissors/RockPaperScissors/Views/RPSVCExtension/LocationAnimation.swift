@@ -17,6 +17,18 @@ extension RockPaperScissorsViewController {
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
+	
+	func locationTop(_ target: UIView?) {
+		let t2 = CGAffineTransform(translationX: 0, y: -30)
+		let tConcat = target?.transform.concatenating(t2)
+		target?.transform = tConcat!
+	}
+	
+	func locationBottom(_ target: UIView?) {
+		let t2 = CGAffineTransform(translationX: 0, y: 30)
+		let tConcat = target?.transform.concatenating(t2)
+		target?.transform = tConcat!
+	}
 }
 
 // MARK: - SetupLocation Function
@@ -159,7 +171,6 @@ extension RockPaperScissorsViewController {
 
 // MARK: - action selector
 extension RockPaperScissorsViewController {
-	
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.locationLeftGroup1()

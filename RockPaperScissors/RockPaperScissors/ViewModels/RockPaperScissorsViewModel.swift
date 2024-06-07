@@ -6,33 +6,41 @@ class RockPaperScissorsViewModel {
 	static let shared = RockPaperScissorsViewModel()
 	private init () {}
 	
-	
-	let you = RPSGameState(
-		//TODO: 초기값 고민중
+	let you = PlayerState(
 		player: PlayerCase.tuna,
-		rps: RPSCase.paper,
-		result: ResultCase.draw
+		rps: RPSCase.none,
+		result: ResultCase.none
 	)
 	
-	let com = RPSGameState(
-		//TODO: 초기값 고민중
+	let com = PlayerState(
 		player: PlayerCase.mandu,
-		rps: RPSCase.paper,
-		result: ResultCase.draw
+		rps: RPSCase.none,
+		result: ResultCase.none
 	)
+	
 }
 
 extension RockPaperScissorsViewModel {
+	func initPlayterState() {
+		you.player = .tuna
+		you.rps = .none
+		you.result = .none
+		you.rpsPrevSelected = .none
+		
+		com.player = .mandu
+		com.rps = .none
+		com.result = .none
+		com.rpsPrevSelected = .none
+	}
+	
 	func selectedPlayer(_ index: Int) {
 		switch index {
 			case 0:
 				you.player = PlayerCase.tuna
 				com.player = PlayerCase.mandu
-				print("Log ViewModel - index 0 - you : \(you.player )") // LOG
 			case 1:
 				you.player = PlayerCase.mandu
 				com.player = PlayerCase.tuna
-				print("Log ViewModel - index 1 - you : \(you.player)") // LOG
 			default:
 				break
 		}

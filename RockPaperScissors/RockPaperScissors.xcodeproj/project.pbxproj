@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE1E9CFA2C0DB6D100B92465 /* RockPaperScissors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */; };
+		CE1E9CFA2C0DB6D100B92465 /* RockPaperScissorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CF92C0DB6D100B92465 /* RockPaperScissorsModel.swift */; };
 		CE1E9CFC2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CFB2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift */; };
 		CE1E9CFE2C0DB71800B92465 /* RockPaperScissorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */; };
 		CE1E9D022C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE1E9D012C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf */; };
@@ -35,7 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissors.swift; sourceTree = "<group>"; };
+		CE1E9CF92C0DB6D100B92465 /* RockPaperScissorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsModel.swift; sourceTree = "<group>"; };
 		CE1E9CFB2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsViewModel.swift; sourceTree = "<group>"; };
 		CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsViewController.swift; sourceTree = "<group>"; };
 		CE1E9D012C0ED3D100B92465 /* NeoDunggeunmoPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NeoDunggeunmoPro-Regular.ttf"; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		CE1E9CF82C0DB6B200B92465 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE1E9CF92C0DB6D100B92465 /* RockPaperScissors.swift */,
+				CE1E9CF92C0DB6D100B92465 /* RockPaperScissorsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 				CE4DE1532C12E38D007322C2 /* LocationAnimation.swift in Sources */,
 				CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */,
 				CE4DE14B2C12E2BF007322C2 /* SetupGroup0.swift in Sources */,
-				CE1E9CFA2C0DB6D100B92465 /* RockPaperScissors.swift in Sources */,
+				CE1E9CFA2C0DB6D100B92465 /* RockPaperScissorsModel.swift in Sources */,
 				CE1E9CFC2C0DB6E700B92465 /* RockPaperScissorsViewModel.swift in Sources */,
 				CE4DE1512C12E2F4007322C2 /* SetupGroup3.swift in Sources */,
 				CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */,

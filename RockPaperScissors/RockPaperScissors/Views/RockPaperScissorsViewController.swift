@@ -3,10 +3,11 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
+	typealias rpsVM = RockPaperScissorsViewModel
+	
 	typealias PlayerCase = RPSGamePlayerCase
 	typealias RPSCase = RPSGameRockPaperScissorsCase
 	typealias ResultCase = RPSGameResultCase
-	typealias rpsVM = RockPaperScissorsViewModel
 	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
@@ -40,6 +41,8 @@ class RockPaperScissorsViewController: UIViewController {
 	let comSelectedRPSImage = UIImageView()
 	let youResult = UILabel()
 	let comResult = UILabel()
+	
+	var youRpsImageViewArray: [UIImageView] = []
 }
 
 // MARK: - LifeCycle
@@ -47,11 +50,23 @@ extension RockPaperScissorsViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
-
+		
+		rpsVM.shared.initPlayterState()
+		
 		setupViewGroup0()
 		setupViewGroup1()
 		setupViewGroup2()
 		setupViewGroup3()
+		
+		youRpsImageViewArray.append(youRockImage)
+		youRpsImageViewArray.append(youPaperImage)
+		youRpsImageViewArray.append(youScissorsImage)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		rpsVM.shared.initPlayterState()
+		print("viewWillDisappear")
 	}
 }
 
@@ -89,18 +104,40 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-		let tag = (sender.view as? UIImageView)?.tag // LOG
+		let v = sender.view as? UIImageView
+		let tag = v?.tag
+		
+		print("rpsTap prev : \(rpsVM.shared.you.rpsPrevSelected.rawValue)")
+		print("rpsTap now : \(rpsVM.shared.you.rps.rawValue)")
+		
+		if(rpsVM.shared.you.rpsPrevSelected != .none) {
+			if let prevSelectedImageView = youRpsImageViewArray.first(where: { $0.tag == rpsVM.shared.you.rpsPrevSelected.rawValue }) {
+				locationBottom(prevSelectedImageView)
+			}
+		}
+		
 		switch tag {
 			case RPSCase.rock.rawValue:
 				rpsVM.shared.you.rps = RPSCase.rock
-				print(tag!)
 			case RPSCase.paper.rawValue:
 				rpsVM.shared.you.rps = RPSCase.paper
-				print(tag!)
 			case RPSCase.scissors.rawValue:
 				rpsVM.shared.you.rps = RPSCase.scissors
-				print(tag!)
-			default: print("nil")
+			default:
+				rpsVM.shared.you.rps = RPSCase.none
 		}
+		
+		rpsVM.shared.you.rpsPrevSelected = rpsVM.shared.you.rps
+	
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationTop(v)
+		})
 	}
 }
+
+
+// MARK: RPS Select Animation
+extension RockPaperScissorsViewController {
+	
+}
+

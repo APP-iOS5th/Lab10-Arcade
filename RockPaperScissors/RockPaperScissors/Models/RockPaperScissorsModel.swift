@@ -14,7 +14,7 @@ enum RPSGameResultCase: String {
 }
 
 // MARK: - Class
-class RPSGameState {
+class PlayerState {
 	typealias PlayerCase = RPSGamePlayerCase
 	typealias RPSCase = RPSGameRockPaperScissorsCase
 	typealias ResultCase = RPSGameResultCase
@@ -22,6 +22,7 @@ class RPSGameState {
 	var player: PlayerCase
 	var rps: RPSCase
 	var result: ResultCase
+	var rpsPrevSelected: RPSCase = .none
 	
 	init(player: PlayerCase, rps: RPSCase, result: ResultCase) {
 		self.player = player
@@ -69,5 +70,9 @@ class RPSGameState {
 		
 		return text
 	}
+	
+}
+
+class GameState {
 	
 }
