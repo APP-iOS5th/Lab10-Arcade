@@ -14,6 +14,8 @@ class MatchImageGameViewController: UIViewController {
     var flippedCards = [UIImageView]()
     var matrix = [3,6]
     var imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
+    var tags = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,12 +28,12 @@ class MatchImageGameViewController: UIViewController {
     
     func setupCardImages() {
         let numberOfImages = matrix.reduce(1, *) / 2
-        print(numberOfImages)
         for i in 0..<numberOfImages {
-            print("\(imageNames[i])")
             cardImages.append(UIImage(systemName: imageNames[i])!)
+            tags.append(i)
+            tags.append(i)
         }
-        cardImages = cardImages.shuffled()
+        tags = tags.shuffled()
     }
     
     func setupCards() {
@@ -49,7 +51,7 @@ class MatchImageGameViewController: UIViewController {
                 let y = startY + (cardHeight + margin) * CGFloat(row)
                 
                 let card = createCard(frame: CGRect(x: x, y: y, width: cardWidth, height: cardHeight))
-                card.tag = i + j
+                card.tag = tags.remove(at: 0)
                 view.addSubview(card)
                 cards.append(card)
             }
@@ -69,7 +71,6 @@ class MatchImageGameViewController: UIViewController {
         guard let tappedCard = sender.view as? UIImageView else { return }
         guard flippedCards.count < 2 else { return }
         guard !flippedCards.contains(tappedCard) else { return }
-        
         flipCard(tappedCard, toImage: cardImages[tappedCard.tag])
         
         flippedCards.append(tappedCard)
@@ -80,7 +81,6 @@ class MatchImageGameViewController: UIViewController {
     }
     
     func flipCard(_ card: UIImageView, toImage image: UIImage) {
-        print("card: \(image)")
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             card.image = image
             card.backgroundColor = .clear
