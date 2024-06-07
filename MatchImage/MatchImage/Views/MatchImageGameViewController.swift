@@ -116,6 +116,12 @@ class MatchImageGameViewController: UIViewController {
         
         if cardImages[card1.tag] == cardImages[card2.tag] {
             flippedCards.removeAll()
+            card1.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
+            card2.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                card1.tintColor = .gray
+                card2.tintColor = .gray
+            }
             numberOfImages -= 1
             if numberOfImages == 0 {
                 let matchImageEndViewController = MatchImageEndViewController()
