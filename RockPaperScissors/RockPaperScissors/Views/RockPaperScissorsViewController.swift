@@ -431,8 +431,29 @@ extension RockPaperScissorsViewController {
 				constant: 80),
 		])
 		
-		
+		// TODO: ARROW
 		view.addSubview(youArrow)
+		
+		
+		// MARK: - TapGesture
+		youRockImage.tag = RPSCase.rock.rawValue
+		youPaperImage.tag = RPSCase.paper.rawValue
+		youScissorsImage.tag = RPSCase.scissors.rawValue
+		
+		let tapGestureRock = UITapGestureRecognizer(
+			target: self, action: #selector(rpsTap(_:)))
+		let tapGesturePaper = UITapGestureRecognizer(
+			target: self, action: #selector(rpsTap(_:)))
+		let tapGestureScissors = UITapGestureRecognizer(
+			target: self, action: #selector(rpsTap(_:)))
+		
+		youRockImage.isUserInteractionEnabled = true
+		youPaperImage.isUserInteractionEnabled = true
+		youScissorsImage.isUserInteractionEnabled = true
+		
+		youRockImage.addGestureRecognizer(tapGestureRock)
+		youPaperImage.addGestureRecognizer(tapGesturePaper)
+		youScissorsImage.addGestureRecognizer(tapGestureScissors)
 	}
 }
 
@@ -581,42 +602,6 @@ extension RockPaperScissorsViewController {
 		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
-	}
-}
-
-// MARK: - action selector
-extension RockPaperScissorsViewController {
-	@objc func playerSelect(_ sender: UISegmentedControl) {
-		let index = sender.selectedSegmentIndex
-		rpsVM.shared.selectedPlayer(index)
-		comCharacterImage.image = UIImage(
-			named: rpsVM.shared.com.playerImageName())
-		youCharacterImage.image = UIImage(
-			named: rpsVM.shared.you.playerImageName())
-	}
-	
-	@objc func gameStart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup1()
-		}, completion: {_ in
-			self.locationRightEndGroup1()
-		})
-	}
-	
-	@objc func gameRpsSelect() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup2()
-		}, completion: {_ in
-			self.locationRightEndGroup2()
-		})
-	}
-	
-	@objc func gameRestart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup3()
-		}, completion: {_ in
-			self.locationRightEndGroup3()
-		})
 	}
 }
 
@@ -779,5 +764,61 @@ extension RockPaperScissorsViewController {
 	
 	func hiddenSetup02(_ value: Bool) {
 		selectButton.isHidden = value
+	}
+}
+
+
+extension RockPaperScissorsViewController {
+	@objc func playerSelect(_ sender: UISegmentedControl) {
+		let index = sender.selectedSegmentIndex
+		rpsVM.shared.selectedPlayer(index)
+		comCharacterImage.image = UIImage(
+			named: rpsVM.shared.com.playerImageName())
+		youCharacterImage.image = UIImage(
+			named: rpsVM.shared.you.playerImageName())
+	}
+	
+	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
+		let tag = (sender.view as? UIImageView)?.tag // LOG
+		switch tag {
+			case RPSCase.rock.rawValue: 
+				rpsVM.shared.you.rps = RPSCase.rock
+				print(tag!)
+			case RPSCase.paper.rawValue: 
+				rpsVM.shared.you.rps = RPSCase.paper
+				print(tag!)
+			case RPSCase.scissors.rawValue: 
+				rpsVM.shared.you.rps = RPSCase.scissors
+				print(tag!)
+			default: print("nil")
+		}
+	}
+}
+
+// MARK: - action selector
+extension RockPaperScissorsViewController {
+
+	@objc func gameStart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup1()
+		}, completion: {_ in
+			self.locationRightEndGroup1()
+		})
+	}
+	
+	@objc func gameRpsSelect() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup2()
+		}, completion: {_ in
+			self.locationRightEndGroup2()
+		})
+	}
+	
+	@objc func gameRestart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup3()
+		}, completion: {_ in
+			self.locationRightEndGroup3()
+		})
 	}
 }

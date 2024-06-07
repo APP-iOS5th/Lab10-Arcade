@@ -1,10 +1,10 @@
 // MARK: - Enum
 enum RPSGamePlayerCase { case tuna, mandu }
-enum RPSGameRockPaperScissorsCase: String {
-	case rock
-	case paper
-	case scissors
-	case none
+enum RPSGameRockPaperScissorsCase: Int {
+	case rock = 101
+	case paper = 102
+	case scissors = 103
+	case none = 100
 }
 enum RPSGameResultCase: String {
 	case win = "WIN"
@@ -59,16 +59,12 @@ class RPSGameState {
 		switch result {
 			case .win:
 				text = "WIN"
-				print("Log ViewModel - \(result)!") // LOG
 			case .lose:
 				text = "LOSE"
-				print("Log ViewModel - \(result)!") // LOG
 			case .draw:
 				text = "DRAW"
-				print("Log ViewModel - \(result)!") // LOG
 			case .none:
 				text = "NONE"
-				print("Log ViewModel - \(result)!") // LOG
 		}
 		
 		return text
