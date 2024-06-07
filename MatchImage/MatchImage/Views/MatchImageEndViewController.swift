@@ -12,13 +12,18 @@ class MatchImageEndViewController: UIViewController {
     let gameInfoContainer = MatchImageInformation().gameInfoContainer
     let gameTitle = MatchImageInformation().gameTitle
     let gameDescription = MatchImageInformation().gameDescription
+    let gamePlayTime = MatchImageInformation().gamePlayTime
     let restartButton = CustomButton().button
-
+    
+    var playSeconds = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "End Page"
         
-        gameDescription.text = "플레이 시간\n 01:30"
+        gameDescription.text = "플레이 시간"
+        gamePlayTime.text = playTimeFormat()
+        
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addAction(UIAction { [weak self] _ in
             let matchImageGameViewController = MatchImageGameViewController()
@@ -27,9 +32,18 @@ class MatchImageEndViewController: UIViewController {
         setupLayout()
     }
     
+    private func playTimeFormat() -> String {
+        let minutes = playSeconds / 60
+        let seconds = playSeconds % 60
+        let timeFormat = String(format: "%02d:%02d", minutes, seconds)
+        
+        return timeFormat
+    }
+    
     private func setupLayout() {
         gameInfoContainer.addSubview(gameTitle)
         gameInfoContainer.addSubview(gameDescription)
+        gameInfoContainer.addSubview(gamePlayTime)
         view.addSubview(backgroundImage)
         view.addSubview(gameInfoContainer)
         view.addSubview(restartButton)
@@ -47,10 +61,12 @@ class MatchImageEndViewController: UIViewController {
             gameInfoContainer.heightAnchor.constraint(equalToConstant: 208),
             gameTitle.topAnchor.constraint(equalTo: gameInfoContainer.topAnchor, constant: 30),
             gameTitle.centerXAnchor.constraint(equalTo: gameInfoContainer.centerXAnchor),
-            gameDescription.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 30),
             gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
             gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
-            gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
+            gamePlayTime.topAnchor.constraint(equalTo: gameDescription.bottomAnchor, constant: 10),
+            gamePlayTime.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
+            gamePlayTime.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
+            gamePlayTime.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
             restartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             restartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             restartButton.widthAnchor.constraint(equalToConstant: 150),

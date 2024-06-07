@@ -17,6 +17,8 @@ class MatchImageGameViewController: UIViewController {
     var tags = [Int]()
     var numberOfImages = 0
     
+    var playSeconds = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,12 @@ class MatchImageGameViewController: UIViewController {
         setupCards()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("Start: \(playSeconds)")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.playSeconds += 1
+        }
+    }
     func setupCardImages() {
         numberOfImages = matrix.reduce(1, *) / 2
         for i in 0..<numberOfImages {
@@ -96,7 +104,9 @@ class MatchImageGameViewController: UIViewController {
             flippedCards.removeAll()
             numberOfImages -= 1
             if numberOfImages == 0 {
-                self.navigationController?.pushViewController(MatchImageEndViewController(), animated: true)
+                let matchImageEndViewController = MatchImageEndViewController()
+                matchImageEndViewController.playSeconds = playSeconds
+                self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

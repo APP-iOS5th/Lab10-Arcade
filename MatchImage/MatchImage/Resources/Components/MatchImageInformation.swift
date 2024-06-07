@@ -29,6 +29,15 @@ struct MatchImageInformation {
         return label
     }
     
+    var gamePlayTime: UILabel {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = CustomFonts().dNFBitBitv2
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }
     var gameInfoContainer: UIView {
         let uiView = UIView()
         uiView.backgroundColor = UIColor(white: 1, alpha: 0.95)
