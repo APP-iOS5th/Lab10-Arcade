@@ -45,8 +45,9 @@ class MatchImageGameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("Start: \(playSeconds)")
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.playSeconds += 1
-            self?.playTime.text = self?.playTimeFormat()
+            guard let self = self else { return }
+            self.playSeconds += 1
+            self.playTime.text = self.playTimeFormat()
         }
     }
     func setupCardImages() {
@@ -129,13 +130,21 @@ class MatchImageGameViewController: UIViewController {
             // all matched
             numberOfImages -= 1
             if numberOfImages == 0 {
-                let matchImageEndViewController = MatchImageEndViewController()
-                matchImageEndViewController.playTime = playTimeFormat()
-                self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
+                let alertController = UIAlertController(title: "축하합니다", message: "모든 그림 카드를 맞추셨습니다.", preferredStyle: .alert)
+                self.present(alertController, animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                    guard let self = self else { return }
+                    alertController.dismiss(animated: true) {
+                        let matchImageEndViewController = MatchImageEndViewController()
+                        matchImageEndViewController.playTime = self.playTimeFormat()
+                        self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
+                    }
+                }
             }
         } else {
             // not matched
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                guard let self = self else { return }
                 self.flipCardBack(card1)
                 self.flipCardBack(card2)
                 self.flippedCards.removeAll()
