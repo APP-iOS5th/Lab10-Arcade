@@ -18,6 +18,7 @@ class MatchImageGameViewController: UIViewController {
     var numberOfImages = 0
     
     var playSeconds = 0
+    var timer: Timer?
     var playTime: UILabel = {
         let label = UILabel()
         label.text = "00:00"
@@ -47,7 +48,7 @@ class MatchImageGameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("Start: \(playSeconds)")
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.playSeconds += 1
             self.playTime.text = self.playTimeFormat()
@@ -133,6 +134,8 @@ class MatchImageGameViewController: UIViewController {
             // all matched
             numberOfImages -= 1
             if numberOfImages == 0 {
+                timer?.invalidate()
+                timer = nil
                 let alertController = UIAlertController(title: "축하합니다", message: "모든 그림 카드를 맞추셨습니다.", preferredStyle: .alert)
                 self.present(alertController, animated: true, completion: nil)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
