@@ -116,12 +116,17 @@ class MatchImageGameViewController: UIViewController {
         
         if cardImages[card1.tag] == cardImages[card2.tag] {
             flippedCards.removeAll()
+            // matched cards unflippable
+            card1.isUserInteractionEnabled = false
+            card2.isUserInteractionEnabled = false
+            // add animation to matched cards
             card1.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
             card2.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 card1.tintColor = .gray
                 card2.tintColor = .gray
             }
+            // all matched
             numberOfImages -= 1
             if numberOfImages == 0 {
                 let matchImageEndViewController = MatchImageEndViewController()
@@ -129,6 +134,7 @@ class MatchImageGameViewController: UIViewController {
                 self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
             }
         } else {
+            // not matched
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.flipCardBack(card1)
                 self.flipCardBack(card2)
