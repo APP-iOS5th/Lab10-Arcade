@@ -1,16 +1,21 @@
 class RockPaperScissorsViewModel {
 	typealias Player = RPSGamePlayerCase
-	typealias RPS = RPSGameRockPaperScissorsCase
-	typealias ResultCase = RPSGameResultCase
+	typealias RPS = RPSGameRPSCase
+	typealias ResultCase = RPSGameOutcomeCase
+	
+	typealias PlayerModel = RPSGamePlayerModel
+	typealias RPSModel = RPSGameRPSModel
+	typealias ResultModel = RPSGameOutcomeModel
 	
 	static let shared = RockPaperScissorsViewModel()
 	private init () { print("Init - RockPaperScissorsViewModel") }
 	
-	var charactersImageDidChange: ((_ youImageName: String, _ comImageName: String) -> Void)?
-	var youSelectRPSImageDidChange: ((_ imageName: String) -> Void)?
-	var comSelectRPSImageDidChange: ((_ imageName: String) -> Void)?
-	var oldSelectRPSImageAnimation: ((_ oldTag: Int) -> Void)?
-	var youSelectRPSImageAnimation: ((_ newTag: Int) -> Void)?
+	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
+	var youSelectRPSImageDidChange: ((_ you: String) -> Void)?
+	var comSelectRPSImageDidChange: ((_ com: String) -> Void)?
+	var oldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
+	var youSelectRPSImageAnimation: ((_ new: Int) -> Void)?
+	var youResultLabelDidChange: (() -> Void)?
 	
 	var player = PlayerModel() {
 		didSet {
@@ -20,21 +25,22 @@ class RockPaperScissorsViewModel {
 		}
 	}
 	
-	var youRPS = RPSModel() {
-		didSet(oldRPS) {
-			oldSelectRPSImageAnimation?(oldRPS.select?.rawValue ?? 0)
-			youSelectRPSImageAnimation?(youRPS.select?.rawValue ?? 0)
-			
+	var rps = RPSModel() {
+		didSet(old) {
+			oldSelectRPSImageAnimation?(old.you?.rawValue ?? 0)
+			youSelectRPSImageAnimation?(rps.you?.rawValue ?? 0)
 			youSelectRPSImageDidChange?(
-				(youRPS.select?.named() ?? "") + SUFFIX_UP)
-			comRPS.select = RPS.allCases.randomElement()
+				(rps.you?.named() ?? "") + SUFFIX_UP)
+			
+			rps.com = RPS.allCases.randomElement()
+			comSelectRPSImageDidChange?(
+				(rps.com?.named() ?? "") + SUFFIX_DOWN)
 		}
 	}
 	
-	var comRPS = RPSModel() {
-		didSet {
-			comSelectRPSImageDidChange?(
-				(comRPS.select?.named() ?? "") + SUFFIX_DOWN)
+	var result = ResultModel() {
+		didSet { 
+			youResultLabelDidChange?()
 		}
 	}
 	
@@ -44,8 +50,9 @@ extension RockPaperScissorsViewModel {
 	func initPlayerState() {
 		player.you = .tuna
 		player.com = .mandu
-		youRPS.select = nil
-		comRPS.select = nil
+		rps.you = nil
+		rps.com = nil
+		result.you = nil
 	}
 	
 	func selectedPlayer(_ index: Int) {
@@ -56,8 +63,19 @@ extension RockPaperScissorsViewModel {
 			case 1:
 				player.you = .mandu
 				player.com = .tuna
-			default:
-				break
+			default: break
+		}
+	}
+	
+	func compareRPS() {
+		switch (rps.you, rps.you) {
+			case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
+				result.you = .draw
+			case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):
+				result.you = .win
+			case (.rock, .paper), (.paper, .scissors), (.scissors, .rock):
+				result.you = .lose
+			default: break
 		}
 	}
 	

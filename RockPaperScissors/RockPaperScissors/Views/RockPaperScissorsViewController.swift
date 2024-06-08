@@ -6,8 +6,8 @@ class RockPaperScissorsViewController: UIViewController {
 	typealias rpsViewModel = RockPaperScissorsViewModel
 	
 	typealias Player = RPSGamePlayerCase
-	typealias RPS = RPSGameRockPaperScissorsCase
-	typealias Result = RPSGameResultCase
+	typealias RPS = RPSGameRPSCase
+	typealias Result = RPSGameOutcomeCase
 	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
@@ -109,11 +109,11 @@ extension RockPaperScissorsViewController {
 		
 		switch tag {
 			case RPS.rock.rawValue: rpsViewModel.shared
-					.youRPS.select = RPS.rock
+					.rps.you = RPS.rock
 			case RPS.paper.rawValue: rpsViewModel.shared
-					.youRPS.select = RPS.paper
+					.rps.you = RPS.paper
 			case RPS.scissors.rawValue: rpsViewModel.shared
-					.youRPS.select = RPS.scissors
+					.rps.you = RPS.scissors
 			default: break
 		}
 	}
@@ -154,7 +154,7 @@ extension RockPaperScissorsViewController {
 		rpsViewModel.shared.oldSelectRPSImageAnimation = {
 			[weak self] oldTag in
 			print(oldTag)
-			var selectView = self?.youRpsImageViewArray
+			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == oldTag })
 			UIView.animate(withDuration: 0.5, animations: {
 				self?.locationBottom(selectView)
@@ -164,7 +164,7 @@ extension RockPaperScissorsViewController {
 		rpsViewModel.shared.youSelectRPSImageAnimation = {
 			[weak self] newTag in
 			print(newTag)
-			var selectView = self?.youRpsImageViewArray
+			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == newTag })
 			UIView.animate(withDuration: 0.5, animations: {
 				self?.locationTop(selectView)

@@ -9,7 +9,7 @@ enum RPSGamePlayerCase {
 	}
 }
 
-enum RPSGameRockPaperScissorsCase: Int, CaseIterable {
+enum RPSGameRPSCase: Int, CaseIterable {
 	case rock = 101
 	case paper = 102
 	case scissors = 103
@@ -22,85 +22,29 @@ enum RPSGameRockPaperScissorsCase: Int, CaseIterable {
 		}
 	}
 }
-enum RPSGameResultCase: String {
+enum RPSGameOutcomeCase: String {
 	case win = "WIN"
 	case lose = "LOSE"
 	case draw = "DRAW"
-	case none = "NONE"
 }
 
 // MARK: - Model
-struct PlayerModel {
+struct RPSGamePlayerModel {
 	typealias Player = RPSGamePlayerCase
 	
 	var you:Player?
 	var com:Player?
 }
 
-struct RPSModel {
-	typealias RPS = RPSGameRockPaperScissorsCase
+struct RPSGameRPSModel {
+	typealias RPS = RPSGameRPSCase
 	
-	var select: RPS?
+	var you: RPS?
+	var com: RPS?
 }
 
-// MARK: - Class
-class PlayerState {
-	typealias PlayerCase = RPSGamePlayerCase
-	typealias RPSCase = RPSGameRockPaperScissorsCase
-	typealias ResultCase = RPSGameResultCase
+struct RPSGameOutcomeModel {
+	typealias Outcome = RPSGameOutcomeCase
 	
-	var player: PlayerCase
-	var rps: RPSCase
-	var result: ResultCase
-	var rpsPrevSelected: RPSCase?
-	
-	init(player: PlayerCase, rps: RPSCase, result: ResultCase) {
-		self.player = player
-		self.rps = rps
-		self.result = result
-	}
-	
-	func playerImageName() -> String {
-		switch player {
-			case PlayerCase.tuna: IMAGE_TUNA
-			case PlayerCase.mandu: IMAGE_MANDU
-		}
-	}
-	
-	func rpsUpImageName() -> String {
-		switch rps {
-			case RPSCase.rock: IMAGE_RPS_ROCK_UP
-			case RPSCase.paper: IMAGE_RPS_PAPER_UP
-			case RPSCase.scissors: IMAGE_RPS_SCISSORS_UP
-		}
-	}
-	
-	func rpsDownImageName() -> String {
-		switch rps {
-			case RPSCase.rock: IMAGE_RPS_ROCK_DOWN
-			case RPSCase.paper: IMAGE_RPS_PAPER_DOWN
-			case RPSCase.scissors: IMAGE_RPS_SCISSORS_DOWN
-		}
-	}
-	
-	func resultText() -> String {
-		var text = ""
-		switch result {
-			case .win:
-				text = "WIN"
-			case .lose:
-				text = "LOSE"
-			case .draw:
-				text = "DRAW"
-			case .none:
-				text = "NONE"
-		}
-		
-		return text
-	}
-	
-}
-
-class GameState {
-	
+	var you: Outcome?
 }

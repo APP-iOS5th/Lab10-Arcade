@@ -65,7 +65,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comRockImage)
 		comRockImage.image = UIImage(
-			named: IMAGE_RPS_ROCK_DOWN)
+			named: IMAGE_RPS_ROCK + SUFFIX_DOWN)
 		comRockImage.contentMode = .scaleAspectFit
 		comRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -83,7 +83,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comPaperImage)
 		comPaperImage.image = UIImage(
-			named: IMAGE_RPS_PAPER_DOWN)
+			named: IMAGE_RPS_PAPER + SUFFIX_DOWN)
 		comPaperImage.contentMode = .scaleAspectFit
 		comPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -101,7 +101,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(comScissorsImage)
 		comScissorsImage.image = UIImage(
-			named: IMAGE_RPS_SCISSORS_DOWN)
+			named: IMAGE_RPS_SCISSORS + SUFFIX_DOWN)
 		comScissorsImage.contentMode = .scaleAspectFit
 		comScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -138,7 +138,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youRockImage)
 		youRockImage.image = UIImage(
-			named: IMAGE_RPS_ROCK_UP)
+			named: IMAGE_RPS_ROCK + SUFFIX_UP)
 		youRockImage.contentMode = .scaleAspectFit
 		youRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -156,7 +156,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youPaperImage)
 		youPaperImage.image = UIImage(
-			named: IMAGE_RPS_PAPER_UP)
+			named: IMAGE_RPS_PAPER + SUFFIX_UP)
 		youPaperImage.contentMode = .scaleAspectFit
 		youPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -174,7 +174,7 @@ extension RockPaperScissorsViewController {
 		
 		view.addSubview(youScissorsImage)
 		youScissorsImage.image = UIImage(
-			named: IMAGE_RPS_SCISSORS_UP)
+			named: IMAGE_RPS_SCISSORS + SUFFIX_UP)
 		youScissorsImage.contentMode = .scaleAspectFit
 		youScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([

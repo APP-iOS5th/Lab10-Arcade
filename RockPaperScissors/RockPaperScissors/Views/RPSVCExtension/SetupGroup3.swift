@@ -28,8 +28,6 @@ extension RockPaperScissorsViewController {
 	
 	func setupYouSelectedRPS() {
 		view.addSubview(youSelectedRPSImage)
-		youSelectedRPSImage.image = UIImage(
-			named: IMAGE_RPS_PAPER_UP)
 		youSelectedRPSImage.contentMode = .scaleAspectFit
 		youSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -48,8 +46,6 @@ extension RockPaperScissorsViewController {
 	
 	func setupComSelectedRPS() {
 		view.addSubview(comSelectedRPSImage)
-		comSelectedRPSImage.image = UIImage(
-			named: IMAGE_RPS_PAPER_DOWN)
 		comSelectedRPSImage.contentMode = .scaleAspectFit
 		comSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
