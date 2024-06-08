@@ -8,7 +8,7 @@
 import UIKit
 
 class MatchImageGameViewController: UIViewController {
-    let matrix = [3,6]
+    let matrix = [3,2]
     let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
     var cards = [UIImageView]()
@@ -33,6 +33,9 @@ class MatchImageGameViewController: UIViewController {
 
         self.title = "같은 그림 찾기"
         view.backgroundColor = .white
+        
+        let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
+        navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
         setupCardImages()
         setupCards()
@@ -165,5 +168,10 @@ class MatchImageGameViewController: UIViewController {
         let timeFormat = String(format: "%02d:%02d", minutes, seconds)
         
         return timeFormat
+    }
+    
+    @objc func goToStart() {
+        let startViewController = MatchImageStartViewController()
+        self.navigationController?.pushViewController(startViewController, animated: true)
     }
 }

@@ -21,6 +21,9 @@ class MatchImageEndViewController: UIViewController {
         super.viewDidLoad()
         self.title = "End Page"
         
+        let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
+        navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
+        
         gameDescription.text = "플레이 시간"
         gamePlayTime.text = playTime
         
@@ -64,5 +67,10 @@ class MatchImageEndViewController: UIViewController {
             restartButton.widthAnchor.constraint(equalToConstant: 150),
             restartButton.heightAnchor.constraint(equalToConstant: 50),
         ])
+    }
+    
+    @objc func goToStart() {
+        let startViewController = MatchImageStartViewController()
+        self.navigationController?.pushViewController(startViewController, animated: true)
     }
 }
