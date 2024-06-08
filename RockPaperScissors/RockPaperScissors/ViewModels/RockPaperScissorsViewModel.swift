@@ -1,11 +1,11 @@
 class RockPaperScissorsViewModel {
 	typealias Player = RPSGamePlayerCase
 	typealias RPS = RPSGameRPSCase
-	typealias ResultCase = RPSGameOutcomeCase
+	typealias Outcome = RPSGameOutcomeCase
 	
 	typealias PlayerModel = RPSGamePlayerModel
 	typealias RPSModel = RPSGameRPSModel
-	typealias ResultModel = RPSGameOutcomeModel
+	typealias OutcomeModel = RPSGameOutcomeModel
 	
 	static let shared = RockPaperScissorsViewModel()
 	private init () { print("Init - RockPaperScissorsViewModel") }
@@ -38,7 +38,7 @@ class RockPaperScissorsViewModel {
 		}
 	}
 	
-	var result = ResultModel() {
+	var outcome = OutcomeModel() {
 		didSet { 
 			youResultLabelDidChange?()
 		}
@@ -47,15 +47,15 @@ class RockPaperScissorsViewModel {
 }
 
 extension RockPaperScissorsViewModel {
-	func initPlayerState() {
+	func initGameData() {
 		player.you = .tuna
 		player.com = .mandu
 		rps.you = nil
 		rps.com = nil
-		result.you = nil
+		outcome.you = nil
 	}
 	
-	func selectedPlayer(_ index: Int) {
+	func selectPlayer(_ index: Int) {
 		switch index {
 			case 0:
 				player.you = .tuna
@@ -67,14 +67,14 @@ extension RockPaperScissorsViewModel {
 		}
 	}
 	
-	func compareRPS() {
+	func outcomeRPS() {
 		switch (rps.you, rps.you) {
 			case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
-				result.you = .draw
+				outcome.you = .draw
 			case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):
-				result.you = .win
+				outcome.you = .win
 			case (.rock, .paper), (.paper, .scissors), (.scissors, .rock):
-				result.you = .lose
+				outcome.you = .lose
 			default: break
 		}
 	}

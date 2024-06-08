@@ -51,7 +51,7 @@ extension RockPaperScissorsViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		
-		rpsViewModel.shared.initPlayerState()
+		rpsViewModel.shared.initGameData()
 		
 		setupViewGroup0()
 		setupViewGroup1()
@@ -63,13 +63,13 @@ extension RockPaperScissorsViewController {
 		youRpsImageViewArray.append(youScissorsImage)
 		
 		setupBindings()
-		rpsViewModel.shared.initPlayerState()
+		rpsViewModel.shared.initGameData()
 		print("RockPaperScissorsViewController - viewDidLoad")
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		rpsViewModel.shared.initPlayerState()
+		rpsViewModel.shared.initGameData()
 		print("viewWillDisappear")
 	}
 }
@@ -100,7 +100,7 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
-		rpsViewModel.shared.selectedPlayer(index)
+		rpsViewModel.shared.selectPlayer(index)
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {

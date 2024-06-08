@@ -197,7 +197,7 @@ extension RockPaperScissorsViewController {
 			self.locationLeftGroup3()
 		}, completion: {_ in
 			self.locationRightEndGroup3()
-			rpsViewModel.shared.initPlayerState()
+			rpsViewModel.shared.initGameData()
 		})
 	}
 }
