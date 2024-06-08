@@ -2,6 +2,13 @@ let FONT_DNF = "DNFBitBitv2"
 let FONT_NEO = "NeoDunggeunmoPro-Regular"
 let IMAGE_TUNA = "Character-Tuna"
 let IMAGE_MANDU = "Character-Mandu"
+
+let IMAGE_RPS_ROCK = "RPS-Rock"
+let IMAGE_RPS_PAPER = "RPS-Paper"
+let IMAGE_RPS_SCISSORS = "RPS-Scissors"
+let SUFFIX_UP = "-Up"
+let SUFFIX_DOWN = "-Down"
+
 let IMAGE_RPS_ROCK_DOWN = "RPS-Rock-Down"
 let IMAGE_RPS_ROCK_UP = "RPS-Rock-Up"
 let IMAGE_RPS_PAPER_DOWN = "RPS-Paper-Down"

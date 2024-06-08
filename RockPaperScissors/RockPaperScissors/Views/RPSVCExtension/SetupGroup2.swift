@@ -195,9 +195,9 @@ extension RockPaperScissorsViewController {
 		
 		
 		// MARK: - TapGesture
-		youRockImage.tag = RPSCase.rock.rawValue
-		youPaperImage.tag = RPSCase.paper.rawValue
-		youScissorsImage.tag = RPSCase.scissors.rawValue
+		youRockImage.tag = RPS.rock.rawValue
+		youPaperImage.tag = RPS.paper.rawValue
+		youScissorsImage.tag = RPS.scissors.rawValue
 		
 		let tapGestureRock = UITapGestureRecognizer(
 			target: self, action: #selector(rpsTap(_:)))

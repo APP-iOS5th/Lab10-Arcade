@@ -1,52 +1,51 @@
 class RockPaperScissorsViewModel {
 	typealias Player = RPSGamePlayerCase
-	typealias RPSCase = RPSGameRockPaperScissorsCase
+	typealias RPS = RPSGameRockPaperScissorsCase
 	typealias ResultCase = RPSGameResultCase
 	
 	static let shared = RockPaperScissorsViewModel()
-	private init () {}
+	private init () { print("Init - RockPaperScissorsViewModel") }
 	
-	var playerImageDidChange: ((String, String) -> Void)?
+	var charactersImageDidChange: ((_ youImageName: String, _ comImageName: String) -> Void)?
+	var youSelectRPSImageDidChange: ((_ imageName: String) -> Void)?
+	var comSelectRPSImageDidChange: ((_ imageName: String) -> Void)?
+	var oldSelectRPSImageAnimation: ((_ oldTag: Int) -> Void)?
+	var youSelectRPSImageAnimation: ((_ newTag: Int) -> Void)?
+	
 	var player = PlayerModel() {
 		didSet {
-			playerImageDidChange?(
+			charactersImageDidChange?(
 				player.you?.named() ?? "",
-				player.com?.named() ?? ""
-			)
+				player.com?.named() ?? "")
 		}
 	}
 	
-	let you = PlayerState(
-		player: Player.tuna,
-		rps: RPSCase.none,
-		result: ResultCase.none
-	)
+	var youRPS = RPSModel() {
+		didSet(oldRPS) {
+			oldSelectRPSImageAnimation?(oldRPS.select?.rawValue ?? 0)
+			youSelectRPSImageAnimation?(youRPS.select?.rawValue ?? 0)
+			
+			youSelectRPSImageDidChange?(
+				(youRPS.select?.named() ?? "") + SUFFIX_UP)
+			comRPS.select = RPS.allCases.randomElement()
+		}
+	}
 	
-	let com = PlayerState(
-		player: Player.mandu,
-		rps: RPSCase.none,
-		result: ResultCase.none
-	)
+	var comRPS = RPSModel() {
+		didSet {
+			comSelectRPSImageDidChange?(
+				(comRPS.select?.named() ?? "") + SUFFIX_DOWN)
+		}
+	}
 	
 }
-
-
 
 extension RockPaperScissorsViewModel {
 	func initPlayerState() {
 		player.you = .tuna
 		player.com = .mandu
-		
-		
-		you.player = .tuna
-		you.rps = .none
-		you.result = .none
-		you.rpsPrevSelected = .none
-		
-		com.player = .mandu
-		com.rps = .none
-		com.result = .none
-		com.rpsPrevSelected = .none
+		youRPS.select = nil
+		comRPS.select = nil
 	}
 	
 	func selectedPlayer(_ index: Int) {
@@ -54,17 +53,12 @@ extension RockPaperScissorsViewModel {
 			case 0:
 				player.you = .tuna
 				player.com = .mandu
-//				you.player = Player.tuna
-//				com.player = Player.mandu
 			case 1:
 				player.you = .mandu
 				player.com = .tuna
-//				you.player = Player.mandu
-//				com.player = Player.tuna
 			default:
 				break
 		}
 	}
-	
 	
 }

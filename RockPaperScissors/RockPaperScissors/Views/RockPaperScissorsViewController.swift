@@ -6,8 +6,8 @@ class RockPaperScissorsViewController: UIViewController {
 	typealias rpsViewModel = RockPaperScissorsViewModel
 	
 	typealias Player = RPSGamePlayerCase
-	typealias RPSCase = RPSGameRockPaperScissorsCase
-	typealias ResultCase = RPSGameResultCase
+	typealias RPS = RPSGameRockPaperScissorsCase
+	typealias Result = RPSGameResultCase
 	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
@@ -64,6 +64,7 @@ extension RockPaperScissorsViewController {
 		
 		setupBindings()
 		rpsViewModel.shared.initPlayerState()
+		print("RockPaperScissorsViewController - viewDidLoad")
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -100,41 +101,21 @@ extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
 		rpsViewModel.shared.selectedPlayer(index)
-//		comCharacterImage.image = UIImage(
-//			named: rpsViewModel.shared.com.playerImageName())
-//		youCharacterImage.image = UIImage(
-//			named: rpsViewModel.shared.you.playerImageName())
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-		let v = sender.view as? UIImageView
-		let tag = v?.tag
-		
-		print("rpsTap prev : \(rpsViewModel.shared.you.rpsPrevSelected.rawValue)")
-		print("rpsTap now : \(rpsViewModel.shared.you.rps.rawValue)")
-		
-		if(rpsViewModel.shared.you.rpsPrevSelected != .none) {
-			if let prevSelectedImageView = youRpsImageViewArray.first(where: { $0.tag == rpsViewModel.shared.you.rpsPrevSelected.rawValue }) {
-				locationBottom(prevSelectedImageView)
-			}
-		}
+		let selectView = sender.view as? UIImageView
+		let tag = selectView?.tag
 		
 		switch tag {
-			case RPSCase.rock.rawValue:
-				rpsViewModel.shared.you.rps = RPSCase.rock
-			case RPSCase.paper.rawValue:
-				rpsViewModel.shared.you.rps = RPSCase.paper
-			case RPSCase.scissors.rawValue:
-				rpsViewModel.shared.you.rps = RPSCase.scissors
-			default:
-				rpsViewModel.shared.you.rps = RPSCase.none
+			case RPS.rock.rawValue: rpsViewModel.shared
+					.youRPS.select = RPS.rock
+			case RPS.paper.rawValue: rpsViewModel.shared
+					.youRPS.select = RPS.paper
+			case RPS.scissors.rawValue: rpsViewModel.shared
+					.youRPS.select = RPS.scissors
+			default: break
 		}
-		
-		rpsViewModel.shared.you.rpsPrevSelected = rpsViewModel.shared.you.rps
-	
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationTop(v)
-		})
 	}
 }
 
@@ -148,12 +129,46 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	func setupBindings() {
 		
-		rpsViewModel.shared.playerImageDidChange = {
+		rpsViewModel.shared.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
 				.image = UIImage(named: youImageName)
 			self?.comCharacterImage
 				.image = UIImage(named: comImageName)
+		}
+		
+		rpsViewModel.shared.youSelectRPSImageDidChange = {
+			[weak self] imageName in
+			print(imageName)
+			self?.youSelectedRPSImage
+				.image = UIImage(named: imageName)
+		}
+		
+		rpsViewModel.shared.comSelectRPSImageDidChange = {
+			[weak self] imageName in
+			print(imageName)
+			self?.comSelectedRPSImage
+				.image = UIImage(named: imageName)
+		}
+		
+		rpsViewModel.shared.oldSelectRPSImageAnimation = {
+			[weak self] oldTag in
+			print(oldTag)
+			var selectView = self?.youRpsImageViewArray
+				.first(where: { $0.tag == oldTag })
+			UIView.animate(withDuration: 0.5, animations: {
+				self?.locationBottom(selectView)
+			})
+		}
+		
+		rpsViewModel.shared.youSelectRPSImageAnimation = {
+			[weak self] newTag in
+			print(newTag)
+			var selectView = self?.youRpsImageViewArray
+				.first(where: { $0.tag == newTag })
+			UIView.animate(withDuration: 0.5, animations: {
+				self?.locationTop(selectView)
+			})
 		}
 
 	}

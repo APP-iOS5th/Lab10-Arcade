@@ -30,9 +30,10 @@ extension RockPaperScissorsViewController {
 		target?.transform = tConcat!
 	}
 	
-	func locationInit(_ target: UIView?) {
-		target?.transform = CGAffineTransform.identity
-	}
+//	func locationInit(_ target: UIView?) {
+//		let tConcat = CGAffineTransform.identity
+//		target?.transform = tConcat
+//	}
 }
 
 // MARK: - SetupLocation Function
@@ -197,9 +198,6 @@ extension RockPaperScissorsViewController {
 		}, completion: {_ in
 			self.locationRightEndGroup3()
 			rpsViewModel.shared.initPlayerState()
-			self.locationInit(self.youRockImage)
-			self.locationInit(self.youPaperImage)
-			self.locationInit(self.youScissorsImage)
 		})
 	}
 }
