@@ -8,7 +8,7 @@
 import UIKit
 
 class MatchImageGameViewController: UIViewController {
-    let matrix = [3,2]
+    var matrix = [3,2]
     let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
     var cards = [UIImageView]()
