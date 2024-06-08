@@ -65,8 +65,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.restartButton)
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youResult)
-		self.locationLeft(self.comResult)
+		self.locationLeft(self.youOutcomeLabel)
 	}
 	func locationRightEndGroup1() {
 		// viewGroup1
@@ -107,8 +106,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.restartButton)
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youResult)
-		self.locationLeft(self.comResult)
+		self.locationLeft(self.youOutcomeLabel)
 	}
 	func locationRightEndGroup2() {
 		// viewGroup2
@@ -151,8 +149,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.restartButton)
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youResult)
-		self.locationLeft(self.comResult)
+		self.locationLeft(self.youOutcomeLabel)
 	}
 	func locationRightEndGroup3() {
 		// viewGorup2 RightEnd
@@ -169,8 +166,7 @@ extension RockPaperScissorsViewController {
 		self.locationRightEnd(self.restartButton)
 		self.locationRightEnd(self.youSelectedRPSImage)
 		self.locationRightEnd(self.comSelectedRPSImage)
-		self.locationRightEnd(self.youResult)
-		self.locationRightEnd(self.comResult)
+		self.locationRightEnd(self.youOutcomeLabel)
 	}
 }
 

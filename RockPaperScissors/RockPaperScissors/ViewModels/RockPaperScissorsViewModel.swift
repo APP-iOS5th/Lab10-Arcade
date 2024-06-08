@@ -30,11 +30,13 @@ class RockPaperScissorsViewModel {
 			oldSelectRPSImageAnimation?(old.you?.rawValue ?? 0)
 			youSelectRPSImageAnimation?(rps.you?.rawValue ?? 0)
 			youSelectRPSImageDidChange?(
-				(rps.you?.named() ?? "") + SUFFIX_UP)
+				(rps.you?.prefix() ?? "") + SUFFIX_UP)
 			
 			rps.com = RPS.allCases.randomElement()
 			comSelectRPSImageDidChange?(
-				(rps.com?.named() ?? "") + SUFFIX_DOWN)
+				(rps.com?.prefix() ?? "") + SUFFIX_DOWN)
+			
+			outcomeRPS()
 		}
 	}
 	
@@ -68,7 +70,7 @@ extension RockPaperScissorsViewModel {
 	}
 	
 	func outcomeRPS() {
-		switch (rps.you, rps.you) {
+		switch (rps.you, rps.com) {
 			case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
 				outcome.you = .draw
 			case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):

@@ -7,7 +7,7 @@ class RockPaperScissorsViewController: UIViewController {
 	
 	typealias Player = RPSGamePlayerCase
 	typealias RPS = RPSGameRPSCase
-	typealias Result = RPSGameOutcomeCase
+	typealias Outcome = RPSGameOutcomeCase
 	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
@@ -39,8 +39,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let restartButton = UIButton()
 	let youSelectedRPSImage = UIImageView()
 	let comSelectedRPSImage = UIImageView()
-	let youResult = UILabel()
-	let comResult = UILabel()
+	let youOutcomeLabel = UILabel()
 	
 	var youRpsImageViewArray: [UIImageView] = []
 }
@@ -128,7 +127,7 @@ extension RockPaperScissorsViewController {
 // MARK: Binding
 extension RockPaperScissorsViewController {
 	func setupBindings() {
-		
+
 		rpsViewModel.shared.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
@@ -169,6 +168,11 @@ extension RockPaperScissorsViewController {
 			UIView.animate(withDuration: 0.5, animations: {
 				self?.locationTop(selectView)
 			})
+		}
+		
+		rpsViewModel.shared.youResultLabelDidChange = {
+			print("self.rawValue = \(rpsViewModel.shared.outcome.you?.text())")
+			self.youOutcomeLabel.text = rpsViewModel.shared.outcome.you?.text()
 		}
 
 	}

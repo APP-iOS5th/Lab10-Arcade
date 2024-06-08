@@ -6,8 +6,7 @@ extension RockPaperScissorsViewController {
 		setupRestartButton()
 		setupYouSelectedRPS()
 		setupComSelectedRPS()
-		setupYouResult()
-		setupComResult()
+		setupYouOutcome()
 	}
 	
 	func setupRestartButton() {
@@ -62,40 +61,24 @@ extension RockPaperScissorsViewController {
 		])
 	}
 	
-	func setupYouResult() {
-		view.addSubview(youResult)
-//		youResult.text = rpsViewModel.shared.you.resultText()
-		youResult.font = UIFont(name: FONT_DNF, size: 20)
-		youResult.textColor = .systemTeal
-		youResult.shadowColor = .gray
-		youResult.shadowOffset = CGSize(width: 1, height: 1)
+	func setupYouOutcome() {
+		youOutcomeLabel.font = UIFont(name: FONT_DNF, size: 25)
+		youOutcomeLabel.textColor = .systemOrange
+		youOutcomeLabel.textAlignment = .center
+		youOutcomeLabel.numberOfLines = 2
+		youOutcomeLabel.shadowColor = .black
+		youOutcomeLabel.shadowOffset = CGSize(width: 1, height: 1)
 		
-		youResult.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(youOutcomeLabel)
+		
+		youOutcomeLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			youResult.centerXAnchor.constraint(
-				equalTo: restartButton.centerXAnchor,
-				constant: 100),
-			youResult.centerYAnchor.constraint(
-				equalTo: youCharacterImage.centerYAnchor),
+			youOutcomeLabel.centerXAnchor.constraint(
+				equalTo: restartButton.centerXAnchor),
+			youOutcomeLabel.centerYAnchor.constraint(
+				equalTo: gameBoardWindow.centerYAnchor),
 		])
 	}
 	
-	func setupComResult() {
-		view.addSubview(comResult)
-//		comResult.text = rpsViewModel.shared.com.resultText()
-		comResult.font = UIFont(name: FONT_DNF, size: 20)
-		comResult.textColor = .systemTeal
-		comResult.shadowColor = .gray
-		comResult.shadowOffset = CGSize(width: 1, height: 1)
-		
-		comResult.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			comResult.centerXAnchor.constraint(
-				equalTo: restartButton.centerXAnchor,
-				constant: 100),
-			comResult.centerYAnchor.constraint(
-				equalTo: comCharacterImage.centerYAnchor),
-		])
-	}
 }
 
