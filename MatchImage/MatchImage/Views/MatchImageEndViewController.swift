@@ -19,7 +19,7 @@ class MatchImageEndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "End Page"
+        self.title = "게임 종료"
         
         let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)

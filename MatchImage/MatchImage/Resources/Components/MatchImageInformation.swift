@@ -11,7 +11,7 @@ struct MatchImageInformation {
     
     var gameTitle: UILabel {
         let label = UILabel()
-        label.text = "같은 그림 찾기"
+        label.text = "짝꿍 찾기"
         label.font = CustomFonts().dNFBitBitv2
         
         label.translatesAutoresizingMaskIntoConstraints = false

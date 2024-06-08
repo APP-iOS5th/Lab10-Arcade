@@ -18,9 +18,9 @@ class MatchImageStartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        self.title = "Start Page"
+        self.title = "시작 화면"
         
-        gameDescription.text = "도전!\n 최단 시간에 그림 쌍을 맞춰 보세요."
+        gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         startButton.setTitle("STRAT", for: .normal)
         startButton.addAction(UIAction { [weak self] _ in
             let matchImageGameViewController = MatchImageGameViewController()
