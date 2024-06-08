@@ -51,10 +51,14 @@ extension RockPaperScissorsViewController {
 	
 	func setupOptionWindowSegmentedControl(){
 		view.addSubview(optionWindowSegControl)
-		optionWindowSegControl.insertSegment(withTitle: "튜나", at: 0, animated: false)
-		optionWindowSegControl.insertSegment(withTitle: "만두", at: 1, animated: false)
+		optionWindowSegControl.insertSegment(
+			withTitle: "튜나", at: 0, animated: false)
+		optionWindowSegControl.insertSegment(
+			withTitle: "만두", at: 1, animated: false)
 		optionWindowSegControl.selectedSegmentIndex = 0
-		optionWindowSegControl.addTarget(self, action: #selector(playerSelect(_:)), for: .valueChanged)
+		optionWindowSegControl.addTarget(
+			self, action: #selector(playerSelect(_:)),
+			for: .valueChanged)
 		
 		optionWindowSegControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -74,14 +78,24 @@ extension RockPaperScissorsViewController {
 		optionWindowImage0.translatesAutoresizingMaskIntoConstraints = false
 		optionWindowImage1.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			optionWindowImage0.heightAnchor.constraint(equalToConstant: 30),
-			optionWindowImage1.heightAnchor.constraint(equalToConstant: 30),
+			optionWindowImage0.heightAnchor.constraint(
+				equalToConstant: 30),
+			optionWindowImage1.heightAnchor.constraint(
+				equalToConstant: 30),
 			
-			optionWindowImage0.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor, constant: -70),
-			optionWindowImage0.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: -20),
+			optionWindowImage0.centerXAnchor.constraint(
+				equalTo: optionWindow.centerXAnchor, 
+				constant: -70),
+			optionWindowImage0.centerYAnchor.constraint(
+				equalTo: optionWindow.centerYAnchor, 
+				constant: -20),
 			
-			optionWindowImage1.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor, constant: 70),
-			optionWindowImage1.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: -20),
+			optionWindowImage1.centerXAnchor.constraint(
+				equalTo: optionWindow.centerXAnchor, 
+				constant: 70),
+			optionWindowImage1.centerYAnchor.constraint(
+				equalTo: optionWindow.centerYAnchor, 
+				constant: -20),
 		])
 	}
 	

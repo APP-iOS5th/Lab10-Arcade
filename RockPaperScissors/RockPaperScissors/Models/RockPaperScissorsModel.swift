@@ -1,6 +1,25 @@
 // MARK: - Enum
-enum RPSGamePlayerCase { case tuna, mandu }
-enum RPSGameRockPaperScissorsCase: Int {
+
+import UIKit
+
+enum RPSGamePlayerCase {
+	case tuna, mandu
+	
+	func named() -> String {
+		switch self {
+			case .tuna: return IMAGE_TUNA
+			case .mandu: return IMAGE_MANDU
+		}
+	}
+	
+	func uiImage() -> UIImage {
+		switch self {
+			case .tuna: return UIImage(named: IMAGE_TUNA)!
+			case .mandu: return UIImage(named: IMAGE_MANDU)!
+		}
+	}
+}
+enum RPSGameRockPaperScissorsCase: Int, CaseIterable {
 	case rock = 101
 	case paper = 102
 	case scissors = 103
@@ -11,6 +30,14 @@ enum RPSGameResultCase: String {
 	case lose = "LOSE"
 	case draw = "DRAW"
 	case none = "NONE"
+}
+
+
+struct PlayerModel {
+	typealias Player = RPSGamePlayerCase
+	
+	var you:Player?
+	var com:Player?
 }
 
 // MARK: - Class

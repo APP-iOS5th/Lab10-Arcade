@@ -47,8 +47,8 @@ extension RockPaperScissorsViewController {
 	
 	func setupComImages() {
 		view.addSubview(comCharacterImage)
-		comCharacterImage.image = UIImage(
-			named: rpsVM.shared.com.playerImageName())
+//		comCharacterImage.image = UIImage(
+//			named: rpsViewModel.shared.com.playerImageName())
 		comCharacterImage.contentMode = .scaleAspectFit
 		comCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -120,8 +120,8 @@ extension RockPaperScissorsViewController {
 	
 	func setupYouImages() {
 		view.addSubview(youCharacterImage)
-		youCharacterImage.image = UIImage(
-			named: rpsVM.shared.you.playerImageName())
+//		youCharacterImage.image = UIImage(
+//			named: rpsViewModel.shared.you.playerImageName())
 		youCharacterImage.contentMode = .scaleAspectFit
 		youCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([

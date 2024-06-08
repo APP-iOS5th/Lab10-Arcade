@@ -68,7 +68,7 @@ extension RockPaperScissorsViewController {
 	
 	func setupYouResult() {
 		view.addSubview(youResult)
-		youResult.text = rpsVM.shared.you.resultText()
+		youResult.text = rpsViewModel.shared.you.resultText()
 		youResult.font = UIFont(name: FONT_DNF, size: 20)
 		youResult.textColor = .systemTeal
 		youResult.shadowColor = .gray
@@ -86,7 +86,7 @@ extension RockPaperScissorsViewController {
 	
 	func setupComResult() {
 		view.addSubview(comResult)
-		comResult.text = rpsVM.shared.com.resultText()
+		comResult.text = rpsViewModel.shared.com.resultText()
 		comResult.font = UIFont(name: FONT_DNF, size: 20)
 		comResult.textColor = .systemTeal
 		comResult.shadowColor = .gray
