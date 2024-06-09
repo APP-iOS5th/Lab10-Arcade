@@ -52,8 +52,6 @@ extension RockPaperScissorsViewController {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 		
-		rpsVM.shared.initGameData()
-		
 		setupViewGroup0()
 		setupViewGroup1()
 		setupViewGroup2()
@@ -70,6 +68,7 @@ extension RockPaperScissorsViewController {
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		rpsVM.shared.initGameData()
+		print("viewWillDisappear")
 	}
 }
 
@@ -106,14 +105,21 @@ extension RockPaperScissorsViewController {
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
 		switch tag {
-			case RPS.rock.tag: rpsVM.shared
-					.rps.you = RPS.rock
-			case RPS.paper.tag: rpsVM.shared
-					.rps.you = RPS.paper
-			case RPS.scissors.tag: rpsVM.shared
-					.rps.you = RPS.scissors
+			case RPS.rock.tag: 
+				rpsVM.shared.rps.update(
+				you: RPS.rock,
+				com: RPS.allCases.randomElement())
+			case RPS.paper.tag: 
+				rpsVM.shared.rps.update(
+				you: RPS.paper,
+				com: RPS.allCases.randomElement())
+			case RPS.scissors.tag:
+				rpsVM.shared.rps.update(
+				you: RPS.scissors,
+				com: RPS.allCases.randomElement())
 			default: break
 		}
+		rpsVM.shared.outcomeRPS()
 	}
 }
 
@@ -141,7 +147,7 @@ extension RockPaperScissorsViewController {
 				.image = UIImage(named: imageName)
 		}
 		
-		rpsVM.shared.oldSelectRPSImageAnimation = {
+		rpsVM.shared.youOldSelectRPSImageAnimation = {
 			[weak self] oldTag in
 			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == oldTag })
@@ -170,7 +176,7 @@ extension RockPaperScissorsViewController {
 			[weak self] text, colorName in
 			print(colorName)
 			self?.comOutcomeLabel.text = text
-			self?.comOutcomeLabel.textColor = UIColor(named: "RPS-Color-Draw")
+			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
 		}
 
 	}

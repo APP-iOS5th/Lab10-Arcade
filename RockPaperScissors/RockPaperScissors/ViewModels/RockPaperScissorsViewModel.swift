@@ -13,34 +13,33 @@ class RockPaperScissorsViewModel {
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
-	var oldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
+	var youOldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
 	var youSelectRPSImageAnimation: ((_ new: Int) -> Void)?
 	var youOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 	var comOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 
-	var player = PlayerModel() {
+	var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
+			print("player")
 			charactersImageDidChange?(
-				player.you?.imageName ?? "",
-				player.com?.imageName ?? "")
+				player.you.imageName, player.com.imageName)
 		}
 	}
 	
-	var rps = RPSModel() {
+	var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
-			oldSelectRPSImageAnimation?(old.you?.tag ?? 0)
+			print("rps")
+			youOldSelectRPSImageAnimation?(old.you?.tag ?? 0)
 			youSelectRPSImageAnimation?(rps.you?.tag ?? 0)
+			
 			youSelectRPSImageDidChange?(rps.you?.imageNameUp ?? "N/A")
-			
-			rps.com = RPS.allCases.randomElement()
 			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")
-			
-			outcomeRPS()
 		}
 	}
 	
-	var outcome = OutcomeModel() {
+	var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
+			print("outcome")
 			youOutcomeLabelDidChange?(
 				outcome.you?.rawValue ?? "N/A",
 				outcome.you?.colorName ?? "N/A")
@@ -54,22 +53,17 @@ class RockPaperScissorsViewModel {
 
 extension RockPaperScissorsViewModel {
 	func initGameData() {
-		player.you = .tuna
-		player.com = .mandu
-		rps.you = nil
-		rps.com = nil
-		outcome.you = nil
-		outcome.com = nil
+		player.update(you: .tuna, com: .mandu)
+		rps.update(you: nil, com: nil)
+		outcome.update(you: nil, com: nil)
 	}
 	
 	func selectPlayer(_ index: Int) {
 		switch index {
 			case 0:
-				player.you = .tuna
-				player.com = .mandu
+				player.update(you: .tuna, com: .mandu)
 			case 1:
-				player.you = .mandu
-				player.com = .tuna
+				player.update(you: .mandu, com: .tuna)
 			default: break
 		}
 	}
@@ -77,14 +71,11 @@ extension RockPaperScissorsViewModel {
 	func outcomeRPS() {
 		switch (rps.you, rps.com) {
 			case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
-				outcome.you = .draw
-				outcome.com = .draw
+				outcome.update(you: .draw, com: .draw)
 			case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):
-				outcome.you = .win
-				outcome.com = .lose
+				outcome.update(you: .win, com: .lose)
 			case (.rock, .paper), (.paper, .scissors), (.scissors, .rock):
-				outcome.you = .lose
-				outcome.com = .win
+				outcome.update(you: .lose, com: .win)
 			default: break
 		}
 	}

@@ -57,20 +57,35 @@ enum RPSGameOutcomeCase: String {
 struct RPSGamePlayerModel {
 	typealias Player = RPSGamePlayerCase
 	
-	var you: Player?
-	var com: Player?
+	private(set) var you: Player
+	private(set) var com: Player
+	
+	mutating func update(you: Player, com: Player) {
+		self.you = you
+		self.com = com
+	}
 }
 
 struct RPSGameRPSModel {
 	typealias RPS = RPSGameRPSCase
 	
-	var you: RPS?
-	var com: RPS?
+	private(set) var you: RPS?
+	private(set) var com: RPS?
+	
+	mutating func update(you: RPS?, com: RPS?) {
+		self.you = you
+		self.com = com
+	}
 }
 
 struct RPSGameOutcomeModel {
 	typealias Outcome = RPSGameOutcomeCase
 	
-	var you: Outcome?
-	var com: Outcome?
+	private(set) var you: Outcome?
+	private(set) var com: Outcome?
+	
+	mutating func update(you: Outcome?, com: Outcome?) {
+		self.you = you
+		self.com = com
+	}
 }
