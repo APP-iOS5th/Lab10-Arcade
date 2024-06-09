@@ -40,10 +40,6 @@ enum RPSGameOutcomeCase: String {
 	case lose = "LOSE"
 	case draw = "DRAW"
 	
-	var text: String {
-		return self.rawValue
-	}
-	
 	var colorName: String {
 		switch self {
 			case .win: return "RPS-Color-Win"

@@ -194,7 +194,7 @@ extension RockPaperScissorsViewController {
 	
 	@objc func gameRpsSelect() {
 		guard (rpsVM.shared.rps.you != nil) else {
-			// TODO: "가위바위보를 선택해주세요"
+			// TODO: "가위바위보를 선택해주세요" 메세지 출력
 			return
 		}
 		
