@@ -16,6 +16,7 @@ class MatchImageEndViewController: UIViewController {
     let restartButton = CustomButton().button
     
     var playTime = ""
+    var difficulty = "쉬움"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,23 @@ class MatchImageEndViewController: UIViewController {
         let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
-        gameDescription.text = "플레이 시간"
+        // bring saved matrix
+        if let savedMatrix =
+//            UserDefaults.value(forKey: "matrix") as? [Int] {
+            UserDefaults.standard.array(forKey: "matrix") as? [Int] {
+            switch savedMatrix {
+            case [3,2]:
+                difficulty = "쉬움"
+            case [3,4]:
+                difficulty = "보통"
+            case [3,6]:
+                difficulty = "어려움"
+            default:
+                difficulty = "쉬움"
+            }
+        }
+        
+        gameDescription.text = "난이도: \(difficulty)\n\n플레이 시간"
         gamePlayTime.text = playTime
         
         restartButton.setTitle("Restart", for: .normal)
@@ -58,7 +75,7 @@ class MatchImageEndViewController: UIViewController {
             gameTitle.centerXAnchor.constraint(equalTo: gameInfoContainer.centerXAnchor),
             gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
             gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
-            gamePlayTime.topAnchor.constraint(equalTo: gameDescription.bottomAnchor, constant: 10),
+            gamePlayTime.topAnchor.constraint(equalTo: gameDescription.bottomAnchor),
             gamePlayTime.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
             gamePlayTime.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gamePlayTime.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),

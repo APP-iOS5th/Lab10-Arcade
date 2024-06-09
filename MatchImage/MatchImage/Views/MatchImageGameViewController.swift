@@ -38,6 +38,11 @@ class MatchImageGameViewController: UIViewController {
         let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
+        // bring saved matrix
+        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
+            matrix = savedMatrix
+        }
+        
         setupCardImages()
         setupCards()
         view.addSubview(playTime)

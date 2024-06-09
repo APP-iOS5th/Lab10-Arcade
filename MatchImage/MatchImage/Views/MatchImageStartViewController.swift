@@ -15,7 +15,7 @@ class MatchImageStartViewController: UIViewController {
     let startButton = CustomButton().button
     
     var matrix = [3,2]
-    lazy var options: UISegmentedControl = {
+    lazy var difficultyOptions: UISegmentedControl = {
         let items = ["쉬움", "보통", "어려움"]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
@@ -34,10 +34,30 @@ class MatchImageStartViewController: UIViewController {
         
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
-        options.addAction(UIAction { [weak self] _ in
+        // bring saved matrix
+        if let savedMatrix = 
+//            UserDefaults.value(forKey: "matrix") as? [Int] {
+            UserDefaults.standard.array(forKey: "matrix") as? [Int] {
+            matrix = savedMatrix
+        }
+        
+        // apply saved matrix to the difficulty option
+        switch matrix {
+        case [3,2]:
+            difficultyOptions.selectedSegmentIndex = 0
+        case [3,4]:
+            difficultyOptions.selectedSegmentIndex = 1
+        case [3,6]:
+            difficultyOptions.selectedSegmentIndex = 2
+        default:
+            difficultyOptions.selectedSegmentIndex = 0
+        }
+        
+        setupLayout()
+        
+        difficultyOptions.addAction(UIAction { [weak self] _ in
             guard let self = self else { return }
-            print("\(options.selectedSegmentIndex)")
-            switch options.selectedSegmentIndex {
+            switch difficultyOptions.selectedSegmentIndex {
             case 0:
                 matrix = [3,2]
             case 1:
@@ -47,6 +67,9 @@ class MatchImageStartViewController: UIViewController {
             default:
                 break
             }
+            
+            // save selected matrix
+            UserDefaults.standard.set(matrix, forKey: "matrix")
         }, for: .valueChanged)
         
         startButton.setTitle("STRAT", for: .normal)
@@ -56,7 +79,6 @@ class MatchImageStartViewController: UIViewController {
             matchImageGameViewController.matrix = matrix
             navigationController?.pushViewController(matchImageGameViewController, animated: true)
         }, for: .touchUpInside)
-        setupLayout()
     }
     
     private func setupLayout() {
@@ -64,7 +86,7 @@ class MatchImageStartViewController: UIViewController {
         gameInfoContainer.addSubview(gameDescription)
         view.addSubview(backgroundImage)
         view.addSubview(gameInfoContainer)
-        view.addSubview(options)
+        view.addSubview(difficultyOptions)
         view.addSubview(startButton)
         
         let safeArea = view.safeAreaLayoutGuide
@@ -84,8 +106,8 @@ class MatchImageStartViewController: UIViewController {
             gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
             gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
-            options.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            options.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -50),
+            difficultyOptions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            difficultyOptions.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -50),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             startButton.widthAnchor.constraint(equalToConstant: 150),
