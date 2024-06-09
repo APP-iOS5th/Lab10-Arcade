@@ -6,7 +6,8 @@ extension RockPaperScissorsViewController {
 		setupRestartButton()
 		setupYouSelectedRPS()
 		setupComSelectedRPS()
-		setupYouOutcome()
+		setupYouOutcomeLabel()
+		setupComOutcomeLabel()
 	}
 	
 	func setupRestartButton() {
@@ -61,22 +62,37 @@ extension RockPaperScissorsViewController {
 		])
 	}
 	
-	func setupYouOutcome() {
+	func setupYouOutcomeLabel() {
+		view.addSubview(youOutcomeLabel)
 		youOutcomeLabel.font = UIFont(name: FONT_DNF, size: 25)
-		youOutcomeLabel.textColor = .systemOrange
 		youOutcomeLabel.textAlignment = .center
-		youOutcomeLabel.numberOfLines = 2
 		youOutcomeLabel.shadowColor = .black
 		youOutcomeLabel.shadowOffset = CGSize(width: 1, height: 1)
-		
-		view.addSubview(youOutcomeLabel)
 		
 		youOutcomeLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			youOutcomeLabel.centerXAnchor.constraint(
-				equalTo: restartButton.centerXAnchor),
+				equalTo: youCharacterImage.centerXAnchor,
+				constant: 100 + view.bounds.width),
 			youOutcomeLabel.centerYAnchor.constraint(
-				equalTo: gameBoardWindow.centerYAnchor),
+				equalTo: youCharacterImage.centerYAnchor),
+		])
+	}
+	
+	func setupComOutcomeLabel() {
+		view.addSubview(comOutcomeLabel)
+		comOutcomeLabel.font = UIFont(name: FONT_DNF, size: 25)
+		comOutcomeLabel.textAlignment = .center
+		comOutcomeLabel.shadowColor = .black
+		comOutcomeLabel.shadowOffset = CGSize(width: 1, height: 1)
+		
+		comOutcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comOutcomeLabel.centerXAnchor.constraint(
+				equalTo: comCharacterImage.centerXAnchor,
+				constant: 100 + view.bounds.width),
+			comOutcomeLabel.centerYAnchor.constraint(
+				equalTo: comCharacterImage.centerYAnchor),
 		])
 	}
 	

@@ -1,7 +1,7 @@
 // MARK: - Enum
 enum RPSGamePlayerCase {
 	case tuna, mandu
-	func named() -> String {
+	var imageName: String {
 		switch self {
 			case .tuna: return IMAGE_TUNA
 			case .mandu: return IMAGE_MANDU
@@ -9,12 +9,9 @@ enum RPSGamePlayerCase {
 	}
 }
 
-enum RPSGameRPSCase: Int, CaseIterable {
-	case rock = 101
-	case paper = 102
-	case scissors = 103
-	
-	func tag() -> Int {
+enum RPSGameRPSCase: CaseIterable {
+	case rock, paper, scissors
+	var tag: Int {
 		switch self {
 			case .rock: return 101
 			case .paper: return 102
@@ -22,28 +19,19 @@ enum RPSGameRPSCase: Int, CaseIterable {
 		}
 	}
 	
-	func prefix() -> String {
+	var imageNamePrefix: String {
 		switch self {
-			case .rock: return IMAGE_RPS_ROCK
-			case .paper: return IMAGE_RPS_PAPER
-			case .scissors: return IMAGE_RPS_SCISSORS
+			case .rock: return "RPS-Rock"
+			case .paper: return "RPS-Paper"
+			case .scissors: return "RPS-Scissors"
 		}
 	}
 	
-	func upImageName() -> String {
-		switch self {
-			case .rock: return IMAGE_RPS_ROCK + SUFFIX_UP
-			case .paper: return IMAGE_RPS_PAPER + SUFFIX_UP
-			case .scissors: return IMAGE_RPS_SCISSORS + SUFFIX_UP
-		}
+	var imageNameUp: String {
+		return self.imageNamePrefix + "-Up"
 	}
-	
-	func downImageName() -> String {
-		switch self {
-			case .rock: return IMAGE_RPS_ROCK + SUFFIX_DOWN
-			case .paper: return IMAGE_RPS_PAPER + SUFFIX_DOWN
-			case .scissors: return IMAGE_RPS_SCISSORS + SUFFIX_DOWN
-		}
+	var imageNameDown: String {
+		return self.imageNamePrefix + "-Down"
 	}
 }
 
@@ -52,8 +40,16 @@ enum RPSGameOutcomeCase: String {
 	case lose = "LOSE"
 	case draw = "DRAW"
 	
-	func text() -> String {
-		return "YOU\n" + self.rawValue
+	var text: String {
+		return self.rawValue
+	}
+	
+	var colorName: String {
+		switch self {
+			case .win: return "RPS-Color-Win"
+			case .lose: return "RPS-Color-Lose"
+			case .draw: return "RPS-Color-Draw"
+		}
 	}
 }
 
@@ -76,4 +72,5 @@ struct RPSGameOutcomeModel {
 	typealias Outcome = RPSGameOutcomeCase
 	
 	var you: Outcome?
+	var com: Outcome?
 }

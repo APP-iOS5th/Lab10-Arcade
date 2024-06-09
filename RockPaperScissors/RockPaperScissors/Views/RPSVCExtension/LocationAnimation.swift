@@ -29,11 +29,6 @@ extension RockPaperScissorsViewController {
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
-	
-//	func locationInit(_ target: UIView?) {
-//		let tConcat = CGAffineTransform.identity
-//		target?.transform = tConcat
-//	}
 }
 
 // MARK: - SetupLocation Function
@@ -56,16 +51,19 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
 		self.locationLeft(self.comScissorsImage)
+		self.locationLeft(self.comPlayerLabel)
 		self.locationLeft(self.youCharacterImage)
 		self.locationLeft(self.youRockImage)
 		self.locationLeft(self.youPaperImage)
 		self.locationLeft(self.youScissorsImage)
+		self.locationLeft(self.youPlayerLabel)
 		
 		// viewGroup3
 		self.locationLeft(self.restartButton)
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
 		self.locationLeft(self.youOutcomeLabel)
+		self.locationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup1() {
 		// viewGroup1
@@ -91,13 +89,11 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
+		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage)
 		self.locationLeft(self.selectButton)
-		// self.locationLeft(self.gameBoardWindow)
-		// self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
 		self.locationLeft(self.comScissorsImage)
-		// self.locationLeft(self.youCharacterImage)
 		self.locationLeft(self.youRockImage)
 		self.locationLeft(self.youPaperImage)
 		self.locationLeft(self.youScissorsImage)
@@ -107,16 +103,15 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
 		self.locationLeft(self.youOutcomeLabel)
+		self.locationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup2() {
 		// viewGroup2
+		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage)
 		self.locationRightEnd(self.selectButton)
-		// self.locationRightEnd(self.gameBoardWindow)
-		// self.locationRightEnd(self.comCharacterImage)
 		self.locationRightEnd(self.comRockImage)
 		self.locationRightEnd(self.comPaperImage)
 		self.locationRightEnd(self.comScissorsImage)
-		// self.locationRightEnd(self.youCharacterImage)
 		self.locationRightEnd(self.youRockImage)
 		self.locationRightEnd(self.youPaperImage)
 		self.locationRightEnd(self.youScissorsImage)
@@ -144,81 +139,36 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.youRockImage)
 		self.locationLeft(self.youPaperImage)
 		self.locationLeft(self.youScissorsImage)
+		self.locationLeft(self.comPlayerLabel)
+		self.locationLeft(self.youPlayerLabel)
 		
 		// viewGroup3
 		self.locationLeft(self.restartButton)
 		self.locationLeft(self.youSelectedRPSImage)
 		self.locationLeft(self.comSelectedRPSImage)
 		self.locationLeft(self.youOutcomeLabel)
+		self.locationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup3() {
 		// viewGorup2 RightEnd
 		self.locationRightEnd(self.gameBoardWindow)
 		self.locationRightEnd(self.comCharacterImage)
 		self.locationRightEnd(self.youCharacterImage)
+		self.locationRightEnd(self.comPlayerLabel)
+		self.locationRightEnd(self.youPlayerLabel)
 		
-		// viewGorup2 Left
+		// viewGorup2 Left (viewGorup2의 기본 위치로 이동)
 		self.locationLeft(self.gameBoardWindow)
 		self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.youCharacterImage)
+		self.locationLeft(self.comPlayerLabel)
+		self.locationLeft(self.youPlayerLabel)
 		
 		// viewGroup3
 		self.locationRightEnd(self.restartButton)
 		self.locationRightEnd(self.youSelectedRPSImage)
 		self.locationRightEnd(self.comSelectedRPSImage)
 		self.locationRightEnd(self.youOutcomeLabel)
+		self.locationRightEnd(self.comOutcomeLabel)
 	}
 }
-
-// MARK: - action selector
-extension RockPaperScissorsViewController {
-	@objc func gameStart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup1()
-		}, completion: {_ in
-			self.locationRightEndGroup1()
-		})
-	}
-	
-	@objc func gameRpsSelect() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup2()
-		}, completion: {_ in
-			self.locationRightEndGroup2()
-		})
-	}
-	
-	@objc func gameRestart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup3()
-		}, completion: {_ in
-			self.locationRightEndGroup3()
-			rpsViewModel.shared.initGameData()
-		})
-	}
-}
-
-
-
-//
-//// MARK: - View Hidden (now not use)
-//extension RockPaperScissorsViewController {
-//	func hiddenSetup01(_ value: Bool) {
-//		startButton.isHidden = value
-//		optionWindow.isHidden = value
-//		optionWindowSegControl.isHidden = value
-//		optionWindowImage0.isHidden = value
-//		optionWindowImage1.isHidden = value
-//		descriptionWindow.isHidden = value
-//		descriptionWindowTitle.isHidden = value
-//		descriptionWindowContent.isHidden = value
-//	}
-//	
-//	func alphaSetup02(_ value: CGFloat) {
-//		selectButton.alpha = value
-//	}
-//	
-//	func hiddenSetup02(_ value: Bool) {
-//		selectButton.isHidden = value
-//	}
-//}

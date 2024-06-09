@@ -11,38 +11,42 @@ class RockPaperScissorsViewModel {
 	private init () { print("Init - RockPaperScissorsViewModel") }
 	
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
-	var youSelectRPSImageDidChange: ((_ you: String) -> Void)?
-	var comSelectRPSImageDidChange: ((_ com: String) -> Void)?
+	var youSelectRPSImageDidChange: ((String) -> Void)?
+	var comSelectRPSImageDidChange: ((String) -> Void)?
 	var oldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
 	var youSelectRPSImageAnimation: ((_ new: Int) -> Void)?
-	var youResultLabelDidChange: (() -> Void)?
-	
+	var youOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
+	var comOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
+
 	var player = PlayerModel() {
 		didSet {
 			charactersImageDidChange?(
-				player.you?.named() ?? "",
-				player.com?.named() ?? "")
+				player.you?.imageName ?? "",
+				player.com?.imageName ?? "")
 		}
 	}
 	
 	var rps = RPSModel() {
 		didSet(old) {
-			oldSelectRPSImageAnimation?(old.you?.rawValue ?? 0)
-			youSelectRPSImageAnimation?(rps.you?.rawValue ?? 0)
-			youSelectRPSImageDidChange?(
-				(rps.you?.prefix() ?? "") + SUFFIX_UP)
+			oldSelectRPSImageAnimation?(old.you?.tag ?? 0)
+			youSelectRPSImageAnimation?(rps.you?.tag ?? 0)
+			youSelectRPSImageDidChange?(rps.you?.imageNameUp ?? "N/A")
 			
 			rps.com = RPS.allCases.randomElement()
-			comSelectRPSImageDidChange?(
-				(rps.com?.prefix() ?? "") + SUFFIX_DOWN)
+			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")
 			
 			outcomeRPS()
 		}
 	}
 	
 	var outcome = OutcomeModel() {
-		didSet { 
-			youResultLabelDidChange?()
+		didSet {
+			youOutcomeLabelDidChange?(
+				outcome.you?.rawValue ?? "N/A",
+				outcome.you?.colorName ?? "N/A")
+			comOutcomeLabelDidChange?(
+				outcome.com?.rawValue ?? "N/A",
+				outcome.com?.colorName ?? "N/A")
 		}
 	}
 	
@@ -55,6 +59,7 @@ extension RockPaperScissorsViewModel {
 		rps.you = nil
 		rps.com = nil
 		outcome.you = nil
+		outcome.com = nil
 	}
 	
 	func selectPlayer(_ index: Int) {
@@ -73,10 +78,13 @@ extension RockPaperScissorsViewModel {
 		switch (rps.you, rps.com) {
 			case (.rock, .rock), (.paper, .paper), (.scissors, .scissors):
 				outcome.you = .draw
+				outcome.com = .draw
 			case (.rock, .scissors), (.paper, .rock), (.scissors, .paper):
 				outcome.you = .win
+				outcome.com = .lose
 			case (.rock, .paper), (.paper, .scissors), (.scissors, .rock):
 				outcome.you = .lose
+				outcome.com = .win
 			default: break
 		}
 	}

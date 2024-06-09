@@ -7,13 +7,16 @@ extension RockPaperScissorsViewController {
 		setupGameBoardWindow()
 		setupComImages()
 		setupYouImages()
+		setupComPlayerLabel()
+		setupYouPlayerLabel()
 	}
 	
 	func setupSelectButton() {
 		view.addSubview(selectButton)
 		let config = configGameStyledButton("SELECT")
 		selectButton.configuration = config
-		selectButton.addTarget(self, action: #selector(gameRpsSelect), for: .touchUpInside)
+		selectButton.addTarget(self, action: #selector(gameRpsSelect), 
+							   for: .touchUpInside)
 		selectButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			selectButton.centerXAnchor.constraint(
@@ -47,8 +50,6 @@ extension RockPaperScissorsViewController {
 	
 	func setupComImages() {
 		view.addSubview(comCharacterImage)
-//		comCharacterImage.image = UIImage(
-//			named: rpsViewModel.shared.com.playerImageName())
 		comCharacterImage.contentMode = .scaleAspectFit
 		comCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -64,8 +65,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(comRockImage)
-		comRockImage.image = UIImage(
-			named: IMAGE_RPS_ROCK + SUFFIX_DOWN)
+		comRockImage.image = UIImage(named: RPS.rock.imageNameDown)
 		comRockImage.contentMode = .scaleAspectFit
 		comRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -82,8 +82,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(comPaperImage)
-		comPaperImage.image = UIImage(
-			named: IMAGE_RPS_PAPER + SUFFIX_DOWN)
+		comPaperImage.image = UIImage(named: RPS.paper.imageNameDown)
 		comPaperImage.contentMode = .scaleAspectFit
 		comPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -100,8 +99,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(comScissorsImage)
-		comScissorsImage.image = UIImage(
-			named: IMAGE_RPS_SCISSORS + SUFFIX_DOWN)
+		comScissorsImage.image = UIImage(named: RPS.scissors.imageNameDown)
 		comScissorsImage.contentMode = .scaleAspectFit
 		comScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -120,8 +118,6 @@ extension RockPaperScissorsViewController {
 	
 	func setupYouImages() {
 		view.addSubview(youCharacterImage)
-//		youCharacterImage.image = UIImage(
-//			named: rpsViewModel.shared.you.playerImageName())
 		youCharacterImage.contentMode = .scaleAspectFit
 		youCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -137,8 +133,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(youRockImage)
-		youRockImage.image = UIImage(
-			named: IMAGE_RPS_ROCK + SUFFIX_UP)
+		youRockImage.image = UIImage(named: RPS.rock.imageNameUp)
 		youRockImage.contentMode = .scaleAspectFit
 		youRockImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -155,8 +150,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(youPaperImage)
-		youPaperImage.image = UIImage(
-			named: IMAGE_RPS_PAPER + SUFFIX_UP)
+		youPaperImage.image = UIImage(named: RPS.paper.imageNameUp)
 		youPaperImage.contentMode = .scaleAspectFit
 		youPaperImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -173,8 +167,7 @@ extension RockPaperScissorsViewController {
 		])
 		
 		view.addSubview(youScissorsImage)
-		youScissorsImage.image = UIImage(
-			named: IMAGE_RPS_SCISSORS + SUFFIX_UP)
+		youScissorsImage.image = UIImage(named: RPS.scissors.imageNameUp)
 		youScissorsImage.contentMode = .scaleAspectFit
 		youScissorsImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -190,14 +183,10 @@ extension RockPaperScissorsViewController {
 				constant: 80),
 		])
 		
-		// TODO: ARROW
-		view.addSubview(youArrow)
-		
-		
 		// MARK: - TapGesture
-		youRockImage.tag = RPS.rock.rawValue
-		youPaperImage.tag = RPS.paper.rawValue
-		youScissorsImage.tag = RPS.scissors.rawValue
+		youRockImage.tag = RPS.rock.tag
+		youPaperImage.tag = RPS.paper.tag
+		youScissorsImage.tag = RPS.scissors.tag
 		
 		let tapGestureRock = UITapGestureRecognizer(
 			target: self, action: #selector(rpsTap(_:)))
@@ -213,6 +202,46 @@ extension RockPaperScissorsViewController {
 		youRockImage.addGestureRecognizer(tapGestureRock)
 		youPaperImage.addGestureRecognizer(tapGesturePaper)
 		youScissorsImage.addGestureRecognizer(tapGestureScissors)
+	}
+	
+	func setupComPlayerLabel() {
+		view.addSubview(comPlayerLabel)
+		comPlayerLabel.text = "COM"
+		comPlayerLabel.font = UIFont(name: FONT_DNF, size: 25)
+		comPlayerLabel.textColor = .systemOrange
+		comPlayerLabel.textAlignment = .center
+		comPlayerLabel.numberOfLines = 2
+		comPlayerLabel.shadowColor = .black
+		comPlayerLabel.shadowOffset = CGSize(width: 1, height: 1)
+		
+		comPlayerLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			comPlayerLabel.centerXAnchor.constraint(
+				equalTo: comCharacterImage.centerXAnchor,
+				constant: -100),
+			comPlayerLabel.centerYAnchor.constraint(
+				equalTo: comCharacterImage.centerYAnchor),
+		])
+	}
+	
+	func setupYouPlayerLabel() {
+		view.addSubview(youPlayerLabel)
+		youPlayerLabel.text = "YOU"
+		youPlayerLabel.font = UIFont(name: FONT_DNF, size: 25)
+		youPlayerLabel.textColor = .systemOrange
+		youPlayerLabel.textAlignment = .center
+		youPlayerLabel.numberOfLines = 2
+		youPlayerLabel.shadowColor = .black
+		youPlayerLabel.shadowOffset = CGSize(width: 1, height: 1)
+		
+		youPlayerLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			youPlayerLabel.centerXAnchor.constraint(
+				equalTo: youCharacterImage.centerXAnchor,
+				constant: -100),
+			youPlayerLabel.centerYAnchor.constraint(
+				equalTo: youCharacterImage.centerYAnchor),
+		])
 	}
 }
 
