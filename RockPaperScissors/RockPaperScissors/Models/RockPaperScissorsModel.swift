@@ -36,15 +36,16 @@ enum RPSGameRPSCase: CaseIterable {
 }
 
 enum RPSGameOutcomeCase: String {
+	case draw = "DRAW"
 	case win = "WIN"
 	case lose = "LOSE"
-	case draw = "DRAW"
+	
 	
 	var colorName: String {
 		switch self {
-			case .win: return "RPS-Color-Win"
-			case .lose: return "RPS-Color-Lose"
-			case .draw: return "RPS-Color-Draw"
+			case .draw: return "RPS/RPS-Color-Draw"
+			case .win: return "RPS/RPS-Color-Win"
+			case .lose: return "RPS/RPS-Color-Lose"
 		}
 	}
 }

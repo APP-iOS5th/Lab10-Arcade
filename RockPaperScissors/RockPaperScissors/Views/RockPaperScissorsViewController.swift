@@ -167,14 +167,12 @@ extension RockPaperScissorsViewController {
 		
 		rpsVM.shared.youOutcomeLabelDidChange = {
 			[weak self] text, colorName in
-			print(colorName)
 			self?.youOutcomeLabel.text = text
 			self?.youOutcomeLabel.textColor = UIColor(named: colorName)
 		}
 		
 		rpsVM.shared.comOutcomeLabelDidChange = {
 			[weak self] text, colorName in
-			print(colorName)
 			self?.comOutcomeLabel.text = text
 			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
 		}
