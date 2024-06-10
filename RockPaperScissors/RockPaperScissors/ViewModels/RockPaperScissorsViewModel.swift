@@ -23,6 +23,7 @@ class RockPaperScissorsViewModel {
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
 			print("player - didSet")
+			
 			let youImageName = player.you.imageName
 			let comImageName = player.com.imageName
 			charactersImageDidChange?(youImageName, comImageName)
@@ -31,6 +32,7 @@ class RockPaperScissorsViewModel {
 	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
 			print("rps - didSet")
+			
 			if(rps.you != nil) {
 				gameBoardDescriptionHiddenAnimation?()
 			}
@@ -42,15 +44,17 @@ class RockPaperScissorsViewModel {
 
 			let youImageName = rps.you?.imageNameUp ?? "N/A"
 			let comImageName = rps.com?.imageNameDown ?? "N/A"
-			print("you select image - \(youImageName)")
-			print("com select image - \(comImageName)")
 			youSelectRPSImageDidChange?(youImageName)
 			comSelectRPSImageDidChange?(comImageName)
+			
+			print("you select image - \(youImageName)")
+			print("com select image - \(comImageName)")
 		}
 	}
 	private(set) var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
 			print("outcome - didSet")
+			
 			let youText = outcome.you?.text ?? "N/A"
 			let youColorName = outcome.you?.colorName ?? "N/A"
 			youOutcomeLabelDidChange?(youText, youColorName)
