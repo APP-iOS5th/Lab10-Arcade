@@ -96,23 +96,19 @@ extension RockPaperScissorsViewController {
 // MARK: - game action selector
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
-		let index = sender.selectedSegmentIndex
-		rpsVM.selectPlayer(index)
+		rpsVM.selectPlayer(sender.selectedSegmentIndex)
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
 		switch tag {
-			case RPS.rock.tag: rpsVM.rps.update(
-					you: RPS.rock, 
-					com: RPS.allCases.randomElement())
-			case RPS.paper.tag: rpsVM.rps.update(
-					you: RPS.paper,
-					com: RPS.allCases.randomElement())
-			case RPS.scissors.tag: rpsVM.rps.update(
-					you: RPS.scissors,
-					com: RPS.allCases.randomElement())
+			case RPS.rock.tag: 
+				rpsVM.updateRPS(RPS.rock)
+			case RPS.paper.tag: 
+				rpsVM.updateRPS(RPS.paper)
+			case RPS.scissors.tag:
+				rpsVM.updateRPS(RPS.scissors)
 			default: break
 		}
 		rpsVM.updateOutcome()
@@ -130,11 +126,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func gameRpsSelect() {
-		guard (rpsVM.rps.you != nil) else {
-			// TODO: "가위바위보를 선택해주세요" 메세지 출력
-			return
-		}
-		
+		guard (rpsVM.rps.you != nil) else { return }
 		UIView.animate(withDuration: 0.5, animations: {
 			self.locationLeftGroup2()
 		}, completion: {_ in

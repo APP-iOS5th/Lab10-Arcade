@@ -3,6 +3,8 @@ class RockPaperScissorsViewModel {
 	typealias RPSModel = RPSGameRPSModel
 	typealias OutcomeModel = RPSGameOutcomeModel
 	
+	typealias RPS = RPSGameRPSCase
+	
 	init() {
 		print("init - RockPaperScissorsViewModel")
 	}
@@ -67,6 +69,10 @@ extension RockPaperScissorsViewModel {
 			case 1: player.update(you: .mandu, com: .tuna)
 			default: break
 		}
+	}
+	
+	func updateRPS(_ value: RPS) {
+		rps.update(you: value, com: RPS.allCases.randomElement())
 	}
 	
 	func updateOutcome() {
