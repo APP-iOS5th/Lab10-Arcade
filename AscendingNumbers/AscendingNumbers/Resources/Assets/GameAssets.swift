@@ -45,6 +45,7 @@ extension UIViewController {
         let titleLabel = UILabel()
         let bodyLabel = UILabel()
         
+        
         cornerView.backgroundColor = .white.withAlphaComponent(0.95)
         cornerView.layer.cornerRadius = 40
         cornerView.layer.borderColor = UIColor.black.cgColor

@@ -10,28 +10,32 @@ import UIKit
 class AscendingNumViewModel {
     
     var ascendingNumModel: AscendingNumModel
-    
-    init(gridSize: Int) {
-        self.ascendingNumModel = AscendingNumModel(gridSize: gridSize)
-    }
-    
-    func checkNumber(_ number: Int) -> Bool {
-        return ascendingNumModel.checkNumber(number)
-    }
-    
-    func startGame() {
-        ascendingNumModel.startGame()
-    }
-    
-    func endGame() {
-        ascendingNumModel.endGame()
-    }
-    
-    var elapsedTime: TimeInterval? {
-        return ascendingNumModel.elapsedTime
-    }
-    
-    func selectGameSize(_ gridSize: Int) {
-        ascendingNumModel = AscendingNumModel(gridSize: gridSize)
-    }
+        
+        var numbers: [Int] {
+            return ascendingNumModel.numbers
+        }
+        
+        var gridSize: Int {
+            return ascendingNumModel.gridSize
+        }
+        
+        var currentNumber: Int {
+            return ascendingNumModel.currentNumber
+        }
+        
+        init(gridSize: Int) {
+            self.ascendingNumModel = AscendingNumModel(gridSize: gridSize)
+        }
+        
+        func checkNumber(_ number: Int) -> Bool {
+            if ascendingNumModel.isCorrectNumber(number) {
+                ascendingNumModel.incrementCurrentNumber()
+                return true
+            }
+            return false
+        }
+        
+        func resetGame() {
+            ascendingNumModel.resetGame()
+        }
 }

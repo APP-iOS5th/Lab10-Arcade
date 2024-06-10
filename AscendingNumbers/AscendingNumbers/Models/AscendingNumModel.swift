@@ -8,38 +8,26 @@
 import Foundation
 
 struct AscendingNumModel {
-    let gridSize: Int
     var numbers: [Int]
-    var currentIndex = 0
-    var startTime: Date?
-    var endTime: Date?
+    var gridSize: Int
+    var currentNumber: Int
     
     init(gridSize: Int) {
         self.gridSize = gridSize
-        self.numbers = Array(1...gridSize*gridSize).shuffled()
+        self.numbers = Array(1...(gridSize * gridSize)).shuffled()
+        self.currentNumber = 1
     }
     
-    mutating func checkNumber(_ number: Int) -> Bool {
-        guard currentIndex < numbers.count else { return false }
-        
-        if numbers[currentIndex] == number {
-            currentIndex += 1
-            return true
-        } else {
-            return false
-        }
+    func isCorrectNumber(_ number: Int) -> Bool {
+        return number == currentNumber
     }
     
-    mutating func startGame() {
-        startTime = Date()
+    mutating func incrementCurrentNumber() {
+        currentNumber += 1
     }
     
-    mutating func endGame() {
-        endTime = Date()
-    }
-    
-    var elapsedTime: TimeInterval? {
-        guard let start = startTime, let end = endTime else { return nil }
-        return end.timeIntervalSince(start)
+    mutating func resetGame() {
+        self.numbers = Array(1...(gridSize * gridSize)).shuffled()
+        self.currentNumber = 1
     }
 }
