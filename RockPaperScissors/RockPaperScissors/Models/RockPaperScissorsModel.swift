@@ -15,18 +15,21 @@ enum RPSGameRPSCase: String, CaseIterable {
 	case scissors = "Scissors"
 	
 	var imageNamePrefix: String {
+		let prefix = "RPS-"
 		switch self {
-			case .rock: return "RPS-" + self.rawValue
-			case .paper: return "RPS-" + self.rawValue
-			case .scissors: return "RPS-" + self.rawValue
+			case .rock: return prefix + self.rawValue
+			case .paper: return prefix + self.rawValue
+			case .scissors: return prefix + self.rawValue
 		}
 	}
 	
 	var imageNameUp: String {
-		return self.imageNamePrefix + "-Up"
+		let suffix = "-Up"
+		return self.imageNamePrefix + suffix
 	}
 	var imageNameDown: String {
-		return self.imageNamePrefix + "-Down"
+		let suffix = "-Down"
+		return self.imageNamePrefix + suffix
 	}
 	
 	var tag: Int {
