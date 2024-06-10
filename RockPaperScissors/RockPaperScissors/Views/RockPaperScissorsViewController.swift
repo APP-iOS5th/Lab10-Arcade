@@ -4,6 +4,7 @@ import UIKit
 
 class RockPaperScissorsViewController: UIViewController {
 	typealias RPS = RPSGameRPSCase
+	typealias Character = RPSGameCharacterCase
 	
 	let rpsVM = RockPaperScissorsViewModel()
 

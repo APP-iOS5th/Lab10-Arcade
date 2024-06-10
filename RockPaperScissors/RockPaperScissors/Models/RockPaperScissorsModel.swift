@@ -1,34 +1,30 @@
 // MARK: - Enum
-enum RPSGameCharacterCase {
+enum RPSGameCharacterCase: String {
 	case tuna, mandu
+	
 	var imageName: String {
-		switch self {
-			case .tuna: return IMAGE_TUNA
-			case .mandu: return IMAGE_MANDU
-		}
+		let prefix = "RPS/image-"
+		return prefix + self.rawValue
 	}
 }
 
 enum RPSGameRPSCase: String, CaseIterable {
-	case rock = "Rock"
-	case paper = "Paper"
-	case scissors = "Scissors"
+	case rock, paper, scissors
 	
 	var imageNamePrefix: String {
-		let prefix = "RPS/RPS-"
+		let prefix = "RPS/image-"
 		switch self {
 			case .rock: return prefix + self.rawValue
 			case .paper: return prefix + self.rawValue
 			case .scissors: return prefix + self.rawValue
 		}
 	}
-	
 	var imageNameUp: String {
-		let suffix = "-Up"
+		let suffix = "-up"
 		return self.imageNamePrefix + suffix
 	}
 	var imageNameDown: String {
-		let suffix = "-Down"
+		let suffix = "-down"
 		return self.imageNamePrefix + suffix
 	}
 	
@@ -45,19 +41,12 @@ enum RPSGameOutcomeCase: String {
 	case draw, win, lose
 	
 	var text: String {
-		switch self {
-			case .draw: return "DRAW"
-			case .win: return "WIN"
-			case .lose: return "LOSE"
-		}
+		self.rawValue.uppercased()
 	}
 	
 	var colorName: String {
-		switch self {
-			case .draw: return "RPS/RPS-Color-Draw"
-			case .win: return "RPS/RPS-Color-Win"
-			case .lose: return "RPS/RPS-Color-Lose"
-		}
+		let prefix = "RPS/color-"
+		return prefix + self.rawValue
 	}
 }
 

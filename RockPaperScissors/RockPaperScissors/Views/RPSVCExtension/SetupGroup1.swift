@@ -71,8 +71,10 @@ extension RockPaperScissorsViewController {
 	func setupOptionWindowImages() {
 		view.addSubview(optionWindowImage0)
 		view.addSubview(optionWindowImage1)
-		optionWindowImage0.image = UIImage(named: IMAGE_TUNA)
-		optionWindowImage1.image = UIImage(named: IMAGE_MANDU)
+		optionWindowImage0.image = UIImage(
+			named: Character.tuna.imageName)
+		optionWindowImage1.image = UIImage(
+			named: Character.mandu.imageName)
 		optionWindowImage0.contentMode = .scaleAspectFit
 		optionWindowImage1.contentMode = .scaleAspectFit
 		optionWindowImage0.translatesAutoresizingMaskIntoConstraints = false
@@ -86,13 +88,13 @@ extension RockPaperScissorsViewController {
 			optionWindowImage0.centerXAnchor.constraint(
 				equalTo: optionWindow.centerXAnchor, 
 				constant: -70),
-			optionWindowImage0.centerYAnchor.constraint(
-				equalTo: optionWindow.centerYAnchor, 
-				constant: -20),
-			
 			optionWindowImage1.centerXAnchor.constraint(
 				equalTo: optionWindow.centerXAnchor, 
 				constant: 70),
+			
+			optionWindowImage0.centerYAnchor.constraint(
+				equalTo: optionWindow.centerYAnchor,
+				constant: -20),
 			optionWindowImage1.centerYAnchor.constraint(
 				equalTo: optionWindow.centerYAnchor, 
 				constant: -20),

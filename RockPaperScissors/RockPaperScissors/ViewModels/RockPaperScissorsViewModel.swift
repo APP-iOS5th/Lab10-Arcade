@@ -23,9 +23,9 @@ class RockPaperScissorsViewModel {
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
 			print("player - didSet")
-			let you = player.you.imageName
-			let com = player.com.imageName
-			charactersImageDidChange?(you, com)
+			let youImageName = player.you.imageName
+			let comImageName = player.com.imageName
+			charactersImageDidChange?(youImageName, comImageName)
 		}
 	}
 	private(set) var rps = RPSModel(you: nil, com: nil) {
