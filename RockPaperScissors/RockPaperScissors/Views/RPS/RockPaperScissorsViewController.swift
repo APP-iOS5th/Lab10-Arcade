@@ -115,8 +115,8 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func touchSelectButton() {
-		let isSelected = rpsVM.rps.you != nil
-		guard (isSelected) else { return }
+		let isSelectRPS = rpsVM.rps.you != nil
+		guard (isSelectRPS) else { return }
 		rpsVM.updateGameStateNext()
 	}
 	
