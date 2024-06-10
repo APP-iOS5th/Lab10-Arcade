@@ -143,14 +143,24 @@ extension RockPaperScissorsViewController {
 	
 	func setupDescriptionWindowContent() {
 		view.addSubview(descriptionWindowContent)
-		descriptionWindowContent.text = "플레이어를 선택 후\n대결을 시작해보세요!"
+		
+		let text = "플레이어를 선택 후\n대결을 시작해보세요!"
+		let font = UIFont(name: FONT_NEO, size: 20) ?? UIFont.systemFont(ofSize: 20)
+		
+		let paragraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.lineSpacing = 6
+		
+		let attributes: [NSAttributedString.Key: Any] = [
+			.font: font, .paragraphStyle: paragraphStyle
+		]
+		
+		let attributedString = NSAttributedString(
+			string: text, attributes: attributes)
+
+		descriptionWindowContent.attributedText = attributedString
 		descriptionWindowContent.isScrollEnabled = false
 		descriptionWindowContent.isEditable = false
 		descriptionWindowContent.textAlignment = .center
-		descriptionWindowContent.font = UIFont(
-			name: FONT_NEO, size: 20)
-		descriptionWindowContent.textContainer
-			.lineBreakMode = .byTruncatingTail
 		
 		descriptionWindowContent.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([

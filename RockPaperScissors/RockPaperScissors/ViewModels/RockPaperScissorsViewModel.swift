@@ -1,20 +1,17 @@
 class RockPaperScissorsViewModel {
-	typealias Player = RPSGamePlayerCase
-	typealias RPS = RPSGameRPSCase
-	typealias Outcome = RPSGameOutcomeCase
-	
 	typealias PlayerModel = RPSGamePlayerModel
 	typealias RPSModel = RPSGameRPSModel
 	typealias OutcomeModel = RPSGameOutcomeModel
 	
-	static let shared = RockPaperScissorsViewModel()
-	private init () { print("Init - RockPaperScissorsViewModel") }
+	init() {
+		print("init - RockPaperScissorsViewModel")
+	}
 	
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
 	var youOldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
-	var youSelectRPSImageAnimation: ((_ new: Int) -> Void)?
+	var youNewSelectRPSImageAnimation: ((_ new: Int) -> Void)?
 	var youOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 	var comOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 
@@ -30,7 +27,7 @@ class RockPaperScissorsViewModel {
 		didSet(old) {
 			print("rps")
 			youOldSelectRPSImageAnimation?(old.you?.tag ?? 0)
-			youSelectRPSImageAnimation?(rps.you?.tag ?? 0)
+			youNewSelectRPSImageAnimation?(rps.you?.tag ?? 0)
 			
 			youSelectRPSImageDidChange?(rps.you?.imageNameUp ?? "N/A")
 			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")

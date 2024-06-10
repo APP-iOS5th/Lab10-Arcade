@@ -3,11 +3,9 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
-	typealias rpsVM = RockPaperScissorsViewModel
-	
-	typealias Player = RPSGamePlayerCase
 	typealias RPS = RPSGameRPSCase
-	typealias Outcome = RPSGameOutcomeCase
+	
+	let rpsVM = RockPaperScissorsViewModel()
 	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
@@ -44,6 +42,10 @@ class RockPaperScissorsViewController: UIViewController {
 	let comOutcomeLabel = UILabel()
 	
 	var youRpsImageViewArray: [UIImageView] = []
+	
+	deinit {
+		print("deinit - RockPaperScissorsViewController")
+	}
 }
 
 // MARK: - LifeCycle
@@ -62,14 +64,9 @@ extension RockPaperScissorsViewController {
 		youRpsImageViewArray.append(youScissorsImage)
 		
 		setupBindings()
-		rpsVM.shared.initGameData()
+		rpsVM.initGameData()
 	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		rpsVM.shared.initGameData()
-		print("viewWillDisappear")
-	}
+
 }
 
 // MARK: - Configuration Style
@@ -98,7 +95,7 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
-		rpsVM.shared.selectPlayer(index)
+		rpsVM.selectPlayer(index)
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
@@ -106,28 +103,27 @@ extension RockPaperScissorsViewController {
 		let tag = selectView?.tag
 		switch tag {
 			case RPS.rock.tag: 
-				rpsVM.shared.rps.update(
+				rpsVM.rps.update(
 				you: RPS.rock,
 				com: RPS.allCases.randomElement())
 			case RPS.paper.tag: 
-				rpsVM.shared.rps.update(
+				rpsVM.rps.update(
 				you: RPS.paper,
 				com: RPS.allCases.randomElement())
 			case RPS.scissors.tag:
-				rpsVM.shared.rps.update(
+				rpsVM.rps.update(
 				you: RPS.scissors,
 				com: RPS.allCases.randomElement())
 			default: break
 		}
-		rpsVM.shared.outcomeRPS()
+		rpsVM.outcomeRPS()
 	}
 }
 
-// MARK: Binding
+// MARK: ViewModel Binding
 extension RockPaperScissorsViewController {
 	func setupBindings() {
-
-		rpsVM.shared.charactersImageDidChange = {
+		rpsVM.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
 				.image = UIImage(named: youImageName)
@@ -135,19 +131,19 @@ extension RockPaperScissorsViewController {
 				.image = UIImage(named: comImageName)
 		}
 		
-		rpsVM.shared.youSelectRPSImageDidChange = {
+		rpsVM.youSelectRPSImageDidChange = {
 			[weak self] imageName in
 			self?.youSelectedRPSImage
 				.image = UIImage(named: imageName)
 		}
 		
-		rpsVM.shared.comSelectRPSImageDidChange = {
+		rpsVM.comSelectRPSImageDidChange = {
 			[weak self] imageName in
 			self?.comSelectedRPSImage
 				.image = UIImage(named: imageName)
 		}
 		
-		rpsVM.shared.youOldSelectRPSImageAnimation = {
+		rpsVM.youOldSelectRPSImageAnimation = {
 			[weak self] oldTag in
 			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == oldTag })
@@ -156,7 +152,7 @@ extension RockPaperScissorsViewController {
 			})
 		}
 		
-		rpsVM.shared.youSelectRPSImageAnimation = {
+		rpsVM.youNewSelectRPSImageAnimation = {
 			[weak self] newTag in
 			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == newTag })
@@ -165,19 +161,20 @@ extension RockPaperScissorsViewController {
 			})
 		}
 		
-		rpsVM.shared.youOutcomeLabelDidChange = {
+		rpsVM.youOutcomeLabelDidChange = {
 			[weak self] text, colorName in
 			self?.youOutcomeLabel.text = text
 			self?.youOutcomeLabel.textColor = UIColor(named: colorName)
 		}
 		
-		rpsVM.shared.comOutcomeLabelDidChange = {
+		rpsVM.comOutcomeLabelDidChange = {
 			[weak self] text, colorName in
 			self?.comOutcomeLabel.text = text
 			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
 		}
 
 	}
+	
 }
 
 // MARK: - game button action selector
@@ -191,7 +188,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func gameRpsSelect() {
-		guard (rpsVM.shared.rps.you != nil) else {
+		guard (rpsVM.rps.you != nil) else {
 			// TODO: "가위바위보를 선택해주세요" 메세지 출력
 			return
 		}
@@ -209,7 +206,7 @@ extension RockPaperScissorsViewController {
 			self.optionWindowSegControl.selectedSegmentIndex = 0
 		}, completion: {_ in
 			self.locationRightEndGroup3()
-			rpsVM.shared.initGameData()
+			self.rpsVM.initGameData()
 		})
 	}
 }

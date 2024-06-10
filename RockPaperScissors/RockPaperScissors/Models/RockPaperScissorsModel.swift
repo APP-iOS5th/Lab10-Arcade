@@ -1,5 +1,5 @@
 // MARK: - Enum
-enum RPSGamePlayerCase {
+enum RPSGameCharacterCase {
 	case tuna, mandu
 	var imageName: String {
 		switch self {
@@ -9,21 +9,16 @@ enum RPSGamePlayerCase {
 	}
 }
 
-enum RPSGameRPSCase: CaseIterable {
-	case rock, paper, scissors
-	var tag: Int {
-		switch self {
-			case .rock: return 101
-			case .paper: return 102
-			case .scissors: return 103
-		}
-	}
+enum RPSGameRPSCase: String, CaseIterable {
+	case rock = "Rock"
+	case paper = "Paper"
+	case scissors = "Scissors"
 	
 	var imageNamePrefix: String {
 		switch self {
-			case .rock: return "RPS-Rock"
-			case .paper: return "RPS-Paper"
-			case .scissors: return "RPS-Scissors"
+			case .rock: return "RPS-" + self.rawValue
+			case .paper: return "RPS-" + self.rawValue
+			case .scissors: return "RPS-" + self.rawValue
 		}
 	}
 	
@@ -33,13 +28,20 @@ enum RPSGameRPSCase: CaseIterable {
 	var imageNameDown: String {
 		return self.imageNamePrefix + "-Down"
 	}
+	
+	var tag: Int {
+		switch self {
+			case .rock: return 101
+			case .paper: return 102
+			case .scissors: return 103
+		}
+	}
 }
 
 enum RPSGameOutcomeCase: String {
 	case draw = "DRAW"
 	case win = "WIN"
 	case lose = "LOSE"
-	
 	
 	var colorName: String {
 		switch self {
@@ -52,12 +54,12 @@ enum RPSGameOutcomeCase: String {
 
 // MARK: - Model
 struct RPSGamePlayerModel {
-	typealias Player = RPSGamePlayerCase
+	typealias Character = RPSGameCharacterCase
 	
-	private(set) var you: Player
-	private(set) var com: Player
+	private(set) var you: Character
+	private(set) var com: Character
 	
-	mutating func update(you: Player, com: Player) {
+	mutating func update(you: Character, com: Character) {
 		self.you = you
 		self.com = com
 	}
