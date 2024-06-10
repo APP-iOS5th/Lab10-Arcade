@@ -40,10 +40,10 @@ enum RPSGameRPSCase: String, CaseIterable {
 		}
 	}
 	
-	var move: Int? {
+	var move: Int {
 		switch self {
 			case .rock: return 80
-			case .paper: return nil
+			case .paper: return 0
 			case .scissors: return -80
 		}
 	}

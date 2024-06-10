@@ -188,8 +188,9 @@ extension RockPaperScissorsViewController {
 // MARK: - rpsImgae Result Location
 extension RockPaperScissorsViewController {
 	func startAnimationSelectRPSCase() {
-		let tag = rpsVM.rps.you?.tag
-		let move = CGFloat(rpsVM.rps.you?.move ?? 0)
+		let selectRPS = rpsVM.rps.you
+		let tag = selectRPS?.tag
+		let move = CGFloat(selectRPS?.move ?? 0)
 		
 		let selectView: UIImageView? = self
 			.youRPSImageViewArr.first(where: { $0.tag == tag })
@@ -201,9 +202,9 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func endAnimationSelectRPSCase() {
-		let select = rpsVM.rps.you
-		let tag = select?.tag
-		let move = CGFloat(select?.move ?? 0)
+		let selectRPS = rpsVM.rps.you
+		let tag = selectRPS?.tag
+		let move = CGFloat(selectRPS?.move ?? 0)
 		
 		let selectView: UIImageView? = self
 			.youRPSImageViewArr.first(where: { $0.tag == tag })
