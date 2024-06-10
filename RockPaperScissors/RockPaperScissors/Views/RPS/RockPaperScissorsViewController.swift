@@ -99,7 +99,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-		let isReadyToSelect = rpsVM.game.state == .readyToSelect
+		let isReadyToSelect = (rpsVM.game.state == .readyToSelect)
 		guard (isReadyToSelect) else { return }
 				
 		let selectView = sender.view as? UIImageView
