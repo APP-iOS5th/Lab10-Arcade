@@ -15,7 +15,7 @@ enum RPSGameCharacterCase: String {
 enum RPSGameRPSCase: String, CaseIterable {
 	case rock, paper, scissors
 	
-	var imageNamePrefix: String {
+	private var imageNamePrefix: String {
 		let prefix = "RPS/image-"
 		switch self {
 			case .rock: return prefix + self.rawValue
@@ -53,7 +53,7 @@ enum RPSGameOutcomeCase: String {
 	case draw, win, lose
 	
 	var text: String {
-		self.rawValue.uppercased()
+		return self.rawValue.uppercased()
 	}
 	
 	var colorName: String {
