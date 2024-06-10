@@ -17,9 +17,9 @@ class RockPaperScissorsViewModel {
 	var readyToRestartActions: (() -> Void)?
 	var readyToStartActions: (() -> Void)?
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
+	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
-	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
 	var youOldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
 	var youNewSelectRPSImageAnimation: ((_ new: Int) -> Void)?
 	var youOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
@@ -28,7 +28,7 @@ class RockPaperScissorsViewModel {
 	// MARK: Property
 	private(set) var game = GameModel(state: .readyToStart) {
 		didSet { 
-			NSLog("game - didSet - state : \(game.state)")
+			NSLog("= game - didSet - state : \(game.state) =")
 			switch game.state {
 				case .readyToSelect: readyToSelectActions?()
 				case .readyToRestart: readyToRestartActions?()

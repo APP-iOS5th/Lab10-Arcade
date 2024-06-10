@@ -4,6 +4,7 @@ import UIKit
 extension RockPaperScissorsViewController {
 	func setupViewModelBindingsClosure() {
 		
+		// MARK: - game
 		rpsVM.readyToSelectActions = { [weak self] in
 			UIView.animate(withDuration: 0.5, animations: {
 				[weak self] in
@@ -13,7 +14,6 @@ extension RockPaperScissorsViewController {
 				self?.locationRightEndGroup1()
 			})
 		}
-		
 		rpsVM.readyToRestartActions = { [weak self] in
 			self?.rpsVM.updateOutcome()
 			UIView.animate(withDuration: 0.5, animations: {
@@ -25,7 +25,6 @@ extension RockPaperScissorsViewController {
 				self?.locationRightEndGroup2()
 			})
 		}
-		
 		rpsVM.readyToStartActions = { [weak self] in
 			self?.optionWindowSegControl.selectedSegmentIndex = 0
 			UIView.animate(withDuration: 0.5, animations: {
@@ -41,7 +40,7 @@ extension RockPaperScissorsViewController {
 			})
 		}
 		
-		
+		// MARK: - player
 		rpsVM.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
@@ -50,42 +49,7 @@ extension RockPaperScissorsViewController {
 				.image = UIImage(named: comImageName)
 		}
 		
-		rpsVM.comSelectRPSImageDidChange = {
-			[weak self] imageName in
-			self?.comSelectedRPSImage
-				.image = UIImage(named: imageName)
-		}
-		
-		rpsVM.youOldSelectRPSImageAnimation = {
-			[weak self] oldTag in
-			let selectView = self?.youRPSImageViews
-				.first(where: { $0.tag == oldTag })
-			UIView.animate(withDuration: 0.5, animations: {
-				self?.rpsImageLocationDown(selectView)
-			})
-		}
-		
-		rpsVM.youNewSelectRPSImageAnimation = {
-			[weak self] newTag in
-			let selectView = self?.youRPSImageViews
-				.first(where: { $0.tag == newTag })
-			UIView.animate(withDuration: 0.5, animations: {
-				self?.rpsImageLocationUp(selectView)
-			})
-		}
-		
-		rpsVM.youOutcomeLabelDidChange = {
-			[weak self] text, colorName in
-			self?.youOutcomeLabel.text = text
-			self?.youOutcomeLabel.textColor = UIColor(named: colorName)
-		}
-		
-		rpsVM.comOutcomeLabelDidChange = {
-			[weak self] text, colorName in
-			self?.comOutcomeLabel.text = text
-			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
-		}
-		
+		// MARK: - rps
 		rpsVM.gameBoardDescriptionHiddenAnimation = {
 			[weak self] in
 			guard (self?.gameBoardDescription
@@ -97,5 +61,39 @@ extension RockPaperScissorsViewController {
 				self?.gameBoardDescription.isHidden = true
 			})
 		}
+		rpsVM.comSelectRPSImageDidChange = {
+			[weak self] imageName in
+			self?.comSelectedRPSImage
+				.image = UIImage(named: imageName)
+		}
+		rpsVM.youOldSelectRPSImageAnimation = {
+			[weak self] oldTag in
+			let selectView = self?.youRPSImageViewArr
+				.first(where: { $0.tag == oldTag })
+			UIView.animate(withDuration: 0.5, animations: {
+				self?.rpsImageLocationDown(selectView)
+			})
+		}
+		rpsVM.youNewSelectRPSImageAnimation = {
+			[weak self] newTag in
+			let selectView = self?.youRPSImageViewArr
+				.first(where: { $0.tag == newTag })
+			UIView.animate(withDuration: 0.5, animations: {
+				self?.rpsImageLocationUp(selectView)
+			})
+		}
+		
+		// MARK: - outcome
+		rpsVM.youOutcomeLabelDidChange = {
+			[weak self] text, colorName in
+			self?.youOutcomeLabel.text = text
+			self?.youOutcomeLabel.textColor = UIColor(named: colorName)
+		}
+		rpsVM.comOutcomeLabelDidChange = {
+			[weak self] text, colorName in
+			self?.comOutcomeLabel.text = text
+			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
+		}
+		
 	}
 }

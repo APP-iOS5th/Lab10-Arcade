@@ -42,7 +42,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let youOutcomeLabel = UILabel()
 	let comOutcomeLabel = UILabel()
 	
-	var youRPSImageViews: [UIImageView] = []
+	var youRPSImageViewArr: [UIImageView] = []
 	
 	deinit {
 		NSLog("== deinit - RockPaperScissorsViewController ==")
@@ -60,9 +60,9 @@ extension RockPaperScissorsViewController {
 		setupViewGroup2()
 		setupViewGroup3()
 		
-		youRPSImageViews.append(youRockImage)
-		youRPSImageViews.append(youPaperImage)
-		youRPSImageViews.append(youScissorsImage)
+		youRPSImageViewArr.append(youRockImage)
+		youRPSImageViewArr.append(youPaperImage)
+		youRPSImageViewArr.append(youScissorsImage)
 		
 		setupViewModelBindingsClosure()
 	}
@@ -102,8 +102,8 @@ extension RockPaperScissorsViewController {
 		guard (rpsVM.game.state == .readyToSelect) else { return }
 				
 		let selectView = sender.view as? UIImageView
-		let tag = selectView?.tag
-		rpsVM.updateSelectRPS(tag ?? 0)
+		let tag = selectView?.tag ?? 0
+		rpsVM.updateSelectRPS(tag)
 	}
 }
 

@@ -25,7 +25,6 @@ extension RockPaperScissorsViewController {
 		])
 	}
 	
-	
 	func setupComSelectedRPSImage() {
 		view.addSubview(comSelectedRPSImage)
 		comSelectedRPSImage.contentMode = .scaleAspectFit

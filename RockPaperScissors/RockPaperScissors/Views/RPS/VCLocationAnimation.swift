@@ -165,6 +165,12 @@ extension RockPaperScissorsViewController {
 		self.viewLocationRightEnd(self.youPaperImage)
 		self.viewLocationRightEnd(self.youScissorsImage)
 		
+		// viewGroup3
+		self.viewLocationRightEnd(self.restartButton)
+		self.viewLocationRightEnd(self.comSelectedRPSImage)
+		self.viewLocationRightEnd(self.youOutcomeLabel)
+		self.viewLocationRightEnd(self.comOutcomeLabel)
+		
 		// viewGorup2-2 Left (viewGorup2의 위치로 이동)
 		self.viewLocationLeft(self.gameBoardWindow)
 		self.viewLocationLeft(self.gameBoardDescription)
@@ -175,12 +181,6 @@ extension RockPaperScissorsViewController {
 		self.viewLocationLeft(self.youRockImage)
 		self.viewLocationLeft(self.youPaperImage)
 		self.viewLocationLeft(self.youScissorsImage)
-		
-		// viewGroup3
-		self.viewLocationRightEnd(self.restartButton)
-		self.viewLocationRightEnd(self.comSelectedRPSImage)
-		self.viewLocationRightEnd(self.youOutcomeLabel)
-		self.viewLocationRightEnd(self.comOutcomeLabel)
 	}
 	
 }
@@ -192,9 +192,9 @@ extension RockPaperScissorsViewController {
 		let move = CGFloat(rpsVM.rps.you?.move ?? 0)
 		
 		let selectView: UIImageView? = self
-			.youRPSImageViews.first(where: { $0.tag == tag })
+			.youRPSImageViewArr.first(where: { $0.tag == tag })
 		let notSelectViews: [UIImageView] = self
-			.youRPSImageViews.filter({ $0.tag != tag })
+			.youRPSImageViewArr.filter({ $0.tag != tag })
 		
 		notSelectViews.forEach({ $0.alpha = 0 })
 		rpsImageLocationX(selectView, move: move)
@@ -206,9 +206,9 @@ extension RockPaperScissorsViewController {
 		let move = CGFloat(select?.move ?? 0)
 		
 		let selectView: UIImageView? = self
-			.youRPSImageViews.first(where: { $0.tag == tag })
+			.youRPSImageViewArr.first(where: { $0.tag == tag })
 		let notSelectViews: [UIImageView] = self
-			.youRPSImageViews.filter({ $0.tag != tag })
+			.youRPSImageViewArr.filter({ $0.tag != tag })
 		
 		notSelectViews.forEach({ $0.alpha = 1 })
 		rpsImageLocationX(selectView, move: -move)
