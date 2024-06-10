@@ -39,6 +39,14 @@ enum RPSGameRPSCase: String, CaseIterable {
 			case .scissors: return 103
 		}
 	}
+	
+	var move: Int? {
+		switch self {
+			case .rock: return 80
+			case .paper: return nil
+			case .scissors: return -80
+		}
+	}
 }
 
 enum RPSGameOutcomeCase: String {

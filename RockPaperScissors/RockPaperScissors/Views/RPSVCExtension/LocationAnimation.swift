@@ -49,6 +49,12 @@ extension RockPaperScissorsViewController {
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
+	
+	func rpsImageLocationX(_ target: UIImageView?, move: CGFloat) {
+		let t2 = CGAffineTransform(translationX: move, y: 0)
+		let tConcat = target?.transform.concatenating(t2)
+		target?.transform = tConcat!
+	}
 }
 
 // MARK: - SetupLocation Function
@@ -191,49 +197,6 @@ extension RockPaperScissorsViewController {
 		self.viewLocationRightEnd(self.comSelectedRPSImage)
 		self.viewLocationRightEnd(self.youOutcomeLabel)
 		self.viewLocationRightEnd(self.comOutcomeLabel)
-	}
-	
-}
-
-// MARK: - rpsImgae Location
-extension RockPaperScissorsViewController {
-	func startAnimationSelectRPSImage() {
-		let select = rpsVM.rps.you
-		let selectView: UIImageView? = self.youRpsImageViewArray
-			.first(where: { $0.tag == select?.tag ?? 0 })
-		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
-			.filter( { $0.tag != select?.tag ?? 0 } )
-		
-		notSelectViews.forEach( { $0.alpha = 0 } )
-		
-		switch select {
-			case .rock:
-				rpsImageLocationRight(selectView)
-			case .paper: break;
-			case .scissors:
-				rpsImageLocationLeft(selectView)
-			default: break;
-		}
-	}
-	
-	func endAnimationSelectRPSImage() {
-		let select = rpsVM.rps.you
-		let selectView: UIImageView? = self.youRpsImageViewArray
-			.first(where: { $0.tag == select?.tag ?? 0 })
-		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
-			.filter( { $0.tag != select?.tag ?? 0 } )
-		
-		notSelectViews.forEach( { $0.alpha = 1 } )
-		
-		switch select {
-			case .rock:
-				rpsImageLocationLeft(selectView)
-			case .paper: break;
-			case .scissors:
-				rpsImageLocationRight(selectView)
-			default: break;
-		}
-		
 	}
 	
 }

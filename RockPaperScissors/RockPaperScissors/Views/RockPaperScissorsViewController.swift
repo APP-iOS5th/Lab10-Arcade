@@ -93,6 +93,31 @@ extension RockPaperScissorsViewController {
 	}
 }
 
+// MARK: - rpsImgae Result Location
+extension RockPaperScissorsViewController {
+	func startAnimationSelectRPSImage() {
+		let select = rpsVM.rps.you
+		let selectView: UIImageView? = self.youRpsImageViewArray
+			.first(where: { $0.tag == select?.tag ?? 0 })
+		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
+			.filter( { $0.tag != select?.tag ?? 0 } )
+		
+		notSelectViews.forEach( { $0.alpha = 0 } )
+		rpsImageLocationX(selectView, move: CGFloat(select?.move ?? 0))
+	}
+	
+	func endAnimationSelectRPSImage() {
+		let select = rpsVM.rps.you
+		let selectView: UIImageView? = self.youRpsImageViewArray
+			.first(where: { $0.tag == select?.tag ?? 0 })
+		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
+			.filter( { $0.tag != select?.tag ?? 0 } )
+		
+		notSelectViews.forEach( { $0.alpha = 1 } )
+		rpsImageLocationX(selectView, move: CGFloat(-(select?.move ?? 0)))
+	}
+}
+
 // MARK: - game action selector
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
