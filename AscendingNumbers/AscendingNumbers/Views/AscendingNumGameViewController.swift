@@ -25,6 +25,7 @@ class AscendingNumGameViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        viewModel.startGame()
     }
     
     
@@ -47,6 +48,7 @@ class AscendingNumGameViewController: UIViewController {
         let gridSize = viewModel.ascendingNumModel.gridSize
         let buttonSize = view.bounds.width / CGFloat(gridSize) - 20
         let numbers = viewModel.numbers
+        print(numbers)
         
         let gridView = UIView()
         let stackView = UIStackView()
@@ -93,13 +95,18 @@ class AscendingNumGameViewController: UIViewController {
         return gridView
     }
     
+    // MARK: - Methods
     private func buttonTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle, let number = Int(title) else { return }
         if viewModel.checkNumber(number) {
+            sender.backgroundColor = .lightGray
             if number == viewModel.gridSize * viewModel.gridSize {
+                viewModel.endGame()
                 let restartVC = AscendingNumRestartViewController(viewModel: viewModel)
                 navigationController?.pushViewController(restartVC, animated: true)
             }
+        } else {
+            sender.setTitleColor(.red, for: .normal)
         }
     }
     

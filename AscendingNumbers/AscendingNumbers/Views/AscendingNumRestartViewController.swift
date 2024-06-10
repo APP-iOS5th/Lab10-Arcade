@@ -24,6 +24,10 @@ class AscendingNumRestartViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        // Override the back button
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "게임시작", style: .plain, target: self, action: #selector(backButton))
+        self.navigationItem.leftBarButtonItem = newBackButton
     }
     
     
@@ -32,9 +36,8 @@ class AscendingNumRestartViewController: UIViewController {
         setBackground()
         let restartButton = customButton(title: "RESTART")
         
-        restartButton.addAction(UIAction { _ in
-            self.restartGame()
-            print("Restart!")
+        restartButton.addAction(UIAction { [weak self] _ in
+            self?.restartGame()
         }, for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -43,12 +46,46 @@ class AscendingNumRestartViewController: UIViewController {
             restartButton.widthAnchor.constraint(equalToConstant: 180),
             restartButton.heightAnchor.constraint(equalToConstant: 60)
         ])
+        
+        if let elapsedTime = viewModel.elapsedTime {
+            let timeLabel = UILabel()
+            timeLabel.text = "Elapsed Time: \(elapsedTime.formatted())"
+            timeLabel.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(timeLabel)
+        }
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if self.isMovingFromParent, let navigationController = navigationController {
+//            if let startViewController = navigationController.viewControllers.first(where: { $0 is AscendingNumStartViewController }) {
+//                var viewControllers = navigationController.viewControllers
+//                if let startVCIndex = viewControllers.firstIndex(of: startViewController) {
+//                    viewControllers.removeSubrange((startVCIndex + 1)..<viewControllers.count)
+//                }
+//                DispatchQueue.main.async {
+//                    navigationController.setViewControllers([startViewController], animated: false)
+//                }
+//            }
+//        }
+//    }
+    
     // MARK: - Methods
+    private func navigateToStartViewController() {
+        if let navigationController = navigationController {
+            if let startViewController = navigationController.viewControllers.first(where: { $0 is AscendingNumStartViewController }) {
+                DispatchQueue.main.async {
+                    navigationController.setViewControllers([startViewController], animated: true)
+                }
+            }
+        }
+    }
+    @objc func backButton() {
+        navigateToStartViewController()
+    }
+    
     func restartGame() {
-        let startVC = AscendingNumStartViewController()
-            navigationController?.pushViewController(startVC, animated: true)
+        navigateToStartViewController()
     }
 }
 
