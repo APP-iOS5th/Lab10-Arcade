@@ -149,14 +149,10 @@ extension RockPaperScissorsViewController {
 		
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.lineSpacing = 6
-		
 		let attributes: [NSAttributedString.Key: Any] = [
-			.font: font, .paragraphStyle: paragraphStyle
-		]
-		
+			.font: font, .paragraphStyle: paragraphStyle]
 		let attributedString = NSAttributedString(
 			string: text, attributes: attributes)
-
 		descriptionWindowContent.attributedText = attributedString
 		descriptionWindowContent.isScrollEnabled = false
 		descriptionWindowContent.isEditable = false

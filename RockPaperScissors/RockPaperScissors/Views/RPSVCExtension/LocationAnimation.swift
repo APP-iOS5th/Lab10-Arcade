@@ -2,20 +2,20 @@ import UIKit
 
 // MARK: - func - view location
 extension RockPaperScissorsViewController {
-	func locationLeft(_ target: UIView?) {
+	func locationLeft(_ target: UIView) {
 		let move = -(view.bounds.width)
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
-		let tConcat = target?.transform.concatenating(t2)
-		target?.transform = tConcat!
+		let tConcat = target.transform.concatenating(t2)
+		target.transform = tConcat
 	}
 	
-	func locationRightEnd(_ target: UIView?) {
+	func locationRightEnd(_ target: UIView) {
 		let move = (view.bounds.width) * 3
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
-		let tConcat = target?.transform.concatenating(t2)
-		target?.transform = tConcat!
+		let tConcat = target.transform.concatenating(t2)
+		target.transform = tConcat
 	}
 	
 	func locationTop(_ target: UIView?) {
@@ -89,7 +89,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
-		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage)
+		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage, comPlayerLabel, youPlayerLabel)
 		self.locationLeft(self.selectButton)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
@@ -107,7 +107,7 @@ extension RockPaperScissorsViewController {
 	}
 	func locationRightEndGroup2() {
 		// viewGroup2
-		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage)
+		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage, comPlayerLabel, youPlayerLabel)
 		self.locationRightEnd(self.selectButton)
 		self.locationRightEnd(self.comRockImage)
 		self.locationRightEnd(self.comPaperImage)
