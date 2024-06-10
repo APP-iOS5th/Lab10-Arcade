@@ -20,14 +20,14 @@ class RockPaperScissorsViewModel {
 	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
 	
 	// MARK: Property
-	var player = PlayerModel(you: .mandu, com: .tuna) {
+	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
 			print("player")
 			charactersImageDidChange?(
 				player.you.imageName, player.com.imageName)
 		}
 	}
-	var rps = RPSModel(you: nil, com: nil) {
+	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
 			print("rps")
 			if(rps.you != nil) {
@@ -41,7 +41,7 @@ class RockPaperScissorsViewModel {
 			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")
 		}
 	}
-	var outcome = OutcomeModel(you: nil, com: nil) {
+	private(set) var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
 			print("outcome")
 			youOutcomeLabelDidChange?(
