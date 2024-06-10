@@ -64,8 +64,8 @@ class AscendingNumGameViewController: UIViewController {
                 button.setTitle("\(numbers[row * gridSize + col])", for: .normal)
                 button.titleLabel?.font = UIFont(name: "DNFBitBitv2", size: 24) ?? UIFont.systemFont(ofSize: 24)
                 button.setTitleColor(.blue, for: .normal)
-                button.addAction(UIAction { _ in
-                    self.buttonTapped(button)
+                button.addAction(UIAction { [weak self] _ in
+                    self?.buttonTapped(button)
                 }, for: .touchUpInside)
                 button.backgroundColor = .white
                 button.layer.borderColor = UIColor.black.cgColor
@@ -93,8 +93,14 @@ class AscendingNumGameViewController: UIViewController {
         return gridView
     }
     
-    func buttonTapped(_ sender: UIButton) {
-        
+    private func buttonTapped(_ sender: UIButton) {
+        guard let title = sender.currentTitle, let number = Int(title) else { return }
+        if viewModel.checkNumber(number) {
+            if number == viewModel.gridSize * viewModel.gridSize {
+                let restartVC = AscendingNumRestartViewController(viewModel: viewModel)
+                navigationController?.pushViewController(restartVC, animated: true)
+            }
+        }
     }
     
 }

@@ -10,7 +10,8 @@ import Foundation
 struct AscendingNumModel {
     var numbers: [Int]
     var gridSize: Int
-    var currentNumber: Int
+//    var currentNumber: Int
+    private(set) var currentNumber: Int
     
     init(gridSize: Int) {
         self.gridSize = gridSize

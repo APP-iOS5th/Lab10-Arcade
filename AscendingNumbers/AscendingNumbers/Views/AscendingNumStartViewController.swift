@@ -10,6 +10,15 @@ import UIKit
 class AscendingNumStartViewController: UIViewController {
     private var viewModel: AscendingNumViewModel?
     
+    init() {
+        viewModel = AscendingNumViewModel(gridSize: 3) // 기본 gridSize 값 설정
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private var startButton: UIButton!
     private var buttonThree: UIButton!
     private var buttonFour: UIButton!

@@ -52,7 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if indexPath.row == 0 {
             addViewController = AscendingNumStartViewController()
         } else {
-            addViewController = AscendingNumRestartViewController()
+            addViewController =  AscendingNumStartViewController()
         }
         self.navigationController?.pushViewController(addViewController, animated: true)
     }
