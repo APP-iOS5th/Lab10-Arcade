@@ -95,7 +95,7 @@ extension RockPaperScissorsViewController {
 // MARK: - game action selector
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
-		rpsVM.selectPlayer(sender.selectedSegmentIndex)
+		rpsVM.updatePlayer(sender.selectedSegmentIndex)
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
@@ -103,23 +103,23 @@ extension RockPaperScissorsViewController {
 				
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
-		rpsVM.selectRPS(tag ?? 0)
+		rpsVM.updateSelectRPS(tag ?? 0)
 	}
 }
 
 // MARK: - game button selector
 extension RockPaperScissorsViewController {
 	@objc func touchStartButton() {
-		rpsVM.gameStateNext()
+		rpsVM.updateGameStateNext()
 	}
 	
 	@objc func touchSelectButton() {
 		guard (rpsVM.rps.you != nil) else { return }
-		rpsVM.gameStateNext()
+		rpsVM.updateGameStateNext()
 	}
 	
 	@objc func touchRestartButton() {
-		rpsVM.gameStateNext()
+		rpsVM.updateGameStateNext()
 	}
 }
 

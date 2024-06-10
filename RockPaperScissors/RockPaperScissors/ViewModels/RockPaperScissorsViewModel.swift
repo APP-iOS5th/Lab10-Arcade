@@ -12,7 +12,7 @@ class RockPaperScissorsViewModel {
 		NSLog("== init - RockPaperScissorsViewModel ==")
 	}
 	
-	// MARK: Binding Clousre
+	// MARK: Binding Closure
 	var readyToSelectActions: (() -> Void)?
 	var readyToRestartActions: (() -> Void)?
 	var readyToStartActions: (() -> Void)?
@@ -86,7 +86,7 @@ extension RockPaperScissorsViewModel {
 		NSLog("== initGameData() - End ==")
 	}
 	
-	func selectPlayer(_ index: Int) {
+	func updatePlayer(_ index: Int) {
 		switch index {
 			case 0: player.update(you: .tuna, com: .mandu)
 			case 1: player.update(you: .mandu, com: .tuna)
@@ -94,7 +94,7 @@ extension RockPaperScissorsViewModel {
 		}
 	}
 	
-	func selectRPS(_ tag: Int) {
+	func updateSelectRPS(_ tag: Int) {
 		switch tag {
 			case RPS.rock.tag: rps.update(
 				you: RPS.rock, com: RPS.allCases.randomElement())
@@ -118,7 +118,7 @@ extension RockPaperScissorsViewModel {
 		}
 	}
 	
-	func gameStateNext() {
+	func updateGameStateNext() {
 		game.updateNext()
 	}
 	
