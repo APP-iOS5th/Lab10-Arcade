@@ -27,6 +27,7 @@
 		CE4DE14F2C12E2EA007322C2 /* VCSetupGroup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE14E2C12E2E9007322C2 /* VCSetupGroup2.swift */; };
 		CE4DE1512C12E2F4007322C2 /* VCSetupGroup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1502C12E2F4007322C2 /* VCSetupGroup3.swift */; };
 		CE4DE1532C12E38D007322C2 /* VCLocationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1522C12E38D007322C2 /* VCLocationAnimation.swift */; };
+		CE4DE1572C1742B1007322C2 /* VCBindingClousre.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1562C1742B1007322C2 /* VCBindingClousre.swift */; };
 		CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */; };
 		CE5C16A12C0DA1E200316F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */; };
 		CE5C16A32C0DA1E200316F08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C16A22C0DA1E200316F08 /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		CE4DE14E2C12E2E9007322C2 /* VCSetupGroup2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSetupGroup2.swift; sourceTree = "<group>"; };
 		CE4DE1502C12E2F4007322C2 /* VCSetupGroup3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSetupGroup3.swift; sourceTree = "<group>"; };
 		CE4DE1522C12E38D007322C2 /* VCLocationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLocationAnimation.swift; sourceTree = "<group>"; };
+		CE4DE1562C1742B1007322C2 /* VCBindingClousre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBindingClousre.swift; sourceTree = "<group>"; };
 		CE5C169B2C0DA1E200316F08 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +80,7 @@
 		CE1E9CF62C0DB6A000B92465 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE4DE1492C12E28F007322C2 /* RPSVCExtension */,
+				CE4DE1492C12E28F007322C2 /* RPS */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,7 +136,7 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		CE4DE1492C12E28F007322C2 /* RPSVCExtension */ = {
+		CE4DE1492C12E28F007322C2 /* RPS */ = {
 			isa = PBXGroup;
 			children = (
 				CE1E9CFD2C0DB71800B92465 /* RockPaperScissorsViewController.swift */,
@@ -143,8 +145,9 @@
 				CE4DE14E2C12E2E9007322C2 /* VCSetupGroup2.swift */,
 				CE4DE1502C12E2F4007322C2 /* VCSetupGroup3.swift */,
 				CE4DE1522C12E38D007322C2 /* VCLocationAnimation.swift */,
+				CE4DE1562C1742B1007322C2 /* VCBindingClousre.swift */,
 			);
-			path = RPSVCExtension;
+			path = RPS;
 			sourceTree = "<group>";
 		};
 		CE5C16922C0DA1E200316F08 = {
@@ -265,6 +268,7 @@
 				CE5C16A32C0DA1E200316F08 /* ViewController.swift in Sources */,
 				CE1E9CFE2C0DB71800B92465 /* RockPaperScissorsViewController.swift in Sources */,
 				CE4DE1532C12E38D007322C2 /* VCLocationAnimation.swift in Sources */,
+				CE4DE1572C1742B1007322C2 /* VCBindingClousre.swift in Sources */,
 				CE5C169F2C0DA1E200316F08 /* AppDelegate.swift in Sources */,
 				CE4DE14B2C12E2BF007322C2 /* VCSetupGroup0.swift in Sources */,
 				CE1E9CFA2C0DB6D100B92465 /* RockPaperScissorsModel.swift in Sources */,
