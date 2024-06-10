@@ -45,7 +45,7 @@ class RockPaperScissorsViewController: UIViewController {
 	var youRPSImageViewArr: [UIImageView] = []
 	
 	deinit {
-		NSLog("== deinit - RockPaperScissorsViewController ==")
+		NSLog("=== deinit - RockPaperScissorsViewController ===")
 	}
 }
 

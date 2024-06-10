@@ -9,7 +9,7 @@ class RockPaperScissorsViewModel {
 	typealias RPS = RPSGameRPSCase
 	
 	init() {
-		NSLog("== init - RockPaperScissorsViewModel ==")
+		NSLog("=== init - RockPaperScissorsViewModel ===")
 	}
 	
 	// MARK: Binding Closure
