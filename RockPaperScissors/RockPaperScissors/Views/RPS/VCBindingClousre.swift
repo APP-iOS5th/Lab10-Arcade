@@ -71,7 +71,7 @@ extension RockPaperScissorsViewController {
 			let selectView = self?.youRPSImageViewArr
 				.first(where: { $0.tag == oldTag })
 			UIView.animate(withDuration: 0.5, animations: {
-				self?.rpsImageLocationDown(selectView)
+				self?.imageLocationDown(selectView)
 			})
 		}
 		rpsVM.youNewSelectRPSImageAnimation = {
@@ -79,7 +79,7 @@ extension RockPaperScissorsViewController {
 			let selectView = self?.youRPSImageViewArr
 				.first(where: { $0.tag == newTag })
 			UIView.animate(withDuration: 0.5, animations: {
-				self?.rpsImageLocationUp(selectView)
+				self?.imageLocationUp(selectView)
 			})
 		}
 		
