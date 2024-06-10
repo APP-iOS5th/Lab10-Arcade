@@ -16,7 +16,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(selectButton)
 		let config = configGameStyledButton("SELECT")
 		selectButton.configuration = config
-		selectButton.addTarget(self, action: #selector(touchSelectButton), 
+		selectButton.addTarget(self, action: #selector(touchSelectButton),
 							   for: .touchUpInside)
 		selectButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -76,6 +76,7 @@ extension RockPaperScissorsViewController {
 	
 	func setupComImages() {
 		view.addSubview(comCharacterImage)
+		comCharacterImage.image = UIImage(named: Character.mandu.imageName)
 		comCharacterImage.contentMode = .scaleAspectFit
 		comCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -104,7 +105,7 @@ extension RockPaperScissorsViewController {
 				constant: 90),
 			comRockImage.centerXAnchor.constraint(
 				equalTo: selectButton.centerXAnchor,
-				constant: -80),
+				constant: 80),
 		])
 		
 		view.addSubview(comPaperImage)
@@ -138,12 +139,13 @@ extension RockPaperScissorsViewController {
 				constant: 90),
 			comScissorsImage.centerXAnchor.constraint(
 				equalTo: selectButton.centerXAnchor,
-				constant: 80),
+				constant: -80),
 		])
 	}
 	
 	func setupYouImages() {
 		view.addSubview(youCharacterImage)
+		youCharacterImage.image = UIImage(named: Character.tuna.imageName)
 		youCharacterImage.contentMode = .scaleAspectFit
 		youCharacterImage.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([

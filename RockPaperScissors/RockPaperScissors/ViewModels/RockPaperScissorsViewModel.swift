@@ -1,3 +1,5 @@
+import Foundation
+
 class RockPaperScissorsViewModel {
 	typealias GameModel = RPSGameStateModel
 	typealias PlayerModel = RPSGamePlayerModel
@@ -7,10 +9,13 @@ class RockPaperScissorsViewModel {
 	typealias RPS = RPSGameRPSCase
 	
 	init() {
-		print("init - RockPaperScissorsViewModel")
+		NSLog("== init - RockPaperScissorsViewModel ==")
 	}
 	
 	// MARK: Binding Clousre
+	var readyToSelectActions: (() -> Void)?
+	var readyToRestartActions: (() -> Void)?
+	var readyToStartActions: (() -> Void)?
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
@@ -23,13 +28,17 @@ class RockPaperScissorsViewModel {
 	// MARK: Property
 	private(set) var game = GameModel(state: .readyToStart) {
 		didSet { 
-			print("game - didSet - \(game.state)")
-			// TODO: didSet에 버튼 액션의 코드를 옮겨오고 싶으나, 문제 발생으로 계획 연기
+			NSLog("game - didSet - state : \(game.state)")
+			switch game.state {
+				case .readyToSelect: readyToSelectActions?()
+				case .readyToRestart: readyToRestartActions?()
+				case .readyToStart: readyToStartActions?()
+			}
 		}
 	}
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
-			print("player - didSet")
+			NSLog("player - didSet - you : \(player.you)")
 			
 			let youImageName = player.you.imageName
 			let comImageName = player.com.imageName
@@ -38,7 +47,7 @@ class RockPaperScissorsViewModel {
 	}
 	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
-			print("rps - didSet")
+			NSLog("rps - didSet - you : \(rps.you?.rawValue ?? "")")
 			
 			gameBoardDescriptionHiddenAnimation?()
 			
@@ -49,12 +58,11 @@ class RockPaperScissorsViewModel {
 
 			let comImageName = rps.com?.imageNameDown ?? "N/A"
 			comSelectRPSImageDidChange?(comImageName)
-			print("com select image - \(comImageName)")
 		}
 	}
 	private(set) var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
-			print("outcome - didSet")
+			NSLog("outcome - didSet - you : \(outcome.you?.rawValue ?? "")")
 			
 			let youText = outcome.you?.text ?? "N/A"
 			let youColorName = outcome.you?.colorName ?? "N/A"
@@ -71,10 +79,11 @@ class RockPaperScissorsViewModel {
 // MARK: - func
 extension RockPaperScissorsViewModel {
 	func initGameData() {
+		NSLog("== initGameData() - Start ==")
 		outcome.update(you: nil, com: nil)
 		rps.update(you: nil, com: nil)
 		player.update(you: .tuna, com: .mandu)
-		game.update(state: .readyToStart)
+		NSLog("== initGameData() - End ==")
 	}
 	
 	func selectPlayer(_ index: Int) {

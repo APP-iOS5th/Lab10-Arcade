@@ -196,20 +196,21 @@ extension RockPaperScissorsViewController {
 		let notSelectViews: [UIImageView] = self
 			.youRPSImageViews.filter({ $0.tag != tag })
 		
-		notSelectViews.forEach( { $0.alpha = 0 } )
+		notSelectViews.forEach({ $0.alpha = 0 })
 		rpsImageLocationX(selectView, move: move)
 	}
 	
 	func endAnimationSelectRPSCase() {
-		let tag = rpsVM.rps.you?.tag
-		let move = CGFloat(rpsVM.rps.you?.move ?? 0)
+		let select = rpsVM.rps.you
+		let tag = select?.tag
+		let move = CGFloat(select?.move ?? 0)
 		
 		let selectView: UIImageView? = self
 			.youRPSImageViews.first(where: { $0.tag == tag })
 		let notSelectViews: [UIImageView] = self
 			.youRPSImageViews.filter({ $0.tag != tag })
 		
-		notSelectViews.forEach( { $0.alpha = 1 } )
+		notSelectViews.forEach({ $0.alpha = 1 })
 		rpsImageLocationX(selectView, move: -move)
 	}
 }

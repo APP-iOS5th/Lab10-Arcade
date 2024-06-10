@@ -67,11 +67,7 @@ struct RPSGameStateModel {
 	typealias State = RPSGameStateCase
 	
 	private(set) var state: State
-	
-	mutating func update(state: State) {
-		self.state = state
-	}
-	
+
 	mutating func updateNext() {
 		switch state {
 			case .readyToStart: self.state = .readyToSelect

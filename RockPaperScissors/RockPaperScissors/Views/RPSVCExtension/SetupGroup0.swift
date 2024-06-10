@@ -10,9 +10,11 @@ extension RockPaperScissorsViewController {
 	func setupNavigationBar() {
 		self.title = "RockPaperScissors"
 		let appearance = UINavigationBarAppearance()
-		appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+		appearance.titleTextAttributes = [
+			NSAttributedString.Key.foregroundColor: UIColor.white]
 		appearance.backgroundColor = .systemGreen
-		self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+		self.navigationController?.navigationBar
+			.scrollEdgeAppearance = appearance
 	}
 	
 	func setupBackgroundImage() {

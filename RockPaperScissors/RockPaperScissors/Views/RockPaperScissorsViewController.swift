@@ -45,7 +45,7 @@ class RockPaperScissorsViewController: UIViewController {
 	var youRPSImageViews: [UIImageView] = []
 	
 	deinit {
-		print("deinit - RockPaperScissorsViewController")
+		NSLog("== deinit - RockPaperScissorsViewController ==")
 	}
 }
 
@@ -65,7 +65,6 @@ extension RockPaperScissorsViewController {
 		youRPSImageViews.append(youScissorsImage)
 		
 		setupViewModelBindingsClosure()
-		rpsVM.initGameData()
 	}
 	
 }
@@ -112,51 +111,61 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	@objc func touchStartButton() {
 		rpsVM.gameStateNext()
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeftGroup1()
-		}, completion: {
-			[weak self] _ in
-			self?.locationRightEndGroup1()
-		})
 	}
 	
 	@objc func touchSelectButton() {
 		guard (rpsVM.rps.you != nil) else { return }
 		rpsVM.gameStateNext()
-		rpsVM.updateOutcome()
-		
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeftGroup2()
-			self?.startAnimationSelectRPSCase()
-		}, completion: {
-			[weak self] _ in
-			self?.locationRightEndGroup2()
-		})
 	}
 	
 	@objc func touchRestartButton() {
 		rpsVM.gameStateNext()
-		optionWindowSegControl.selectedSegmentIndex = 0
-		
-		UIView.animate(withDuration: 0.5, animations: {
-			[weak self] in
-			self?.locationLeftGroup3()
-		}, completion: {
-			[weak self] _ in
-			self?.locationRightEndGroup3()
-			self?.endAnimationSelectRPSCase()
-			self?.gameBoardDescription.isHidden = false
-			self?.gameBoardDescription.alpha = 1
-			self?.rpsVM.initGameData()
-		})
 	}
 }
 
 // MARK: ViewModel Binding
 extension RockPaperScissorsViewController {
+	
 	func setupViewModelBindingsClosure() {
+	
+		rpsVM.readyToSelectActions = { [weak self] in
+			UIView.animate(withDuration: 0.5, animations: {
+				[weak self] in
+				self?.locationLeftGroup1()
+			}, completion: {
+				[weak self] _ in
+				self?.locationRightEndGroup1()
+			})
+		}
+		
+		rpsVM.readyToRestartActions = { [weak self] in
+			self?.rpsVM.updateOutcome()
+			UIView.animate(withDuration: 0.5, animations: {
+				[weak self] in
+				self?.locationLeftGroup2()
+				self?.startAnimationSelectRPSCase()
+			}, completion: {
+				[weak self] _ in
+				self?.locationRightEndGroup2()
+			})
+		}
+		
+		rpsVM.readyToStartActions = { [weak self] in
+			self?.optionWindowSegControl.selectedSegmentIndex = 0
+			UIView.animate(withDuration: 0.5, animations: {
+				[weak self] in
+				self?.locationLeftGroup3()
+			}, completion: {
+				[weak self] _ in
+				self?.locationRightEndGroup3()
+				self?.endAnimationSelectRPSCase()
+				self?.gameBoardDescription.isHidden = false
+				self?.gameBoardDescription.alpha = 1
+				self?.rpsVM.initGameData()
+			})
+		}
+		
+		
 		rpsVM.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
