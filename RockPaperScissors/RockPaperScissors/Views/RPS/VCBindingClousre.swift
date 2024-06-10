@@ -52,9 +52,9 @@ extension RockPaperScissorsViewController {
 		
 		// MARK: - rps
 		rpsVM.gameBoardDescriptionHiddenAnimation = {
-			[weak self] in
-			guard (self?.gameBoardDescription
-				.isHidden == false) else { return }
+			[weak self] isReadyToSelect in
+			let isVisible = self?.gameBoardDescription.isHidden == false
+			guard (isReadyToSelect), (isVisible) else { return }
 			
 			UIView.animate(withDuration: 0.2, animations: {
 				self?.gameBoardDescription.alpha = 0

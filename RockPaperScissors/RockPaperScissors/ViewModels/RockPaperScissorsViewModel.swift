@@ -17,7 +17,7 @@ class RockPaperScissorsViewModel {
 	var readyToRestartActions: (() -> Void)?
 	var readyToStartActions: (() -> Void)?
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
-	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
+	var gameBoardDescriptionHiddenAnimation: ((Bool) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
 	var youOldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
@@ -49,9 +49,8 @@ class RockPaperScissorsViewModel {
 		didSet(old) {
 			NSLog("rps - didSet - you : \(rps.you?.rawValue ?? "")")
 			
-			if (game.state == .readyToSelect) {
-				gameBoardDescriptionHiddenAnimation?()
-			}
+			let isReadyToSelect: Bool = (game.state == .readyToSelect)
+			gameBoardDescriptionHiddenAnimation?(isReadyToSelect)
 			
 			let oldTag = old.you?.tag ?? 0
 			let newTag = rps.you?.tag ?? 0
