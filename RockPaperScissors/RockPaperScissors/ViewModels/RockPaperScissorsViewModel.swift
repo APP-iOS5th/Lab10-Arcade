@@ -1,8 +1,9 @@
 class RockPaperScissorsViewModel {
+	typealias GameModel = RPSGameStateModel
 	typealias PlayerModel = RPSGamePlayerModel
 	typealias RPSModel = RPSGameRPSModel
 	typealias OutcomeModel = RPSGameOutcomeModel
-	
+
 	typealias RPS = RPSGameRPSCase
 	
 	init() {
@@ -20,6 +21,11 @@ class RockPaperScissorsViewModel {
 	var comOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 	
 	// MARK: Property
+	private(set) var game = GameModel(state: .readyToStart) {
+		didSet { 
+			print("game - didSet - \(game.state)")
+		}
+	}
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
 			print("player - didSet")
@@ -32,7 +38,6 @@ class RockPaperScissorsViewModel {
 	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
 			print("rps - didSet")
-			guard (outcome.you == nil) else { return }
 			
 			gameBoardDescriptionHiddenAnimation?()
 			
@@ -69,6 +74,7 @@ class RockPaperScissorsViewModel {
 // MARK: - func
 extension RockPaperScissorsViewModel {
 	func initGameData() {
+		game.update(state: .readyToStart)
 		player.update(you: .tuna, com: .mandu)
 		rps.update(you: nil, com: nil)
 		outcome.update(you: nil, com: nil)
@@ -104,6 +110,10 @@ extension RockPaperScissorsViewModel {
 				outcome.update(you: .lose, com: .win)
 			default: outcome.update(you: nil, com: nil)
 		}
+	}
+	
+	func gameStateNext() {
+		game.updateNext()
 	}
 	
 }

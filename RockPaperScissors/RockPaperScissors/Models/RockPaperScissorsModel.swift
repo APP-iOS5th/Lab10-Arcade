@@ -1,4 +1,8 @@
 // MARK: - Enum
+enum RPSGameStateCase {
+	case readyToStart, readyToSelect, readyToRestart
+}
+
 enum RPSGameCharacterCase: String {
 	case tuna, mandu
 	
@@ -51,6 +55,24 @@ enum RPSGameOutcomeCase: String {
 }
 
 // MARK: - Model
+struct RPSGameStateModel {
+	typealias State = RPSGameStateCase
+	
+	private(set) var state: State
+	
+	mutating func update(state: State) {
+		self.state = state
+	}
+	
+	mutating func updateNext() {
+		switch state {
+			case .readyToStart: self.state = .readyToSelect
+			case .readyToSelect: self.state = .readyToRestart
+			case .readyToRestart: self.state = .readyToStart
+		}
+	}
+}
+
 struct RPSGamePlayerModel {
 	typealias Character = RPSGameCharacterCase
 	

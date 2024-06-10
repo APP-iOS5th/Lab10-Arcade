@@ -7,7 +7,7 @@ class RockPaperScissorsViewController: UIViewController {
 	typealias Character = RPSGameCharacterCase
 	
 	let rpsVM = RockPaperScissorsViewModel()
-
+	
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
 	
@@ -68,7 +68,7 @@ extension RockPaperScissorsViewController {
 		setupViewModelBindingsClosure()
 		rpsVM.initGameData()
 	}
-
+	
 }
 
 // MARK: - Configuration Style
@@ -101,6 +101,8 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
+//		guard (rpsVM.outcome.you == nil) else { return }
+				
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
 		rpsVM.selectRPS(tag ?? 0)
@@ -110,13 +112,11 @@ extension RockPaperScissorsViewController {
 // MARK: - game button selector
 extension RockPaperScissorsViewController {
 	@objc func touchStartButton() {
-		gameBoardDescription.isHidden = false
-		gameBoardDescription.alpha = 1
-		
+		rpsVM.gameStateNext()
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup1()
-		}, completion: { 
+		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup1()
 		})
@@ -124,6 +124,7 @@ extension RockPaperScissorsViewController {
 	
 	@objc func touchSelectButton() {
 		guard (rpsVM.rps.you != nil) else { return }
+		rpsVM.gameStateNext()
 		rpsVM.updateOutcome()
 		
 		UIView.animate(withDuration: 0.5, animations: {
@@ -136,6 +137,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func touchReStartButton() {
+		rpsVM.gameStateNext()
 		optionWindowSegControl.selectedSegmentIndex = 0
 		
 		UIView.animate(withDuration: 0.5, animations: {
@@ -144,7 +146,10 @@ extension RockPaperScissorsViewController {
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup3()
+			
 			self?.rpsVM.initGameData()
+			self?.gameBoardDescription.isHidden = false
+			self?.gameBoardDescription.alpha = 1
 		})
 	}
 }
@@ -201,12 +206,12 @@ extension RockPaperScissorsViewController {
 			self?.comOutcomeLabel.text = text
 			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
 		}
-
+		
 		rpsVM.gameBoardDescriptionHiddenAnimation = {
 			[weak self] in
 			guard (self?.gameBoardDescription
 				.isHidden == false) else { return }
-		
+			
 			UIView.animate(withDuration: 0.2, animations: {
 				self?.gameBoardDescription.alpha = 0
 			}, completion: { _ in
