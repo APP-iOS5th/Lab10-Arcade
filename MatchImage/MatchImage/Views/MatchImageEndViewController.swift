@@ -26,9 +26,7 @@ class MatchImageEndViewController: UIViewController {
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
         // bring saved matrix
-        if let savedMatrix =
-//            UserDefaults.value(forKey: "matrix") as? [Int] {
-            UserDefaults.standard.array(forKey: "matrix") as? [Int] {
+        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
             switch savedMatrix {
             case [3,2]:
                 difficulty = "쉬움"

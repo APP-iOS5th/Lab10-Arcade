@@ -94,6 +94,8 @@ class MatchImageGameViewController: UIViewController {
     func createCard(frame: CGRect) -> UIImageView {
         let card = UIImageView(frame: frame)
         card.backgroundColor = .gray
+        card.image = UIImage(systemName: "circle")
+        card.tintColor = .white
         card.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cardTapped))
         card.addGestureRecognizer(tapGesture)
@@ -116,6 +118,7 @@ class MatchImageGameViewController: UIViewController {
     func flipCard(_ card: UIImageView, toImage image: UIImage) {
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             card.image = image
+            card.tintColor = .black
             card.backgroundColor = .clear
         }, completion: nil)
     }
@@ -165,7 +168,8 @@ class MatchImageGameViewController: UIViewController {
     
     func flipCardBack(_ card: UIImageView) {
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromRight, animations: {
-            card.image = nil
+            card.image = UIImage(systemName: "circle")
+            card.tintColor = .white
             card.backgroundColor = .gray
         }, completion: nil)
     }
