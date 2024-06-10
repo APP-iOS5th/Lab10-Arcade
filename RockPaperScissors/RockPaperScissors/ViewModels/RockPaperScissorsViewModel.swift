@@ -13,23 +13,23 @@ class RockPaperScissorsViewModel {
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
 	var comSelectRPSImageDidChange: ((String) -> Void)?
+	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
 	var youOldSelectRPSImageAnimation: ((_ old: Int) -> Void)?
 	var youNewSelectRPSImageAnimation: ((_ new: Int) -> Void)?
 	var youOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
 	var comOutcomeLabelDidChange: ((_ text: String, _ color: String) -> Void)?
-	var gameBoardDescriptionHiddenAnimation: (() -> Void)?
 	
 	// MARK: Property
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
-			print("player")
+			print("player - didSet")
 			charactersImageDidChange?(
 				player.you.imageName, player.com.imageName)
 		}
 	}
 	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
-			print("rps")
+			print("rps - didSet")
 			if(rps.you != nil) {
 				gameBoardDescriptionHiddenAnimation?()
 			}
@@ -37,13 +37,16 @@ class RockPaperScissorsViewModel {
 			youOldSelectRPSImageAnimation?(old.you?.tag ?? 0)
 			youNewSelectRPSImageAnimation?(rps.you?.tag ?? 0)
 
+			print("you select image - \(rps.you?.imageNameUp ?? "N/A")")
+			print("com select image - \(rps.com?.imageNameDown ?? "N/A")")
+			
 			youSelectRPSImageDidChange?(rps.you?.imageNameUp ?? "N/A")
 			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")
 		}
 	}
 	private(set) var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
-			print("outcome")
+			print("outcome - didSet")
 			youOutcomeLabelDidChange?(
 				outcome.you?.rawValue ?? "N/A",
 				outcome.you?.colorName ?? "N/A")

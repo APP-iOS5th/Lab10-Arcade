@@ -207,7 +207,7 @@ extension RockPaperScissorsViewController {
 			guard self?.gameBoardDescription
 				.isHidden == (false) else { return }
 			
-			UIView.animate(withDuration: 0.3, animations: {
+			UIView.animate(withDuration: 0.2, animations: {
 				self?.gameBoardDescription.alpha = 0
 			}, completion: { _ in
 				self?.gameBoardDescription.isHidden = true

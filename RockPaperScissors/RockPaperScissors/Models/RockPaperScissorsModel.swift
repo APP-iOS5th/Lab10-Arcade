@@ -15,7 +15,7 @@ enum RPSGameRPSCase: String, CaseIterable {
 	case scissors = "Scissors"
 	
 	var imageNamePrefix: String {
-		let prefix = "RPS-"
+		let prefix = "RPS/RPS-"
 		switch self {
 			case .rock: return prefix + self.rawValue
 			case .paper: return prefix + self.rawValue
