@@ -13,7 +13,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(restartButton)
 		let config = configGameStyledButton("RESTART")
 		restartButton.configuration = config
-		restartButton.addTarget(self, action: #selector(touchReStartButton), for: .touchUpInside)
+		restartButton.addTarget(self, action: #selector(touchRestartButton), for: .touchUpInside)
 		restartButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			restartButton.centerXAnchor.constraint(

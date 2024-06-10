@@ -34,22 +34,6 @@ extension RockPaperScissorsViewController {
 		target?.transform = tConcat!
 	}
 	
-	func rpsImageLocationLeft(_ target: UIImageView?) {
-		let move: CGFloat = -80
-		
-		let t2 = CGAffineTransform(translationX: move, y: 0)
-		let tConcat = target?.transform.concatenating(t2)
-		target?.transform = tConcat!
-	}
-	
-	func rpsImageLocationRight(_ target: UIImageView?) {
-		let move: CGFloat = 80
-		
-		let t2 = CGAffineTransform(translationX: move, y: 0)
-		let tConcat = target?.transform.concatenating(t2)
-		target?.transform = tConcat!
-	}
-	
 	func rpsImageLocationX(_ target: UIImageView?, move: CGFloat) {
 		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
@@ -199,4 +183,33 @@ extension RockPaperScissorsViewController {
 		self.viewLocationRightEnd(self.comOutcomeLabel)
 	}
 	
+}
+
+// MARK: - rpsImgae Result Location
+extension RockPaperScissorsViewController {
+	func startAnimationSelectRPSCase() {
+		let tag = rpsVM.rps.you?.tag
+		let move = CGFloat(rpsVM.rps.you?.move ?? 0)
+		
+		let selectView: UIImageView? = self
+			.youRPSImageViews.first(where: { $0.tag == tag })
+		let notSelectViews: [UIImageView] = self
+			.youRPSImageViews.filter({ $0.tag != tag })
+		
+		notSelectViews.forEach( { $0.alpha = 0 } )
+		rpsImageLocationX(selectView, move: move)
+	}
+	
+	func endAnimationSelectRPSCase() {
+		let tag = rpsVM.rps.you?.tag
+		let move = CGFloat(rpsVM.rps.you?.move ?? 0)
+		
+		let selectView: UIImageView? = self
+			.youRPSImageViews.first(where: { $0.tag == tag })
+		let notSelectViews: [UIImageView] = self
+			.youRPSImageViews.filter({ $0.tag != tag })
+		
+		notSelectViews.forEach( { $0.alpha = 1 } )
+		rpsImageLocationX(selectView, move: -move)
+	}
 }

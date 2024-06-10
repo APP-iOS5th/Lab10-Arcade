@@ -42,7 +42,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let youOutcomeLabel = UILabel()
 	let comOutcomeLabel = UILabel()
 	
-	var youRpsImageViewArray: [UIImageView] = []
+	var youRPSImageViews: [UIImageView] = []
 	
 	deinit {
 		print("deinit - RockPaperScissorsViewController")
@@ -60,9 +60,9 @@ extension RockPaperScissorsViewController {
 		setupViewGroup2()
 		setupViewGroup3()
 		
-		youRpsImageViewArray.append(youRockImage)
-		youRpsImageViewArray.append(youPaperImage)
-		youRpsImageViewArray.append(youScissorsImage)
+		youRPSImageViews.append(youRockImage)
+		youRPSImageViews.append(youPaperImage)
+		youRPSImageViews.append(youScissorsImage)
 		
 		setupViewModelBindingsClosure()
 		rpsVM.initGameData()
@@ -90,31 +90,6 @@ extension RockPaperScissorsViewController {
 			return attribute
 		}
 		return config
-	}
-}
-
-// MARK: - rpsImgae Result Location
-extension RockPaperScissorsViewController {
-	func startAnimationSelectRPSImage() {
-		let select = rpsVM.rps.you
-		let selectView: UIImageView? = self.youRpsImageViewArray
-			.first(where: { $0.tag == select?.tag ?? 0 })
-		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
-			.filter( { $0.tag != select?.tag ?? 0 } )
-		
-		notSelectViews.forEach( { $0.alpha = 0 } )
-		rpsImageLocationX(selectView, move: CGFloat(select?.move ?? 0))
-	}
-	
-	func endAnimationSelectRPSImage() {
-		let select = rpsVM.rps.you
-		let selectView: UIImageView? = self.youRpsImageViewArray
-			.first(where: { $0.tag == select?.tag ?? 0 })
-		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
-			.filter( { $0.tag != select?.tag ?? 0 } )
-		
-		notSelectViews.forEach( { $0.alpha = 1 } )
-		rpsImageLocationX(selectView, move: CGFloat(-(select?.move ?? 0)))
 	}
 }
 
@@ -154,14 +129,14 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup2()
-			self?.startAnimationSelectRPSImage()
+			self?.startAnimationSelectRPSCase()
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup2()
 		})
 	}
 	
-	@objc func touchReStartButton() {
+	@objc func touchRestartButton() {
 		rpsVM.gameStateNext()
 		optionWindowSegControl.selectedSegmentIndex = 0
 		
@@ -171,7 +146,7 @@ extension RockPaperScissorsViewController {
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup3()
-			self?.endAnimationSelectRPSImage()
+			self?.endAnimationSelectRPSCase()
 			self?.gameBoardDescription.isHidden = false
 			self?.gameBoardDescription.alpha = 1
 			self?.rpsVM.initGameData()
@@ -198,7 +173,7 @@ extension RockPaperScissorsViewController {
 		
 		rpsVM.youOldSelectRPSImageAnimation = {
 			[weak self] oldTag in
-			let selectView = self?.youRpsImageViewArray
+			let selectView = self?.youRPSImageViews
 				.first(where: { $0.tag == oldTag })
 			UIView.animate(withDuration: 0.5, animations: {
 				self?.rpsImageLocationDown(selectView)
@@ -207,7 +182,7 @@ extension RockPaperScissorsViewController {
 		
 		rpsVM.youNewSelectRPSImageAnimation = {
 			[weak self] newTag in
-			let selectView = self?.youRpsImageViewArray
+			let selectView = self?.youRPSImageViews
 				.first(where: { $0.tag == newTag })
 			UIView.animate(withDuration: 0.5, animations: {
 				self?.rpsImageLocationUp(selectView)
