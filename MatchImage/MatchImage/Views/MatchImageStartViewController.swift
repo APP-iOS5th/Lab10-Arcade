@@ -23,6 +23,19 @@ class MatchImageStartViewController: UIViewController {
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
+        let normalTextAttributes: [NSAttributedString.Key: Any] = [
+            .font: CustomFonts().neoDunggeunmoPro
+        ]
+        
+        segmentedControl.setTitleTextAttributes(normalTextAttributes, for: .normal)
+        
+        let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white
+        ]
+        segmentedControl.setTitleTextAttributes(selectedTextAttributes, for: .selected)
+        
+        segmentedControl.selectedSegmentTintColor = UIColor(red: 1, green: 0.48, blue: 0.11, alpha: 1)
+        
         return segmentedControl
     }()
     
@@ -35,9 +48,7 @@ class MatchImageStartViewController: UIViewController {
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
         // bring saved matrix
-        if let savedMatrix = 
-//            UserDefaults.value(forKey: "matrix") as? [Int] {
-            UserDefaults.standard.array(forKey: "matrix") as? [Int] {
+        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
             matrix = savedMatrix
         }
         
@@ -107,9 +118,9 @@ class MatchImageStartViewController: UIViewController {
             gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
             difficultyOptions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            difficultyOptions.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -50),
+            difficultyOptions.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -70),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
             startButton.widthAnchor.constraint(equalToConstant: 150),
             startButton.heightAnchor.constraint(equalToConstant: 50),
         ])

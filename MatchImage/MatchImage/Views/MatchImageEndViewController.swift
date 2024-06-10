@@ -80,7 +80,7 @@ class MatchImageEndViewController: UIViewController {
             gamePlayTime.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gamePlayTime.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
             restartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            restartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            restartButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
             restartButton.widthAnchor.constraint(equalToConstant: 150),
             restartButton.heightAnchor.constraint(equalToConstant: 50),
         ])
