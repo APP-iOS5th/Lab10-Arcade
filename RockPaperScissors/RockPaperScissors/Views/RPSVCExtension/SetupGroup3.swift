@@ -90,7 +90,7 @@ extension RockPaperScissorsViewController {
 		NSLayoutConstraint.activate([
 			comOutcomeLabel.centerXAnchor.constraint(
 				equalTo: comCharacterImage.centerXAnchor,
-				constant: 100 + view.bounds.width),
+				constant: -100 + view.bounds.width),
 			comOutcomeLabel.centerYAnchor.constraint(
 				equalTo: comCharacterImage.centerYAnchor),
 		])

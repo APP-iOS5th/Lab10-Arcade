@@ -244,7 +244,7 @@ extension RockPaperScissorsViewController {
 		NSLayoutConstraint.activate([
 			comPlayerLabel.centerXAnchor.constraint(
 				equalTo: comCharacterImage.centerXAnchor,
-				constant: -100),
+				constant: 100),
 			comPlayerLabel.centerYAnchor.constraint(
 				equalTo: comCharacterImage.centerYAnchor),
 		])
