@@ -3,7 +3,7 @@ import UIKit
 // MARK: - func - view location
 extension RockPaperScissorsViewController {
 	func locationLeft(_ target: UIView) {
-		let move = -(view.bounds.width)
+		let move: CGFloat = -(view.bounds.width)
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target.transform.concatenating(t2)
@@ -11,7 +11,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func locationRightEnd(_ target: UIView) {
-		let move = (view.bounds.width) * 3
+		let move: CGFloat = (view.bounds.width) * 3
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target.transform.concatenating(t2)
@@ -19,13 +19,17 @@ extension RockPaperScissorsViewController {
 	}
 	
 	func locationTop(_ target: UIView?) {
-		let t2 = CGAffineTransform(translationX: 0, y: -30)
+		let move: CGFloat = -30
+		
+		let t2 = CGAffineTransform(translationX: 0, y: move)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
 	
 	func locationBottom(_ target: UIView?) {
-		let t2 = CGAffineTransform(translationX: 0, y: 30)
+		let move: CGFloat = 30
+		
+		let t2 = CGAffineTransform(translationX: 0, y: move)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
@@ -78,6 +82,7 @@ extension RockPaperScissorsViewController {
 		self.locationRightEnd(self.descriptionWindowContent)
 	}
 	
+	
 	func locationLeftGroup2() {
 		// viewGroup1
 		self.locationLeft(self.startButton)
@@ -115,6 +120,7 @@ extension RockPaperScissorsViewController {
 		self.locationRightEnd(self.youPaperImage)
 		self.locationRightEnd(self.youScissorsImage)
 	}
+	
 	
 	func locationLeftGroup3() {
 		// viewGroup1
@@ -173,4 +179,5 @@ extension RockPaperScissorsViewController {
 		self.locationRightEnd(self.youOutcomeLabel)
 		self.locationRightEnd(self.comOutcomeLabel)
 	}
+	
 }

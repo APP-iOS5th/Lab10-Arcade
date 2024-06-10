@@ -110,7 +110,7 @@ extension RockPaperScissorsViewController {
 
 // MARK: - game button selector
 extension RockPaperScissorsViewController {
-	@objc func gameStart() {
+	@objc func touchStartButton() {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup1()
@@ -120,8 +120,9 @@ extension RockPaperScissorsViewController {
 		})
 	}
 	
-	@objc func gameRpsSelect() {
+	@objc func touchSelectButton() {
 		guard (rpsVM.rps.you != nil) else { return }
+		
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup2()
@@ -131,7 +132,7 @@ extension RockPaperScissorsViewController {
 		})
 	}
 	
-	@objc func gameRestart() {
+	@objc func touchReStartButton() {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup3()

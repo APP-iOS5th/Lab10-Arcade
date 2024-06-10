@@ -16,7 +16,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(startButton)
 		let config = configGameStyledButton("START")
 		startButton.configuration = config
-		startButton.addTarget(self, action: #selector(gameStart), for: .touchUpInside)
+		startButton.addTarget(self, action: #selector(touchStartButton), for: .touchUpInside)
 		startButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			startButton.centerXAnchor.constraint(

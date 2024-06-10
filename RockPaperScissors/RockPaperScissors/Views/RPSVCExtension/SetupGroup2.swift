@@ -16,7 +16,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(selectButton)
 		let config = configGameStyledButton("SELECT")
 		selectButton.configuration = config
-		selectButton.addTarget(self, action: #selector(gameRpsSelect), 
+		selectButton.addTarget(self, action: #selector(rpsSelect), 
 							   for: .touchUpInside)
 		selectButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
