@@ -8,6 +8,7 @@
 import UIKit
 
 class StartViewController: UIViewController {
+    
     private let gameStartButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("게임 시작", for: .normal)
@@ -32,5 +33,14 @@ class StartViewController: UIViewController {
     @objc private func gameStartButtonTapped() {
         navigationController?.pushViewController(GameViewController(), animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
-
