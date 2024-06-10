@@ -23,8 +23,9 @@ class RockPaperScissorsViewModel {
 	private(set) var player = PlayerModel(you: .mandu, com: .tuna) {
 		didSet {
 			print("player - didSet")
-			charactersImageDidChange?(
-				player.you.imageName, player.com.imageName)
+			let you = player.you.imageName
+			let com = player.com.imageName
+			charactersImageDidChange?(you, com)
 		}
 	}
 	private(set) var rps = RPSModel(you: nil, com: nil) {
@@ -34,25 +35,29 @@ class RockPaperScissorsViewModel {
 				gameBoardDescriptionHiddenAnimation?()
 			}
 			
-			youOldSelectRPSImageAnimation?(old.you?.tag ?? 0)
-			youNewSelectRPSImageAnimation?(rps.you?.tag ?? 0)
+			let oldTag = old.you?.tag ?? 0
+			let newTag = rps.you?.tag ?? 0
+			youOldSelectRPSImageAnimation?(oldTag)
+			youNewSelectRPSImageAnimation?(newTag)
 
-			print("you select image - \(rps.you?.imageNameUp ?? "N/A")")
-			print("com select image - \(rps.com?.imageNameDown ?? "N/A")")
-			
-			youSelectRPSImageDidChange?(rps.you?.imageNameUp ?? "N/A")
-			comSelectRPSImageDidChange?(rps.com?.imageNameDown ?? "N/A")
+			let youImageName = rps.you?.imageNameUp ?? "N/A"
+			let comImageName = rps.com?.imageNameDown ?? "N/A"
+			print("you select image - \(youImageName)")
+			print("com select image - \(comImageName)")
+			youSelectRPSImageDidChange?(youImageName)
+			comSelectRPSImageDidChange?(comImageName)
 		}
 	}
 	private(set) var outcome = OutcomeModel(you: nil, com: nil) {
 		didSet {
 			print("outcome - didSet")
-			youOutcomeLabelDidChange?(
-				outcome.you?.rawValue ?? "N/A",
-				outcome.you?.colorName ?? "N/A")
-			comOutcomeLabelDidChange?(
-				outcome.com?.rawValue ?? "N/A",
-				outcome.com?.colorName ?? "N/A")
+			let youText = outcome.you?.text ?? "N/A"
+			let youColorName = outcome.you?.colorName ?? "N/A"
+			youOutcomeLabelDidChange?(youText, youColorName)
+			
+			let comText = outcome.com?.text ?? "N/A"
+			let comColorName = outcome.com?.colorName ?? "N/A"
+			comOutcomeLabelDidChange?(comText, comColorName)
 		}
 	}
 	

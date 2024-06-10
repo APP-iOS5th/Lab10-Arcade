@@ -18,8 +18,7 @@ extension RockPaperScissorsViewController {
 	func setupBackgroundImage() {
 		view.addSubview(backgroundImage)
 		view.sendSubviewToBack(backgroundImage)
-		backgroundImage.image = UIImage(
-			named: "background_multiplier_2.5")
+		backgroundImage.image = UIImage(named: BACKGROUND_IMAGE)
 		backgroundImage.contentMode = .scaleAspectFit
 		backgroundImage.translatesAutoresizingMaskIntoConstraints = false
 		

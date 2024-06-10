@@ -3,8 +3,10 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
-	let rpsVM = RockPaperScissorsViewModel()
+	typealias RPS = RPSGameRPSCase
 	
+	let rpsVM = RockPaperScissorsViewModel()
+
 	// viewGroup0 - gameBackground
 	let backgroundImage = UIImageView()
 	
@@ -62,7 +64,7 @@ extension RockPaperScissorsViewController {
 		youRpsImageViewArray.append(youPaperImage)
 		youRpsImageViewArray.append(youScissorsImage)
 		
-		setupBindings()
+		setupViewModelBindingsClosure()
 		rpsVM.initGameData()
 	}
 
@@ -105,43 +107,48 @@ extension RockPaperScissorsViewController {
 	}
 }
 
-// MARK: - game button action selector
+// MARK: - game button selector
 extension RockPaperScissorsViewController {
 	@objc func gameStart() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup1()
-		}, completion: {_ in
-			self.locationRightEndGroup1()
+			[weak self] in
+			self?.locationLeftGroup1()
+		}, completion: { 
+			[weak self] _ in
+			self?.locationRightEndGroup1()
 		})
 	}
 	
 	@objc func gameRpsSelect() {
 		guard (rpsVM.rps.you != nil) else { return }
 		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup2()
-		}, completion: {_ in
-			self.locationRightEndGroup2()
+			[weak self] in
+			self?.locationLeftGroup2()
+		}, completion: {
+			[weak self] _ in
+			self?.locationRightEndGroup2()
 		})
 	}
 	
 	@objc func gameRestart() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup3()
-			self.optionWindowSegControl
+			[weak self] in
+			self?.locationLeftGroup3()
+			self?.optionWindowSegControl
 				.selectedSegmentIndex = 0
-		}, completion: {_ in
-			self.locationRightEndGroup3()
-			self.gameBoardDescription.isHidden = false
-			self.gameBoardDescription.alpha = 1
-			self.rpsVM.initGameData()
-			print(self.gameBoardDescription.isHidden)
+		}, completion: {
+			[weak self] _ in
+			self?.locationRightEndGroup3()
+			self?.gameBoardDescription.isHidden = false
+			self?.gameBoardDescription.alpha = 1
+			self?.rpsVM.initGameData()
 		})
 	}
 }
 
 // MARK: ViewModel Binding
 extension RockPaperScissorsViewController {
-	func setupBindings() {
+	func setupViewModelBindingsClosure() {
 		rpsVM.charactersImageDidChange = {
 			[weak self] youImageName, comImageName in
 			self?.youCharacterImage
@@ -204,5 +211,4 @@ extension RockPaperScissorsViewController {
 			})
 		}
 	}
-	
 }
