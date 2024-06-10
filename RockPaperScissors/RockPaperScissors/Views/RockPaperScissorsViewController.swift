@@ -38,7 +38,6 @@ class RockPaperScissorsViewController: UIViewController {
 	
 	// viewGroup3 - gameResult
 	let restartButton = UIButton()
-	let youSelectedRPSImage = UIImageView()
 	let comSelectedRPSImage = UIImageView()
 	let youOutcomeLabel = UILabel()
 	let comOutcomeLabel = UILabel()
@@ -101,7 +100,7 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-//		guard (rpsVM.outcome.you == nil) else { return }
+		guard (rpsVM.game.state == .readyToSelect) else { return }
 				
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
@@ -130,6 +129,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup2()
+			self?.startAAA()
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup2()
@@ -146,10 +146,10 @@ extension RockPaperScissorsViewController {
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup3()
-			
-			self?.rpsVM.initGameData()
+			self?.endAAA()
 			self?.gameBoardDescription.isHidden = false
 			self?.gameBoardDescription.alpha = 1
+			self?.rpsVM.initGameData()
 		})
 	}
 }
@@ -165,12 +165,6 @@ extension RockPaperScissorsViewController {
 				.image = UIImage(named: comImageName)
 		}
 		
-		rpsVM.youSelectRPSImageDidChange = {
-			[weak self] imageName in
-			self?.youSelectedRPSImage
-				.image = UIImage(named: imageName)
-		}
-		
 		rpsVM.comSelectRPSImageDidChange = {
 			[weak self] imageName in
 			self?.comSelectedRPSImage
@@ -182,7 +176,7 @@ extension RockPaperScissorsViewController {
 			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == oldTag })
 			UIView.animate(withDuration: 0.5, animations: {
-				self?.locationBottom(selectView)
+				self?.rpsImageLocationDown(selectView)
 			})
 		}
 		
@@ -191,7 +185,7 @@ extension RockPaperScissorsViewController {
 			let selectView = self?.youRpsImageViewArray
 				.first(where: { $0.tag == newTag })
 			UIView.animate(withDuration: 0.5, animations: {
-				self?.locationTop(selectView)
+				self?.rpsImageLocationUp(selectView)
 			})
 		}
 		

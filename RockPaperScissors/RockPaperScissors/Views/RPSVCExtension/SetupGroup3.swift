@@ -4,8 +4,7 @@ import UIKit
 extension RockPaperScissorsViewController {
 	func setupViewGroup3() {
 		setupRestartButton()
-		setupYouSelectedRPS()
-		setupComSelectedRPS()
+		setupComSelectedRPSImage()
 		setupYouOutcomeLabel()
 		setupComOutcomeLabel()
 	}
@@ -26,25 +25,8 @@ extension RockPaperScissorsViewController {
 		])
 	}
 	
-	func setupYouSelectedRPS() {
-		view.addSubview(youSelectedRPSImage)
-		youSelectedRPSImage.contentMode = .scaleAspectFit
-		youSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			youSelectedRPSImage.widthAnchor.constraint(
-				equalToConstant: 50),
-			youSelectedRPSImage.heightAnchor.constraint(
-				equalToConstant: 50),
-			youSelectedRPSImage.bottomAnchor.constraint(
-				equalTo: gameBoardWindow.bottomAnchor,
-				constant: -90),
-			youSelectedRPSImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
-				constant: view.bounds.width),
-		])
-	}
 	
-	func setupComSelectedRPS() {
+	func setupComSelectedRPSImage() {
 		view.addSubview(comSelectedRPSImage)
 		comSelectedRPSImage.contentMode = .scaleAspectFit
 		comSelectedRPSImage.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +37,7 @@ extension RockPaperScissorsViewController {
 				equalToConstant: 50),
 			comSelectedRPSImage.topAnchor.constraint(
 				equalTo: gameBoardWindow.topAnchor,
-				constant: 90),
+				constant: 120),
 			comSelectedRPSImage.centerXAnchor.constraint(
 				equalTo: selectButton.centerXAnchor,
 				constant: view.bounds.width),

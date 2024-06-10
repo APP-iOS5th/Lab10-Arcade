@@ -2,7 +2,7 @@ import UIKit
 
 // MARK: - func - view location
 extension RockPaperScissorsViewController {
-	func locationLeft(_ target: UIView) {
+	func viewLocationLeft(_ target: UIView) {
 		let move: CGFloat = -(view.bounds.width)
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
@@ -10,7 +10,7 @@ extension RockPaperScissorsViewController {
 		target.transform = tConcat
 	}
 	
-	func locationRightEnd(_ target: UIView) {
+	func viewLocationRightEnd(_ target: UIView) {
 		let move: CGFloat = (view.bounds.width) * 3
 		
 		let t2 = CGAffineTransform(translationX: move, y: 0)
@@ -18,7 +18,7 @@ extension RockPaperScissorsViewController {
 		target.transform = tConcat
 	}
 	
-	func locationTop(_ target: UIView?) {
+	func rpsImageLocationUp(_ target: UIImageView?) {
 		let move: CGFloat = -30
 		
 		let t2 = CGAffineTransform(translationX: 0, y: move)
@@ -26,10 +26,26 @@ extension RockPaperScissorsViewController {
 		target?.transform = tConcat!
 	}
 	
-	func locationBottom(_ target: UIView?) {
+	func rpsImageLocationDown(_ target: UIImageView?) {
 		let move: CGFloat = 30
 		
 		let t2 = CGAffineTransform(translationX: 0, y: move)
+		let tConcat = target?.transform.concatenating(t2)
+		target?.transform = tConcat!
+	}
+	
+	func rpsImageLocationLeft(_ target: UIImageView?) {
+		let move: CGFloat = -80
+		
+		let t2 = CGAffineTransform(translationX: move, y: 0)
+		let tConcat = target?.transform.concatenating(t2)
+		target?.transform = tConcat!
+	}
+	
+	func rpsImageLocationRight(_ target: UIImageView?) {
+		let move: CGFloat = 80
+		
+		let t2 = CGAffineTransform(translationX: move, y: 0)
 		let tConcat = target?.transform.concatenating(t2)
 		target?.transform = tConcat!
 	}
@@ -39,145 +55,185 @@ extension RockPaperScissorsViewController {
 extension RockPaperScissorsViewController {
 	func locationLeftGroup1() {
 		// viewGroup1
-		self.locationLeft(self.startButton)
-		self.locationLeft(self.optionWindow)
-		self.locationLeft(self.optionWindowSegControl)
-		self.locationLeft(self.optionWindowImage0)
-		self.locationLeft(self.optionWindowImage1)
-		self.locationLeft(self.descriptionWindow)
-		self.locationLeft(self.descriptionWindowTitle)
-		self.locationLeft(self.descriptionWindowContent)
+		self.viewLocationLeft(self.startButton)
+		self.viewLocationLeft(self.optionWindow)
+		self.viewLocationLeft(self.optionWindowSegControl)
+		self.viewLocationLeft(self.optionWindowImage0)
+		self.viewLocationLeft(self.optionWindowImage1)
+		self.viewLocationLeft(self.descriptionWindow)
+		self.viewLocationLeft(self.descriptionWindowTitle)
+		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
-		self.locationLeft(self.selectButton)
-		self.locationLeft(self.gameBoardWindow)
-		self.locationLeft(self.gameBoardDescription)
-		self.locationLeft(self.comCharacterImage)
-		self.locationLeft(self.comRockImage)
-		self.locationLeft(self.comPaperImage)
-		self.locationLeft(self.comScissorsImage)
-		self.locationLeft(self.comPlayerLabel)
-		self.locationLeft(self.youCharacterImage)
-		self.locationLeft(self.youRockImage)
-		self.locationLeft(self.youPaperImage)
-		self.locationLeft(self.youScissorsImage)
-		self.locationLeft(self.youPlayerLabel)
+		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.gameBoardWindow)
+		self.viewLocationLeft(self.gameBoardDescription)
+		self.viewLocationLeft(self.comCharacterImage)
+		self.viewLocationLeft(self.comRockImage)
+		self.viewLocationLeft(self.comPaperImage)
+		self.viewLocationLeft(self.comScissorsImage)
+		self.viewLocationLeft(self.comPlayerLabel)
+		self.viewLocationLeft(self.youCharacterImage)
+		self.viewLocationLeft(self.youRockImage)
+		self.viewLocationLeft(self.youPaperImage)
+		self.viewLocationLeft(self.youScissorsImage)
+		self.viewLocationLeft(self.youPlayerLabel)
 		
 		// viewGroup3
-		self.locationLeft(self.restartButton)
-		self.locationLeft(self.youSelectedRPSImage)
-		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youOutcomeLabel)
-		self.locationLeft(self.comOutcomeLabel)
+		self.viewLocationLeft(self.restartButton)
+		self.viewLocationLeft(self.comSelectedRPSImage)
+		self.viewLocationLeft(self.youOutcomeLabel)
+		self.viewLocationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup1() {
 		// viewGroup1
-		self.locationRightEnd(self.startButton)
-		self.locationRightEnd(self.optionWindow)
-		self.locationRightEnd(self.optionWindowSegControl)
-		self.locationRightEnd(self.optionWindowImage0)
-		self.locationRightEnd(self.optionWindowImage1)
-		self.locationRightEnd(self.descriptionWindow)
-		self.locationRightEnd(self.descriptionWindowTitle)
-		self.locationRightEnd(self.descriptionWindowContent)
+		self.viewLocationRightEnd(self.startButton)
+		self.viewLocationRightEnd(self.optionWindow)
+		self.viewLocationRightEnd(self.optionWindowSegControl)
+		self.viewLocationRightEnd(self.optionWindowImage0)
+		self.viewLocationRightEnd(self.optionWindowImage1)
+		self.viewLocationRightEnd(self.descriptionWindow)
+		self.viewLocationRightEnd(self.descriptionWindowTitle)
+		self.viewLocationRightEnd(self.descriptionWindowContent)
 	}
 	
 	
 	func locationLeftGroup2() {
 		// viewGroup1
-		self.locationLeft(self.startButton)
-		self.locationLeft(self.optionWindow)
-		self.locationLeft(self.optionWindowSegControl)
-		self.locationLeft(self.optionWindowImage0)
-		self.locationLeft(self.optionWindowImage1)
-		self.locationLeft(self.descriptionWindow)
-		self.locationLeft(self.descriptionWindowTitle)
-		self.locationLeft(self.descriptionWindowContent)
+		self.viewLocationLeft(self.startButton)
+		self.viewLocationLeft(self.optionWindow)
+		self.viewLocationLeft(self.optionWindowSegControl)
+		self.viewLocationLeft(self.optionWindowImage0)
+		self.viewLocationLeft(self.optionWindowImage1)
+		self.viewLocationLeft(self.descriptionWindow)
+		self.viewLocationLeft(self.descriptionWindowTitle)
+		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2-1
-		self.locationLeft(self.selectButton)
-		self.locationLeft(self.comRockImage)
-		self.locationLeft(self.comPaperImage)
-		self.locationLeft(self.comScissorsImage)
-		self.locationLeft(self.youRockImage)
-		self.locationLeft(self.youPaperImage)
-		self.locationLeft(self.youScissorsImage)
+		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.comRockImage)
+		self.viewLocationLeft(self.comPaperImage)
+		self.viewLocationLeft(self.comScissorsImage)
 		
 		// viewGroup3
-		self.locationLeft(self.restartButton)
-		self.locationLeft(self.youSelectedRPSImage)
-		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youOutcomeLabel)
-		self.locationLeft(self.comOutcomeLabel)
+		self.viewLocationLeft(self.restartButton)
+		self.viewLocationLeft(self.comSelectedRPSImage)
+		self.viewLocationLeft(self.youOutcomeLabel)
+		self.viewLocationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup2() {
 		// viewGroup2-1
-		self.locationRightEnd(self.selectButton)
-		self.locationRightEnd(self.comRockImage)
-		self.locationRightEnd(self.comPaperImage)
-		self.locationRightEnd(self.comScissorsImage)
-		self.locationRightEnd(self.youRockImage)
-		self.locationRightEnd(self.youPaperImage)
-		self.locationRightEnd(self.youScissorsImage)
+		self.viewLocationRightEnd(self.selectButton)
+		self.viewLocationRightEnd(self.comRockImage)
+		self.viewLocationRightEnd(self.comPaperImage)
+		self.viewLocationRightEnd(self.comScissorsImage)
+		
 	}
 	
 	
 	func locationLeftGroup3() {
 		// viewGroup1
-		self.locationLeft(self.startButton)
-		self.locationLeft(self.optionWindow)
-		self.locationLeft(self.optionWindowSegControl)
-		self.locationLeft(self.optionWindowImage0)
-		self.locationLeft(self.optionWindowImage1)
-		self.locationLeft(self.descriptionWindow)
-		self.locationLeft(self.descriptionWindowTitle)
-		self.locationLeft(self.descriptionWindowContent)
+		self.viewLocationLeft(self.startButton)
+		self.viewLocationLeft(self.optionWindow)
+		self.viewLocationLeft(self.optionWindowSegControl)
+		self.viewLocationLeft(self.optionWindowImage0)
+		self.viewLocationLeft(self.optionWindowImage1)
+		self.viewLocationLeft(self.descriptionWindow)
+		self.viewLocationLeft(self.descriptionWindowTitle)
+		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
-		self.locationLeft(self.selectButton)
-		self.locationLeft(self.gameBoardWindow)
-		self.locationLeft(self.gameBoardDescription)
-		self.locationLeft(self.comCharacterImage)
-		self.locationLeft(self.comRockImage)
-		self.locationLeft(self.comPaperImage)
-		self.locationLeft(self.comScissorsImage)
-		self.locationLeft(self.youCharacterImage)
-		self.locationLeft(self.youRockImage)
-		self.locationLeft(self.youPaperImage)
-		self.locationLeft(self.youScissorsImage)
-		self.locationLeft(self.comPlayerLabel)
-		self.locationLeft(self.youPlayerLabel)
+		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.gameBoardWindow)
+		self.viewLocationLeft(self.gameBoardDescription)
+		self.viewLocationLeft(self.comCharacterImage)
+		self.viewLocationLeft(self.comRockImage)
+		self.viewLocationLeft(self.comPaperImage)
+		self.viewLocationLeft(self.comScissorsImage)
+		self.viewLocationLeft(self.youCharacterImage)
+		self.viewLocationLeft(self.youRockImage)
+		self.viewLocationLeft(self.youPaperImage)
+		self.viewLocationLeft(self.youScissorsImage)
+		self.viewLocationLeft(self.comPlayerLabel)
+		self.viewLocationLeft(self.youPlayerLabel)
 		
 		// viewGroup3
-		self.locationLeft(self.restartButton)
-		self.locationLeft(self.youSelectedRPSImage)
-		self.locationLeft(self.comSelectedRPSImage)
-		self.locationLeft(self.youOutcomeLabel)
-		self.locationLeft(self.comOutcomeLabel)
+		self.viewLocationLeft(self.restartButton)
+		self.viewLocationLeft(self.comSelectedRPSImage)
+		self.viewLocationLeft(self.youOutcomeLabel)
+		self.viewLocationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup3() {
 		// viewGorup2-2 RightEnd
-		self.locationRightEnd(self.gameBoardWindow)
-		self.locationRightEnd(self.gameBoardDescription)
-		self.locationRightEnd(self.comCharacterImage)
-		self.locationRightEnd(self.youCharacterImage)
-		self.locationRightEnd(self.comPlayerLabel)
-		self.locationRightEnd(self.youPlayerLabel)
+		self.viewLocationRightEnd(self.gameBoardWindow)
+		self.viewLocationRightEnd(self.gameBoardDescription)
+		self.viewLocationRightEnd(self.comCharacterImage)
+		self.viewLocationRightEnd(self.youCharacterImage)
+		self.viewLocationRightEnd(self.comPlayerLabel)
+		self.viewLocationRightEnd(self.youPlayerLabel)
+		self.viewLocationRightEnd(self.youRockImage)
+		self.viewLocationRightEnd(self.youPaperImage)
+		self.viewLocationRightEnd(self.youScissorsImage)
 		
 		// viewGorup2-2 Left (viewGorup2의 위치로 이동)
-		self.locationLeft(self.gameBoardWindow)
-		self.locationLeft(self.gameBoardDescription)
-		self.locationLeft(self.comCharacterImage)
-		self.locationLeft(self.youCharacterImage)
-		self.locationLeft(self.comPlayerLabel)
-		self.locationLeft(self.youPlayerLabel)
+		self.viewLocationLeft(self.gameBoardWindow)
+		self.viewLocationLeft(self.gameBoardDescription)
+		self.viewLocationLeft(self.comCharacterImage)
+		self.viewLocationLeft(self.youCharacterImage)
+		self.viewLocationLeft(self.comPlayerLabel)
+		self.viewLocationLeft(self.youPlayerLabel)
+		self.viewLocationLeft(self.youRockImage)
+		self.viewLocationLeft(self.youPaperImage)
+		self.viewLocationLeft(self.youScissorsImage)
 		
 		// viewGroup3
-		self.locationRightEnd(self.restartButton)
-		self.locationRightEnd(self.youSelectedRPSImage)
-		self.locationRightEnd(self.comSelectedRPSImage)
-		self.locationRightEnd(self.youOutcomeLabel)
-		self.locationRightEnd(self.comOutcomeLabel)
+		self.viewLocationRightEnd(self.restartButton)
+		self.viewLocationRightEnd(self.comSelectedRPSImage)
+		self.viewLocationRightEnd(self.youOutcomeLabel)
+		self.viewLocationRightEnd(self.comOutcomeLabel)
+	}
+	
+}
+
+// MARK: - rpsImgae Location
+extension RockPaperScissorsViewController {
+	func startAAA() {
+		let select = rpsVM.rps.you
+		let selectView: UIImageView? = self.youRpsImageViewArray
+			.first(where: { $0.tag == select?.tag ?? 0 })
+		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
+			.filter( { $0.tag != select?.tag ?? 0 } )
+		
+		notSelectViews.forEach( { $0.alpha = 0 } )
+		
+		switch select {
+			case .rock:
+				rpsImageLocationRight(selectView)
+			case .paper: break;
+			case .scissors:
+				rpsImageLocationLeft(selectView)
+			default: break;
+		}
+	}
+	
+	func endAAA() {
+		let select = rpsVM.rps.you
+		let selectView: UIImageView? = self.youRpsImageViewArray
+			.first(where: { $0.tag == select?.tag ?? 0 })
+		let notSelectViews: [UIImageView] = self.youRpsImageViewArray
+			.filter( { $0.tag != select?.tag ?? 0 } )
+		
+		notSelectViews.forEach( { $0.alpha = 1 } )
+		
+		switch select {
+			case .rock:
+				rpsImageLocationLeft(selectView)
+			case .paper: break;
+			case .scissors:
+				rpsImageLocationRight(selectView)
+			default: break;
+		}
+		
 	}
 	
 }
