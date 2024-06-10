@@ -129,7 +129,7 @@ extension RockPaperScissorsViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup2()
-			self?.startAAA()
+			self?.startAnimationSelectRPSImage()
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup2()
@@ -146,7 +146,7 @@ extension RockPaperScissorsViewController {
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup3()
-			self?.endAAA()
+			self?.endAnimationSelectRPSImage()
 			self?.gameBoardDescription.isHidden = false
 			self?.gameBoardDescription.alpha = 1
 			self?.rpsVM.initGameData()
