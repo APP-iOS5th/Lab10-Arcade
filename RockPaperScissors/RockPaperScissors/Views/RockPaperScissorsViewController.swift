@@ -104,13 +104,15 @@ extension RockPaperScissorsViewController {
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
 		rpsVM.selectRPS(tag ?? 0)
-		rpsVM.updateOutcome()
 	}
 }
 
 // MARK: - game button selector
 extension RockPaperScissorsViewController {
 	@objc func touchStartButton() {
+		gameBoardDescription.isHidden = false
+		gameBoardDescription.alpha = 1
+		
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup1()
@@ -122,6 +124,7 @@ extension RockPaperScissorsViewController {
 	
 	@objc func touchSelectButton() {
 		guard (rpsVM.rps.you != nil) else { return }
+		rpsVM.updateOutcome()
 		
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
@@ -133,16 +136,14 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func touchReStartButton() {
+		optionWindowSegControl.selectedSegmentIndex = 0
+		
 		UIView.animate(withDuration: 0.5, animations: {
 			[weak self] in
 			self?.locationLeftGroup3()
-			self?.optionWindowSegControl
-				.selectedSegmentIndex = 0
 		}, completion: {
 			[weak self] _ in
 			self?.locationRightEndGroup3()
-			self?.gameBoardDescription.isHidden = false
-			self?.gameBoardDescription.alpha = 1
 			self?.rpsVM.initGameData()
 		})
 	}
@@ -203,9 +204,9 @@ extension RockPaperScissorsViewController {
 
 		rpsVM.gameBoardDescriptionHiddenAnimation = {
 			[weak self] in
-			guard self?.gameBoardDescription
-				.isHidden == (false) else { return }
-			
+			guard (self?.gameBoardDescription
+				.isHidden == false) else { return }
+		
 			UIView.animate(withDuration: 0.2, animations: {
 				self?.gameBoardDescription.alpha = 0
 			}, completion: { _ in

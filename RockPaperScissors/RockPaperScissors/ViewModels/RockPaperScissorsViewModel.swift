@@ -32,10 +32,9 @@ class RockPaperScissorsViewModel {
 	private(set) var rps = RPSModel(you: nil, com: nil) {
 		didSet(old) {
 			print("rps - didSet")
+			guard (outcome.you == nil) else { return }
 			
-			if(rps.you != nil) {
-				gameBoardDescriptionHiddenAnimation?()
-			}
+			gameBoardDescriptionHiddenAnimation?()
 			
 			let oldTag = old.you?.tag ?? 0
 			let newTag = rps.you?.tag ?? 0
