@@ -3,8 +3,6 @@ import UIKit
 #Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
-	typealias RPS = RPSGameRPSCase
-	
 	let rpsVM = RockPaperScissorsViewModel()
 	
 	// viewGroup0 - gameBackground
@@ -102,15 +100,7 @@ extension RockPaperScissorsViewController {
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
-		switch tag {
-			case RPS.rock.tag: 
-				rpsVM.updateRPS(RPS.rock)
-			case RPS.paper.tag: 
-				rpsVM.updateRPS(RPS.paper)
-			case RPS.scissors.tag:
-				rpsVM.updateRPS(RPS.scissors)
-			default: break
-		}
+		rpsVM.selectRPS(tag ?? 0)
 		rpsVM.updateOutcome()
 	}
 }

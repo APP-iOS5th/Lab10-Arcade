@@ -74,8 +74,16 @@ extension RockPaperScissorsViewModel {
 		}
 	}
 	
-	func updateRPS(_ value: RPS) {
-		rps.update(you: value, com: RPS.allCases.randomElement())
+	func selectRPS(_ tag: Int) {
+		switch tag {
+			case RPS.rock.tag: rps.update(
+				you: RPS.rock, com: RPS.allCases.randomElement())
+			case RPS.paper.tag: rps.update(
+				you: RPS.paper, com: RPS.allCases.randomElement())
+			case RPS.scissors.tag: rps.update(
+				you: RPS.scissors, com: RPS.allCases.randomElement())
+			default: break
+		}
 	}
 	
 	func updateOutcome() {
