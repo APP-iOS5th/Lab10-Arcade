@@ -49,7 +49,9 @@ class RockPaperScissorsViewModel {
 		didSet(old) {
 			NSLog("rps - didSet - you : \(rps.you?.rawValue ?? "")")
 			
-			gameBoardDescriptionHiddenAnimation?()
+			if (game.state == .readyToSelect) {
+				gameBoardDescriptionHiddenAnimation?()
+			}
 			
 			let oldTag = old.you?.tag ?? 0
 			let newTag = rps.you?.tag ?? 0

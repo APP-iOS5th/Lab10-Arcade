@@ -27,6 +27,7 @@ extension RockPaperScissorsViewController {
 		}
 		rpsVM.readyToStartActions = { [weak self] in
 			self?.optionWindowSegControl.selectedSegmentIndex = 0
+
 			UIView.animate(withDuration: 0.5, animations: {
 				[weak self] in
 				self?.locationLeftGroup3()
