@@ -23,6 +23,7 @@ class RockPaperScissorsViewController: UIViewController {
 	// viewGroup2 - gameStart
 	let selectButton = UIButton()
 	let gameBoardWindow = UIView()
+	let gameBoardDescription = UITextView()
 	let comCharacterImage = UIImageView()
 	let comRockImage = UIImageView()
 	let comPaperImage = UIImageView()
@@ -92,6 +93,7 @@ extension RockPaperScissorsViewController {
 	}
 }
 
+// MARK: - game action selector
 extension RockPaperScissorsViewController {
 	@objc func playerSelect(_ sender: UISegmentedControl) {
 		let index = sender.selectedSegmentIndex
@@ -102,21 +104,56 @@ extension RockPaperScissorsViewController {
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag
 		switch tag {
-			case RPS.rock.tag: 
-				rpsVM.rps.update(
-				you: RPS.rock,
-				com: RPS.allCases.randomElement())
-			case RPS.paper.tag: 
-				rpsVM.rps.update(
-				you: RPS.paper,
-				com: RPS.allCases.randomElement())
-			case RPS.scissors.tag:
-				rpsVM.rps.update(
-				you: RPS.scissors,
-				com: RPS.allCases.randomElement())
+			case RPS.rock.tag: rpsVM.rps.update(
+					you: RPS.rock, 
+					com: RPS.allCases.randomElement())
+			case RPS.paper.tag: rpsVM.rps.update(
+					you: RPS.paper,
+					com: RPS.allCases.randomElement())
+			case RPS.scissors.tag: rpsVM.rps.update(
+					you: RPS.scissors,
+					com: RPS.allCases.randomElement())
 			default: break
 		}
-		rpsVM.outcomeRPS()
+		rpsVM.updateOutcome()
+	}
+}
+
+// MARK: - game button action selector
+extension RockPaperScissorsViewController {
+	@objc func gameStart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup1()
+		}, completion: {_ in
+			self.locationRightEndGroup1()
+		})
+	}
+	
+	@objc func gameRpsSelect() {
+		guard (rpsVM.rps.you != nil) else {
+			// TODO: "가위바위보를 선택해주세요" 메세지 출력
+			return
+		}
+		
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup2()
+		}, completion: {_ in
+			self.locationRightEndGroup2()
+		})
+	}
+	
+	@objc func gameRestart() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.locationLeftGroup3()
+			self.optionWindowSegControl
+				.selectedSegmentIndex = 0
+		}, completion: {_ in
+			self.locationRightEndGroup3()
+			self.gameBoardDescription.isHidden = false
+			self.gameBoardDescription.alpha = 1
+			self.rpsVM.initGameData()
+			print(self.gameBoardDescription.isHidden)
+		})
 	}
 }
 
@@ -173,40 +210,17 @@ extension RockPaperScissorsViewController {
 			self?.comOutcomeLabel.textColor = UIColor(named: colorName)
 		}
 
-	}
-	
-}
-
-// MARK: - game button action selector
-extension RockPaperScissorsViewController {
-	@objc func gameStart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup1()
-		}, completion: {_ in
-			self.locationRightEndGroup1()
-		})
-	}
-	
-	@objc func gameRpsSelect() {
-		guard (rpsVM.rps.you != nil) else {
-			// TODO: "가위바위보를 선택해주세요" 메세지 출력
-			return
+		rpsVM.gameBoardDescriptionHiddenAnimation = {
+			[weak self] in
+			guard self?.gameBoardDescription
+				.isHidden == (false) else { return }
+			
+			UIView.animate(withDuration: 0.3, animations: {
+				self?.gameBoardDescription.alpha = 0
+			}, completion: { _ in
+				self?.gameBoardDescription.isHidden = true
+			})
 		}
-		
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup2()
-		}, completion: {_ in
-			self.locationRightEndGroup2()
-		})
 	}
 	
-	@objc func gameRestart() {
-		UIView.animate(withDuration: 0.5, animations: {
-			self.locationLeftGroup3()
-			self.optionWindowSegControl.selectedSegmentIndex = 0
-		}, completion: {_ in
-			self.locationRightEndGroup3()
-			self.rpsVM.initGameData()
-		})
-	}
 }

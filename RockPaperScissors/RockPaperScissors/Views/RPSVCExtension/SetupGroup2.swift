@@ -5,6 +5,7 @@ extension RockPaperScissorsViewController {
 	func setupViewGroup2() {
 		setupSelectButton()
 		setupGameBoardWindow()
+		setupGameBoardDescription()
 		setupComImages()
 		setupYouImages()
 		setupComPlayerLabel()
@@ -45,6 +46,31 @@ extension RockPaperScissorsViewController {
 			gameBoardWindow.bottomAnchor.constraint(
 				equalTo: selectButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
+		])
+	}
+	
+	func setupGameBoardDescription() {
+		view.addSubview(gameBoardDescription)
+		let text = "당신의 가위바위보를\n선택해주세요"
+		let font = UIFont(name: FONT_NEO, size: 20) ?? UIFont.systemFont(ofSize: 20)
+		
+		let paragraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.lineSpacing = 8
+		let attributes: [NSAttributedString.Key: Any] = [
+			.font: font, .paragraphStyle: paragraphStyle]
+		let attributedString = NSAttributedString(
+			string: text, attributes: attributes)
+		gameBoardDescription.attributedText = attributedString
+		gameBoardDescription.isScrollEnabled = false
+		gameBoardDescription.isEditable = false
+		gameBoardDescription.textAlignment = .center
+		
+		gameBoardDescription.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			gameBoardDescription.centerXAnchor.constraint(
+				equalTo: gameBoardWindow.centerXAnchor),
+			gameBoardDescription.centerYAnchor.constraint(
+				equalTo: gameBoardWindow.centerYAnchor),
 		])
 	}
 	

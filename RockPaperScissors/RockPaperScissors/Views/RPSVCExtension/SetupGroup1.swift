@@ -137,7 +137,7 @@ extension RockPaperScissorsViewController {
 				equalTo: view.centerXAnchor),
 			descriptionWindowTitle.centerYAnchor.constraint(
 				equalTo: descriptionWindow.centerYAnchor,
-				constant: -30),
+				constant: -35),
 		])
 	}
 	
@@ -148,7 +148,7 @@ extension RockPaperScissorsViewController {
 		let font = UIFont(name: FONT_NEO, size: 20) ?? UIFont.systemFont(ofSize: 20)
 		
 		let paragraphStyle = NSMutableParagraphStyle()
-		paragraphStyle.lineSpacing = 6
+		paragraphStyle.lineSpacing = 8
 		let attributes: [NSAttributedString.Key: Any] = [
 			.font: font, .paragraphStyle: paragraphStyle]
 		let attributedString = NSAttributedString(
@@ -164,7 +164,7 @@ extension RockPaperScissorsViewController {
 				equalTo: view.centerXAnchor),
 			descriptionWindowContent.centerYAnchor.constraint(
 				equalTo: descriptionWindow.centerYAnchor,
-				constant: 30),
+				constant: 35),
 		])
 	}
 }

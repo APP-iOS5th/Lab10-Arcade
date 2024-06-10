@@ -47,6 +47,7 @@ extension RockPaperScissorsViewController {
 		// viewGroup2
 		self.locationLeft(self.selectButton)
 		self.locationLeft(self.gameBoardWindow)
+		self.locationLeft(self.gameBoardDescription)
 		self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
@@ -88,8 +89,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.descriptionWindowTitle)
 		self.locationLeft(self.descriptionWindowContent)
 		
-		// viewGroup2
-		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage, comPlayerLabel, youPlayerLabel)
+		// viewGroup2-1
 		self.locationLeft(self.selectButton)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
@@ -106,8 +106,7 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup2() {
-		// viewGroup2
-		// 제외 (gameBoardWindow, comCharacterImage, youCharacterImage, comPlayerLabel, youPlayerLabel)
+		// viewGroup2-1
 		self.locationRightEnd(self.selectButton)
 		self.locationRightEnd(self.comRockImage)
 		self.locationRightEnd(self.comPaperImage)
@@ -131,6 +130,7 @@ extension RockPaperScissorsViewController {
 		// viewGroup2
 		self.locationLeft(self.selectButton)
 		self.locationLeft(self.gameBoardWindow)
+		self.locationLeft(self.gameBoardDescription)
 		self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.comRockImage)
 		self.locationLeft(self.comPaperImage)
@@ -150,15 +150,17 @@ extension RockPaperScissorsViewController {
 		self.locationLeft(self.comOutcomeLabel)
 	}
 	func locationRightEndGroup3() {
-		// viewGorup2 RightEnd
+		// viewGorup2-2 RightEnd
 		self.locationRightEnd(self.gameBoardWindow)
+		self.locationRightEnd(self.gameBoardDescription)
 		self.locationRightEnd(self.comCharacterImage)
 		self.locationRightEnd(self.youCharacterImage)
 		self.locationRightEnd(self.comPlayerLabel)
 		self.locationRightEnd(self.youPlayerLabel)
 		
-		// viewGorup2 Left (viewGorup2의 기본 위치로 이동)
+		// viewGorup2-2 Left (viewGorup2의 위치로 이동)
 		self.locationLeft(self.gameBoardWindow)
+		self.locationLeft(self.gameBoardDescription)
 		self.locationLeft(self.comCharacterImage)
 		self.locationLeft(self.youCharacterImage)
 		self.locationLeft(self.comPlayerLabel)
