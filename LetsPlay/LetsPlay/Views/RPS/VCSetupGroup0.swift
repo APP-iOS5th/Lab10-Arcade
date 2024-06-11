@@ -4,7 +4,7 @@ import UIKit
 extension RockPaperScissorsViewController {
 	func setupViewGroup0() {
 		setupNavigationBar()
-		setupBackgroundImage(backgroundImage)
+		setupCommonBackgroundImage(view: view, backgroundImageView: backgroundImage)
 	}
 	
 	func setupNavigationBar() {
@@ -17,23 +17,23 @@ extension RockPaperScissorsViewController {
 			.scrollEdgeAppearance = appearance
 	}
 	
-	func setupBackgroundImage(_ background: UIImageView) {
-		view.addSubview(background)
-		view.sendSubviewToBack(background)
-		background.image = UIImage(named: BACKGROUND_IMAGE)
-		background.contentMode = .scaleAspectFit
-		background.translatesAutoresizingMaskIntoConstraints = false
-		
-		NSLayoutConstraint.activate([
-			background.widthAnchor.constraint(
-				equalTo: view.widthAnchor),
-			background.heightAnchor.constraint(
-				equalTo: background.widthAnchor,
-				multiplier: 2.5),
-			background.centerXAnchor.constraint(
-				equalTo: view.centerXAnchor),
-			background.bottomAnchor.constraint(
-				equalTo: view.bottomAnchor),
-		])
-	}
+//	func setupBackgroundImage(_ background: UIImageView) {
+//		view.addSubview(background)
+//		view.sendSubviewToBack(background)
+//		background.image = UIImage(named: BACKGROUND_IMAGE)
+//		background.contentMode = .scaleAspectFit
+//		background.translatesAutoresizingMaskIntoConstraints = false
+//		
+//		NSLayoutConstraint.activate([
+//			background.widthAnchor.constraint(
+//				equalTo: view.widthAnchor),
+//			background.heightAnchor.constraint(
+//				equalTo: background.widthAnchor,
+//				multiplier: 2.5),
+//			background.centerXAnchor.constraint(
+//				equalTo: view.centerXAnchor),
+//			background.bottomAnchor.constraint(
+//				equalTo: view.bottomAnchor),
+//		])
+//	}
 }

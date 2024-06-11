@@ -31,6 +31,7 @@
 		AFCC84162C181017005DD007 /* VCSetupGroup2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC840E2C181016005DD007 /* VCSetupGroup2.swift */; };
 		AFCC84172C181017005DD007 /* VCSetupGroup3.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC840F2C181016005DD007 /* VCSetupGroup3.swift */; };
 		AFCC841A2C1810F4005DD007 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC84192C1810F4005DD007 /* Constant.swift */; };
+		CE4DE1D12C181AA0007322C2 /* background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1D02C181AA0007322C2 /* background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		AFCC840E2C181016005DD007 /* VCSetupGroup2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCSetupGroup2.swift; sourceTree = "<group>"; };
 		AFCC840F2C181016005DD007 /* VCSetupGroup3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCSetupGroup3.swift; sourceTree = "<group>"; };
 		AFCC84192C1810F4005DD007 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CE4DE1D02C181AA0007322C2 /* background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		AFCC83EE2C180CCB005DD007 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE4DE1D22C181E0C007322C2 /* CommonStyle */,
 				AFCC84102C181016005DD007 /* RPS */,
 				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
 				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
@@ -175,6 +178,14 @@
 				AFCC840F2C181016005DD007 /* VCSetupGroup3.swift */,
 			);
 			path = RPS;
+			sourceTree = "<group>";
+		};
+		CE4DE1D22C181E0C007322C2 /* CommonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				CE4DE1D02C181AA0007322C2 /* background.swift */,
+			);
+			path = CommonStyle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 				AFCC84142C181017005DD007 /* VCSetupGroup0.swift in Sources */,
 				AFCC841A2C1810F4005DD007 /* Constant.swift in Sources */,
 				AFCC83F82C180E71005DD007 /* GameAssets.swift in Sources */,
+				CE4DE1D12C181AA0007322C2 /* background.swift in Sources */,
 				AFCC83DE2C180AAD005DD007 /* ViewController.swift in Sources */,
 				AFCC83DA2C180AAD005DD007 /* AppDelegate.swift in Sources */,
 				AFCC84082C180FF5005DD007 /* RockPaperScissorsViewModel.swift in Sources */,
