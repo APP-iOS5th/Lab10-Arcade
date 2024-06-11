@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "gameCell")
         
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,28 +34,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return Games.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "순서대로 얍얍"
-        } else if indexPath.row == 1 {
-            cell.textLabel?.text = "게임 다시하기 페이지"
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
+        let game = Games.allCases[indexPath.row]
+        cell.textLabel?.text = game.rawValue
         return cell
     }
     
     // UITableViewDelegate Method
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let addViewController: UIViewController
-        if indexPath.row == 0 {
-            addViewController = AscendingNumStartViewController()
-        } else {
-            addViewController =  AscendingNumStartViewController()
-        }
-        self.navigationController?.pushViewController(addViewController, animated: true)
+        let selectedGame = Games.allCases[indexPath.row]
+        let viewController = selectedGame.viewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

@@ -5,7 +5,27 @@
 //  Created by JIHYE SEOK on 6/4/24.
 //
 
-import Foundation
+import UIKit
+
+enum Games: String, CaseIterable {
+    case tumok = "튜목"
+    case matchImage = "같은 그림 찾기"
+    case ascendingNum = "순서대로 얍얍"
+    case rockSissorPaper = "가위바위보"
+    
+    func viewController() -> UIViewController {
+        switch self {
+        case .tumok:
+            return AscendingNumStartViewController()
+        case . matchImage:
+            return AscendingNumStartViewController()
+        case .ascendingNum:
+            return AscendingNumStartViewController()
+        case .rockSissorPaper:
+            return AscendingNumStartViewController()
+        }
+    }
+}
 
 struct AscendingNumModel {
     var numbers: [Int]
