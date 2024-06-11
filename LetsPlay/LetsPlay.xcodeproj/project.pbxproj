@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C53DD702C182F8B00E9599E /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD6B2C182F8B00E9599E /* BackgroundImage.swift */; };
+		3C53DD712C182F8B00E9599E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD6C2C182F8B00E9599E /* CustomButton.swift */; };
+		3C53DD722C182F8B00E9599E /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD6D2C182F8B00E9599E /* CustomFonts.swift */; };
+		3C53DD732C182F8B00E9599E /* MatchImageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD6E2C182F8B00E9599E /* MatchImageInformation.swift */; };
+		3C53DD762C182FD700E9599E /* MatchImageGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD742C182FD700E9599E /* MatchImageGame.swift */; };
+		3C53DD772C182FD700E9599E /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD752C182FD700E9599E /* SharedData.swift */; };
+		3C53DD7B2C182FEA00E9599E /* MatchImageEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */; };
+		3C53DD7C2C182FEA00E9599E /* MatchImageGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */; };
+		3C53DD7D2C182FEA00E9599E /* MatchImageStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */; };
 		AFCC83DA2C180AAD005DD007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC83D92C180AAD005DD007 /* AppDelegate.swift */; };
 		AFCC83DC2C180AAD005DD007 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC83DB2C180AAD005DD007 /* SceneDelegate.swift */; };
 		AFCC83DE2C180AAD005DD007 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC83DD2C180AAD005DD007 /* ViewController.swift */; };
@@ -35,6 +44,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C53DD6B2C182F8B00E9599E /* BackgroundImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		3C53DD6C2C182F8B00E9599E /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		3C53DD6D2C182F8B00E9599E /* CustomFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
+		3C53DD6E2C182F8B00E9599E /* MatchImageInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchImageInformation.swift; sourceTree = "<group>"; };
+		3C53DD742C182FD700E9599E /* MatchImageGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchImageGame.swift; sourceTree = "<group>"; };
+		3C53DD752C182FD700E9599E /* SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchImageEndViewController.swift; sourceTree = "<group>"; };
+		3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchImageGameViewController.swift; sourceTree = "<group>"; };
+		3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchImageStartViewController.swift; sourceTree = "<group>"; };
 		AFCC83D62C180AAD005DD007 /* LetsPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCC83D92C180AAD005DD007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCC83DB2C180AAD005DD007 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C53DD6F2C182F8B00E9599E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C53DD6B2C182F8B00E9599E /* BackgroundImage.swift */,
+				3C53DD6C2C182F8B00E9599E /* CustomButton.swift */,
+				3C53DD6D2C182F8B00E9599E /* CustomFonts.swift */,
+				3C53DD6E2C182F8B00E9599E /* MatchImageInformation.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		AFCC83CD2C180AAD005DD007 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +141,8 @@
 		AFCC83ED2C180CC5005DD007 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C53DD742C182FD700E9599E /* MatchImageGame.swift */,
+				3C53DD752C182FD700E9599E /* SharedData.swift */,
 				AFCC84052C180FDF005DD007 /* RockPaperScissorsModel.swift */,
 				AFCC83FB2C180EB4005DD007 /* AscendingNumModel.swift */,
 			);
@@ -126,6 +157,9 @@
 				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
 				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
 				AFCC83FF2C180ECA005DD007 /* AscendingNumStartViewController.swift */,
+				3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */,
+				3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */,
+				3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				AFCC84192C1810F4005DD007 /* Constant.swift */,
+				3C53DD6F2C182F8B00E9599E /* Components */,
 				AFCC83F62C180E58005DD007 /* Assets */,
 				AFCC83F12C180DB2005DD007 /* Fonts */,
 			);
@@ -263,11 +298,15 @@
 				AFCC84152C181017005DD007 /* VCSetupGroup1.swift in Sources */,
 				AFCC84122C181017005DD007 /* VCBindingClousre.swift in Sources */,
 				AFCC84132C181017005DD007 /* VCLocationAnimation.swift in Sources */,
+				3C53DD762C182FD700E9599E /* MatchImageGame.swift in Sources */,
 				AFCC83FE2C180EBE005DD007 /* AscendingNumViewModel.swift in Sources */,
+				3C53DD7D2C182FEA00E9599E /* MatchImageStartViewController.swift in Sources */,
 				AFCC84022C180ECB005DD007 /* AscendingNumStartViewController.swift in Sources */,
 				AFCC84032C180ECB005DD007 /* AscendingNumGameViewController.swift in Sources */,
 				AFCC84142C181017005DD007 /* VCSetupGroup0.swift in Sources */,
+				3C53DD702C182F8B00E9599E /* BackgroundImage.swift in Sources */,
 				AFCC841A2C1810F4005DD007 /* Constant.swift in Sources */,
+				3C53DD722C182F8B00E9599E /* CustomFonts.swift in Sources */,
 				AFCC83F82C180E71005DD007 /* GameAssets.swift in Sources */,
 				CE4DE1D12C181AA0007322C2 /* background.swift in Sources */,
 				AFCC83DE2C180AAD005DD007 /* ViewController.swift in Sources */,
@@ -275,10 +314,15 @@
 				AFCC84082C180FF5005DD007 /* RockPaperScissorsViewModel.swift in Sources */,
 				AFCC84172C181017005DD007 /* VCSetupGroup3.swift in Sources */,
 				AFCC84062C180FDF005DD007 /* RockPaperScissorsModel.swift in Sources */,
+				3C53DD772C182FD700E9599E /* SharedData.swift in Sources */,
+				3C53DD732C182F8B00E9599E /* MatchImageInformation.swift in Sources */,
 				AFCC84112C181017005DD007 /* RockPaperScissorsViewController.swift in Sources */,
+				3C53DD712C182F8B00E9599E /* CustomButton.swift in Sources */,
+				3C53DD7B2C182FEA00E9599E /* MatchImageEndViewController.swift in Sources */,
 				AFCC83FC2C180EB4005DD007 /* AscendingNumModel.swift in Sources */,
 				AFCC83DC2C180AAD005DD007 /* SceneDelegate.swift in Sources */,
 				AFCC84162C181017005DD007 /* VCSetupGroup2.swift in Sources */,
+				3C53DD7C2C182FEA00E9599E /* MatchImageGameViewController.swift in Sources */,
 				AFCC84042C180ECB005DD007 /* AscendingNumRestartViewController.swift in Sources */,
 				AFCC83FA2C180E9F005DD007 /* MainViewController.swift in Sources */,
 			);

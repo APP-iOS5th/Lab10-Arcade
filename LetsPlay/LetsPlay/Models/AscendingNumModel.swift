@@ -9,7 +9,7 @@ import UIKit
 
 enum Games: String, CaseIterable {
     case tumok = "튜목"
-    case matchImage = "같은 그림 찾기"
+    case matchImage = "짝꿍 찾기"
     case ascendingNum = "순서대로 얍얍"
     case rockSissorPaper = "가위바위보"
     
@@ -18,7 +18,7 @@ enum Games: String, CaseIterable {
         case .tumok:
             return AscendingNumStartViewController()
         case . matchImage:
-            return AscendingNumStartViewController()
+            return MatchImageStartViewController()
         case .ascendingNum:
             return AscendingNumStartViewController()
         case .rockSissorPaper:
