@@ -171,15 +171,9 @@
 			children = (
 				CE4DE1D22C181E0C007322C2 /* CommonStyle */,
 				AFCC84102C181016005DD007 /* RPS */,
-				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
-				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
-				AFCC83FF2C180ECA005DD007 /* AscendingNumStartViewController.swift */,
-				3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */,
-				3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */,
-				3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */,
-				B8819B052C183A2B006E4F37 /* TumokStartView.swift */,
-				B8819B072C183A57006E4F37 /* TumokGameView.swift */,
-				B8819B092C183A70006E4F37 /* TumokRestartView.swift */,
+				B8819B122C188333006E4F37 /* AscendingNum */,
+				B8819B132C188363006E4F37 /* MatchImage */,
+				B8819B142C188376006E4F37 /* Tumok */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +236,36 @@
 				B8819B032C1839E8006E4F37 /* NavigationBar.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		B8819B122C188333006E4F37 /* AscendingNum */ = {
+			isa = PBXGroup;
+			children = (
+				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
+				AFCC83FF2C180ECA005DD007 /* AscendingNumStartViewController.swift */,
+				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
+			);
+			path = AscendingNum;
+			sourceTree = "<group>";
+		};
+		B8819B132C188363006E4F37 /* MatchImage */ = {
+			isa = PBXGroup;
+			children = (
+				3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */,
+				3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */,
+				3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */,
+			);
+			path = MatchImage;
+			sourceTree = "<group>";
+		};
+		B8819B142C188376006E4F37 /* Tumok */ = {
+			isa = PBXGroup;
+			children = (
+				B8819B052C183A2B006E4F37 /* TumokStartView.swift */,
+				B8819B072C183A57006E4F37 /* TumokGameView.swift */,
+				B8819B092C183A70006E4F37 /* TumokRestartView.swift */,
+			);
+			path = Tumok;
 			sourceTree = "<group>";
 		};
 		CE4DE1D22C181E0C007322C2 /* CommonStyle */ = {
