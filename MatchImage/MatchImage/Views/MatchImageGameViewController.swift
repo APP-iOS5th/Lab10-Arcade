@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class MatchImageGameViewController: UIViewController {
     var matrix = [3,2]
@@ -52,7 +53,6 @@ class MatchImageGameViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("Start: \(playSeconds)")
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.playSeconds += 1
@@ -128,6 +128,7 @@ class MatchImageGameViewController: UIViewController {
         let card2 = flippedCards[1]
         
         if cardImages[card1.tag] == cardImages[card2.tag] {
+            matchedSound()
             flippedCards.removeAll()
             // matched cards unflippable
             card1.isUserInteractionEnabled = false
@@ -146,6 +147,7 @@ class MatchImageGameViewController: UIViewController {
                 timer = nil
                 let alertController = UIAlertController(title: "축하합니다", message: "모든 그림 카드를 맞추셨습니다.", preferredStyle: .alert)
                 self.present(alertController, animated: true, completion: nil)
+                playEndSound()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                     guard let self = self else { return }
                     alertController.dismiss(animated: true) {
@@ -157,6 +159,7 @@ class MatchImageGameViewController: UIViewController {
             }
         } else {
             // not matched
+            unmatchedSound()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 guard let self = self else { return }
                 self.flipCardBack(card1)
@@ -180,6 +183,22 @@ class MatchImageGameViewController: UIViewController {
         let timeFormat = String(format: "%02d:%02d", minutes, seconds)
         
         return timeFormat
+    }
+    
+    func matchedSound()  {
+        let systemSoundId: SystemSoundID = 1002
+        
+        AudioServicesPlaySystemSound(systemSoundId)
+    }
+    func unmatchedSound()  {
+        let systemSoundId: SystemSoundID = 1004
+        
+        AudioServicesPlaySystemSound(systemSoundId)
+    }
+    func playEndSound()  {
+        let systemSoundId: SystemSoundID = 1005
+        
+        AudioServicesPlaySystemSound(systemSoundId)
     }
     
     @objc func goToStart() {
