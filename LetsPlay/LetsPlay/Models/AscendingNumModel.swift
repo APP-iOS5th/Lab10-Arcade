@@ -16,7 +16,7 @@ enum Games: String, CaseIterable {
     func viewController() -> UIViewController {
         switch self {
         case .tumok:
-            return AscendingNumStartViewController()
+            return StartViewController()
         case . matchImage:
             return MatchImageStartViewController()
         case .ascendingNum:
