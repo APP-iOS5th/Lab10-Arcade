@@ -4,7 +4,7 @@ import UIKit
 extension RockPaperScissorsViewController {
 	func setupViewGroup0() {
 		setupNavigationBar()
-		setupBackgroundImage()
+		setupBackgroundImage(backgroundImage)
 	}
 	
 	func setupNavigationBar() {
@@ -17,22 +17,22 @@ extension RockPaperScissorsViewController {
 			.scrollEdgeAppearance = appearance
 	}
 	
-	func setupBackgroundImage() {
-		view.addSubview(backgroundImage)
-		view.sendSubviewToBack(backgroundImage)
-		backgroundImage.image = UIImage(named: BACKGROUND_IMAGE)
-		backgroundImage.contentMode = .scaleAspectFit
-		backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+	func setupBackgroundImage(_ background: UIImageView) {
+		view.addSubview(background)
+		view.sendSubviewToBack(background)
+		background.image = UIImage(named: BACKGROUND_IMAGE)
+		background.contentMode = .scaleAspectFit
+		background.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			backgroundImage.widthAnchor.constraint(
+			background.widthAnchor.constraint(
 				equalTo: view.widthAnchor),
-			backgroundImage.heightAnchor.constraint(
-				equalTo: backgroundImage.widthAnchor,
+			background.heightAnchor.constraint(
+				equalTo: background.widthAnchor,
 				multiplier: 2.5),
-			backgroundImage.centerXAnchor.constraint(
+			background.centerXAnchor.constraint(
 				equalTo: view.centerXAnchor),
-			backgroundImage.bottomAnchor.constraint(
+			background.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor),
 		])
 	}
