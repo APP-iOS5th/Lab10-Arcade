@@ -57,6 +57,7 @@
 		CE4DE1502C12E2F4007322C2 /* VCSetupGroup3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSetupGroup3.swift; sourceTree = "<group>"; };
 		CE4DE1522C12E38D007322C2 /* VCLocationAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLocationAnimation.swift; sourceTree = "<group>"; };
 		CE4DE1562C1742B1007322C2 /* VCBindingClousre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCBindingClousre.swift; sourceTree = "<group>"; };
+		CE4DE1582C17CDD3007322C2 /* RockPaperScissors.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RockPaperScissors.md; sourceTree = "<group>"; };
 		CE5C169B2C0DA1E200316F08 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C169E2C0DA1E200316F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C16A02C0DA1E200316F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		CE5C16922C0DA1E200316F08 = {
 			isa = PBXGroup;
 			children = (
+				CE4DE1582C17CDD3007322C2 /* RockPaperScissors.md */,
 				CE5C169D2C0DA1E200316F08 /* RockPaperScissors */,
 				CE5C169C2C0DA1E200316F08 /* Products */,
 			);
