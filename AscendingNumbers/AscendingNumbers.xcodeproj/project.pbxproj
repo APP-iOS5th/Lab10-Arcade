@@ -20,6 +20,7 @@
 		AF7B06EA2C0EDA0E00264FD3 /* AscendingNumGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B06E92C0EDA0E00264FD3 /* AscendingNumGameViewController.swift */; };
 		AF7B06EE2C0EDAAA00264FD3 /* AscendingNumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7B06ED2C0EDAAA00264FD3 /* AscendingNumModel.swift */; };
 		AF9E88FD2C102903007F3A83 /* GameAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9E88FC2C102903007F3A83 /* GameAssets.swift */; };
+		AFCC83CC2C17EF89005DD007 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCC83CB2C17EF89005DD007 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		AF7B06E92C0EDA0E00264FD3 /* AscendingNumGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendingNumGameViewController.swift; sourceTree = "<group>"; };
 		AF7B06ED2C0EDAAA00264FD3 /* AscendingNumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AscendingNumModel.swift; sourceTree = "<group>"; };
 		AF9E88FC2C102903007F3A83 /* GameAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAssets.swift; sourceTree = "<group>"; };
+		AFCC83CB2C17EF89005DD007 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				AF7B06B42C0D982600264FD3 /* AppDelegate.swift */,
 				AF7B06B62C0D982600264FD3 /* SceneDelegate.swift */,
 				AF7B06D22C0DABFE00264FD3 /* ViewController.swift */,
+				AFCC83CB2C17EF89005DD007 /* MainViewController.swift */,
 				AF7B06BD2C0D982A00264FD3 /* Assets.xcassets */,
 				AF7B06BF2C0D982A00264FD3 /* LaunchScreen.storyboard */,
 				AF7B06C22C0D982A00264FD3 /* Info.plist */,
@@ -217,6 +220,7 @@
 				AF7B06B72C0D982600264FD3 /* SceneDelegate.swift in Sources */,
 				AF9E88FD2C102903007F3A83 /* GameAssets.swift in Sources */,
 				AF7B06EE2C0EDAAA00264FD3 /* AscendingNumModel.swift in Sources */,
+				AFCC83CC2C17EF89005DD007 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.hidesBackButton = true
     }
     
-    // UITableViewDataSource Methods
+    // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Games.allCases.count
     }
@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    // UITableViewDelegate Method
+    // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGame = Games.allCases[indexPath.row]
         let viewController = selectedGame.viewController()
