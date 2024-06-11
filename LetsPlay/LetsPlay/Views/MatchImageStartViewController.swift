@@ -43,6 +43,8 @@ class MatchImageStartViewController: UIViewController {
         view.backgroundColor = .red
         
         self.title = "시작 화면"
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임 선택", style: .plain, target: self, action: #selector(gameChoose))
+        navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
@@ -115,5 +117,10 @@ class MatchImageStartViewController: UIViewController {
             startButton.widthAnchor.constraint(equalToConstant: 150),
             startButton.heightAnchor.constraint(equalToConstant: 50),
         ])
+    }
+    
+    @objc func gameChoose() {
+        let viewController = ViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
