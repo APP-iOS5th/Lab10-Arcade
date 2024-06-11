@@ -2,20 +2,7 @@
   "colors" : [
     {
       "color" : {
-        "platform" : "universal",
-        "reference" : "systemMintColor"
-      },
-      "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "color" : {
-        "platform" : "universal",
+        "platform" : "osx",
         "reference" : "systemMintColor"
       },
       "idiom" : "universal"
