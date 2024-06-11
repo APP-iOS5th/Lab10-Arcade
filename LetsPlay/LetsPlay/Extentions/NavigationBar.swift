@@ -15,7 +15,11 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = leftButton
     }
     
-    @objc func leftButtonTapped() {
+    @objc func leftButtonTappedToStart() {
         navigationController?.pushViewController(StartViewController(), animated: true)
+    }
+    
+    @objc func leftButtonTappedToList() {
+        navigationController?.pushViewController(ViewController(), animated: true)
     }
 }

@@ -37,7 +37,7 @@ class RestartViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        setupNavigationBar(title: "게임 종료", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTapped))
+        setupNavigationBar(title: "게임 종료", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
         view.addSubview(gameRestartButton)
         view.addSubview(resultLabel)
         

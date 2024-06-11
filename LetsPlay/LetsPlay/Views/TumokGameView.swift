@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
-        setupNavigationBar(title: "튜 목", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTapped))
+        setupNavigationBar(title: "튜 목", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
     }
     
     private func setupBoard() {
