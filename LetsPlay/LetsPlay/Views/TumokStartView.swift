@@ -18,8 +18,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "시작화면"
-        view.backgroundColor = .white
+        setupView()
         view.addSubview(gameStartButton)
         
         NSLayoutConstraint.activate([
@@ -30,17 +29,14 @@ class StartViewController: UIViewController {
         gameStartButton.addTarget(self, action: #selector(gameStartButtonTapped), for: .touchUpInside)
     }
     
+    private func setupView() {
+        view.backgroundColor = .white
+        setupNavigationBar(title: "시작화면", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
+    }
+    
     @objc private func gameStartButtonTapped() {
         navigationController?.pushViewController(GameViewController(), animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
 }
