@@ -46,6 +46,7 @@
 		B8819B0A2C183A70006E4F37 /* TumokRestartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B092C183A70006E4F37 /* TumokRestartView.swift */; };
 		B8819B0C2C183A93006E4F37 /* TumokModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0B2C183A93006E4F37 /* TumokModel.swift */; };
 		B8819B0E2C183AB1006E4F37 /* TumokViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0D2C183AB1006E4F37 /* TumokViewModel.swift */; };
+		B8819B102C183FAE006E4F37 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0F2C183FAE006E4F37 /* GameModel.swift */; };
 		CE4DE1D12C181AA0007322C2 /* background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1D02C181AA0007322C2 /* background.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		B8819B092C183A70006E4F37 /* TumokRestartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokRestartView.swift; sourceTree = "<group>"; };
 		B8819B0B2C183A93006E4F37 /* TumokModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokModel.swift; sourceTree = "<group>"; };
 		B8819B0D2C183AB1006E4F37 /* TumokViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokViewModel.swift; sourceTree = "<group>"; };
+		B8819B0F2C183FAE006E4F37 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		CE4DE1D02C181AA0007322C2 /* background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				AFCC84052C180FDF005DD007 /* RockPaperScissorsModel.swift */,
 				AFCC83FB2C180EB4005DD007 /* AscendingNumModel.swift */,
 				B8819B0B2C183A93006E4F37 /* TumokModel.swift */,
+				B8819B0F2C183FAE006E4F37 /* GameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				3C53DD762C182FD700E9599E /* MatchImageGame.swift in Sources */,
 				AFCC83FE2C180EBE005DD007 /* AscendingNumViewModel.swift in Sources */,
 				3C53DD7D2C182FEA00E9599E /* MatchImageStartViewController.swift in Sources */,
+				B8819B102C183FAE006E4F37 /* GameModel.swift in Sources */,
 				AFCC84022C180ECB005DD007 /* AscendingNumStartViewController.swift in Sources */,
 				AFCC84032C180ECB005DD007 /* AscendingNumGameViewController.swift in Sources */,
 				B8819B062C183A2B006E4F37 /* TumokStartView.swift in Sources */,

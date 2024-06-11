@@ -7,26 +7,6 @@
 
 import UIKit
 
-enum Games: String, CaseIterable {
-    case tumok = "튜목"
-    case matchImage = "짝꿍 찾기"
-    case ascendingNum = "순서대로 얍얍"
-    case rockSissorPaper = "가위바위보"
-    
-    func viewController() -> UIViewController {
-        switch self {
-        case .tumok:
-            return StartViewController()
-        case . matchImage:
-            return MatchImageStartViewController()
-        case .ascendingNum:
-            return AscendingNumStartViewController()
-        case .rockSissorPaper:
-            return RockPaperScissorsViewController()
-        }
-    }
-}
-
 struct AscendingNumModel {
     var numbers: [Int]
     var gridSize: Int
