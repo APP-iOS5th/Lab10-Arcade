@@ -39,7 +39,7 @@ class AscendingNumGameViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             gridView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gridView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            gridView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -35)
         ])
         
     }
@@ -65,13 +65,14 @@ class AscendingNumGameViewController: UIViewController {
                 let button = UIButton()
                 button.setTitle("\(numbers[row * gridSize + col])", for: .normal)
                 button.titleLabel?.font = UIFont(name: "DNFBitBitv2", size: 24) ?? UIFont.systemFont(ofSize: 24)
+                button.layer.cornerRadius = 20
                 button.setTitleColor(.blue, for: .normal)
                 button.addAction(UIAction { [weak self] _ in
                     self?.buttonTapped(button)
                 }, for: .touchUpInside)
                 button.backgroundColor = .white
                 button.layer.borderColor = UIColor.black.cgColor
-                button.layer.borderWidth = 1.0
+                button.layer.borderWidth = 3.0
                 rowStackView.addArrangedSubview(button)
                 
                 button.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +100,7 @@ class AscendingNumGameViewController: UIViewController {
     private func buttonTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle, let number = Int(title) else { return }
         if viewModel.checkNumber(number) {
-            sender.backgroundColor = .lightGray
+            sender.backgroundColor = .lightGray.withAlphaComponent(0.95)
             if number == viewModel.gridSize * viewModel.gridSize {
                 viewModel.endGame()
                 let restartVC = AscendingNumRestartViewController(viewModel: viewModel)

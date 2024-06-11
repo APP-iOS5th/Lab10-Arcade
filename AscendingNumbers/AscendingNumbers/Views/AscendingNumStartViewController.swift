@@ -9,6 +9,10 @@ import UIKit
 
 class AscendingNumStartViewController: UIViewController {
     private var viewModel: AscendingNumViewModel?
+    private var startButton: UIButton!
+    private var buttonThree: UIButton!
+    private var buttonFour: UIButton!
+    private var buttonFive: UIButton!
     
     init() {
         viewModel = AscendingNumViewModel(gridSize: 3) // 기본 gridSize 값 설정
@@ -18,11 +22,6 @@ class AscendingNumStartViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private var startButton: UIButton!
-    private var buttonThree: UIButton!
-    private var buttonFour: UIButton!
-    private var buttonFive: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +98,7 @@ class AscendingNumStartViewController: UIViewController {
         
         configuration.baseBackgroundColor = UIColor(named: color)
         configuration.background.strokeColor = .black
+        configuration.background.strokeWidth = 1
         configuration.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: customFont, .kern: 1]))
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -108,21 +108,29 @@ class AscendingNumStartViewController: UIViewController {
         return button
     }
     
-    // MARK: - game Methods
+    // MARK: - Methods
     func selectGameSize(_ sender: UIButton) {
         switch sender.tag {
         case 3:
             viewModel = AscendingNumViewModel(gridSize: 3)
+            sender.configuration?.background.strokeWidth = 6
+            buttonFour.configuration?.background.strokeWidth = 1
+            buttonFive.configuration?.background.strokeWidth = 1
         case 4:
             viewModel = AscendingNumViewModel(gridSize: 4)
+            sender.configuration?.background.strokeWidth = 6
+            buttonThree.configuration?.background.strokeWidth = 1
+            buttonFive.configuration?.background.strokeWidth = 1
         case 5:
             viewModel = AscendingNumViewModel(gridSize: 5)
+            sender.configuration?.background.strokeWidth = 6
+            buttonFour.configuration?.background.strokeWidth = 1
+            buttonThree.configuration?.background.strokeWidth = 1
         default:
             break
         }
     }
     
-    // MARK: - Methods
     func startGame() {
         guard let viewModel = viewModel else {
             print("게임을 선택해주세요")

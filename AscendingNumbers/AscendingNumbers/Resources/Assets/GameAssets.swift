@@ -96,3 +96,15 @@ extension UINavigationController {
         navigationBar.tintColor = .black
     }
 }
+
+extension UILabel {
+    func addStroke(text: String, strokeColor: UIColor, strokeWidth: CGFloat) {
+        let strokeTextAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.strokeColor : strokeColor,
+            NSAttributedString.Key.strokeWidth : -strokeWidth,
+            NSAttributedString.Key.foregroundColor : self.textColor ?? UIColor.black
+        ]
+        
+        self.attributedText = NSAttributedString(string: text, attributes: strokeTextAttributes)
+    }
+}

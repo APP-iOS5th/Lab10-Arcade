@@ -19,7 +19,6 @@ class AscendingNumRestartViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +40,7 @@ class AscendingNumRestartViewController: UIViewController {
         }, for: .touchUpInside)
         
         NSLayoutConstraint.activate([
-            restartButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -130),
+            restartButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 130),
             restartButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             restartButton.widthAnchor.constraint(equalToConstant: 180),
             restartButton.heightAnchor.constraint(equalToConstant: 60)
@@ -49,26 +48,20 @@ class AscendingNumRestartViewController: UIViewController {
         
         if let elapsedTime = viewModel.elapsedTime {
             let timeLabel = UILabel()
-            timeLabel.text = "Elapsed Time: \(elapsedTime.formatted())"
+            let formattedElapsedTime = String(format: "%.2f", elapsedTime)
+            timeLabel.font = UIFont(name: "DNFBitBitv2", size: 80) ?? UIFont.systemFont(ofSize: 80)
+            timeLabel.textColor = .white
+            if let buttonColor = UIColor(named: "buttonColor") {
+                timeLabel.addStroke(text: formattedElapsedTime, strokeColor: buttonColor, strokeWidth: 5.0)
+            }
             timeLabel.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(timeLabel)
+            NSLayoutConstraint.activate([
+                timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                timeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
+            ])
         }
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        if self.isMovingFromParent, let navigationController = navigationController {
-//            if let startViewController = navigationController.viewControllers.first(where: { $0 is AscendingNumStartViewController }) {
-//                var viewControllers = navigationController.viewControllers
-//                if let startVCIndex = viewControllers.firstIndex(of: startViewController) {
-//                    viewControllers.removeSubrange((startVCIndex + 1)..<viewControllers.count)
-//                }
-//                DispatchQueue.main.async {
-//                    navigationController.setViewControllers([startViewController], animated: false)
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - Methods
     private func navigateToStartViewController() {
