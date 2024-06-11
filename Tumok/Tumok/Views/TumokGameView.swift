@@ -10,26 +10,22 @@ import Combine
 
 class GameViewController: UIViewController {
     
-    var board: [[UIButton]] = []
-    var currentPlayer: Int = 1
-    let boardSize = 9
-    var winnerSubject = CurrentValueSubject<Int?, Never>(nil)
-    var subscriptions = Set<AnyCancellable>()
+    private var board: [[UIButton]] = []
+    private let boardSize = 9
+    private var viewModel: GameViewModel!
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = GameViewModel(boardSize: boardSize, player1Name: "Tuna", player2Name: "Mandu")
         setupView()
-        setupNavigationBar()
         setupBoard()
+        bindViewModel()
     }
     
     private func setupView() {
         view.backgroundColor = .white
-    }
-    
-    private func setupNavigationBar() {
-        let leftButton = UIBarButtonItem(title: "돌아가기", style: .plain, target: self, action: #selector(leftButtonTapped))
-        navigationItem.leftBarButtonItem = leftButton
+        setupNavigationBar(title: "튜 목", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTapped))
     }
     
     private func setupBoard() {
@@ -39,7 +35,7 @@ class GameViewController: UIViewController {
         for i in 0..<boardSize {
             var row: [UIButton] = []
             for j in 0..<boardSize {
-                let button = createBoardButton(row: i, col: j, size: buttonSize)
+                let button = createStone(row: i, col: j, size: buttonSize)
                 view.addSubview(button)
                 row.append(button)
             }
@@ -56,9 +52,9 @@ class GameViewController: UIViewController {
         board.removeAll()
     }
     
-    private func createBoardButton(row: Int, col: Int, size: CGFloat) -> UIButton {
+    private func createStone(row: Int, col: Int, size: CGFloat) -> UIButton {
         let button = UIButton(frame: CGRect(x: CGFloat(col) * size, y: CGFloat(row) * size + 100, width: size, height: size))
-        button.backgroundColor = .lightGray
+        button.backgroundColor = UIColor(named: "tumokColor")
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.tag = row * boardSize + col
@@ -66,70 +62,54 @@ class GameViewController: UIViewController {
         return button
     }
     
-    @objc private func leftButtonTapped() {
-        navigationController?.pushViewController(StartViewController(), animated: true)
+    private func bindViewModel() {
+        viewModel.winnerSubject
+            .sink { [weak self] winner in
+                guard let self = self, let winner = winner else { return }
+                let restartViewController = RestartViewController()
+                restartViewController.winnerPublisher = self.viewModel.winnerSubject
+                restartViewController.winnerName = self.viewModel.winnerName()
+                self.navigationController?.pushViewController(restartViewController, animated: true)
+            }
+            .store(in: &subscriptions)
     }
     
     @objc private func buttonTapped(_ sender: UIButton) {
         let row = sender.tag / boardSize
         let col = sender.tag % boardSize
         
-        if sender.backgroundColor == .lightGray {
+        if sender.backgroundColor == UIColor(named: "tumokColor") {
             updateBoardState(button: sender, row: row, col: col)
-            if checkWin(row: row, col: col) {
-                winnerSubject.send(currentPlayer == 1 ? 2 : 1)
-                navigateToRestartViewController()
+            if viewModel.makeMove(at: row, col: col) {
+                updateBoard()
+                title = "튜 목 - \(viewModel.currentPlayerName()) 차례"
             }
         }
     }
     
     private func updateBoardState(button: UIButton, row: Int, col: Int) {
-        if currentPlayer == 1 {
-            button.backgroundColor = .black
-            currentPlayer = 2
+        if viewModel.currentPlayer() == 1 {
+            button.setBackgroundImage(UIImage(named: "pepe"), for: .normal)
         } else {
-            button.backgroundColor = .white
-            currentPlayer = 1
+            button.setBackgroundImage(UIImage(named: "mandu"), for: .normal)
         }
+        button.backgroundColor = .clear
     }
     
-    private func navigateToRestartViewController() {
-        let restartViewController = RestartViewController()
-        restartViewController.winnerPublisher = winnerSubject
-        navigationController?.pushViewController(restartViewController, animated: true)
-    }
-    
-    private func checkWin(row: Int, col: Int) -> Bool {
-        return checkDirection(row: row, col: col, dRow: 0, dCol: 1) ||
-        checkDirection(row: row, col: col, dRow: 1, dCol: 0) ||
-        checkDirection(row: row, col: col, dRow: 1, dCol: 1) ||
-        checkDirection(row: row, col: col, dRow: 1, dCol: -1)
-    }
-    
-    private func checkDirection(row: Int, col: Int, dRow: Int, dCol: Int) -> Bool {
-        var count = 1
-        let color = board[row][col].backgroundColor
-        
-        count += countSameColorInDirection(row: row, col: col, dRow: dRow, dCol: dCol, color: color)
-        count += countSameColorInDirection(row: row, col: col, dRow: -dRow, dCol: -dCol, color: color)
-        
-        return count >= 5
-    }
-    
-    private func countSameColorInDirection(row: Int, col: Int, dRow: Int, dCol: Int, color: UIColor?) -> Int {
-        var count = 0
-        var r = row + dRow
-        var c = col + dCol
-        while r >= 0 && r < boardSize && c >= 0 && c < boardSize && board[r][c].backgroundColor == color {
-            count += 1
-            r += dRow
-            c += dCol
+    private func updateBoard() {
+        for i in 0..<boardSize {
+            for j in 0..<boardSize {
+                let button = board[i][j]
+                switch viewModel.board()[i][j] {
+                case 1:
+                    button.setBackgroundImage(UIImage(named: "pepe"), for: .normal)
+                case 2:
+                    button.setBackgroundImage(UIImage(named: "mandu"), for: .normal)
+                default:
+                    button.setBackgroundImage(nil, for: .normal)
+                    button.backgroundColor = UIColor(named: "tumokColor")
+                }
+            }
         }
-        return count
-    }
-    
-    private func resetGame() {
-        currentPlayer = 1
-        setupBoard()
     }
 }

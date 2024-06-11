@@ -15,6 +15,9 @@
 		B80EB20E2C0FEC8C00229223 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B80EB20D2C0FEC8C00229223 /* Base */; };
 		B80EB21A2C1000D400229223 /* TumokGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80EB2192C1000D400229223 /* TumokGameView.swift */; };
 		B8819AF22C169B1C006E4F37 /* RestartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819AF12C169B1C006E4F37 /* RestartView.swift */; };
+		B8819AFC2C180746006E4F37 /* TumokModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819AFB2C180746006E4F37 /* TumokModel.swift */; };
+		B8819AFE2C180751006E4F37 /* TumokViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819AFD2C180751006E4F37 /* TumokViewModel.swift */; };
+		B8819B012C181949006E4F37 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B002C181949006E4F37 /* NavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		B80EB20F2C0FEC8C00229223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B80EB2192C1000D400229223 /* TumokGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokGameView.swift; sourceTree = "<group>"; };
 		B8819AF12C169B1C006E4F37 /* RestartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartView.swift; sourceTree = "<group>"; };
+		B8819AFB2C180746006E4F37 /* TumokModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TumokModel.swift; path = Tumok/TumokModel.swift; sourceTree = SOURCE_ROOT; };
+		B8819AFD2C180751006E4F37 /* TumokViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TumokViewModel.swift; path = Tumok/TumokViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B8819B002C181949006E4F37 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,7 @@
 				B80EB2152C0FFECD00229223 /* Models */,
 				B80EB2172C0FFEE100229223 /* ViewModels */,
 				B80EB2182C0FFEED00229223 /* Views */,
+				B8819AFF2C1818E3006E4F37 /* Extentions */,
 				B80EB20A2C0FEC8C00229223 /* Assets.xcassets */,
 				B80EB2072C0FEC8B00229223 /* Main.storyboard */,
 				B80EB20C2C0FEC8C00229223 /* LaunchScreen.storyboard */,
@@ -76,6 +83,7 @@
 		B80EB2152C0FFECD00229223 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B8819AFB2C180746006E4F37 /* TumokModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -83,6 +91,7 @@
 		B80EB2172C0FFEE100229223 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B8819AFD2C180751006E4F37 /* TumokViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -95,6 +104,14 @@
 				B8819AF12C169B1C006E4F37 /* RestartView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B8819AFF2C1818E3006E4F37 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				B8819B002C181949006E4F37 /* NavigationBar.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,8 +185,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8819AFC2C180746006E4F37 /* TumokModel.swift in Sources */,
 				B80EB2062C0FEC8B00229223 /* StartView.swift in Sources */,
 				B80EB2022C0FEC8B00229223 /* AppDelegate.swift in Sources */,
+				B8819B012C181949006E4F37 /* NavigationBar.swift in Sources */,
+				B8819AFE2C180751006E4F37 /* TumokViewModel.swift in Sources */,
 				B80EB21A2C1000D400229223 /* TumokGameView.swift in Sources */,
 				B80EB2042C0FEC8B00229223 /* SceneDelegate.swift in Sources */,
 				B8819AF22C169B1C006E4F37 /* RestartView.swift in Sources */,
