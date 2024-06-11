@@ -14,9 +14,9 @@ class MatchImageStartViewController: UIViewController {
     let gameDescription = MatchImageInformation().gameDescription
     let startButton = CustomButton().button
     
-    var matrix = [3,2]
     lazy var difficultyOptions: UISegmentedControl = {
         let items = ["쉬움", "보통", "어려움"]
+        SharedData.shared.matchImageGame.matrix = [3,2]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.backgroundColor = .white
@@ -47,13 +47,8 @@ class MatchImageStartViewController: UIViewController {
         
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
-        // bring saved matrix
-        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
-            matrix = savedMatrix
-        }
-        
         // apply saved matrix to the difficulty option
-        switch matrix {
+        switch SharedData.shared.matchImageGame.matrix {
         case [3,2]:
             difficultyOptions.selectedSegmentIndex = 0
         case [3,4]:
@@ -70,24 +65,20 @@ class MatchImageStartViewController: UIViewController {
             guard let self = self else { return }
             switch difficultyOptions.selectedSegmentIndex {
             case 0:
-                matrix = [3,2]
+                SharedData.shared.matchImageGame.matrix = [3,2]
             case 1:
-                matrix = [3,4]
+                SharedData.shared.matchImageGame.matrix = [3,4]
             case 2:
-                matrix = [3,6]
+                SharedData.shared.matchImageGame.matrix = [3,6]
             default:
                 break
             }
-            
-            // save selected matrix
-            UserDefaults.standard.set(matrix, forKey: "matrix")
         }, for: .valueChanged)
         
         startButton.setTitle("STRAT", for: .normal)
         startButton.addAction(UIAction { [weak self] _ in
             guard let self = self else { return }
             let matchImageGameViewController = MatchImageGameViewController()
-            matchImageGameViewController.matrix = matrix
             navigationController?.pushViewController(matchImageGameViewController, animated: true)
         }, for: .touchUpInside)
     }

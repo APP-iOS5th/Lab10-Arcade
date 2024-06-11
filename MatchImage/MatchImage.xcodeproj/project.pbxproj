@@ -15,6 +15,8 @@
 		3C277EB62C100284000F917B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EB52C100284000F917B /* CustomButton.swift */; };
 		3C277EBB2C1149DD000F917B /* MatchImageGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C277EBA2C1149DD000F917B /* MatchImageGameViewController.swift */; };
 		3C53DD662C12C95200E9599E /* MatchImageEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD652C12C95200E9599E /* MatchImageEndViewController.swift */; };
+		3C53DD682C17DEC300E9599E /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD672C17DEC300E9599E /* SharedData.swift */; };
+		3C53DD6A2C18120600E9599E /* MatchImageGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53DD692C18120600E9599E /* MatchImageGame.swift */; };
 		3CDE96772C0D98630037E24E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE96762C0D98630037E24E /* AppDelegate.swift */; };
 		3CDE96792C0D98630037E24E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE96782C0D98630037E24E /* SceneDelegate.swift */; };
 		3CDE967B2C0D98630037E24E /* MatchImageStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDE967A2C0D98630037E24E /* MatchImageStartViewController.swift */; };
@@ -32,6 +34,8 @@
 		3C277EB52C100284000F917B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3C277EBA2C1149DD000F917B /* MatchImageGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchImageGameViewController.swift; sourceTree = "<group>"; };
 		3C53DD652C12C95200E9599E /* MatchImageEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchImageEndViewController.swift; sourceTree = "<group>"; };
+		3C53DD672C17DEC300E9599E /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
+		3C53DD692C18120600E9599E /* MatchImageGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchImageGame.swift; sourceTree = "<group>"; };
 		3CDE96732C0D98630037E24E /* MatchImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CDE96762C0D98630037E24E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CDE96782C0D98630037E24E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		3CDE968B2C0D9A650037E24E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C53DD672C17DEC300E9599E /* SharedData.swift */,
+				3C53DD692C18120600E9599E /* MatchImageGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,7 +226,9 @@
 				3C277EB62C100284000F917B /* CustomButton.swift in Sources */,
 				3C277EB22C100034000F917B /* BackgroundImage.swift in Sources */,
 				3C277EBB2C1149DD000F917B /* MatchImageGameViewController.swift in Sources */,
+				3C53DD682C17DEC300E9599E /* SharedData.swift in Sources */,
 				3CDE96792C0D98630037E24E /* SceneDelegate.swift in Sources */,
+				3C53DD6A2C18120600E9599E /* MatchImageGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

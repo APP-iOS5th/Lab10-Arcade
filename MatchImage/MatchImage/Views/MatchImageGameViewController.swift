@@ -1,5 +1,5 @@
 //
-//  MatchImageGameViewController.swift
+//  SharedData.shared.matchImageGameViewController.swift
 //  MatchImage
 //
 //  Created by Jungjin Park on 2024-06-06.
@@ -9,7 +9,6 @@ import UIKit
 import AudioToolbox
 
 class MatchImageGameViewController: UIViewController {
-    var matrix = [3,2]
     let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
     var cards = [UIImageView]()
@@ -39,11 +38,6 @@ class MatchImageGameViewController: UIViewController {
         let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
-        // bring saved matrix
-        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
-            matrix = savedMatrix
-        }
-        
         setupCardImages()
         setupCards()
         view.addSubview(playTime)
@@ -60,7 +54,7 @@ class MatchImageGameViewController: UIViewController {
         }
     }
     func setupCardImages() {
-        numberOfImages = matrix.reduce(1, *) / 2
+        numberOfImages = SharedData.shared.matchImageGame.matrix.reduce(1, *) / 2
         for i in 0..<numberOfImages {
             cardImages.append(UIImage(systemName: imageNames[i])!)
             tags.append(i)
@@ -73,18 +67,20 @@ class MatchImageGameViewController: UIViewController {
         let cardWidth: CGFloat = 100
         let cardHeight: CGFloat = 100
         let margin: CGFloat = 10
-        let startX = (view.bounds.width - (cardWidth * CGFloat(matrix[0]) + margin * (CGFloat(matrix[0]) - 1.0 ))) / 2
-        let startY = (view.bounds.height - (cardHeight * CGFloat(matrix[1]) + margin * (CGFloat(matrix[1]) - 1.0 ))) / 2
+        let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
+        let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
         
-        for i in 0..<matrix[1] {
-            for j in 0..<matrix[0] {
-                let row = i % matrix[1]
-                let col = j % matrix[0]
+        var index = 0
+        for i in 0..<SharedData.shared.matchImageGame.matrix[1] {
+            for j in 0..<SharedData.shared.matchImageGame.matrix[0] {
+                let row = i % SharedData.shared.matchImageGame.matrix[1]
+                let col = j % SharedData.shared.matchImageGame.matrix[0]
                 let x = startX + (cardWidth + margin) * CGFloat(col)
                 let y = startY + (cardHeight + margin) * CGFloat(row)
                 
                 let card = createCard(frame: CGRect(x: x, y: y, width: cardWidth, height: cardHeight))
                 card.tag = tags.remove(at: 0)
+                index += 1
                 view.addSubview(card)
                 cards.append(card)
             }
@@ -152,7 +148,8 @@ class MatchImageGameViewController: UIViewController {
                     guard let self = self else { return }
                     alertController.dismiss(animated: true) {
                         let matchImageEndViewController = MatchImageEndViewController()
-                        matchImageEndViewController.playTime = self.playTimeFormat()
+//                        matchImageEndViewController.playTime = self.playTimeFormat()
+                        SharedData.shared.matchImageGame.playedTime = self.playTimeFormat()
                         self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
                     }
                 }

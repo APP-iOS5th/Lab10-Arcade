@@ -15,7 +15,7 @@ class MatchImageEndViewController: UIViewController {
     let gamePlayTime = MatchImageInformation().gamePlayTime
     let restartButton = CustomButton().button
     
-    var playTime = ""
+//    var playTime = ""
     var difficulty = "쉬움"
     
     override func viewDidLoad() {
@@ -24,10 +24,7 @@ class MatchImageEndViewController: UIViewController {
         
         let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
-        
-        // bring saved matrix
-        if let savedMatrix = UserDefaults.standard.array(forKey: "matrix") as? [Int] {
-            switch savedMatrix {
+        switch SharedData.shared.matchImageGame.matrix {
             case [3,2]:
                 difficulty = "쉬움"
             case [3,4]:
@@ -36,11 +33,10 @@ class MatchImageEndViewController: UIViewController {
                 difficulty = "어려움"
             default:
                 difficulty = "쉬움"
-            }
         }
         
         gameDescription.text = "난이도: \(difficulty)\n\n플레이 시간"
-        gamePlayTime.text = playTime
+        gamePlayTime.text = SharedData.shared.matchImageGame.playedTime
         
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addAction(UIAction { [weak self] _ in
