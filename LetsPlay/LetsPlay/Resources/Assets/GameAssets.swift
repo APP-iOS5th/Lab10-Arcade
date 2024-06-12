@@ -43,7 +43,7 @@ extension UIViewController {
     func setDescription(title: String, body: String) {
         let cornerView = UIView()
         let titleLabel = UILabel()
-        let bodyLabel = UILabel()
+        let bodyTextView = UITextView()
         
         
         cornerView.backgroundColor = .white.withAlphaComponent(0.95)
@@ -57,15 +57,23 @@ extension UIViewController {
         titleLabel.font = UIFont(name: "DNFBitBitv2", size: 24) ?? UIFont.systemFont(ofSize: 24)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        bodyLabel.text = body
-        bodyLabel.numberOfLines = 0
-        bodyLabel.textAlignment = .center
-        bodyLabel.font = UIFont(name: "NeoDunggeunmoPro-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "NeoDunggeunmoPro-Regular", size: 17) ?? UIFont.systemFont(ofSize: 17), .paragraphStyle: paragraphStyle]
+        let attributedString = NSAttributedString(
+            string: body, attributes: attributes)
+        bodyTextView.attributedText = attributedString
+        bodyTextView.isEditable = false
+        bodyTextView.isScrollEnabled = false
+        bodyTextView.backgroundColor = .white.withAlphaComponent(0)
+        bodyTextView.textAlignment = .center
+        bodyTextView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(cornerView)
         cornerView.addSubview(titleLabel)
-        cornerView.addSubview(bodyLabel)
+        cornerView.addSubview(bodyTextView)
         
         NSLayoutConstraint.activate([
             cornerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -74,8 +82,10 @@ extension UIViewController {
             cornerView.heightAnchor.constraint(equalToConstant: 208),
             titleLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: cornerView.topAnchor, constant: 50),
-            bodyLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
-            bodyLabel.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -50)
+            bodyTextView.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
+            bodyTextView.trailingAnchor.constraint(equalTo: cornerView.trailingAnchor, constant: 30),
+            bodyTextView.leadingAnchor.constraint(equalTo: cornerView.leadingAnchor, constant: -30),
+            bodyTextView.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -50)
 
         ])
     }

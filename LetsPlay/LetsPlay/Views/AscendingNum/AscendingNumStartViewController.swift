@@ -15,7 +15,7 @@ class AscendingNumStartViewController: UIViewController {
     private var buttonFive: UIButton!
     
     init() {
-        viewModel = AscendingNumViewModel(gridSize: 3) // 기본 gridSize 값 설정
+        viewModel = AscendingNumViewModel(gridSize: 3)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,7 +37,7 @@ class AscendingNumStartViewController: UIViewController {
     // MARK: - UI 세팅
     private func setupUI() {
         setBackground()
-        setDescription(title: "순서대로 얍얍", body: "N x N개의 숫자를\n\n순서대로 선택해보세요!")
+        setDescription(title: "순서대로 얍얍", body: "N x N개의 숫자를\n순서대로 선택해보세요!")
         setButtons()
         
         NSLayoutConstraint.activate([
