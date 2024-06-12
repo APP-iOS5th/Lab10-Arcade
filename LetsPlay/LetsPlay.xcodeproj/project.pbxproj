@@ -170,10 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				CE4DE1D22C181E0C007322C2 /* CommonStyle */,
-				AFCC84102C181016005DD007 /* RPS */,
-				B8819B122C188333006E4F37 /* AscendingNum */,
-				B8819B132C188363006E4F37 /* MatchImage */,
 				B8819B142C188376006E4F37 /* Tumok */,
+				B8819B122C188333006E4F37 /* AscendingNum */,
+				AFCC84102C181016005DD007 /* RPS */,
+				B8819B132C188363006E4F37 /* MatchImage */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,8 +241,8 @@
 		B8819B122C188333006E4F37 /* AscendingNum */ = {
 			isa = PBXGroup;
 			children = (
-				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
 				AFCC83FF2C180ECA005DD007 /* AscendingNumStartViewController.swift */,
+				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
 				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
 			);
 			path = AscendingNum;
@@ -251,9 +251,9 @@
 		B8819B132C188363006E4F37 /* MatchImage */ = {
 			isa = PBXGroup;
 			children = (
-				3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */,
-				3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */,
 				3C53DD7A2C182FEA00E9599E /* MatchImageStartViewController.swift */,
+				3C53DD792C182FEA00E9599E /* MatchImageGameViewController.swift */,
+				3C53DD782C182FEA00E9599E /* MatchImageEndViewController.swift */,
 			);
 			path = MatchImage;
 			sourceTree = "<group>";
