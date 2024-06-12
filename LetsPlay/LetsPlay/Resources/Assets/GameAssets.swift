@@ -87,11 +87,13 @@ extension UIViewController {
             cornerView.widthAnchor.constraint(equalToConstant: 298),
             cornerView.heightAnchor.constraint(equalToConstant: 208),
             titleLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: cornerView.topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: cornerView.topAnchor, constant: 40),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
             bodyTextView.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
-            bodyTextView.trailingAnchor.constraint(equalTo: cornerView.trailingAnchor, constant: 30),
-            bodyTextView.leadingAnchor.constraint(equalTo: cornerView.leadingAnchor, constant: -30),
-            bodyTextView.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -50)
+            bodyTextView.trailingAnchor.constraint(equalTo: cornerView.trailingAnchor, constant: -10),
+            bodyTextView.leadingAnchor.constraint(equalTo: cornerView.leadingAnchor, constant: 10),
+            bodyTextView.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -40),
+            
         ])
     }
 }
