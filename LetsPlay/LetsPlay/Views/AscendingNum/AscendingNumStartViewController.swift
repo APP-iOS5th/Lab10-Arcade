@@ -36,10 +36,6 @@ class AscendingNumStartViewController: UIViewController {
         setButtons()
         
         NSLayoutConstraint.activate([
-            startButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -130),
-            startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            startButton.widthAnchor.constraint(equalToConstant: 144),
-            startButton.heightAnchor.constraint(equalToConstant: 60),
             buttonFour.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             buttonFour.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -60),
             buttonFour.widthAnchor.constraint(equalToConstant: 70),

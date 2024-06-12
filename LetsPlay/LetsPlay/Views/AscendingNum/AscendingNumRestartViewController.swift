@@ -36,12 +36,6 @@ class AscendingNumRestartViewController: UIViewController {
             self?.restartGame()
         }, for: .touchUpInside)
         
-        NSLayoutConstraint.activate([
-            restartButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 130),
-            restartButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            restartButton.widthAnchor.constraint(equalToConstant: 180),
-            restartButton.heightAnchor.constraint(equalToConstant: 60)
-        ])
         
         if let elapsedTime = viewModel.elapsedTime {
             let timeLabel = UILabel()
