@@ -3,11 +3,7 @@ import UIKit
 // MARK: - setup - viewGroup0 - GameBackground
 extension RockPaperScissorsViewController {
 	func setupViewGroup0() {
-		setupNavigationBar()
+		setupNavigationBar(title: "가위바위보 대결", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
 		setupCommonBackgroundImage(view: view, backgroundImageView: backgroundImage)
-	}
-	
-	func setupNavigationBar() {
-		self.title = "RockPaperScissors"
 	}
 }
