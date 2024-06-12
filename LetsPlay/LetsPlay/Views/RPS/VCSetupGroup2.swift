@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: - setup - viewGroup2 - GameReady
+// MARK: - setup - viewGroup2 - ReadyToSelect
 extension RockPaperScissorsViewController {
 	func setupViewGroup2() {
 		setupSelectButton()

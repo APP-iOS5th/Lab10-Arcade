@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: - setup - viewGroup1 - GameSetting
+// MARK: - setup - viewGroup1 - ReadyToStart
 extension RockPaperScissorsViewController {
 	func setupViewGroup1() {
 		setupStartButton()
@@ -35,14 +35,12 @@ extension RockPaperScissorsViewController {
 		optionWindow.layer.cornerRadius = 30
 		optionWindow.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			optionWindow.leadingAnchor.constraint(
-				equalTo: view.leadingAnchor,
-				constant: 20),
-			optionWindow.trailingAnchor.constraint(
-				equalTo: view.trailingAnchor,
-				constant: -20),
+			optionWindow.widthAnchor.constraint(
+				equalToConstant: 298),
 			optionWindow.heightAnchor.constraint(
 				equalToConstant: 100),
+			optionWindow.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
 			optionWindow.bottomAnchor.constraint(
 				equalTo: startButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
@@ -56,15 +54,32 @@ extension RockPaperScissorsViewController {
 		optionWindowSegControl.insertSegment(
 			withTitle: "만두", at: 1, animated: false)
 		optionWindowSegControl.selectedSegmentIndex = 0
+		optionWindowSegControl.backgroundColor = .white
+		optionWindowSegControl.selectedSegmentTintColor = UIColor(
+			named: "color-button")
+		let normalTextAttributes: [NSAttributedString.Key: Any] = [
+			.font: CustomFonts().neoDunggeunmoPro
+		]
+		let selectedTextAttributes: [NSAttributedString.Key: Any] = [
+			.foregroundColor: UIColor.white
+		]
+		optionWindowSegControl.setTitleTextAttributes(
+			normalTextAttributes, for: .normal)
+		optionWindowSegControl.setTitleTextAttributes(
+			selectedTextAttributes, for: .selected)
 		optionWindowSegControl.addTarget(
 			self, action: #selector(playerSelect(_:)),
 			for: .valueChanged)
 		
 		optionWindowSegControl.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			optionWindowSegControl.widthAnchor.constraint(equalToConstant: 280),
-			optionWindowSegControl.centerXAnchor.constraint(equalTo: optionWindow.centerXAnchor),
-			optionWindowSegControl.centerYAnchor.constraint(equalTo: optionWindow.centerYAnchor, constant: 20),
+			optionWindowSegControl.widthAnchor.constraint(
+				equalToConstant: 260),
+			optionWindowSegControl.centerXAnchor.constraint(
+				equalTo: optionWindow.centerXAnchor),
+			optionWindowSegControl.centerYAnchor.constraint(
+				equalTo: optionWindow.centerYAnchor, 
+				constant: 20),
 		])
 	}
 	
@@ -87,10 +102,10 @@ extension RockPaperScissorsViewController {
 			
 			optionWindowImage0.centerXAnchor.constraint(
 				equalTo: optionWindow.centerXAnchor, 
-				constant: -70),
+				constant: -65),
 			optionWindowImage1.centerXAnchor.constraint(
 				equalTo: optionWindow.centerXAnchor, 
-				constant: 70),
+				constant: 65),
 			
 			optionWindowImage0.centerYAnchor.constraint(
 				equalTo: optionWindow.centerYAnchor,
@@ -110,14 +125,12 @@ extension RockPaperScissorsViewController {
 		descriptionWindow.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			descriptionWindow.leadingAnchor.constraint(
-				equalTo: view.leadingAnchor,
-				constant: 20),
-			descriptionWindow.trailingAnchor.constraint(
-				equalTo: view.trailingAnchor,
-				constant: -20),
+			descriptionWindow.widthAnchor.constraint(
+				equalToConstant: 298),
 			descriptionWindow.heightAnchor.constraint(
-				equalToConstant: 200),
+				equalToConstant: 208),
+			descriptionWindow.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
 			descriptionWindow.bottomAnchor.constraint(
 				equalTo: optionWindow.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),

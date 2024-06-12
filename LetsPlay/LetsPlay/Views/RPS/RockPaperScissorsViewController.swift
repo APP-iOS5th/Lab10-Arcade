@@ -75,17 +75,15 @@ extension RockPaperScissorsViewController {
 		var config = UIButton.Configuration.filled()
 		config.title = title
 		config.baseForegroundColor = .white
-		config.baseBackgroundColor = .systemOrange
-		config.background.strokeWidth = 2
+		config.baseBackgroundColor = UIColor(named: "color-button")
+		config.background.strokeWidth = 3
 		config.background.strokeColor = .black
-		config.cornerStyle = .large
 		config.contentInsets = NSDirectionalEdgeInsets(
-			top: 10, leading: 20,
-			bottom: 10, trailing: 20)
+			top: 12, leading: 26,
+			bottom: 12, trailing: 26)
 		config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
 			var attribute = $0
-			attribute.font = UIFont(
-				name: FONT_DNF, size: 25)
+			attribute.font = UIFont(name: FONT_DNF, size: 24)
 			return attribute
 		}
 		return config

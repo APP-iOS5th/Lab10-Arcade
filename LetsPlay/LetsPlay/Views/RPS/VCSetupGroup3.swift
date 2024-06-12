@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: - setup - viewGroup3 - GameCount
+// MARK: - setup - viewGroup3 - ReadyToRestart
 extension RockPaperScissorsViewController {
 	func setupViewGroup3() {
 		setupRestartButton()
