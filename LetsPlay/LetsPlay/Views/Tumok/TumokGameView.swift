@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
     
     private func setupView() {
         setBackground()
-        setupNavigationBar(title: "튜 목", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
+        setupNavigationBar(title: "튜 목", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
     }
     
     private func setupBoard() {
