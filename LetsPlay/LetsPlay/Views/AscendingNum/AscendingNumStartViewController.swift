@@ -25,15 +25,8 @@ class AscendingNumStartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewHeight = view.frame.height
-                print("전체 뷰의 높이: \(viewHeight)")
         setupUI()
-        
-        // Override the back button
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(backButton))
-        self.navigationItem.leftBarButtonItem = newBackButton
-        
+        setupNavigationBar(title: "순서대로 얍얍", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
     }
     
     // MARK: - UI 세팅
@@ -43,10 +36,6 @@ class AscendingNumStartViewController: UIViewController {
         setButtons()
         
         NSLayoutConstraint.activate([
-            startButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -130),
-            startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            startButton.widthAnchor.constraint(equalToConstant: 144),
-            startButton.heightAnchor.constraint(equalToConstant: 60),
             buttonFour.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             buttonFour.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -60),
             buttonFour.widthAnchor.constraint(equalToConstant: 70),
@@ -141,16 +130,6 @@ class AscendingNumStartViewController: UIViewController {
         
         let gameViewController = AscendingNumGameViewController(viewModel: viewModel)
         navigationController?.pushViewController(gameViewController, animated: true)
-    }
-    
-    private func navigateToStartViewController() {
-        let startViewController = ViewController()
-        self.navigationController?.pushViewController(startViewController, animated: true)
-    }
-    
-    
-    @objc func backButton() {
-        navigateToStartViewController()
     }
 }
 

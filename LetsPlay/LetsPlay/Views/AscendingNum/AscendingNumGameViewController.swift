@@ -26,6 +26,7 @@ class AscendingNumGameViewController: UIViewController {
         
         setupUI()
         viewModel.startGame()
+        setupNavigationBar(title: "순서대로 얍얍", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
     }
     
     
@@ -48,8 +49,6 @@ class AscendingNumGameViewController: UIViewController {
         let gridSize = viewModel.ascendingNumModel.gridSize
         let buttonSize = view.bounds.width / CGFloat(gridSize) - 20
         let numbers = viewModel.numbers
-        print(numbers)
-        
         let gridView = UIView()
         let stackView = UIStackView()
         

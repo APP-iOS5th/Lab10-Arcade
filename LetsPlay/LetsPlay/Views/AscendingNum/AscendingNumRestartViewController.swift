@@ -23,10 +23,7 @@ class AscendingNumRestartViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        // Override the back button
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "게임시작", style: .plain, target: self, action: #selector(backButton))
-        self.navigationItem.leftBarButtonItem = newBackButton
+        setupNavigationBar(title: "순서대로 얍얍", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
     }
     
     
@@ -39,12 +36,6 @@ class AscendingNumRestartViewController: UIViewController {
             self?.restartGame()
         }, for: .touchUpInside)
         
-        NSLayoutConstraint.activate([
-            restartButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 130),
-            restartButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            restartButton.widthAnchor.constraint(equalToConstant: 180),
-            restartButton.heightAnchor.constraint(equalToConstant: 60)
-        ])
         
         if let elapsedTime = viewModel.elapsedTime {
             let timeLabel = UILabel()
@@ -72,9 +63,6 @@ class AscendingNumRestartViewController: UIViewController {
                 }
             }
         }
-    }
-    @objc func backButton() {
-        navigateToStartViewController()
     }
     
     func restartGame() {

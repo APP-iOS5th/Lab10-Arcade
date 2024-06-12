@@ -17,12 +17,18 @@ extension UIViewController {
         configuration.baseBackgroundColor = UIColor(named: "color-button")
         configuration.background.strokeColor = .black
         configuration.background.strokeWidth = 3
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         configuration.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: customFont, .kern: 1]))
         
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -130),
+            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ])
         
         return button
     }
@@ -86,7 +92,6 @@ extension UIViewController {
             bodyTextView.trailingAnchor.constraint(equalTo: cornerView.trailingAnchor, constant: 30),
             bodyTextView.leadingAnchor.constraint(equalTo: cornerView.leadingAnchor, constant: -30),
             bodyTextView.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -50)
-
         ])
     }
 }
@@ -98,7 +103,7 @@ extension UINavigationController {
         appearance.backgroundColor = .white
         
         appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-
+        
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
