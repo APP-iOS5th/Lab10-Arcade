@@ -40,7 +40,7 @@ class RestartViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            gameRestartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameRestartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     

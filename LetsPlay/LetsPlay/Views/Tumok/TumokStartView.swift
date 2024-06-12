@@ -31,7 +31,7 @@ class StartViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            gameStartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameStartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
     
