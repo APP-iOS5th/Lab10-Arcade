@@ -5,7 +5,7 @@ extension RockPaperScissorsViewController {
 	func setupViewModelBindingsClosure() {
 		
 		// MARK: - game
-		rpsVM.readyToSelectActions = { [weak self] in
+		rpsVM.readyToConfirmAction = { [weak self] in
 			UIView.animate(withDuration: 0.5, animations: {
 				[weak self] in
 				self?.locationLeftGroup1()
@@ -14,7 +14,7 @@ extension RockPaperScissorsViewController {
 				self?.locationRightEndGroup1()
 			})
 		}
-		rpsVM.readyToRestartActions = { [weak self] in
+		rpsVM.readyToRestartAction = { [weak self] in
 			self?.rpsVM.updateOutcome()
 			UIView.animate(withDuration: 0.5, animations: {
 				[weak self] in
@@ -25,7 +25,7 @@ extension RockPaperScissorsViewController {
 				self?.locationRightEndGroup2()
 			})
 		}
-		rpsVM.readyToStartActions = { [weak self] in
+		rpsVM.readyToStartAction = { [weak self] in
 			self?.optionWindowSegControl.selectedSegmentIndex = 0
 
 			UIView.animate(withDuration: 0.5, animations: {
@@ -52,9 +52,9 @@ extension RockPaperScissorsViewController {
 		
 		// MARK: - rps
 		rpsVM.gameBoardDescriptionHiddenAnimation = {
-			[weak self] isReadyToSelect in
+			[weak self] isReadyToConfirm in
 			let isVisible = self?.gameBoardDescription.isHidden == false
-			guard (isReadyToSelect), (isVisible) else { return }
+			guard (isReadyToConfirm), (isVisible) else { return }
 			
 			UIView.animate(withDuration: 0.2, animations: {
 				self?.gameBoardDescription.alpha = 0

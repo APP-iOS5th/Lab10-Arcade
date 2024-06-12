@@ -19,7 +19,7 @@ class RockPaperScissorsViewController: UIViewController {
 	let descriptionWindowContent = UITextView()
 	
 	// viewGroup2 - gameStart
-	let selectButton = UIButton()
+	let confirmButton = UIButton()
 	let gameBoardWindow = UIView()
 	let gameBoardDescription = UITextView()
 	let comCharacterImage = UIImageView()
@@ -94,8 +94,8 @@ extension RockPaperScissorsViewController {
 	}
 	
 	@objc func rpsTap(_ sender: UITapGestureRecognizer) {
-		let isReadyToSelect = (rpsVM.game.state == .readyToSelect)
-		guard (isReadyToSelect) else { return }
+		let isReadyToConfirm = (rpsVM.game.state == .readyToConfirm)
+		guard (isReadyToConfirm) else { return }
 				
 		let selectView = sender.view as? UIImageView
 		let tag = selectView?.tag ?? 0
@@ -109,7 +109,7 @@ extension RockPaperScissorsViewController {
 		rpsVM.updateGameStateNext()
 	}
 	
-	@objc func touchSelectButton() {
+	@objc func touchConfirmButton() {
 		let isSelectRPS = rpsVM.rps.you != nil
 		guard (isSelectRPS) else { return }
 		rpsVM.updateGameStateNext()
