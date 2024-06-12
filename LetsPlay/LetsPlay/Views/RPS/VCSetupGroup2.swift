@@ -1,9 +1,9 @@
 import UIKit
 
-// MARK: - setup - viewGroup2 - ReadyToSelect
+// MARK: - setup - viewGroup2 - ReadyToConfirm
 extension RockPaperScissorsViewController {
 	func setupViewGroup2() {
-		setupSelectButton()
+		setupConfirmButton()
 		setupGameBoardWindow()
 		setupGameBoardDescription()
 		setupComImages()
@@ -12,18 +12,18 @@ extension RockPaperScissorsViewController {
 		setupYouPlayerLabel()
 	}
 	
-	func setupSelectButton() {
-		view.addSubview(selectButton)
-		let config = configGameStyledButton("SELECT")
-		selectButton.configuration = config
-		selectButton.addTarget(self, action: #selector(touchSelectButton),
+	func setupConfirmButton() {
+		view.addSubview(confirmButton)
+		let config = configGameStyledButton("CONFIRM")
+		confirmButton.configuration = config
+		confirmButton.addTarget(self, action: #selector(touchConfirmButton),
 							   for: .touchUpInside)
-		selectButton.translatesAutoresizingMaskIntoConstraints = false
+		confirmButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			selectButton.centerXAnchor.constraint(
+			confirmButton.centerXAnchor.constraint(
 				equalTo: view.centerXAnchor,
 				constant: view.bounds.width),
-			selectButton.bottomAnchor.constraint(
+			confirmButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
 				constant: -130),
 		])
@@ -42,16 +42,16 @@ extension RockPaperScissorsViewController {
 			gameBoardWindow.heightAnchor.constraint(
 				equalToConstant: 380),
 			gameBoardWindow.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor),
+				equalTo: confirmButton.centerXAnchor),
 			gameBoardWindow.bottomAnchor.constraint(
-				equalTo: selectButton.topAnchor,
+				equalTo: confirmButton.topAnchor,
 				constant: -((view.bounds.height - 450) / 5)),
 		])
 	}
 	
 	func setupGameBoardDescription() {
 		view.addSubview(gameBoardDescription)
-		let text = "당신의 가위바위보를\n선택해주세요"
+		let text = "가위바위보를 선택 후\nCONFIRM 버튼을 눌러주세요."
 		let font = UIFont(name: FONT_NEO, size: 17) ?? UIFont.systemFont(ofSize: 17)
 		
 		let paragraphStyle = NSMutableParagraphStyle()
@@ -88,7 +88,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 20),
 			comCharacterImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor),
+				equalTo: confirmButton.centerXAnchor),
 		])
 		
 		view.addSubview(comRockImage)
@@ -104,7 +104,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comRockImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: 80),
 		])
 		
@@ -121,7 +121,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comPaperImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: 0),
 		])
 		
@@ -138,7 +138,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 90),
 			comScissorsImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: -80),
 		])
 	}
@@ -157,7 +157,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -20),
 			youCharacterImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor),
+				equalTo: confirmButton.centerXAnchor),
 		])
 		
 		view.addSubview(youRockImage)
@@ -173,7 +173,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youRockImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: -80),
 		])
 		
@@ -190,7 +190,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youPaperImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: 0),
 		])
 		
@@ -207,7 +207,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.bottomAnchor,
 				constant: -90),
 			youScissorsImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: 80),
 		])
 		

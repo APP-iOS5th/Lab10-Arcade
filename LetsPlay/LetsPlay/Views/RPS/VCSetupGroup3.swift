@@ -38,7 +38,7 @@ extension RockPaperScissorsViewController {
 				equalTo: gameBoardWindow.topAnchor,
 				constant: 120),
 			comSelectedRPSImage.centerXAnchor.constraint(
-				equalTo: selectButton.centerXAnchor,
+				equalTo: confirmButton.centerXAnchor,
 				constant: view.bounds.width),
 		])
 	}

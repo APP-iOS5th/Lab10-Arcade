@@ -55,7 +55,7 @@ extension RockPaperScissorsViewController {
 		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
-		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.confirmButton)
 		self.viewLocationLeft(self.gameBoardWindow)
 		self.viewLocationLeft(self.gameBoardDescription)
 		self.viewLocationLeft(self.comCharacterImage)
@@ -100,7 +100,7 @@ extension RockPaperScissorsViewController {
 		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2-1
-		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.confirmButton)
 		self.viewLocationLeft(self.comRockImage)
 		self.viewLocationLeft(self.comPaperImage)
 		self.viewLocationLeft(self.comScissorsImage)
@@ -113,7 +113,7 @@ extension RockPaperScissorsViewController {
 	}
 	func locationRightEndGroup2() {
 		// viewGroup2-1
-		self.viewLocationRightEnd(self.selectButton)
+		self.viewLocationRightEnd(self.confirmButton)
 		self.viewLocationRightEnd(self.comRockImage)
 		self.viewLocationRightEnd(self.comPaperImage)
 		self.viewLocationRightEnd(self.comScissorsImage)
@@ -133,7 +133,7 @@ extension RockPaperScissorsViewController {
 		self.viewLocationLeft(self.descriptionWindowContent)
 		
 		// viewGroup2
-		self.viewLocationLeft(self.selectButton)
+		self.viewLocationLeft(self.confirmButton)
 		self.viewLocationLeft(self.gameBoardWindow)
 		self.viewLocationLeft(self.gameBoardDescription)
 		self.viewLocationLeft(self.comCharacterImage)

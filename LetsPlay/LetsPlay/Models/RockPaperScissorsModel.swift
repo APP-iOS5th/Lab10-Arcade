@@ -1,6 +1,6 @@
 // MARK: - Enum
 enum RPSGameStateCase {
-	case readyToStart, readyToSelect, readyToRestart
+	case readyToStart, readyToConfirm, readyToRestart
 }
 
 enum RPSGameCharacterCase: String {
@@ -70,8 +70,8 @@ struct RPSGameStateModel {
 
 	mutating func updateNext() {
 		switch state {
-			case .readyToStart: self.state = .readyToSelect
-			case .readyToSelect: self.state = .readyToRestart
+			case .readyToStart: self.state = .readyToConfirm
+			case .readyToConfirm: self.state = .readyToRestart
 			case .readyToRestart: self.state = .readyToStart
 		}
 	}

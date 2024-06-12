@@ -13,9 +13,9 @@ class RockPaperScissorsViewModel {
 	}
 	
 	// MARK: Binding Closure
-	var readyToSelectActions: (() -> Void)?
-	var readyToRestartActions: (() -> Void)?
-	var readyToStartActions: (() -> Void)?
+	var readyToConfirmAction: (() -> Void)?
+	var readyToRestartAction: (() -> Void)?
+	var readyToStartAction: (() -> Void)?
 	var charactersImageDidChange: ((_ you: String, _ com: String) -> Void)?
 	var gameBoardDescriptionHiddenAnimation: ((Bool) -> Void)?
 	var youSelectRPSImageDidChange: ((String) -> Void)?
@@ -30,9 +30,9 @@ class RockPaperScissorsViewModel {
 		didSet { 
 			NSLog("= game - didSet - state : \(game.state) =")
 			switch game.state {
-				case .readyToSelect: readyToSelectActions?()
-				case .readyToRestart: readyToRestartActions?()
-				case .readyToStart: readyToStartActions?()
+				case .readyToConfirm: readyToConfirmAction?()
+				case .readyToRestart: readyToRestartAction?()
+				case .readyToStart: readyToStartAction?()
 			}
 		}
 	}
@@ -49,8 +49,8 @@ class RockPaperScissorsViewModel {
 		didSet(old) {
 			NSLog("rps - didSet - you : \(rps.you?.rawValue ?? "")")
 			
-			let isReadyToSelect: Bool = (game.state == .readyToSelect)
-			gameBoardDescriptionHiddenAnimation?(isReadyToSelect)
+			let isReadyToConfirm: Bool = (game.state == .readyToConfirm)
+			gameBoardDescriptionHiddenAnimation?(isReadyToConfirm)
 			
 			let oldTag = old.you?.tag ?? 0
 			let newTag = rps.you?.tag ?? 0
