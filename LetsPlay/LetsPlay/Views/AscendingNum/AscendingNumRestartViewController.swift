@@ -23,10 +23,7 @@ class AscendingNumRestartViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        // Override the back button
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "게임시작", style: .plain, target: self, action: #selector(backButton))
-        self.navigationItem.leftBarButtonItem = newBackButton
+        setupNavigationBar(title: "순서대로 얍얍", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
     }
     
     
@@ -72,9 +69,6 @@ class AscendingNumRestartViewController: UIViewController {
                 }
             }
         }
-    }
-    @objc func backButton() {
-        navigateToStartViewController()
     }
     
     func restartGame() {
