@@ -19,38 +19,42 @@ class MatchImageGameViewController: UIViewController {
     
     var playSeconds = 0
     var timer: Timer?
-    var playTime: UILabel = {
-        let label = UILabel()
-        label.text = "00:00"
-        label.font = CustomFonts().neoDunggeunmoPro
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
+//    var playTime: UILabel = {
+//        let label = UILabel()
+//        label.text = "00:00"
+//        label.font = CustomFonts().dNFBitBitv2
+//        
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        return label
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "짝꿍 찾기"
+        self.title = "짝꿍 찾기 (\(playTimeFormat()))"
         view.backgroundColor = .white
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
+        // apply GameAssets
+        setBackground()
+        
+//        view.addSubview(playTime)
         setupCardImages()
         setupCards()
-        view.addSubview(playTime)
         
-        playTime.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        playTime.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+//        playTime.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        playTime.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.playSeconds += 1
-            self.playTime.text = self.playTimeFormat()
+//            self.playTime.text = self.playTimeFormat()
+            self.title = "짝꿍 찾기 (\(playTimeFormat()))"
         }
     }
     func setupCardImages() {
@@ -70,7 +74,7 @@ class MatchImageGameViewController: UIViewController {
         let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
         let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
         // 위치 조정. 원본보다 카드 하나 정도 밑에 정렬됨
-            - cardHeight
+            - 50
         
         var index = 0
         for i in 0..<SharedData.shared.matchImageGame.matrix[1] {
@@ -200,8 +204,8 @@ class MatchImageGameViewController: UIViewController {
         AudioServicesPlaySystemSound(systemSoundId)
     }
     
-    @objc func goToStart() {
-        let startViewController = MatchImageStartViewController()
-        self.navigationController?.pushViewController(startViewController, animated: true)
+    @objc func gameChoose() {
+        let viewController = ViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class MatchImageStartViewController: UIViewController {
-    let backgroundImage = BackgroundImage().backgroundImage
+//    let backgroundImage = BackgroundImage().backgroundImage
     let gameInfoContainer = MatchImageInformation().gameInfoContainer
     let gameTitle = MatchImageInformation().gameTitle
     let gameDescription = MatchImageInformation().gameDescription
@@ -42,12 +42,12 @@ class MatchImageStartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        self.title = "시작 화면"
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임 선택", style: .plain, target: self, action: #selector(gameChoose))
+        self.title = "짝꿍 찾기"
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
-        // GameAssets
-        
+        // apply GameAssets
+        setBackground()
         
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
@@ -91,7 +91,7 @@ class MatchImageStartViewController: UIViewController {
     private func setupLayout() {
         gameInfoContainer.addSubview(gameTitle)
         gameInfoContainer.addSubview(gameDescription)
-        view.addSubview(backgroundImage)
+//        view.addSubview(backgroundImage)
         view.addSubview(gameInfoContainer)
         view.addSubview(difficultyOptions)
         view.addSubview(startButton)
@@ -99,10 +99,10 @@ class MatchImageStartViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            backgroundImage.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
+//            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+//            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
             gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),

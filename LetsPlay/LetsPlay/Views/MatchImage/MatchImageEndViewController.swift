@@ -8,7 +8,7 @@
 import UIKit
 
 class MatchImageEndViewController: UIViewController {
-    let backgroundImage = BackgroundImage().backgroundImage
+//    let backgroundImage = BackgroundImage().backgroundImage
     let gameInfoContainer = MatchImageInformation().gameInfoContainer
     let gameTitle = MatchImageInformation().gameTitle
     let gameDescription = MatchImageInformation().gameDescription
@@ -20,9 +20,9 @@ class MatchImageEndViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "게임 종료"
+        self.title = "짝꿍 찾기"
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "시작 화면", style: .plain, target: self, action: #selector(goToStart))
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         switch SharedData.shared.matchImageGame.matrix {
             case [3,2]:
@@ -34,14 +34,16 @@ class MatchImageEndViewController: UIViewController {
             default:
                 difficulty = "쉬움"
         }
+        // apply GameAssets
+        setBackground()
         
         gameDescription.text = "난이도: \(difficulty)\n\n플레이 시간"
         gamePlayTime.text = SharedData.shared.matchImageGame.playedTime
         
         restartButton.setTitle("Restart", for: .normal)
         restartButton.addAction(UIAction { [weak self] _ in
-            let matchImageGameViewController = MatchImageGameViewController()
-            self?.navigationController?.pushViewController(matchImageGameViewController, animated: true)
+            let matchImageStartViewController = MatchImageStartViewController()
+            self?.navigationController?.pushViewController(matchImageStartViewController, animated: true)
         }, for: .touchUpInside)
         setupLayout()
     }
@@ -50,17 +52,17 @@ class MatchImageEndViewController: UIViewController {
         gameInfoContainer.addSubview(gameTitle)
         gameInfoContainer.addSubview(gameDescription)
         gameInfoContainer.addSubview(gamePlayTime)
-        view.addSubview(backgroundImage)
+//        view.addSubview(backgroundImage)
         view.addSubview(gameInfoContainer)
         view.addSubview(restartButton)
         
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            backgroundImage.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
+//            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
+//            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
             gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),
@@ -80,8 +82,8 @@ class MatchImageEndViewController: UIViewController {
         ])
     }
     
-    @objc func goToStart() {
-        let startViewController = MatchImageStartViewController()
-        self.navigationController?.pushViewController(startViewController, animated: true)
+    @objc func gameChoose() {
+        let viewController = ViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
