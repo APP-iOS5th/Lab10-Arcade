@@ -18,8 +18,7 @@ class MainViewController: UIViewController {
     
     // MARK: - UI 세팅
     private func setupUI() {
-		setupCommonBackgroundImage(view: view, backgroundImageView: UIImageView()) // common add
-//        setBackground()
+		setBackground()
         setButtons()
         
         NSLayoutConstraint.activate([

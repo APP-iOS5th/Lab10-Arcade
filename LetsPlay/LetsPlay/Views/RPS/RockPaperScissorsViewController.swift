@@ -8,9 +8,6 @@ class RockPaperScissorsViewController: UIViewController {
 	
 	let rpsVM = RockPaperScissorsViewModel()
 	
-	// viewGroup0 - gameBackground
-	let backgroundImage = UIImageView()
-	
 	// viewGroup1 - gameSetting
 	let startButton = UIButton()
 	let optionWindow = UIView()

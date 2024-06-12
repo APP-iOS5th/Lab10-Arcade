@@ -47,7 +47,6 @@
 		B8819B0C2C183A93006E4F37 /* TumokModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0B2C183A93006E4F37 /* TumokModel.swift */; };
 		B8819B0E2C183AB1006E4F37 /* TumokViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0D2C183AB1006E4F37 /* TumokViewModel.swift */; };
 		B8819B102C183FAE006E4F37 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8819B0F2C183FAE006E4F37 /* GameModel.swift */; };
-		CE4DE1D12C181AA0007322C2 /* background.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4DE1D02C181AA0007322C2 /* background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +92,6 @@
 		B8819B0B2C183A93006E4F37 /* TumokModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokModel.swift; sourceTree = "<group>"; };
 		B8819B0D2C183AB1006E4F37 /* TumokViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumokViewModel.swift; sourceTree = "<group>"; };
 		B8819B0F2C183FAE006E4F37 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
-		CE4DE1D02C181AA0007322C2 /* background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +167,6 @@
 		AFCC83EE2C180CCB005DD007 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE4DE1D22C181E0C007322C2 /* CommonStyle */,
 				B8819B142C188376006E4F37 /* Tumok */,
 				B8819B122C188333006E4F37 /* AscendingNum */,
 				AFCC84102C181016005DD007 /* RPS */,
@@ -268,14 +265,6 @@
 			path = Tumok;
 			sourceTree = "<group>";
 		};
-		CE4DE1D22C181E0C007322C2 /* CommonStyle */ = {
-			isa = PBXGroup;
-			children = (
-				CE4DE1D02C181AA0007322C2 /* background.swift */,
-			);
-			path = CommonStyle;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,7 +354,6 @@
 				3C53DD722C182F8B00E9599E /* CustomFonts.swift in Sources */,
 				B8819B0C2C183A93006E4F37 /* TumokModel.swift in Sources */,
 				AFCC83F82C180E71005DD007 /* GameAssets.swift in Sources */,
-				CE4DE1D12C181AA0007322C2 /* background.swift in Sources */,
 				AFCC83DE2C180AAD005DD007 /* ViewController.swift in Sources */,
 				AFCC83DA2C180AAD005DD007 /* AppDelegate.swift in Sources */,
 				B8819B0A2C183A70006E4F37 /* TumokRestartView.swift in Sources */,

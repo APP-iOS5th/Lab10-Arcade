@@ -35,14 +35,24 @@ extension UIViewController {
     
     // 배경 이미지 설정
     func setBackground() {
-        let backgroundImage = UIImage(named: "image-background")
-        let backgroundImageView = UIImageView(frame: self.view.bounds)
-        backgroundImageView.image = backgroundImage
-        backgroundImageView.contentMode = .scaleAspectFill
-        backgroundImageView.clipsToBounds = true
-        
-        view.addSubview(backgroundImageView)
-        view.sendSubviewToBack(backgroundImageView)
+		let backgroundImageView = UIImageView()
+		view.addSubview(backgroundImageView)
+		view.sendSubviewToBack(backgroundImageView)
+		backgroundImageView.image = UIImage(named: BACKGROUND_IMAGE)
+		backgroundImageView.contentMode = .scaleAspectFit
+		backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+		
+		NSLayoutConstraint.activate([
+			backgroundImageView.widthAnchor.constraint(
+				equalTo: view.widthAnchor),
+			backgroundImageView.heightAnchor.constraint(
+				equalTo: backgroundImageView.widthAnchor,
+				multiplier: 2.5),
+			backgroundImageView.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
+			backgroundImageView.bottomAnchor.constraint(
+				equalTo: view.bottomAnchor),
+		])
     }
     
     // 게임 설명 설정
