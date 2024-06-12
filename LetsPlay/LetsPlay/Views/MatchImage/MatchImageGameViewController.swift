@@ -9,6 +9,8 @@ import UIKit
 import AudioToolbox
 
 class MatchImageGameViewController: UIViewController {
+    let backgroundImage = BackgroundImage().backgroundImage
+    
     let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
     var cards = [UIImageView]()
@@ -29,7 +31,17 @@ class MatchImageGameViewController: UIViewController {
         let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
-        setBackground()
+        view.addSubview(backgroundImage)
+        view.sendSubviewToBack(backgroundImage)
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
+            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
         setupCardImages()
         setupCards()
     }
@@ -58,7 +70,7 @@ class MatchImageGameViewController: UIViewController {
         let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
         let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
         // 위치 조정. 원본보다 카드 하나 정도 밑에 정렬됨
-            - 50
+            - 80
         
         var index = 0
         for i in 0..<SharedData.shared.matchImageGame.matrix[1] {
@@ -79,7 +91,7 @@ class MatchImageGameViewController: UIViewController {
     
     func createCard(frame: CGRect) -> UIImageView {
         let card = UIImageView(frame: frame)
-        card.backgroundColor = .gray
+        card.backgroundColor = UIColor(named: "color-green")
         card.image = UIImage(systemName: "circle")
         card.tintColor = .white
         card.isUserInteractionEnabled = true
@@ -104,8 +116,8 @@ class MatchImageGameViewController: UIViewController {
     func flipCard(_ card: UIImageView, toImage image: UIImage) {
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromLeft, animations: {
             card.image = image
-            card.tintColor = .black
-            card.backgroundColor = .clear
+            card.tintColor = .white
+            card.backgroundColor = UIColor(named: "color-skyblue")
         }, completion: nil)
     }
     
@@ -123,8 +135,10 @@ class MatchImageGameViewController: UIViewController {
             card1.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
             card2.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                card1.tintColor = .gray
-                card2.tintColor = .gray
+                card1.tintColor = UIColor(named: "color-orange")
+                card1.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+                card2.tintColor = UIColor(named: "color-orange")
+                card2.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
             }
             // all matched
             numberOfImages -= 1
@@ -138,7 +152,6 @@ class MatchImageGameViewController: UIViewController {
                     guard let self = self else { return }
                     alertController.dismiss(animated: true) {
                         let matchImageEndViewController = MatchImageEndViewController()
-//                        matchImageEndViewController.playTime = self.playTimeFormat()
                         SharedData.shared.matchImageGame.playedTime = self.playTimeFormat()
                         self.navigationController?.pushViewController(matchImageEndViewController, animated: true)
                     }
@@ -160,7 +173,7 @@ class MatchImageGameViewController: UIViewController {
         UIView.transition(with: card, duration: 0.5, options: .transitionFlipFromRight, animations: {
             card.image = UIImage(systemName: "circle")
             card.tintColor = .white
-            card.backgroundColor = .gray
+            card.backgroundColor = UIColor(named: "color-green")
         }, completion: nil)
     }
     
