@@ -14,46 +14,34 @@ class RestartViewController: UIViewController {
     var winnerName: String?
     private var subscriptions = Set<AnyCancellable>()
     
-    private let gameRestartButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("다시 하기", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private var gameRestartButton: UIButton!
     
-    private let resultLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    private var resultLabel: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBindings()
         setupView()
         setupConstraints()
-        setupBindings()
     }
     
     private func setupView() {
-        view.backgroundColor = .white
-        setupNavigationBar(title: "게임 종료", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
-        view.addSubview(gameRestartButton)
-        view.addSubview(resultLabel)
+        setBackground()
         
+        gameRestartButton = customButton(title: "다시하기")
         gameRestartButton.addTarget(self, action: #selector(gameRestartButtonTapped), for: .touchUpInside)
+        view.addSubview(gameRestartButton)
+        
+        setDescription(title: resultLabel, body: "전장의 지배자 \(winnerName!)!")
+        
+        setupNavigationBar(title: "게임 종료", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
+        
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             gameRestartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameRestartButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            resultLabel.bottomAnchor.constraint(equalTo: gameRestartButton.topAnchor, constant: -20),
-            resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            resultLabel.heightAnchor.constraint(equalToConstant: 100)
+            gameRestartButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150)
         ])
     }
     
@@ -62,7 +50,7 @@ class RestartViewController: UIViewController {
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 if let winnerName = self.winnerName {
-                    self.resultLabel.text = "\(winnerName)의 승리입니다!"
+                    resultLabel = "\(winnerName)의 승리입니다!"
                 }
             }
             .store(in: &subscriptions)

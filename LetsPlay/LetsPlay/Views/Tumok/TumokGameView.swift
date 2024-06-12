@@ -17,14 +17,14 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = GameViewModel(boardSize: boardSize, player1Name: "Tuna", player2Name: "Mandu")
+        viewModel = GameViewModel(boardSize: boardSize, player1Name: "튜나", player2Name: "만두")
         setupView()
         setupBoard()
         bindViewModel()
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        setBackground()
         setupNavigationBar(title: "튜 목", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
     }
     
