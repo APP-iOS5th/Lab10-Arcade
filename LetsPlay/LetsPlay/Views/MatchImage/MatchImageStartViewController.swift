@@ -8,11 +8,10 @@
 import UIKit
 
 class MatchImageStartViewController: UIViewController {
-    let backgroundImage = BackgroundImage().backgroundImage
     let gameInfoContainer = MatchImageInformation().gameInfoContainer
     let gameTitle = MatchImageInformation().gameTitle
     let gameDescription = MatchImageInformation().gameDescription
-    let startButton = CustomButton().button
+    private var startButton: UIButton!
     
     lazy var difficultyOptions: UISegmentedControl = {
         let items = ["쉬움", "보통", "어려움"]
@@ -42,11 +41,14 @@ class MatchImageStartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
-        self.title = "시작 화면"
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임 선택", style: .plain, target: self, action: #selector(gameChoose))
+        self.title = "짝꿍 찾기"
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
+        
+        setBackground()
+        startButton = customButton(title: "START")
         
         SharedData.shared.matchImageGame.matrix = [3,2]
         // apply saved matrix to the difficulty option
@@ -77,7 +79,6 @@ class MatchImageStartViewController: UIViewController {
             }
         }, for: .valueChanged)
         
-        startButton.setTitle("STRAT", for: .normal)
         startButton.addAction(UIAction { [weak self] _ in
             guard let self = self else { return }
             let matchImageGameViewController = MatchImageGameViewController()
@@ -88,18 +89,12 @@ class MatchImageStartViewController: UIViewController {
     private func setupLayout() {
         gameInfoContainer.addSubview(gameTitle)
         gameInfoContainer.addSubview(gameDescription)
-        view.addSubview(backgroundImage)
         view.addSubview(gameInfoContainer)
         view.addSubview(difficultyOptions)
-        view.addSubview(startButton)
         
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 100),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
             gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
             gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),
@@ -112,10 +107,6 @@ class MatchImageStartViewController: UIViewController {
             gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
             difficultyOptions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             difficultyOptions.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -70),
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
-            startButton.widthAnchor.constraint(equalToConstant: 150),
-            startButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
