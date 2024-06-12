@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: - setup - viewGroup1 - GameSetting
+// MARK: - setup - viewGroup1 - ReadyToStart
 extension RockPaperScissorsViewController {
 	func setupViewGroup1() {
 		setupStartButton()
