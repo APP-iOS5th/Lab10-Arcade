@@ -13,6 +13,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let viewControllers = self.navigationController?.viewControllers
+        {
+            print("debug: \(viewControllers)")
+        }
         
         self.title = "게임선택"
         self.view.backgroundColor = .yellow

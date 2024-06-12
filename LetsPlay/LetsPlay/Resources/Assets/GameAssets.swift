@@ -35,24 +35,42 @@ extension UIViewController {
     
     // 배경 이미지 설정
     func setBackground() {
-		let backgroundImageView = UIImageView()
-		view.addSubview(backgroundImageView)
-		view.sendSubviewToBack(backgroundImageView)
-		backgroundImageView.image = UIImage(named: BACKGROUND_IMAGE)
-		backgroundImageView.contentMode = .scaleAspectFit
-		backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-		
-		NSLayoutConstraint.activate([
-			backgroundImageView.widthAnchor.constraint(
-				equalTo: view.widthAnchor),
-			backgroundImageView.heightAnchor.constraint(
-				equalTo: backgroundImageView.widthAnchor,
-				multiplier: 2.5),
-			backgroundImageView.centerXAnchor.constraint(
-				equalTo: view.centerXAnchor),
-			backgroundImageView.bottomAnchor.constraint(
-				equalTo: view.bottomAnchor),
-		])
+        let backgroundImageView = UIImageView()
+        view.addSubview(backgroundImageView)
+        view.sendSubviewToBack(backgroundImageView)
+        backgroundImageView.image = UIImage(named: BACKGROUND_IMAGE)
+        backgroundImageView.contentMode = .scaleAspectFit
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.widthAnchor.constraint(
+                equalTo: view.widthAnchor),
+            backgroundImageView.heightAnchor.constraint(
+                equalTo: backgroundImageView.widthAnchor,
+                multiplier: 2.5),
+            backgroundImageView.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor),
+            backgroundImageView.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor),
+        ])
+    }
+    
+    func splashBackground() {
+        let splashBackgroundImageView = UIImageView()
+        view.addSubview(splashBackgroundImageView)
+        view.sendSubviewToBack(splashBackgroundImageView)
+        splashBackgroundImageView.image = UIImage(named: "splash")
+        splashBackgroundImageView.contentMode = .scaleAspectFill
+        splashBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(splashBackgroundImageView)
+        
+        // 이미지 뷰 제약 조건 설정
+        NSLayoutConstraint.activate([
+            splashBackgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            splashBackgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            splashBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            splashBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     // 게임 설명 설정

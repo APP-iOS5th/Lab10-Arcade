@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     // MARK: - UI 세팅
     private func setupUI() {
-		setBackground()
+        splashBackground()
         setButtons()
         
         NSLayoutConstraint.activate([

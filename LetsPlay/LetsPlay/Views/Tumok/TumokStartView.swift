@@ -16,6 +16,7 @@ class StartViewController: UIViewController {
         setupView()
         setupConstraints()
         
+        
     }
     
     private func setupView() {

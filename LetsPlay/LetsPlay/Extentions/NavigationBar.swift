@@ -20,6 +20,13 @@ extension UIViewController {
     }
     
     @objc func leftButtonTappedToList() {
-        navigationController?.pushViewController(ViewController(), animated: true)
+        if let viewControllers = self.navigationController?.viewControllers {
+            for viewController in viewControllers {
+                if let vc = viewController as? ViewController {
+                    navigationController?.popToViewController(vc, animated: true)
+                    break
+                }
+            }
+        }
     }
 }
