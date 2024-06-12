@@ -9,10 +9,11 @@ import UIKit
 
 class MatchImageStartViewController: UIViewController {
 //    let backgroundImage = BackgroundImage().backgroundImage
-    let gameInfoContainer = MatchImageInformation().gameInfoContainer
-    let gameTitle = MatchImageInformation().gameTitle
-    let gameDescription = MatchImageInformation().gameDescription
-    let startButton = CustomButton().button
+//    let gameInfoContainer = MatchImageInformation().gameInfoContainer
+//    let gameTitle = MatchImageInformation().gameTitle
+//    let gameDescription = MatchImageInformation().gameDescription
+//    let startButton = CustomButton().button
+    private var startButton: UIButton!
     
     lazy var difficultyOptions: UISegmentedControl = {
         let items = ["쉬움", "보통", "어려움"]
@@ -48,8 +49,10 @@ class MatchImageStartViewController: UIViewController {
         
         // apply GameAssets
         setBackground()
+        setDescription(title: "순서대로 얍얍", body: "도전!\n 최단 시간에 같은 그림을 맞춰 보세요.")
+        startButton = customButton(title: "START")
         
-        gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
+//        gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
         SharedData.shared.matchImageGame.matrix = [3,2]
         // apply saved matrix to the difficulty option
@@ -80,7 +83,7 @@ class MatchImageStartViewController: UIViewController {
             }
         }, for: .valueChanged)
         
-        startButton.setTitle("STRAT", for: .normal)
+//        startButton.setTitle("STRAT", for: .normal)
         startButton.addAction(UIAction { [weak self] _ in
             guard let self = self else { return }
             let matchImageGameViewController = MatchImageGameViewController()
@@ -89,10 +92,10 @@ class MatchImageStartViewController: UIViewController {
     }
     
     private func setupLayout() {
-        gameInfoContainer.addSubview(gameTitle)
-        gameInfoContainer.addSubview(gameDescription)
+//        gameInfoContainer.addSubview(gameTitle)
+//        gameInfoContainer.addSubview(gameDescription)
 //        view.addSubview(backgroundImage)
-        view.addSubview(gameInfoContainer)
+//        view.addSubview(gameInfoContainer)
         view.addSubview(difficultyOptions)
         view.addSubview(startButton)
         
@@ -103,16 +106,16 @@ class MatchImageStartViewController: UIViewController {
 //            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: -20),
 //            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 //            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
-            gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),
-            gameInfoContainer.heightAnchor.constraint(equalToConstant: 208),
-            gameTitle.topAnchor.constraint(equalTo: gameInfoContainer.topAnchor, constant: 30),
-            gameTitle.centerXAnchor.constraint(equalTo: gameInfoContainer.centerXAnchor),
-            gameDescription.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 30),
-            gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
-            gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
-            gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
+//            gameInfoContainer.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 150),
+//            gameInfoContainer.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+//            gameInfoContainer.widthAnchor.constraint(equalToConstant: 298),
+//            gameInfoContainer.heightAnchor.constraint(equalToConstant: 208),
+//            gameTitle.topAnchor.constraint(equalTo: gameInfoContainer.topAnchor, constant: 30),
+//            gameTitle.centerXAnchor.constraint(equalTo: gameInfoContainer.centerXAnchor),
+//            gameDescription.topAnchor.constraint(equalTo: gameTitle.bottomAnchor, constant: 30),
+//            gameDescription.leadingAnchor.constraint(equalTo: gameInfoContainer.leadingAnchor, constant: 40),
+//            gameDescription.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
+//            gameDescription.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
             difficultyOptions.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             difficultyOptions.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -70),
             startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
