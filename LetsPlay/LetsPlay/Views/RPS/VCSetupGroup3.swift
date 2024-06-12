@@ -21,7 +21,7 @@ extension RockPaperScissorsViewController {
 				constant: view.bounds.width * 2),
 			restartButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
-				constant: -100),
+				constant: -130),
 		])
 	}
 	

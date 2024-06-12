@@ -25,7 +25,7 @@ extension RockPaperScissorsViewController {
 				constant: view.bounds.width),
 			selectButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
-				constant: -100),
+				constant: -130),
 		])
 	}
 	
@@ -52,10 +52,10 @@ extension RockPaperScissorsViewController {
 	func setupGameBoardDescription() {
 		view.addSubview(gameBoardDescription)
 		let text = "당신의 가위바위보를\n선택해주세요"
-		let font = UIFont(name: FONT_NEO, size: 20) ?? UIFont.systemFont(ofSize: 20)
+		let font = UIFont(name: FONT_NEO, size: 17) ?? UIFont.systemFont(ofSize: 17)
 		
 		let paragraphStyle = NSMutableParagraphStyle()
-		paragraphStyle.lineSpacing = 8
+		paragraphStyle.lineSpacing = 10
 		let attributes: [NSAttributedString.Key: Any] = [
 			.font: font, .paragraphStyle: paragraphStyle]
 		let attributedString = NSAttributedString(

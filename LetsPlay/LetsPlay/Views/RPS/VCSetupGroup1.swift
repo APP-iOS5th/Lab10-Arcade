@@ -23,7 +23,7 @@ extension RockPaperScissorsViewController {
 				equalTo: view.centerXAnchor),
 			startButton.bottomAnchor.constraint(
 				equalTo: view.bottomAnchor,
-				constant: -100),
+				constant: -130),
 		])
 	}
 	
@@ -141,7 +141,7 @@ extension RockPaperScissorsViewController {
 		view.addSubview(descriptionWindowTitle)
 		descriptionWindowTitle.text = "가위바위보 대결"
 		descriptionWindowTitle.font = UIFont(
-			name: FONT_DNF, size: 30)
+			name: FONT_DNF, size: 24)
 		descriptionWindowTitle.isScrollEnabled = false
 		descriptionWindowTitle.isEditable = false
 		descriptionWindowTitle.textAlignment = .center
@@ -160,10 +160,10 @@ extension RockPaperScissorsViewController {
 		view.addSubview(descriptionWindowContent)
 		
 		let text = "플레이어를 선택 후\n대결을 시작해보세요!"
-		let font = UIFont(name: FONT_NEO, size: 20) ?? UIFont.systemFont(ofSize: 20)
+		let font = UIFont(name: FONT_NEO, size: 17) ?? UIFont.systemFont(ofSize: 17)
 		
 		let paragraphStyle = NSMutableParagraphStyle()
-		paragraphStyle.lineSpacing = 8
+		paragraphStyle.lineSpacing = 10
 		let attributes: [NSAttributedString.Key: Any] = [
 			.font: font, .paragraphStyle: paragraphStyle]
 		let attributedString = NSAttributedString(
