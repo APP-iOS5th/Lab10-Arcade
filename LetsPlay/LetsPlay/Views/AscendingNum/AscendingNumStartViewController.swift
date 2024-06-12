@@ -62,7 +62,6 @@ class AscendingNumStartViewController: UIViewController {
         
         startButton.addAction(UIAction { [weak self] _ in
             self?.startGame()
-            print("Start!")
         }, for: .touchUpInside)
         
         buttonThree.addAction(UIAction { [weak self] _ in
@@ -104,16 +103,19 @@ class AscendingNumStartViewController: UIViewController {
         switch sender.tag {
         case 3:
             viewModel = AscendingNumViewModel(gridSize: 3)
+            viewModel?.ascendingNumModel.isSelected = true
             sender.configuration?.background.strokeWidth = 6
             buttonFour.configuration?.background.strokeWidth = 2
             buttonFive.configuration?.background.strokeWidth = 2
         case 4:
             viewModel = AscendingNumViewModel(gridSize: 4)
+            viewModel?.ascendingNumModel.isSelected = true
             sender.configuration?.background.strokeWidth = 6
             buttonThree.configuration?.background.strokeWidth = 2
             buttonFive.configuration?.background.strokeWidth = 2
         case 5:
             viewModel = AscendingNumViewModel(gridSize: 5)
+            viewModel?.ascendingNumModel.isSelected = true
             sender.configuration?.background.strokeWidth = 6
             buttonFour.configuration?.background.strokeWidth = 2
             buttonThree.configuration?.background.strokeWidth = 2
@@ -123,11 +125,10 @@ class AscendingNumStartViewController: UIViewController {
     }
     
     func startGame() {
-        guard let viewModel = viewModel else {
+        guard let viewModel = viewModel, viewModel.ascendingNumModel.isSelected else {
             print("게임을 선택해주세요")
             return
         }
-        
         let gameViewController = AscendingNumGameViewController(viewModel: viewModel)
         navigationController?.pushViewController(gameViewController, animated: true)
     }

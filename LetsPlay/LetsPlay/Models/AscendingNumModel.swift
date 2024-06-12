@@ -12,12 +12,14 @@ struct AscendingNumModel {
     var gridSize: Int
     var startTime: Date?
     var endTime: Date?
+    var isSelected: Bool
     private(set) var currentNumber: Int
     
     init(gridSize: Int) {
         self.gridSize = gridSize
         self.numbers = Array(1...(gridSize * gridSize)).shuffled()
         self.currentNumber = 1
+        self.isSelected = false
     }
     
     func isCorrectNumber(_ number: Int) -> Bool {
@@ -30,6 +32,7 @@ struct AscendingNumModel {
     
     mutating func resetGame() {
         self.numbers = Array(1...(gridSize * gridSize)).shuffled()
+        self.isSelected = false
         self.currentNumber = 1
     }
     

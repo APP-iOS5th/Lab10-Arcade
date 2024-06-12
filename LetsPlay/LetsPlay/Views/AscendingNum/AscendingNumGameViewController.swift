@@ -106,8 +106,16 @@ class AscendingNumGameViewController: UIViewController {
                 navigationController?.pushViewController(restartVC, animated: true)
             }
         } else {
-            sender.setTitleColor(.red, for: .normal)
+            shakeAnimation(for: sender)
         }
+    }
+    
+    private func shakeAnimation(for button: UIButton) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: .linear)
+        animation.values = [-10, 10, -8, 8, -6, 6, -4, 4, -2, 2, 0]
+        animation.duration = 0.5
+        button.layer.add(animation, forKey: "shake")
     }
     
 }
