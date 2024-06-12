@@ -30,28 +30,67 @@ class AscendingNumRestartViewController: UIViewController {
     // MARK: - UI 세팅
     private func setupUI() {
         setBackground()
-        let restartButton = customButton(title: "RESTART")
+        setGameResult()
         
+        let restartButton = customButton(title: "RESTART")
         restartButton.addAction(UIAction { [weak self] _ in
+            self?.viewModel.resetGame()
             self?.restartGame()
         }, for: .touchUpInside)
         
+    }
+    
+    private func setGameResult() {
+        let cornerView = UIView()
+        let titleLabel = UILabel()
+        let timeTextView = UITextView()
         
         if let elapsedTime = viewModel.elapsedTime {
-            let timeLabel = UILabel()
-            let formattedElapsedTime = String(format: "%.2f", elapsedTime)
-            timeLabel.font = UIFont(name: "DNFBitBitv2", size: 80) ?? UIFont.systemFont(ofSize: 80)
-            timeLabel.textColor = .white
-            if let buttonColor = UIColor(named: "color-button") {
-                timeLabel.addStroke(text: formattedElapsedTime, strokeColor: buttonColor, strokeWidth: 5.0)
-            }
-            timeLabel.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(timeLabel)
-            NSLayoutConstraint.activate([
-                timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                timeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
-            ])
+            let formattedElapsedTime = String(format: "소요시간\n%.2f초", elapsedTime)
+            timeTextView.translatesAutoresizingMaskIntoConstraints = false
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 10
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "NeoDunggeunmoPro-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20), .paragraphStyle: paragraphStyle]
+            let attributedString = NSAttributedString(
+                string: formattedElapsedTime, attributes: attributes)
+            timeTextView.attributedText = attributedString
+            timeTextView.isEditable = false
+            timeTextView.isScrollEnabled = false
+            timeTextView.backgroundColor = .white.withAlphaComponent(0)
+            timeTextView.textAlignment = .center
+            timeTextView.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        cornerView.backgroundColor = .white.withAlphaComponent(0.95)
+        cornerView.layer.cornerRadius = 40
+        cornerView.layer.borderColor = UIColor.black.cgColor
+        cornerView.layer.borderWidth = 3
+        cornerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleLabel.text = "순서대로 얍얍"
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: "DNFBitBitv2", size: 24) ?? UIFont.systemFont(ofSize: 24)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        
+        view.addSubview(cornerView)
+        cornerView.addSubview(titleLabel)
+        cornerView.addSubview(timeTextView)
+        
+        NSLayoutConstraint.activate([
+            cornerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cornerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -110),
+            cornerView.widthAnchor.constraint(equalToConstant: 298),
+            cornerView.heightAnchor.constraint(equalToConstant: 208),
+            titleLabel.centerXAnchor.constraint(equalTo: cornerView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: cornerView.topAnchor, constant: 30),
+            timeTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeTextView.trailingAnchor.constraint(equalTo: cornerView.trailingAnchor, constant: 30),
+            timeTextView.leadingAnchor.constraint(equalTo: cornerView.leadingAnchor, constant: -30),
+            timeTextView.bottomAnchor.constraint(equalTo: cornerView.bottomAnchor, constant: -30)
+        ])
     }
     
     // MARK: - Methods
