@@ -28,13 +28,13 @@ class RestartViewController: UIViewController {
     private func setupView() {
         setBackground()
         
-        gameRestartButton = customButton(title: "다시하기")
+        gameRestartButton = customButton(title: "RESTART")
         gameRestartButton.addTarget(self, action: #selector(gameRestartButtonTapped), for: .touchUpInside)
         view.addSubview(gameRestartButton)
         
         setDescription(title: resultLabel, body: "전장의 지배자 \(winnerName!)!")
         
-        setupNavigationBar(title: "게임 종료", leftButtonTitle: "돌아가기", leftButtonAction: #selector(leftButtonTappedToStart))
+        setupNavigationBar(title: "튜 목", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
         
     }
     
@@ -57,6 +57,6 @@ class RestartViewController: UIViewController {
     }
     
     @objc private func gameRestartButtonTapped() {
-        navigationController?.pushViewController(GameViewController(), animated: true)
+        navigationController?.pushViewController(StartViewController(), animated: true)
     }
 }

@@ -21,12 +21,12 @@ class StartViewController: UIViewController {
     private func setupView() {
         setBackground()
         
-        gameStartButton = customButton(title: "게임 시작")
+        gameStartButton = customButton(title: "START")
         gameStartButton.addTarget(self, action: #selector(gameStartButtonTapped), for: .touchUpInside)
         view.addSubview(gameStartButton)
         
-        setupNavigationBar(title: "시작화면", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
-        setDescription(title: "튜 목", body: "페페돌 또는 만두돌을\n\n5개 연속으로 놓으면 승리합니다!")
+        setupNavigationBar(title: "튜 목", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
+        setDescription(title: "튜 목", body: "페페돌 또는 만두돌을\n5개 연속으로 놓으면 승리합니다!")
     }
     
     private func setupConstraints() {
