@@ -79,8 +79,8 @@ extension RockPaperScissorsViewController {
 		config.background.strokeWidth = 3
 		config.background.strokeColor = .black
 		config.contentInsets = NSDirectionalEdgeInsets(
-			top: 12, leading: 26,
-			bottom: 12, trailing: 26)
+			top: 10, leading: 20,
+			bottom: 10, trailing: 20)
 		config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer {
 			var attribute = $0
 			attribute.font = UIFont(name: FONT_DNF, size: 24)
