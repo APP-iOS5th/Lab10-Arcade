@@ -24,6 +24,13 @@ struct MatchImageInformation {
         label.textAlignment = .center
         label.font = CustomFonts().neoDunggeunmoPro
         
+        let attrString = NSMutableAttributedString(string: label.text ?? "게임 설명")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        paragraphStyle.alignment = .center
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
+        label.attributedText = attrString
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -43,7 +50,7 @@ struct MatchImageInformation {
         uiView.backgroundColor = UIColor(white: 1, alpha: 0.95)
         uiView.layer.borderWidth = 3
         uiView.layer.borderColor = UIColor.black.cgColor
-        uiView.layer.cornerRadius = 25
+        uiView.layer.cornerRadius = 40
         
         uiView.translatesAutoresizingMaskIntoConstraints = false
         
