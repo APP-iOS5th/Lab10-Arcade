@@ -46,6 +46,9 @@ class MatchImageStartViewController: UIViewController {
         let navigationBarButtonItem = UIBarButtonItem(title: "게임 선택", style: .plain, target: self, action: #selector(gameChoose))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
+        // GameAssets
+        
+        
         gameDescription.text = "도전!\n 최단 시간에 같은 그림을 맞춰 보세요."
         
         SharedData.shared.matchImageGame.matrix = [3,2]
