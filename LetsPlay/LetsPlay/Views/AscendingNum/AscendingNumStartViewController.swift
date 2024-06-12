@@ -25,6 +25,8 @@ class AscendingNumStartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewHeight = view.frame.height
+                print("전체 뷰의 높이: \(viewHeight)")
         setupUI()
         
         // Override the back button
@@ -98,7 +100,7 @@ class AscendingNumStartViewController: UIViewController {
         
         configuration.baseBackgroundColor = UIColor(named: color)
         configuration.background.strokeColor = .black
-        configuration.background.strokeWidth = 1
+        configuration.background.strokeWidth = 2
         configuration.attributedTitle = AttributedString(title, attributes: AttributeContainer([.font: customFont, .kern: 1]))
         button.configuration = configuration
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -114,18 +116,18 @@ class AscendingNumStartViewController: UIViewController {
         case 3:
             viewModel = AscendingNumViewModel(gridSize: 3)
             sender.configuration?.background.strokeWidth = 6
-            buttonFour.configuration?.background.strokeWidth = 1
-            buttonFive.configuration?.background.strokeWidth = 1
+            buttonFour.configuration?.background.strokeWidth = 2
+            buttonFive.configuration?.background.strokeWidth = 2
         case 4:
             viewModel = AscendingNumViewModel(gridSize: 4)
             sender.configuration?.background.strokeWidth = 6
-            buttonThree.configuration?.background.strokeWidth = 1
-            buttonFive.configuration?.background.strokeWidth = 1
+            buttonThree.configuration?.background.strokeWidth = 2
+            buttonFive.configuration?.background.strokeWidth = 2
         case 5:
             viewModel = AscendingNumViewModel(gridSize: 5)
             sender.configuration?.background.strokeWidth = 6
-            buttonFour.configuration?.background.strokeWidth = 1
-            buttonThree.configuration?.background.strokeWidth = 1
+            buttonFour.configuration?.background.strokeWidth = 2
+            buttonThree.configuration?.background.strokeWidth = 2
         default:
             break
         }
