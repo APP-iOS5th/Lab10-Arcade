@@ -34,10 +34,15 @@ class MatchImageGameViewController: UIViewController {
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            backgroundImage.widthAnchor.constraint(
+                equalTo: view.widthAnchor),
+            backgroundImage.heightAnchor.constraint(
+                equalTo: backgroundImage.widthAnchor,
+                multiplier: 2.5),
+            backgroundImage.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor),
+            backgroundImage.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor),
         ])
         
         setupCardImages()

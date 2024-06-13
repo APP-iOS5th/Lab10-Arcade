@@ -10,7 +10,7 @@ import UIKit
 struct BackgroundImage {
     var backgroundImage: UIImageView {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "image-background")
+        imageView.image = UIImage(named: BACKGROUND_IMAGE)
         imageView.contentMode = .scaleAspectFill
         
         // 이미지 뷰의 투명도 설정
