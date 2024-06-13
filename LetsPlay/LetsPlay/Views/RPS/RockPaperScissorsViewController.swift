@@ -1,6 +1,5 @@
 import UIKit
 
-//#Preview { RockPaperScissorsViewController() }
 
 class RockPaperScissorsViewController: UIViewController {
 	typealias RPS = RPSGameRPSCase

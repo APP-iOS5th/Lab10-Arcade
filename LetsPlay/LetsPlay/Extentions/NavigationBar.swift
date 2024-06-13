@@ -13,7 +13,6 @@ extension UIViewController {
         self.title = title
         let leftButton = UIBarButtonItem(title: leftButtonTitle, style: .plain, target: self, action: leftButtonAction)
         
-        // 텍스트 색 변경
         let textAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black]
         leftButton.setTitleTextAttributes(textAttributes, for: .normal)
         

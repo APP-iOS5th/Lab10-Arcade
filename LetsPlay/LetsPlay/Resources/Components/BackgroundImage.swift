@@ -13,7 +13,6 @@ struct BackgroundImage {
         imageView.image = UIImage(named: "image-background")
         imageView.contentMode = .scaleAspectFill
         
-        // 이미지 뷰의 투명도 설정
         imageView.alpha = 0.1
 
         imageView.translatesAutoresizingMaskIntoConstraints = false

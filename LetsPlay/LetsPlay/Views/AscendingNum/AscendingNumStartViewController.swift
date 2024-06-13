@@ -80,7 +80,6 @@ class AscendingNumStartViewController: UIViewController {
         }, for: .touchUpInside)
     }
     
-    // 게임 종류 버튼 설정
     private func gridSizeButton(title: String, color: String) -> UIButton {
         let button = UIButton()
         var configuration = UIButton.Configuration.filled()
