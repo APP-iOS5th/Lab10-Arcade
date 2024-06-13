@@ -28,7 +28,7 @@ class MatchImageGameViewController: UIViewController {
         self.title = "짝꿍 찾기 (00:00)"
         view.backgroundColor = .white
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(leftButtonTappedToList))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         
         view.addSubview(backgroundImage)
@@ -70,7 +70,7 @@ class MatchImageGameViewController: UIViewController {
         let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
         let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
         // 위치 조정. 원본보다 카드 하나 정도 밑에 정렬됨
-            - 80
+            
         
         var index = 0
         for i in 0..<SharedData.shared.matchImageGame.matrix[1] {
@@ -199,10 +199,5 @@ class MatchImageGameViewController: UIViewController {
         let systemSoundId: SystemSoundID = 1005
         
         AudioServicesPlaySystemSound(systemSoundId)
-    }
-    
-    @objc func gameChoose() {
-        let viewController = ViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

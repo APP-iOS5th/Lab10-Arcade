@@ -20,7 +20,7 @@ class MatchImageEndViewController: UIViewController {
         super.viewDidLoad()
         self.title = "짝꿍 찾기"
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(gameChoose))
+        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(leftButtonTappedToList))
         navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
         switch SharedData.shared.matchImageGame.matrix {
             case [3,2]:
@@ -39,8 +39,14 @@ class MatchImageEndViewController: UIViewController {
         setBackground()
         restartButton = customButton(title: "RESTART")
         restartButton.addAction(UIAction { [weak self] _ in
-            let matchImageStartViewController = MatchImageStartViewController()
-            self?.navigationController?.pushViewController(matchImageStartViewController, animated: true)
+            guard let self = self else { return }
+            if let navigationController = navigationController {
+                let startViewController = MatchImageStartViewController()
+                let viewController = ViewController()
+
+                    navigationController.setViewControllers([viewController, startViewController], animated: true)
+            }
+            
         }, for: .touchUpInside)
         setupLayout()
     }
@@ -68,10 +74,5 @@ class MatchImageEndViewController: UIViewController {
             gamePlayTime.trailingAnchor.constraint(equalTo: gameInfoContainer.trailingAnchor, constant: -40),
             gamePlayTime.bottomAnchor.constraint(equalTo: gameInfoContainer.bottomAnchor, constant: -30),
         ])
-    }
-    
-    @objc func gameChoose() {
-        let viewController = ViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
