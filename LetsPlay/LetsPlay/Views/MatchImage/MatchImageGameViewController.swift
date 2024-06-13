@@ -34,10 +34,15 @@ class MatchImageGameViewController: UIViewController {
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            backgroundImage.widthAnchor.constraint(
+                equalTo: view.widthAnchor),
+            backgroundImage.heightAnchor.constraint(
+                equalTo: backgroundImage.widthAnchor,
+                multiplier: 2.5),
+            backgroundImage.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor),
+            backgroundImage.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor),
         ])
         
         setupCardImages()
@@ -67,8 +72,6 @@ class MatchImageGameViewController: UIViewController {
         let margin: CGFloat = 10
         let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
         let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
-        // 위치 조정. 원본보다 카드 하나 정도 밑에 정렬됨
-            
         
         var index = 0
         for i in 0..<SharedData.shared.matchImageGame.matrix[1] {
