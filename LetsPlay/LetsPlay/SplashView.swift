@@ -38,10 +38,15 @@ class SplashViewController: UIViewController {
     }
     
     private func navigateToMainViewController() {
-        let mainViewController = MainViewController() // 메인 뷰 컨트롤러
+        let mainViewController = MainViewController()
         let navigationController = UINavigationController(rootViewController: mainViewController)
         navigationController.modalTransitionStyle = .crossDissolve
         navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true, completion: nil)
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
     }
 }
