@@ -9,7 +9,6 @@ import UIKit
 import AudioToolbox
 
 class MatchImageGameViewController: UIViewController {
-    let backgroundImage = BackgroundImage().backgroundImage
     
     let imageNames = ["figure.badminton", "figure.baseball", "figure.basketball", "figure.bowling", "figure.cricket", "figure.american.football", "figure.golf", "figure.handball", "figure.soccer"]
 
@@ -29,21 +28,7 @@ class MatchImageGameViewController: UIViewController {
         
         setupNavigationBar(title: "짝꿍 찾기 (00:00)", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
         
-        view.addSubview(backgroundImage)
-        view.sendSubviewToBack(backgroundImage)
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            backgroundImage.widthAnchor.constraint(
-                equalTo: view.widthAnchor),
-            backgroundImage.heightAnchor.constraint(
-                equalTo: backgroundImage.widthAnchor,
-                multiplier: 2.5),
-            backgroundImage.centerXAnchor.constraint(
-                equalTo: view.centerXAnchor),
-            backgroundImage.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor),
-        ])
+        setBackground()
         
         setupCardImages()
         setupCards()
@@ -137,9 +122,9 @@ class MatchImageGameViewController: UIViewController {
             card2.addSymbolEffect(.pulse, options: .nonRepeating, animated: false)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 card1.tintColor = UIColor(named: "color-orange")
-                card1.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+                card1.backgroundColor = .white
                 card2.tintColor = UIColor(named: "color-orange")
-                card2.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+                card2.backgroundColor = .white
             }
             // all matched
             numberOfImages -= 1
