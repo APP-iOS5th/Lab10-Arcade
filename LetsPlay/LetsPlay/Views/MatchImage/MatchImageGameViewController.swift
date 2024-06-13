@@ -72,8 +72,6 @@ class MatchImageGameViewController: UIViewController {
         let margin: CGFloat = 10
         let startX = (view.bounds.width - (cardWidth * CGFloat(SharedData.shared.matchImageGame.matrix[0]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[0]) - 1.0 ))) / 2
         let startY = (view.bounds.height - (cardHeight * CGFloat(SharedData.shared.matchImageGame.matrix[1]) + margin * (CGFloat(SharedData.shared.matchImageGame.matrix[1]) - 1.0 ))) / 2
-        // 위치 조정. 원본보다 카드 하나 정도 밑에 정렬됨
-            
         
         var index = 0
         for i in 0..<SharedData.shared.matchImageGame.matrix[1] {

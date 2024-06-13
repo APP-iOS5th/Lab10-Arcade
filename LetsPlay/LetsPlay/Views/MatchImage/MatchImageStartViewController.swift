@@ -39,7 +39,6 @@ class MatchImageStartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .red
         
         self.title = "짝꿍 찾기"
         setupNavigationBar(title: "짝꿍 찾기", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
