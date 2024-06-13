@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    // 시작 버튼 설정
+
     func customButton(title: String) -> UIButton {
         let button = UIButton()
         var configuration = UIButton.Configuration.filled()
@@ -33,7 +33,6 @@ extension UIViewController {
         return button
     }
     
-    // 배경 이미지 설정
     func setBackground() {
         let backgroundImageView = UIImageView()
         view.addSubview(backgroundImageView)
@@ -55,28 +54,27 @@ extension UIViewController {
         ])
     }
     
-    func splashBackground() {
-        let splashBackgroundImageView = UIImageView()
-        view.addSubview(splashBackgroundImageView)
-        view.sendSubviewToBack(splashBackgroundImageView)
-        splashBackgroundImageView.image = UIImage(named: "splash")
-        splashBackgroundImageView.contentMode = .scaleAspectFit
-        splashBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+    func mainBackground() {
+        let mainBackground = UIImageView()
+        view.addSubview(mainBackground)
+        view.sendSubviewToBack(mainBackground)
+        mainBackground.image = UIImage(named: "MainBackground")
+        mainBackground.contentMode = .scaleAspectFit
+        mainBackground.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            splashBackgroundImageView.widthAnchor.constraint(
+            mainBackground.widthAnchor.constraint(
                 equalTo: view.widthAnchor),
-            splashBackgroundImageView.heightAnchor.constraint(
-                equalTo: splashBackgroundImageView.widthAnchor,
+            mainBackground.heightAnchor.constraint(
+                equalTo: mainBackground.widthAnchor,
                 multiplier: 2.5),
-            splashBackgroundImageView.centerXAnchor.constraint(
+            mainBackground.centerXAnchor.constraint(
                 equalTo: view.centerXAnchor),
-            splashBackgroundImageView.bottomAnchor.constraint(
+            mainBackground.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor),
         ])
     }
     
-    // 게임 설명 설정
     func setDescription(title: String, body: String) {
         let cornerView = UIView()
         let titleLabel = UILabel()

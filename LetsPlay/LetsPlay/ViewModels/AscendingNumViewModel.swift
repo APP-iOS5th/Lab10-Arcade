@@ -53,10 +53,7 @@ class AscendingNumViewModel {
         ascendingNumModel.endGame()
         stopTimer()
     }
-    
-//    var elapsedTime: TimeInterval? {
-//        return ascendingNumModel.elapsedTime
-//    }
+  
     var elapsedTime: TimeInterval {
             return ascendingNumModel.elapsedTime
         }
