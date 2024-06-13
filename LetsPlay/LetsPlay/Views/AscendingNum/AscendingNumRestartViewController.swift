@@ -35,7 +35,7 @@ class AscendingNumRestartViewController: UIViewController {
         let restartButton = customButton(title: "RESTART")
         restartButton.addAction(UIAction { [weak self] _ in
             self?.viewModel.resetGame()
-            self?.restartGame()
+            self?.navigateToStartViewController()
         }, for: .touchUpInside)
         
     }
@@ -44,23 +44,23 @@ class AscendingNumRestartViewController: UIViewController {
         let cornerView = UIView()
         let titleLabel = UILabel()
         let timeTextView = UITextView()
+        let elapsedTime = viewModel.elapsedTime
         
-        if let elapsedTime = viewModel.elapsedTime {
-            let formattedElapsedTime = String(format: "소요시간\n%.2f초", elapsedTime)
-            timeTextView.translatesAutoresizingMaskIntoConstraints = false
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 10
-            let attributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont(name: "NeoDunggeunmoPro-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20), .paragraphStyle: paragraphStyle]
-            let attributedString = NSAttributedString(
-                string: formattedElapsedTime, attributes: attributes)
-            timeTextView.attributedText = attributedString
-            timeTextView.isEditable = false
-            timeTextView.isScrollEnabled = false
-            timeTextView.backgroundColor = .white.withAlphaComponent(0)
-            timeTextView.textAlignment = .center
-            timeTextView.translatesAutoresizingMaskIntoConstraints = false
-        }
+        let formattedElapsedTime = String(format: "소요시간\n%.2f초", elapsedTime)
+        timeTextView.translatesAutoresizingMaskIntoConstraints = false
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 10
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "NeoDunggeunmoPro-Regular", size: 20) ?? UIFont.systemFont(ofSize: 20), .paragraphStyle: paragraphStyle]
+        let attributedString = NSAttributedString(
+            string: formattedElapsedTime, attributes: attributes)
+        timeTextView.attributedText = attributedString
+        timeTextView.isEditable = false
+        timeTextView.isScrollEnabled = false
+        timeTextView.backgroundColor = .white.withAlphaComponent(0)
+        timeTextView.textAlignment = .center
+        timeTextView.translatesAutoresizingMaskIntoConstraints = false
+        
         
         cornerView.backgroundColor = .white.withAlphaComponent(0.95)
         cornerView.layer.cornerRadius = 40
@@ -95,17 +95,9 @@ class AscendingNumRestartViewController: UIViewController {
     
     // MARK: - Methods
     private func navigateToStartViewController() {
-        if let navigationController = navigationController {
-            if let startViewController = navigationController.viewControllers.first(where: { $0 is AscendingNumStartViewController }) {
-                DispatchQueue.main.async {
-                    navigationController.setViewControllers([startViewController], animated: true)
-                }
-            }
-        }
-    }
-    
-    func restartGame() {
-        navigateToStartViewController()
+        let startViewController = AscendingNumStartViewController()
+        let viewController = ViewController()
+        navigationController?.setViewControllers([viewController, startViewController], animated: true)
     }
 }
 

@@ -13,6 +13,7 @@ struct AscendingNumModel {
     var startTime: Date?
     var endTime: Date?
     var isSelected: Bool
+    private var timeElapsed: TimeInterval = 0
     private(set) var currentNumber: Int
     
     init(gridSize: Int) {
@@ -44,8 +45,20 @@ struct AscendingNumModel {
         endTime = Date()
     }
     
-    var elapsedTime: TimeInterval? {
-        guard let start = startTime, let end = endTime else { return nil }
-        return end.timeIntervalSince(start)
+    var elapsedTime: TimeInterval {
+        guard let start = startTime else { return timeElapsed }
+        return Date().timeIntervalSince(start)
     }
+    
+    mutating func updateElapsedTime() {
+        timeElapsed = elapsedTime
+    }
+    
+    func formatTimeInterval(_ interval: TimeInterval) -> String {
+        let minutes = Int(interval) / 60
+        let seconds = Int(interval) % 60
+        let milliseconds = Int((interval - TimeInterval(minutes * 60 + seconds)) * 100)
+        return String(format: "%02d:%02d", seconds, milliseconds)
+    }
+    
 }
