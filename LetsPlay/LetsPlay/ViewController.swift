@@ -30,17 +30,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 		backgroundImageView.contentMode = .scaleAspectFit
 		backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.backgroundView = backgroundImageView
-		
-        // characters
-        let tunaImage = UIImage(named: "RPS/image-tuna")
-        let tunaImageView = UIImageView(image: tunaImage)
-        tunaImageView.contentMode = .scaleAspectFill
-        tunaImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let manduImage = UIImage(named: "RPS/image-mandu")
-        let manduImageView = UIImageView(image: manduImage)
-        manduImageView.contentMode = .scaleAspectFill
-        manduImageView.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
