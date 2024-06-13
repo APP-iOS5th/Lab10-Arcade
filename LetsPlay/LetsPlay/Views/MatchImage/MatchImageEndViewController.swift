@@ -20,8 +20,8 @@ class MatchImageEndViewController: UIViewController {
         super.viewDidLoad()
         self.title = "짝꿍 찾기"
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(leftButtonTappedToList))
-        navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
+        setupNavigationBar(title: "짝꿍 찾기", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
+        
         switch SharedData.shared.matchImageGame.matrix {
             case [3,2]:
                 difficulty = "쉬움"

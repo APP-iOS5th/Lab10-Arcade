@@ -25,11 +25,9 @@ class MatchImageGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "짝꿍 찾기 (00:00)"
         view.backgroundColor = .white
         
-        let navigationBarButtonItem = UIBarButtonItem(title: "게임목록", style: .plain, target: self, action: #selector(leftButtonTappedToList))
-        navigationItem.setLeftBarButton(navigationBarButtonItem, animated: true)
+        setupNavigationBar(title: "짝꿍 찾기 (00:00)", leftButtonTitle: "게임목록", leftButtonAction: #selector(leftButtonTappedToList))
         
         view.addSubview(backgroundImage)
         view.sendSubviewToBack(backgroundImage)
