@@ -60,16 +60,19 @@ extension UIViewController {
         view.addSubview(splashBackgroundImageView)
         view.sendSubviewToBack(splashBackgroundImageView)
         splashBackgroundImageView.image = UIImage(named: "splash")
-        splashBackgroundImageView.contentMode = .scaleAspectFill
+        splashBackgroundImageView.contentMode = .scaleAspectFit
         splashBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(splashBackgroundImageView)
         
-        // 이미지 뷰 제약 조건 설정
         NSLayoutConstraint.activate([
-            splashBackgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            splashBackgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            splashBackgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            splashBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            splashBackgroundImageView.widthAnchor.constraint(
+                equalTo: view.widthAnchor),
+            splashBackgroundImageView.heightAnchor.constraint(
+                equalTo: splashBackgroundImageView.widthAnchor,
+                multiplier: 2.5),
+            splashBackgroundImageView.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor),
+            splashBackgroundImageView.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor),
         ])
     }
     

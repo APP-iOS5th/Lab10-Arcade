@@ -15,18 +15,7 @@ extension UIViewController {
         navigationItem.leftBarButtonItem = leftButton
     }
     
-    @objc func leftButtonTappedToStart() {
-        navigationController?.pushViewController(StartViewController(), animated: true)
-    }
-    
     @objc func leftButtonTappedToList() {
-        if let viewControllers = self.navigationController?.viewControllers {
-            for viewController in viewControllers {
-                if let vc = viewController as? ViewController {
-                    navigationController?.popToViewController(vc, animated: true)
-                    break
-                }
-            }
-        }
+        navigationController?.popToRootViewController(animated: true)
     }
 }

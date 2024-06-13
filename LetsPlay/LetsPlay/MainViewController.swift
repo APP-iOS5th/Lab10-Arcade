@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     private var startButton: UIButton!
     
     override func viewDidLoad() {
@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     
     private func setButtons() {
         startButton = customButton(title: "START")
-       
+        
         startButton.addAction(UIAction { [weak self] _ in
             self?.navigateToListViewController()
         }, for: .touchUpInside)
@@ -40,7 +40,14 @@ class MainViewController: UIViewController {
     // MARK: - Methods
     
     private func navigateToListViewController() {
-        let listViewController = ViewController()
-        self.navigationController?.pushViewController(listViewController, animated: true)
+        let listViewController = ViewController() // 메인 뷰 컨트롤러
+        let navigationController = UINavigationController(rootViewController: listViewController)
+        
+        // UIWindowScene을 통해 루트 뷰 컨트롤러 변경
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
     }
 }
