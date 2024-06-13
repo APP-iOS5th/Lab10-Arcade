@@ -16,9 +16,13 @@ class MainViewController: UIViewController {
         setupUI()
     }
     
-    // MARK: - UI 세팅
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     private func setupUI() {
-        splashBackground()
+        mainBackground()
         setButtons()
         
         NSLayoutConstraint.activate([
@@ -37,13 +41,10 @@ class MainViewController: UIViewController {
         }, for: .touchUpInside)
     }
     
-    // MARK: - Methods
-    
     private func navigateToListViewController() {
-        let listViewController = ViewController() // 메인 뷰 컨트롤러
+        let listViewController = ViewController()
         let navigationController = UINavigationController(rootViewController: listViewController)
         
-        // UIWindowScene을 통해 루트 뷰 컨트롤러 변경
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.rootViewController = navigationController
