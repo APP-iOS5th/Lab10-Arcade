@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableView = UITableView()
+	let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,41 +20,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.title = "게임선택"
         view.backgroundColor = .white
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "gameCell")
         
-        // characters
-        let tunaImage = UIImage(named: "RPS/image-tuna")
-        let tunaImageView = UIImageView(image: tunaImage)
-        tunaImageView.contentMode = .scaleAspectFill
-        tunaImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let manduImage = UIImage(named: "RPS/image-mandu")
-        let manduImageView = UIImageView(image: manduImage)
-        manduImageView.contentMode = .scaleAspectFill
-        manduImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(tunaImageView)
-        self.view.addSubview(manduImageView)
+		let backgroundImageView = UIImageView()
+		backgroundImageView.image = UIImage(named: BACKGROUND_IMAGE)
+		backgroundImageView.contentMode = .scaleAspectFit
+		backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.backgroundView = backgroundImageView
         
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -150),
+			tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            tunaImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30),
-            tunaImageView.trailingAnchor.constraint(equalTo: manduImageView.leadingAnchor, constant: -10),
-            tunaImageView.widthAnchor.constraint(equalToConstant: 55),
-            tunaImageView.heightAnchor.constraint(equalToConstant: 63),
-            manduImageView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -30),
-            manduImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
-            manduImageView.widthAnchor.constraint(equalToConstant: 50),
-            manduImageView.heightAnchor.constraint(equalToConstant: 45),
-            
+			
+			backgroundImageView.widthAnchor.constraint(
+				equalTo: view.widthAnchor),
+			backgroundImageView.heightAnchor.constraint(
+				equalTo: backgroundImageView.widthAnchor,
+				multiplier: 2.5),
+			backgroundImageView.centerXAnchor.constraint(
+				equalTo: view.centerXAnchor),
+			backgroundImageView.bottomAnchor.constraint(
+				equalTo: view.bottomAnchor),
         ])
         self.navigationItem.hidesBackButton = true
     }
@@ -68,8 +61,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
         let game = Games.allCases[indexPath.row]
         cell.textLabel?.text = game.rawValue
-        
-        cell.backgroundColor = .clear
+		cell.textLabel?.font = UIFont(name: FONT_DNF, size: 16)
+		cell.layer.borderColor = UIColor.black.cgColor
+		cell.layer.borderWidth = 1.2
+		cell.backgroundColor = UIColor(named: "color-background-green")
         
         return cell
     }
