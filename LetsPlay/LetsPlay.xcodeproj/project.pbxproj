@@ -247,8 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				AFCC83FF2C180ECA005DD007 /* AscendingNumStartViewController.swift */,
-				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
 				AFCC84002C180ECB005DD007 /* AscendingNumGameViewController.swift */,
+				AFCC84012C180ECB005DD007 /* AscendingNumRestartViewController.swift */,
 			);
 			path = AscendingNum;
 			sourceTree = "<group>";

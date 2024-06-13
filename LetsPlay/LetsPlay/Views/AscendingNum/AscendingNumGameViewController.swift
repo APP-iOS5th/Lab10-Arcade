@@ -12,13 +12,27 @@ class AscendingNumGameViewController: UIViewController {
     private var buttons: [UIButton] = []
     private var selectedButton: UIButton?
     
+    private let timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "DNFBitBitv2", size: 30) ?? UIFont.systemFont(ofSize: 30)
+        label.textColor = .white
+        label.textAlignment = .center
+        return label
+    }()
+    
     init(viewModel: AscendingNumViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTimeLabel), name: .timeUpdated, object: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLoad() {
@@ -37,10 +51,13 @@ class AscendingNumGameViewController: UIViewController {
         gridView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(gridView)
+        view.addSubview(timeLabel)
         
         NSLayoutConstraint.activate([
             gridView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gridView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -35)
+            gridView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -35),
+            timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeLabel.bottomAnchor.constraint(equalTo: gridView.topAnchor, constant: -30),
         ])
         
     }
@@ -96,6 +113,7 @@ class AscendingNumGameViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
     private func buttonTapped(_ sender: UIButton) {
         guard let title = sender.currentTitle, let number = Int(title) else { return }
         if viewModel.checkNumber(number) {
@@ -116,6 +134,10 @@ class AscendingNumGameViewController: UIViewController {
         animation.values = [-10, 10, -8, 8, -6, 6, -4, 4, -2, 2, 0]
         animation.duration = 0.5
         button.layer.add(animation, forKey: "shake")
+    }
+    
+    @objc private func updateTimeLabel() {
+        timeLabel.text = "\(viewModel.getFormattedTimeElapsed())"
     }
     
 }
