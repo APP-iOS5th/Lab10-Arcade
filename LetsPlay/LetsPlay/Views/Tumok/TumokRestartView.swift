@@ -56,6 +56,6 @@ class RestartViewController: UIViewController {
     }
     
     @objc private func gameRestartButtonTapped() {
-        navigationController?.pushViewController(StartViewController(), animated: true)
+        navigationController?.setViewControllers([ViewController(), StartViewController()], animated: true)
     }
 }
