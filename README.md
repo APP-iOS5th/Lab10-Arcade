@@ -1,32 +1,40 @@
 # Lab10 2차 프로젝트 - 만튜야 놀자~
 
+<img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/737f7224-9aa1-4895-937c-8c07c1140103" alt="main" height="100">
+<img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/5525dd08-73f8-4dab-94b9-1e86f69331e8" alt="main" height="100">
+
+<a href="https://github.com/APP-iOS5th/Lab10-Arcade/raw/main/Lab10_.pptx">앱 소개.pptx</a>
+
+<br><br>
+
 ## 1. 프로젝트 화면
 
 <table style="border: none; border-collapse: collapse; width: 100%;">
   <tr>
     <td style="border: none; text-align: center;">
-      화면 이미지1<br>
-      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/79854784/ea590e5d-eafd-43ea-90a2-920058e9aae9" alt="main" height="300">
+      첫 화면<br>
+      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/8c8f42d7-933f-44c9-aa49-1dcfd215f6a4" alt="main" height="300">
     </td>
     <td style="border: none; text-align: center;">
-      화면 이미지2<br>
-      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/79854784/ea590e5d-eafd-43ea-90a2-920058e9aae9" alt="main" height="300">
+      튜목<br>
+      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/823dffca-f274-4c23-ad96-8f5fb1348af8" alt="main" height="300">
     </td>
     <td style="border: none; text-align: center;">
-      화면 이미지3<br>
-      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/79854784/ea590e5d-eafd-43ea-90a2-920058e9aae9" alt="main" height="300">
+      짝궁 찾기<br>
+      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/97bae90e-6dc2-4b8f-b3aa-2823598927c9" alt="main" height="300">
     </td>
     <td style="border: none; text-align: center;">
-      화면 이미지4<br>
-      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/79854784/ea590e5d-eafd-43ea-90a2-920058e9aae9" alt="main" height="300">
+      순서대로 얍얍<br>
+      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/0662a7a6-c500-46e8-9df1-bd6fff047e7f" alt="main" height="300">
     </td>
     </td>
     <td style="border: none; text-align: center;">
-      화면 이미지5<br>
-      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/79854784/ea590e5d-eafd-43ea-90a2-920058e9aae9" alt="main" height="300">
+      가위바위보 대결<br>
+      <img src="https://github.com/APP-iOS5th/Lab10-Arcade/assets/164759000/600cb7fa-c9ee-4ddb-b0ca-d9ec36a71bb4" alt="main" height="300">
     </td>
   </tr>
 </table>
+
 
 <br><br>
 
@@ -73,7 +81,7 @@
 ## 5. 프로젝트 진행 과정
 
 - 사전 회의 : 서로 의견을 제시하며, "만튜야 놀자~" 라는 게임 오락실 앱을 만들기로 결정
-- 게임 기획 : 게임들을 Pigma를 활용하여 기획
+- 게임 기획 : 게임들을 Figma를 활용하여 기획
 - 게임 제작 : 기획한 게임들을 제작
 - 작업 통합 : 게임 제작이 완료 된 후, LetsPlay 브랜치에 통합
 - 디자인 통일 : 앱에 통일성을 주기 위해, 공통적인 UI 디자인을 통일
